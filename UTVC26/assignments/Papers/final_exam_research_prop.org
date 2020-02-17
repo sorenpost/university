@@ -1,0 +1,115 @@
+#+TITLE: Economic structure, networks, and resilience
+#+subtitle: UTVC26: Final exam
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \pagestyle{fancy}
+#+LATEX_HEADER: \fancyhf{}
+#+LATEX_HEADER: \lhead{Søren Post, 19910527-T093}
+#+LATEX_HEADER: \rhead{UTVC26}
+
+\begin{abstract}
+It has long been recognized that the industrial structure plays an important role an economy’s resilience to recessionary shocks. Most literature, however, has focused on a ’discrete’ measurement of industrial diversity or how the input-output network propagates shocks. During the past decade, the economic complexity literature has demonstrated the importance of an economy’s place in the global manufacturing and export-network. It has been shown that a country’s product basket conditions how an economy develops and diversifies, its potential for growth, and its socio-economic profile. Based on a cross-country analysis of time-series data on international trade and economic output, covering 43 countries during the Great Recession, this study presents a first attempt at integrating the resilience literature and the literature on economic complexity and productive capabilities.
+
+\end{abstract}
+\thispagestyle{empty}
+
+\newpage
+
+* Introduction
+Economic upheavals and recessionary shocks have enormous social welfare costs. Negative economic shocks have been linked to a range of adverse social welfare outcomes, such as increases in crime citep:dix-carneiro_economic_2017,iyer_poverty_2014, armed conflict citep:hodler_economic_2014,bazzi_economic_2014 and coups citep:kim_revisiting_2016. Perhaps even more significantly, evidence suggest that economic contractions has lasting effects on the economy's future output. cite:cerra_growth_2008 and cite:cerra_international_2013 demonstrate how, on average, economies does not recoup the lost growth after recessionary shocks. This results in a large welfare-gap between post-recession outcomes and "what could have been". In addition, many economies do not return to earlier growth-trajectories after recessions, which has been a significant factor in unconditional divergence in post-world war growth numbers (ibid). A better understanding how to build resilient economies is thus a key concern for policymakers.
+
+Extensive empirical evidence shows large differences in the response to recessionary shocks across both regions and countries. However, the structural factors that determine the economic impacts and subsequent economic adjustments is still not very well understood. In the past decade, applications of methods from network science have provided important insights to how the productive structures in an economy conditions its vulnerability til shocks and its ability to re-organize and combine productive capabilities to form new growth paths. This research proposal presents a first attempt at an empirical investigation into the relationship between the topology of the input-output network, the relatedness of economic activities and economic resilience.
+
+* Key literature and -concepts
+** Economic resilience 
+ What does it mean for an economy to be resilient? Although resilience is generally occupied with how regions and economies deal with shocks, in practice, the concept has remained ambiguous. For the purpose of this proposal[fn:1], the most important difference is between "engineered" and "evolutionary" resilience. Whereas "engineered" resilience refers to how a system "bounce back" and return to its pre-shock state or path, evolutionary notions of resilience is concerned with long term adaptability and fitness of the system citep:boschma_towards_2015. A central tension in the different approaches is in how to understand and model economic systems, rather than in the application of resilience alone. For instance, by modeling engineered resilience in way of Friedman's string along a plucking board citep:friedman_monetary_1964,friedman_plucking_1993, we define some economic growth equilibrium against which disturbances and recovery is measured. This is in contrast to evolutionary approaches that model economies as undergoing continuous change. In the context of disturbances and resilience, this means that growth paths are subject to change, akin to a punctuated equilibrium dynamic. This is an important distinction. Consider the hysteresis effects documented in cite:cerra_international_2013. If an economy faced with a recessionary shock has its long term growth rate significantly lowered, surely the region should no be called resilient, despite whether it rebounds to its pre-shock output quickly. The same goes for cases of industrial lock-in or re-primarisation dynamics, where opportunities for more sophisticated economic activities are substituted for lesser after shocks citep:torreggiani_dancing_2019.
+
+ The notion of resilience adopted for the proposed study is closely related to the evolutionary framework developed in cite:crespo_resilience_2017. Here, whether an economy is resilient rests on three effects: 
+
+ 1. The ability of the economy to withstand short term shocks
+ 2. The ability of the economy to recover from recessionary downturns
+ 3. The ability of the economy to continually adapt to maintain growth over time
+
+ This framework recognizes both the ability to function in the face of disruptions as well as the long term viability of the economy, a point often neglected in the literature.
+ 
+** Industrial composition and resilience
+It has long been recognized that an economy's "portfolio" of industries and the relationship between them play an important role in vulnerability to recessionary shocks and macroeconomic fluctuations citep:conroy_concept_1975. 
+Most studies on industrial factors has followed the "portfolio"-style theory of industrial diversity citep:deller_did_2016,martin_how_2016 where, much like stock-portfolios, diversity (defined by some "counting" measurement of concentration, e.g. Hirfendahl-Hirschman Index) has in-itself been assumed as barrier to shocks. While the theoretical basis is uncontroversial citep:watson_economic_2017, empirical evidence have been inconclusive. One possible reason for the ambiguous effects could be methodological. Measuring economic diversity solely through concentration of industries forgoes the importance of relations between the industries: the economic capabilities required for them to function, the quality difference, and the structural linkages between them. For instance, an economy could be highly diversified in terms of the fraction of output contributed by each sector. However, if most of the economy is situated down- or upstream from one central industry, the economy would still be sensitive to shocks to that specific industry. Similarly, some industries use highly configurable and transferable inputs (highly educated labor, inclusive institutions) that might easily be redeployed in the economy should the demand fall for the given sector, while others (e.g. resource extraction) might not.
+
+** Network effects and input-output organization 
+ In recent years, some important contributions have formalized (and substantiated empirically) how the network linkages between industries in an economy can serve to isolate or magnify shocks. By modeling input-output relationships as a network, cite:acemoglu_networks_2016,acemoglu_network_2012 show how smaller asynchronous shocks usually expected to "wash out", can transmit through down- and upstream linkages to the greater economy. Their results highlight the differences between discrete measures of diversification and the diversification in the network topology of an economy's industries. If shocks impact central industries that serve as important nodes in the economic network, risk does not "spread" citep:martin_regional_2012-1, but cascade through the economy (e.g. by way of demand- or supply shocks). In a related study, cite:han_predicting_2019 examine the resilience of U.S. counties by their industry-employment-weighted place in network centrality indices in the national input-output network. They show that if a region is more centrally placed in the network, the more resilient its economy is. By being better situated in the general economy, the authors suggest, regions are able to rewire transactions and linkages when hit by shocks, which has a mitigating dispersion effect. In another study on the U.S, cite:chopra_interconnectedness_2015 show how the topology of the input-output network and the integration of a few Critical Infrastructure Sectors makes the economy "exremely" vulnerable to shocks against these sectors.
+
+** Economic capabilities, relatedness, and structural change
+Another important network effect is found in the relationship between skill- or capability requirements for different economic activities. 
+
+By taking an agnostic approach to the measurement of specific capabilities, cite:hidalgo_product_2007 leverage information on co-location of economic activities (products) to infer the relationship between products in terms of the economic /know-how/ required to perform them. Say a given products require a set of economic capabilities to be effectively produced. If an economy effectively produces the product, we can assume that the required capabilities are present in the economy. It then follows that products that tend to be produced in the same economies overlap in their capability requirements. By modeling this relative overlap as the distance between product-nodes in a network, we can quantify how different products (economic activities) are from each other, and by virtue of the products produced by an economy, how far an economy's capability base is from another.
+
+Since economies develop gradually, slowly acquiring and recombining capabilities to new economic activities, this framework has proven very influential in predicting the path dependent process countries develop along citep:coniglio_pattern_2018,oclery_productive_2018,hausmann_atlas_2013. Countries tend to expand into activities closely related to the ones already present in the economy. This means that countries with a basket of productive activities that is well connected in this product-capability network has a much larger developmental "space of opportunity" than countries that are more sparsely connected. 
+
+This relationship has implications for resilience and for structural change. There are two central ways an economy's network structure can influence its resilience. First, if an economy's activities are closely related, it follows that they share much of the required know-how, institutional framework, infrastructure, etc. It should therefor be easier to redirect resources to productive sectors in the economy, should a sector be impacted by shocks. In a study on firms and structural change, cite:neffke_agents_2018 finds that establishments in sectors that are more "densely" connected to the capabilities in the economy has a higher likelihood of survival. Similarly, evidence on the reintroduction of workers after employment losses is easier when the impacted sectors are closely related to the sectors in the regional economy. However, due to redundancy in such a network, a more extensive, weakly connected network could better facilitate the transfer of information, an important source of unrelated diversification. 
+
+Secondly, this can help our understanding of structural change. Whereas closely related diversification represents the path-dependent evolution of economies, unrelated diversification can produce radical breaks in a country's development trajectory. As such, we can leverage the information in the network between products to measure the degree of actual, structural change the introduction of a new economic activity represents. Additionally, using measures of economic complexity and country fitness citep:tacchella_new_2012,tacchella_dynamical_2018, we can quantify the quality of the structural change. That is, does introduction of new activities either represent an increase in economic sophistication, or does it provide an important bridge different "clusters" in the network? Earlier quantitative literature have mostly avoided addressing the level of structural change related to resilience and shocks. An exception is cite:martin_how_2016 who use a measure of regional deviations from national trends in discrete sector-employment to classify the structural shifts. The inclusion of both extent and quality of the structural shifts would be an important improvement[fn:2].  
+
+In sum, we can identify a number of pathways that both the topology of industrial linkages (the input-output network) and capability base can influence its ability to withstand disruptions as well as shape its future growth path. While theoretically interesting, these effects need to be substantiated empirically.
+
+* Research aims
+Hence, the study aims to examine five related questions:
+
+1. How is the structure of the input-output network related to the impact and recovery from recessionary shocks?
+2. How is the structure of the product-capability network related to the impact and recovery from recessionary shocks?
+3. In what ways does the structure of the input-output network and the product-capability network condition each others effects on economic resilience?
+4. How does the depth and duration of a recessionary shock impact structural changes of an economy?
+5. How does the respective structure of the input-output- and product-capability network condition an economy's structural change?
+
+Given the explorative nature of the inquiry, the questions have deliberately been kept in more open, descriptive terms to allow for more experimentation. While not the conventional approach in quantitative studies [[cite:creswell_research_2017][p. 196]], a more rigid, hypothesis-driven research process would be counterproductive for a first investigation. 
+
+* Research design
+To answer these questions, the study employs a quantitative cross-sectional design [[cite:de_vaus_research_2001][48]]. By using panel data across different countries, the variation in how the 2008 financial crisis impacted national economies can be paired with the structural variables outlined earlier. A thorough, structured review of the literature will map relevant mediating and moderating variables identified in the literature. The main interest of the study is to examine the relationship and interaction of the two network structures with the three resilience metrics. More formally, a range of network metrics and interaction terms will be regressed as independent variables on each of the three resilience metrics (including relevant controls). Any statistical modeling will be performed in R. 
+
+The first two resilience metrics, the depth of the impact and the duration of recovery, is defined in terms of the classical business cycle. See Figure 1 for at visual walk-through. Economic shocks tend to spread to different economies in many ways, hitting some early and some late, with patterns changing between different types of shocks. As such, it is important to allow for a flexible, data driven dating of the economic shock. Following cite:sensier_measuring_2016-1 I use a modified version of BBQ algorithm by cite:harding_dissecting_2002 to date the business cycles. The final resilience metric, structural change, is operationalized in two ways. First, the degree of related and unrelated diversity as defined through the product-capability network. Second, product complexity values evaluates the "fitness" aspect of change. 
+
+The sample consists of 43 countries, observed between 2000 and 2014. These are the countries covered by the World Input-Output database (more in the data section) and cover approximately 85% of World GDP. For the structural change variables, the time-series is extended to 2017 to allow for more data points. 
+
+** Design limitations
+A primary limitation is the lack of random assignment. We cannot assign recessionary shocks to the economy, no can we randomly shuffle industrial networks. This precludes experimental approaches [[cite:de_vaus_research_2001][pp. 54-9]]. This means that causality is very hard to infer. While one could conceive of an instrumental variable approach around this issue, it is hard to imagine an instrument that would pass the exclusion criteria. At any rate, developing such an instrument is beyond the scope of this study. Hence, the exercise becomes purely associative, and extra importance is placed on controlling for relevant confounding variables.
+
+Secondly, the use of GDP-changes both as an identification metric of shocks /and/ as the main instrument for measuring the depth of shocks. While this is not unconventional in the literature, it does raise some endogeneity concerns. For instance, should there be an unobserved trend in certain "types" of shocks and those countries that observes a larger GDP-drop, this would be mistakenly attributed to the independent variable in the statistical analysis (and not to the kind of shock experienced). While it is very difficult to rule out completely, a careful examination of qualitiative differences between shock-mechanisms could minimize the risk. 
+
+A final important limitation pertains to the use of spatial scales. By using countries as the unit of analysis, many important regional dynamics are hidden. Indeed, many of the most interesting resilience-effects are found on the regional level, such as employment adjustments, spatial diffusion of shocks, and internal migration. These are lost when aggregating to national economies. One additional concern is raised by cite:chen_geographical_2019, who shows how result change significantly dependent on the geographical scale (counties, economic areas, states, and MSAs).
+
+** Data
+The study employs three sources of secondary data: international trade, harmonized input-output tables, and economic output.
+
+The data on product exports comes from the UN COMTRADE database (United Nations International Trade Statistics Database). This data is used to build the product-capability network. For the purposes of this work, the bilateral trade-flows are aggregated into country-level exports at product level. The Growth Lab at Harvard University distributes the cleaned version of the COMTRADE data. Here, I use Harmonized System classification, 1992 revision (HS-92) at the four-digit level citep:the_growth_lab_at_harvard_university_international_2019. The HS-92 data covers about 5000 products at the 4-digit level, from 1995-2017. 
+
+The World Input Output Database (WIOD) citep:timmer_illustrated_2015-1 provides the input-output tables used to build the input-output networks. The study uses the 2016-release covering 43 countries and 56 sectors (4 digit ISIC)from 2000-2014. 
+
+Finally, as reference metric to identify shocks, I use GDP per capita data. As main source I use the Penn World Tables (9.1) (PWT) real GDP using national-accounts growth rates (RGDP^{NA}) citep:feenstra_next_2015. Since some variation exists in the estimation of GDP values, I repeat the analysis using the Maddison Project database citep:bolt_rebasing_2018 to avoid any results being an artifact from the source of GDP. 
+
+* Ethical considerations
+Besides more research technical considerations to scientific rigor and integrity in representing secondary sources, there are no obvious ethical issues. No microdata, non-public data, or sensitive data is used in the analysis. Given the nature of the design, it is difficult to imagine any sensitive results to emerge. 
+
+To facilitate reproduction and research transparency, the final project will be aggregated into an R package (including R code, final data-sample, cleaning procedures and figures) and hosted online. This ensures that any results are (at least) computationally reproducible.
+
+\newpage
+
+bibliography:UTVC26.bib
+bibliographystyle:humannat
+
+\newpage
+
+* Appendix 
+#+CAPTION: Stylized business cycle. *P^1* represents the first peak, *P^2* the subsequent peak. Hence, the time from *B^1* to *B^2* is the duration of the business cycle. *T* is the trough. *A^1* is the amplitude, or the depth, of the downturn, measured as the vertical distance between *P^1* and *T*. The horizontal distance between *B^1* and *T* is the time between the peak and the trough, i.e. the duration of the downturn. I define an economy as having "recovered" from a downturn when the reference metric has reached the pre-shock peak levels. In the figure, the duration of the recovery is marked by the distance between *T* and *R*.
+#+LABEL: stylized-bc
+[[./figs/bc.png]]
+
+* Footnotes
+
+[fn:2] To see why, assume that an economy has the same amount of professional footballers and nuclear scientists. Now, consider the different implications between every plumber becoming a professional footballer, or every plumber becoming a nuclear scientist.
+
+[fn:1] It is beyond the scope of this paper to give a full account of how the concept have been applied. For example, one review found sixteen "overlapping conceptualisations" from the literature on social, ecological and socio-ecological systems citep:bahadur_resilience_2010. As noted by cite:simmie_regional_2014, this is possibly due to the different ontological approaches to concept. For surveys of different approaches, see cite:carpenter_metaphor_2001, cite:pendall_resilience_2010, or cite:martin_regional_2012-1.

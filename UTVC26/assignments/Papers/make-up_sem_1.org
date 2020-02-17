@@ -1,0 +1,59 @@
+#+TITLE: Make-up assignment for seminar 1
+#+AUTHOR: Søren Post (19910527-T093)
+
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+
+*Research question: “What role can NGOs play in the development process?”*
+
+1) *Identify the problems with this research question (i.e. what makes it not a good research question?). Briefly motivate your criticism.*
+
+Since the quality of a research question is tied to the subsequent inquiry it informs, a critique should be in the context of specific research strategies [[cite:creswell_research_2017][p. 192]]. For brevity, however, I'll focus on a few general shortcomings and how they relate, generally, to qualitative and quantitative research. A first, obvious point is that most research requires more than one general question (the central- and follow-up questions in qualitative studies and specific research questions or hypotheses in quantitative studies). Since there is only one question listed, I'll treat it as an overarching, guiding research question.
+
+First, the question lacks specificity. There is no mention of the unit, level or area of analysis. Neither is a time-frame given. While cite:creswell_research_2017 recommends the broadest possible central research question for qualitative research (p. 192), it does not preclude the need for a concrete research space. Without an explicitly stated group of observations (or participants) and research site, the meaning of the research aim is impossible to infer from the question. Supposedly, answers to the perceived role of NGOs would be different from Washington think-tanks and Andean NGOs. As for quantitative approaches, this goes doubly. Without a focusing of what, who, where and when, the question becomes ambigious to the point of meaninglessness [[cite:de_vaus_research_2001][p. 18]].
+
+Second, the concept we want to explore is very superficially outlined. While it can be helpful (esp. in qualitative research) to start from a broad perspective, this requires a narrow framing of the context. Whose perception of the role is examined? What kind of role in what kind of process and to what end are we interested in examining? Although a specific definition of the concepts are not necessarily required in the research question, the area of inquiry needs to be delineated [[cite:de_vaus_research_2001][p. 25]]. It may be, for instance, easier to target a specific part of the development process (implementation, goal setting, funding, participation) or a specific role (initiators, mediators, negotiators, etc). 
+
+Third, if we don't have a specific group of respondents, specific research site, or a clearly defined concept or relationship of study, it makes operationalization difficult. For both qualitative and quantitative approaches, it is unclear how to broach the subject. From what kind of sources do we draw qualitative data - and what constitutes evidence? Without an "entry" to the concept, it becomes awkward to identify themes (relating to what? from what? for whom?) or draw out meaningful results. In a quantitative context (besides the unfortunate use of "what" as the operative verb), while it is clear that we are interested in the relationship between NGOs and some development process, the actual approach to this relationship is unclear. How do we identify indicators that precisely measures a "role" or the "development process"? How do we delineate between what constitutes as "having played a role" versus "did not play a role"?
+
+
+- *Improve the question by a) specifying a research question that lends itself to qualitative research and b) specifying a research question that lends itself to quantitative research.*
+
+As mentioned above, both qualitative and quantitative approaches tend to take on a more elaborate form than a single guiding question in practice. For consistency, I keep to the questions that keep the form of the original question.
+
+*A.* Qualitative research question:
+#+BEGIN_QUOTE
+"How do the local (non-international) NGO leaders and representatives in Ethiopia's Somali Region perceive the role of NGOs in identifying and defining desirable 'development' outcomes?"
+#+END_QUOTE
+
+As recommended in cite:creswell_research_2017 this includes non-directional, open ended verbs ("perceive"), have a specific group of participants in a given place, and a central, but broad concept: the role of NGOs in producing normative objectives in the local development efforts. While "development" is still a fuzzy topic (and perhaps problematic to some), the meaning of the concept could well be included in the discussion of what is desirable.
+
+*B.* Quantitative research question:
+#+BEGIN_QUOTE
+"Does the presence and magnitude of (non-international) NGO representatives on project development- and decision- commitees/boards affect survey results on the perceived desirability and success of public and public-private (development) projects on the local public in the Somali Region, Ethiopia?"
+#+END_QUOTE
+
+Here, the emphasis has changed to examining the relationship between a quantitative measure of NGO involvement (presence in decision-making groups) and how well local respondents perceive the results. In other words, the study would examine a relationship between two quantitatively measured variables: the number of board- or council-member seats taken by local NGOs as the independent variable, and the variation in survey scores as the dependent variable. This question would usually be expanded through either a clear and specific set of research questions (such as in the descriptive-inferential model in Creswell and Creswell, 2017) or a set of testable hypotheses.
+
+- *Briefly specify a qualitative and quantitative research design, respectively. (What data and methods would you employ to answer each of your questions?)*
+
+*A.* Qualitative design: The first issue in the qualitative design is the identification of respondents. One approach would be to create a sampling frame of local NGOs in the area, sample with replacement of non-responders and find key informants this way. At the next stage, the main data collection method would be to conduct in-field interviews with representatives or leaders of the sampled NGOs. Care should be take en developing an open interview guided suited to the local context. For data-analysis, a thematic coding of the transcribed interviews could be used to draw out common themes and sentiments expressed by the respondents.
+
+*B.* Quantitative design: As mentioned, the quantitative research design would be build around two types sets of data: a listing of membership and the number of seats in project development boards and advisory groups, and a randomly sampled survey on the perception of the projects. To capture further variation or mediating factors, one could include variables on different kinds of NGOs, membership on different kinds of boards or groups, different projects, the size of the project, and so forth. One issue is the identification of causality: since the membership on boards are not randomly assigned, causality is difficult to assess.
+
+Clearly, care should be given in constructing the membership-data set. For instance, one could easily imagine a bias between those projects that have public information available and includes a broader civil society in decision-making. Additionally, there is a potential bias in that "good" projects could be more likely to also include NGO participation. A potential solution to both the causality-issue and data-set construction could be a solid instrumental variable.
+
+Word count: 1067.
+
+\newpage 
+bibliography:UTVC26.bib
+bibliographystyle:apalike
+
+
+
+
+
+
+

@@ -1,0 +1,141 @@
+#+TITLE: Economic structure, networks, and resilience
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\begin{abstract}
+[UPDATE] It has long been recognized that the industrial structure plays an important role an economy’s resilience to recessionary shocks. Most literature, however, has focused on a ’discrete’ measurement of industrial diversity or how the input-output network propagates shocks. During the past decade, the economic complexity literature has demonstrated the importance of an economy’s place in the global manufacturing and export-network. It has been shown that a country’s product basket conditions how an economy develops and diversifies, its potential for growth, and its socio-economic profile. Based on a cross-country analysis of time-series data on international trade and economic output covering the Great Recession, this study presents a first attempt at integrating the resilience literature and the literature on economic complexity and productive capabilities.
+
+\end{abstract}
+
+Word count: TODO
+
+\newpage
+
+* Introduction
+Economic upheavals and recessionary shock have enormous social welfare costs. Negative economic shocks have been linked to a range of adverse social welfare outcomes, such as increases in crime citep:dix-carneiro_economic_2017,iyer_poverty_2014, armed conflict citep:hodler_economic_2014-1,bazzi_economic_2014 and coups citep:kim_revisiting_2016. Perhaps even more significantly, evidence suggest that economic contractions has lasting effects on the economy's future output. cite:cerra_growth_2008 and cite:cerra_international_2013 demonstrate how, on average, economies does not recoup the lost growth after recessionary shocks. This results in a large welfare-gap between post-recession outcomes and "what could have been". In addition, many economies do not return to earlier growth-trajectories after recessions, which has been a significant factor in unconditional divergence in post-world war growth numbers (ibid). A recent World Bank found that developing and emerging economies are ill equipped (and worse off than in 2008) to deal with potential recessionary shocks [CITE]. Understanding how to build resilient economies is thus a key concern for policymakers.
+
+[TODO integrate this point: Extensive empirical evidence shows large differences in the response to recessionary shocks across both regions and countries. However, the structural factors that determine the economic impacts and subsequent economic adjustments is still not very well understood.]
+
+[TODO integrate very brief idea of why this study is interesting - combining new results on a) network effects in the economy and b) work on structural change and development.]
+
+[TODO: This paper proceeds as follows:]
+
+* Key literature and concepts
+
+** Economic resilience 
+ What does it mean for an economy to be resilient? Although resilience is generally occupied with how regions and economies deal with shocks, in practice, the concept has remained ambigous. For the purpose of this proposal[fn:1] , the most important difference is between "engineered" and "evolutionary" resilience. While "engineered resilience" refers to how a system "bounce back" and return to its pre-shock state or path, evolutionary notions of resilience is concerned with long term adaptability and fitness of the system citep:boschma_towards_2015. A central tension in the different approaches is in how to understand and model economic systems, rather than in the application of resilience alone. For instance, by modeling engineered resilience in way of Friedman's string along a plucking board citep:friedman_monetary_1964,friedman_plucking_1993, we define some economic growth equilibrium against which disturbances and recovery is measured. This is in contrast to evolutionary approaches that model economies as undergoing continuous change. In the context of disturbances and resilience, this means that growth paths are subject to change, akin to a punctuated equilibrium dynamic. 
+
+ The notion of resilience adopted for the proposed study is closely related to the evolutionary framework developed in cite:crespo_resilience_2017. Here, whether an economy is resilient rests on three effects: 
+
+ 1. The ability of the economy to withstand short term shocks
+ 2. The ability of the economy to recover from recessionary downturns
+ 3. The ability of the economy to continually adapt to maintain growth over time
+
+ This recognizes both the ability to function in the face of disruptions, the TODO
+ 
+** Industrial composition and resilience
+cite:martin_how_2016 - 
+
+It has long been recognized that an economy's "portfolio" of industries and the relationship between them play an important role in an vulnerability to recessionary shocks and marcoeconomic fluctuations citep:conroy_concept_1975. 
+
+A substantial part of the research on structural determinants of resilience has focused on industrial composition. This literature
+
+The effects on robustness to shocks is ambiguous. 
+
+First, a more specialized economy will be less likely to be hit be random sector-speficic shocks (by virtue of having resources devoted to fewer sectors). Should they be hit, though, shocks impact a larger fraction of the economy.
+
+
+*** Network effects and input-output organisation 
+In recent years, some important contributions have formalized (and substantiated empirically) how the network linkages between industries in an economy can serve to isolate or magnify shocks. By modelling input-output relationships as a network, cite:acemoglu_networks_2016,acemoglu_network_2012 show how smaller asynchronous shocks usually expected to "wash" out, can transmit through down- and upstream linkages to the greater economy. Their results highlight the differences between "counting" measures of diversification and the diversification in the network topology of an economy's industries. If shocks impact central industries that serve as important nodes in the economic network, risk does not "spread" cite:martin_regional_2012-1, but cascade through the economy (e.g. by way of demand- or supply shocks). In a related study, cite:han_predicting_2019 examine the resilience of U.S. counties by their industry-employment-weighted place in network centrality indices in the national input-output network. They show that if a region is more centrally placed in the network, the more resilient its economy is. By being better situated in the general economy, the authors suggest, regions able to rewire transactions and linkages when hit by shocks, which has a mitigating dispersion effect. In another study on the U.S, cite:chopra_interconnectedness_2015 show how the topology of the input-output network and the integration of a few Critical Infrastructure Sectors makes the economy "exremely" vulnerable to shocks against these sectors.
+
+  [TODO: Lidt om hvad der står i cite:crespo_resilience_2017]
+
+  [The few studies highlighted here suggests two important points: the general structure of the economic network is important (the degree distribution, etc), and the potential placement of a few key sectors. TODO]
+
+*** Structural change and relatedness - lav i morgen.
+  [Studies:  cite:martin_how_2016 do try to qunatify structural change as "sectoral-share-weighted deviations of regional sectoral employment changes from regional total employment change." Findings = ]
+  [Economic complexity and diversification literature: contributes by a) qunatifying the capability relationship between economic activities (an important connection - can an economy redirect its resources, see fx result on firm survival in neffke and labor re-integration in danish wharfs), whether structural change is "more of the same" (gradual adaptation - related diversification) or path changing (unrelated diversification), and if structural change represents a more sophisticated/competitative economy (economic complexity and centrality).
+
+[By leveraging information on the relative ubiquity of products ]
+
+  *Idenfification of shocks:* See second part of Martin et al 2016
+
+  *Advance significance of study:*
+  First empirical attempt at putting together to key components of industrial and economic topology.
+  Contributes with innovation at quantifying economic change in both horizontal (how big is diversion from path until now) and vertical (is change into moer sophisticated activities?)
+
+  *Purpose of study:* [Maybe lead into research questions?]
+
+* Research problem
+[TODO: An analysis of the research question. What type of question is it (e.g. explanatory,
+descriptive, hypothesis-driven, etc.)?]
+
+
+ #+BEGIN_QUOTE
+
+ #+END_QUOTE
+
+* Research design
+
+[To answer these questions, the study follows a two stage design. The first stage consists of a structured scoping review of the literature. The object of the literature review is to identify a comprehensive list of the most important mediating or moderating variables...]
+
+To answer these questions, the study employs cross-sectional design [[cite:de_vaus_research_2001][48]]. By using panel data across different countries, the variation in how the 2008 financial crisis impacted national economies can be paired with the structural variables. 
+
+The sample consists of 43 countries, between 2000 and 2014. These are the countries covered by the World Input-Output database (more in the data section) and cover approximately 85% of World GDP. For the structural change variables, the time-series is extended to 2017 (UN COMTRADE) to allow for more data.
+
+Given the tendency of the resilience concept to approach "fuzziness", it is helpful to outline a few operational concepts. 
+
+*identification of shocks:*
+
+*resilience metrics:*
+
+** Data
+The study employs three sources of secondary data: the international trade network (at the level of exported products), Input-Output (I/O) tables at the national level, and Gross Domestic Product (GDP) at the national level. The data on international trade is used to construct the Product Space-network and all the related similarity- and network metrics. The Input-Output tables are used to construct the industry-network for each national economy. Finally, the GDP-data is used as the reference metric to identify economic shocks and recovery.
+
+The data on product exports comes from the UN COMTRADE database (United Nations International Trade Statistics Database). For the purposes of this work, the bilateral trade-flows are aggregated into country-level exports at product level. The Growth Lab at Harvard University distributes the cleaned version of the COMTRADE data. Here, I use Harmonized System classification, 1992 revision (HS-92) at the four-digit level citep:the_growth_lab_at_harvard_university_international_2019. The HS-92 data covers about 5000 products at the 4-digit level, from 1995-2017. 
+
+ Many countries do not report trade consistently which results in errors in the data. They are  harmonized and cleaned through the Bustos-Yildrim method. Essentially, the cleaning procedure exploits the double reporting of trade goods to suss out inconsistencies. Through the distance between the value reported by importers and exporters, each country can be given a 'reliability-score', which then acts as weights when reconciling differences in bilateral trade reportings (i.e. import vs export countries). This allows a wide, reliable coverage of bilateral trade flows at a fairly granular precision.
+
+As reference metric to identify shocks, I use GDP per capita data. As main source I use the Penn World Tables (9.1) (PWT) real GDP using national-accounts growth rates (RGDP^{NA}) citep:feenstra_next_2015. Since some variation exists in the estimation of GDP values, I repeat the analysis using the Maddison Project database citep:bolt_rebasing_2018 to avoid any results being an artifact from the source of GDP. 
+
+While GDP is the only widely comparable metric for total output across countries, there are two important issues with using GDP as the reference metric. First, there are well-documented problems with measurement errors in GDP in many less developed countries. For instance, cite:jerven_poor_2013 documents how certain patterns in GDP have systematic biases for different reasons (e.g. exogenously enforced policy changes) at different times in Sub-Saharan Africa. Given that these issues are most present in earlier data (that is, before 2000) and in smaller economies not covered in the sample, this issue should be negligible.
+
+Second, many important shocks might be missed. The empirical strategy rests on identifying stagnation or absolute declines in GDP. One can think of many types of economic shocks that would qualify as significant disturbances to all or some parts of the economy that does not necessary involve a negative change in the level of the aggregate economy. This becomes doubly problematic if there are systematic differences between different types of economies in their propensity to experience to experience growth slowdowns rather then declines in the absolute level of GDP. While this is an important consideration, GDP is the only viable internationally harmonized reference metric. For further discussion, see cite:martin_how_2016,sensier_measuring_2016-1. 
+
+Finally, the World Input Output Database (WIOD) cite:feenstra_next_2015 provides the input-output tables used to build the input-output networks. The study uses the 2016-release covering 43 countries and 56 sectors (4 digit ISIC)from 2000-2014. 
+
+
+** Limitations
+- Causality
+- 
+\newpage
+
+* Ethical considerations
+Besides more research technical considerations to scientific rigor and integrity in representing secondary sources, there are no obvious ethical issues. No microdata, non-public data, or sensitive data is used in the analysis. Given the nature of the design, it is difficult to imagine any sensitive results to emerge. 
+
+To facilitate reproduction and research transparency, the final project will be aggregated into an R package (including R code, final data-sample, cleaning procedures and figures) and hosted online. This ensures that any results are (at least) reproducible computationally.
+
+\newpage
+
+bibliography:UTVC26.bib
+bibliographystyle:humannat
+
+
+* Notes 
+  In the past decade, research within economic complexity and economic geography has provided valuable evidence to... [something]. This paper proposes a new approach to understand the relationship between the structure of an economy's activities, its productive capabilities and the impact and recovery from recessions. By combining methods from econometrics and network science, we can integrate insights from the literature on economic resilience with new evidence on the determinants of economic growth and structural change.
+
+1. [ ] An analysis of the research question. What type of question is it (e.g. explanatory, descriptive, hypothesis-driven, etc.)?
+2. [ ] Motivate your question. What is the value added of your question to the general topic you are interested in and why is your way of formulating the question optimal?
+3. [ ] A summary of your research design. E.g.; are you planning to do a single or comparative case study? A discourse analysis? Will you use qualitative or quantitative methods? Describe and motivate how you will go about when answering your research question!
+4. [ ] A description of the types of sources/data that you will use. Bear in mind that a study will never rely on only one source, i.e. even if you are going to conduct interviews these will only constitute part of the sources/data that you will rely on. Discuss how you will combine the different sources and identify potential biases and strategies to deal with these. Note that you do not have to give a detailed account of the sources used. We are not looking for titles of books/reports etc. We are only interested in the type of sources. 
+5. [ ] A description of how you will manage the data/information you get from the sources. Are you for example going to employ different types of statistical analysis, interview techniques and/or coding techniques, or other types of analysis? Describe your techniques and motivate why this is the best strategy to answer your research question. 
+6. [ ] A discussion of the ethical issues that might arise from your work. Ethics might be involved in the stage of data collection, data analysis or presentation of research results – or in all of those stages. 
+7. [ ] Lastly, identify potential limitations of your study. You must actively refer to the course literature in your text, including page numbers. Papers with no references will automatically be failed. You can also use lectures as reference. Write name and date of lecture in brackets.
+
+* Footnotes
+
+[fn:1] It is beyond the scope of this paper to give a full account of how the concept have been applied. For instance, one review found sixteen "overlapping conceptualisations" from the literature on social, ecological and socio-ecological systems citep:bahadur_resilience_2010. As noted by cite:simmie_regional_2014, this is possibly due to the different ontological approaches to concept. For surveys of different approaches, see cite:carpenter_metaphor_2001, cite:pendall_resilience_2010, or cite:martin_regional_2012-1.

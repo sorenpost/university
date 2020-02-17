@@ -1,0 +1,35 @@
+#+TITLE: Economic capabilities, resilience, and [adaptive capacity]/[structural change]
+#+AUTHOR: Søren Post
+#+SUBTITLE: UTVC26: Final Exam
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\begin{abstract}
+The G
+
+- Study would be first to test the relationship between capability relatedness and input-output structures.
+- Study would be one of the only papers to quantify the structural change both in terms of path dependency and in terms of upgrading
+
+- The proposed study have two main contribution. First, it would the first empirical test of the relationship between resilience and the I/O and capability networks. Second, [one of few studies that measure structural change after recessionary shocks.
+
+\end{abstract}
+
+
+\newpage 
+
+* Background
+
+
+
+* Introduction
+
+Extensive empirical evidence shows large differences in the response to recessionary shocks across both regions and countries. However, the structural factors that determine the economic impacts and subsequent economic adjustments is still not very well understood. In the past decade, research within economic complexity and economic geography has provided valuable evidence to... [something]. This paper proposes a new approach to understand the relationship between the structure of an economy's activities, its productive capabilities and the impact and recovery from recessions. By combining methods from econometrics and network science, we can integrate insights from the literature on economic resilience with new evidence on the determinants of economic growth and structural change.
+
+* Footnotes
+
+[fn:review] For instance, one review found sixteen "overlapping conceptualisations" from the literature on social, ecological and socio-ecological systems citep:bahadur_resilience_2010. As noted by cite:simmie_regional_2014, this is possibly due to the different ontological approaches to concept. For a review of different approaches, see 
+
+

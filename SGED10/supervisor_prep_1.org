@@ -1,0 +1,32 @@
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{0em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+
+*Basic idea:*
+  - Resilience and industrial structure
+  - I/O network, Product Space/relatedness, different network effects
+  - Structural change, economic complexity
+
+ *Data:*
+    - World Input-Output Database (43 countries, 56 sectors)
+    - COMTRADE, international trade (basically all countries, 5000/1500 products, 1995/1965)
+
+*Approach:*
+ - Regression on network metrics, complexity/change metrics.
+
+ *Issues:*
+ - Analysis: Connecting the network effects (two different terms in regression? some interaction?)
+
+ - Identification of shocks:
+   1. Two types of studies: production function models and empirical after-the-fact studies 
+   2. Issue w. reference metric (fx GDP) as both identification of shock start and depth: Unobserved variables (or chance) that determines which economies are affected. The effect from this difference in "treatment assignment" is attributed to network effects.
+      1. Address 1: Extend time-series and observe volatility. This means dropping I/O. Trust law-of-large-numbers effect and country/year-fixed effects to cancel out the unobserved shock-specific peculiarities. Issue: No I/O effects. 
+      2. Address 2: Focus on one country w. regions and firms as unit of observation. Observe more micro-level dynamics to identify effect of relatedness and I/O links. Also allow for labor flows. Issue: access to data, no product-level data.
+
+*Supervising going forward:*
+ - How often? How many in total? In person vs email?
+ - Are meetings typically more general discussions or on specific parts of thesis?
+ - Should I send an agenda/draft beforehand?

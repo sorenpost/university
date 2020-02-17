@@ -1,0 +1,128 @@
+* Readings 
+** Product Space  [3/14]
+*** DONE Hidalgo, C. A., B. Klinger, A.-L. Barabasi, and R. Hausmann. “The Product Space Conditions the Development of Nations.” Science 317, no. 5837 (July 27, 2007): 482–87. https://doi.org/10.1126/science.1144581.
+    CLOSED: [2020-01-25 Sat 20:43]
+*** DONE Hidalgo, César A., Pierre-Alexandre Balland, Ron Boschma, Mercedes Delgado, Maryann Feldman, Koen Frenken, Edward Glaeser, Canfei He, Dieter F. Kogler, and Andrea Morrison. “The Principle of Relatedness.” In International Conference on Complex Systems, 451–457. Springer, 2018.
+    CLOSED: [2020-01-25 Sat 20:43]
+*** DONE Coniglio, Nicola D., Raffaele Lagravinese, Davide Vurchio, and Massimo Armenise. “The Pattern of Structural Change: Testing the Product Space Framework.” Industrial and Corporate Change 27, no. 4 (2018): 763–785.
+    CLOSED: [2020-01-25 Sat 20:43]
+*** TODO O’Clery, Neave, Muhammed A. Yildirim, and Ricardo Hausmann. “Productive Ecosystems and the Arrow of Development.” ArXiv:1807.03374 [Physics], July 9, 2018. http://arxiv.org/abs/1807.03374.
+*** TODO Caldarelli, Guido, Matthieu Cristelli, Andrea Gabrielli, Luciano Pietronero, Antonio Scala, and Andrea Tacchella. “A Network Analysis of Countries’ Export Flows: Firm Grounds for the Building Blocks of the Economy.” Edited by Alessandro Flammini. PLoS ONE 7, no. 10 (October 2012): e47278. https://doi.org/10.1371/journal.pone.0047278.
+*** TODO Desmarchelier, Benoît, Paulo José Regis, and Nimesh Salike. “Product Space and the Development of Nations: A Model of Product Diversification.” Journal of Economic Behavior & Organization 145 (January 2018): 34–51. https://doi.org/10.1016/j.jebo.2017.10.020.
+*** TODO Alshamsi, Aamena, Flavio L. Pinheiro, and Cesar A. Hidalgo. “Optimal Diversification Strategies in the Networks of Related Products and of Related Research Areas,” 2017. https://doi.org/10.1038/s41467-018-03740-9.
+*** TODO Di Clemente, Riccardo, Guido L. Chiarotti, Matthieu Cristelli, Andrea Tacchella, and Luciano Pietronero. “Diversification versus Specialization in Complex Ecosystems.” PloS One 9, no. 11 (2014): e112525.
+*** TODO Farhauer, Oliver, and Alexandra Kröll. “Diversified Specialisation—Going One Step beyond Regional Economics’ Specialisation-Diversification Concept.” Jahrbuch Für Regionalwissenschaft 32, no. 1 (March 2012): 63–84. https://doi.org/10.1007/s10037-011-0063-9.
+*** TODO Hausmann, Ricardo, and César A. Hidalgo. “The Network Structure of Economic Output.” Journal of Economic Growth 16, no. 4 (December 1, 2011): 309–42. https://doi.org/10.1007/s10887-011-9071-4.
+*** TODO Petralia, Sergio, Pierre-Alexandre Balland, and Andrea Morrison. “Climbing the Ladder of Technological Development.” Research Policy 46, no. 5 (June 2017): 956–969. https://doi.org/10.1016/j.respol.2017.03.012.
+*** TODO Quan, Gu, Ma Tie-Ju, and Chi Chun-Jie. “Evolution of World Exports: Based on Mutualistic Environment within a Product Space.” In 2017 International Conference on Management Science and Engineering (ICMSE), 388–92. Nomi: IEEE, 2017. https://doi.org/10.1109/ICMSE.2017.8574455.
+*** TODO Straka, Mika J., Guido Caldarelli, and Fabio Saracco. “Grand Canonical Validation of the Bipartite International Trade Network.” Physical Review E 96, no. 2 (August 2017). https://doi.org/10.1103/PhysRevE.96.022306.
+*** TODO Zaccaria, Andrea, Matthieu Cristelli, Andrea Tacchella, and Luciano Pietronero. “How the Taxonomy of Products Drives the Economic Development of Countries.” Edited by Tobias Preis. PLoS ONE 9, no. 12 (December 2014): e113770. https://doi.org/10.1371/journal.pone.0113770.
+
+** Related variety [0/19]
+*** TODO Frenken, Koen. “A Fitness Landscape Approach to Technological Complexity, Modularity, and Vertical Disintegration.” Structural Change and Economic Dynamics 17, no. 3 (September 2006): 288–305. https://doi.org/10.1016/j.strueco.2006.01.001.
+*** TODO  Neffke, Frank, Matté Hartog, Ron Boschma, and Martin Henning. “Agents of Structural Change: The Role of Firms and Entrepreneurs in Regional Diversification.” ECONOMIC GEOGRAPHY, 2018, 27.
+*** TODO Farhauer, Oliver, and Alexandra Kröll. “Diversified Specialisation—Going One Step beyond Regional Economics’ Specialisation-Diversification Concept.” Jahrbuch Für Regionalwissenschaft 32, no. 1 (March 2012): 63–84. https://doi.org/10.1007/s10037-011-0063-9.
+*** TODO Poelwijk, Frank J., Daniel J. Kiviet, Daniel M. Weinreich, and Sander J. Tans. “Empirical Fitness Landscapes Reveal Accessible Evolutionary Paths.” Nature 445, no. 7126 (2007): 383.
+*** TODO Romer, Paul M. “Endogenous Technological Change.” Journal of Political Economy 98, no. 5, Part 2 (1990): S71–S102.
+*** TODO Jaffe, Adam B. “GEOGRAPHIC LOCALIZATION OF KNOWLEDGE SPILLOVERS AS EVIDENCED BY PATENT CITATIONS,” n.d., 42.
+*** TODO Shearmu, Richard, Christophe Carrincazeaux, and David Doloreux. Handbook on the Geographies of Innovation. Edward Elgar Publishing, 2016. https://doi.org/10.4337/9781784710774.
+*** TODO Jara-Figueroaa, C., Bogang Juna, Edward Glaeserb, and Cesar Hidalgoa. “How Do Economies Learn? Unpacking the Dimension of Related Knowledge,” 2018.
+*** TODO Boschma, Ron, and Gianluca Capone. “Institutions and Diversification: Related versus Unrelated Diversification in a Varieties of Capitalism Framework.” Research Policy 44, no. 10 (December 2015): 1902–14. https://doi.org/10.1016/j.respol.2015.06.013.
+*** TODO Cortinovis, Nicola, Jing Xiao, Ron Boschma, and Frank G van Oort. “Quality of Government and Social Capital as Drivers of Regional Diversification in Europe.” Journal of Economic Geography 17, no. 6 (November 1, 2017): 1179–1208. https://doi.org/10.1093/jeg/lbx001.
+*** TODO Frenken, Koen, Frank Van Oort, and Thijs Verburg. “Related Variety, Unrelated Variety and Regional Economic Growth.” Regional Studies 41, no. 5 (July 2007): 685–97. https://doi.org/10.1080/00343400601120296.
+*** TODO Boschma, Ron, and Gianluca Capone. “Relatedness and Diversification in the European Union (EU-27) and European Neighbourhood Policy Countries.” Environment and Planning C: Government and Policy 34, no. 4 (June 2016): 617–37. https://doi.org/10.1177/0263774X15614729.
+*** TODO Boschma, Ron. “Relatedness as Driver of Regional Diversification: A Research Agenda.” Regional Studies 51, no. 3 (March 2017): 351–364. https://doi.org/10.1080/00343404.2016.1254767.
+*** TODO Kogler, Dieter Franz. “Relatedness as Driver of Regional Diversification: A Research Agenda – a Commentary.” Regional Studies 51, no. 3 (March 2017): 365–369. https://doi.org/10.1080/00343404.2016.1276282.
+*** TODO Jun, Bogang, Aamena Alshamsi, Jian Gao, and Cesar A. Hidalgo. “Relatedness, Knowledge Diffusion, and the Evolution of Bilateral Trade.” ArXiv:1709.05392 [q-Fin], September 2017. http://arxiv.org/abs/1709.05392.
+*** TODO Boschma, Ron, Gaston Heimeriks, and Pierre-Alexandre Balland. “Scientific Knowledge Dynamics and Relatedness in Biotech Cities.” Research Policy 43, no. 1 (February 2014): 107–14. https://doi.org/10.1016/j.respol.2013.07.009.
+*** TODO Neffke, Frank, and Martin Henning. “Skill Relatedness and Firm Diversification: Skill Relatedness and Firm Diversification.” Strategic Management Journal 34, no. 3 (March 2013): 297–316. https://doi.org/10.1002/smj.2014.
+*** TODO Fagerberg, Jan, Maryann P. Feldman, and Martin Srholec. “Technological Dynamics and Social Capability: US States and European Nations.” Journal of Economic Geography 14, no. 2 (March 2014): 313–37. https://doi.org/10.1093/jeg/lbt026.
+*** TODO Balland, Pierre-Alexandre, and David Rigby. “The Geography of Complex Knowledge.” Economic Geography 93, no. 1 (January 2017): 1–23.
+** Input-output tables: methodology [0/2]
+*** TODO Miller, Ronald E, and Peter D Blair. “Input–Output Analysis: Foundations and Extensions, Second Edition,” n.d., 784.
+*** TODO Timmer, Marcel P, Erik Dietzenbacher, Bart Los, Robert Stehrer, and Gaaitzen J De Vries. “An Illustrated User Guide to the World Input–Output Database: The Case of Global Automotive Production.” Review of International Economics 23, no. 3 (2015): 575–605.
+** Input-output networks [0/8]
+*** TODO Acemoglu, Daron, Ufuk Akcigit, and William Kerr. “Networks and the Macroeconomy: An Empirical Exploration.” NBER Macroeconomics Annual 30, no. 1 (2016): 273–335.
+*** TODO Acemoglu, Daron, Vasco M Carvalho, Asuman Ozdaglar, and Alireza Tahbaz‐Salehi. “The Network Origins of Aggregate Fluctuations.” Econometrica 80, no. 5 (2012): 1977–2016.
+*** TODO Atalay, Enghin. “How Important Are Sectoral Shocks?,” n.d., 76.
+**** Introduction
+**** Conclusion
+*** TODO Contreras, Martha G. Alatriste, and Giorgio Fagiolo. “Propagation of Economic Shocks in Input-Output Networks: A Cross-Country Analysis.” ArXiv:1401.4704 [Physics, q-Fin], April 1, 2014. http://arxiv.org/abs/1401.4704.
+*** TODO Galbusera, Luca, and Georgios Giannopoulos. “On Input-Output Economic Models in Disaster Impact Assessment.” International Journal of Disaster Risk Reduction 30 (September 2018): 186–98. https://doi.org/10.1016/j.ijdrr.2018.04.030.
+*** TODO Han, Yicheol, and Stephan J. Goetz. “Predicting US County Economic Resilience from Industry Input-Output Accounts.” Applied Economics 51, no. 19 (April 21, 2019): 2019–28. https://doi.org/10.1080/00036846.2018.1539806.
+*** TODO Klimek, Peter, Sebastian Poledna, and Stefan Thurner. “Quantifying Economic Resilience from Input–Output Susceptibility to Improve Predictions of Economic Growth and Recovery.” Nature Communications 10, no. 1 (December 2019): 1677. https://doi.org/10.1038/s41467-019-09357-w.
+*** TODO Acemoglu, Ozdaglar, and Tahbaz-Salehi. "NETWORKS, SHOCKS, AND SYSTEMIC RISK"
+** Resilience and econmic shocks [0/54]
+*** TODO Atalay, Enghin. “How Important Are Sectoral Shocks?,” n.d., 76.
+*** TODO Chen, Jing. “Geographical Scale, Industrial Diversity, and Regional Economic Stability.” Growth and Change 50, no. 2 (June 2019): 609–33. https://doi.org/10.1111/grow.12287.
+*** TODO Kitsos, Anastasios, André Carrascal-Incera, and Raquel Ortega-Argilés. “The Role of Embeddedness on Regional Economic Resilience: Evidence from the UK.” Sustainability 11, no. 14 (July 11, 2019): 3800. https://doi.org/10.3390/su11143800.
+*** TODO Torreggiani, Sofia, Antonio Andreoni, and UNU-WIDER. Dancing with Dragons: Chinese Import Penetration and the Performances of Manufacturing Firms in South Africa. 63rd ed. Vol. 2019. WIDER Working Paper. UNU-WIDER, 2019. https://doi.org/10.35188/UNU-WIDER/2019/697-5.
+*** TODO Addison, Tony, Atanu Ghoshray, and Michalis P. Stamatogiannis. “Agricultural Commodity Price Shocks and Their Effect on Growth in Sub-Saharan Africa.” Journal of Agricultural Economics 67, no. 1 (February 2016): 47–61. https://doi.org/10.1111/1477-9552.12129.
+*** TODO Angulo, A. M., J. Mur, and F. J. Trívez. “Measuring Resilience to Economic Shocks: An Application to Spain.” The Annals of Regional Science 60, no. 2 (March 2018): 349–73. https://doi.org/10.1007/s00168-017-0815-8.
+*** TODO Balland, P.-A., D. Rigby, and R. Boschma. “The Technological Resilience of US Cities.” Cambridge Journal of Regions, Economy and Society 8, no. 2 (July 1, 2015): 167–84. https://doi.org/10.1093/cjres/rsv007.
+*** TODO Baqaee, David Rezza. “Cascading Failures in Production Networks.” Econometrica 86, no. 5 (2018): 1819–38. https://doi.org/10.3982/ECTA15280.
+*** TODO Bazzi, Samuel, and Christopher Blattman. “Economic Shocks and Conflict: Evidence from Commodity Prices.” American Economic Journal: Macroeconomics 6, no. 4 (October 2014): 1–38. https://doi.org/10.1257/mac.6.4.1.
+*** TODO Boschma, Ron. “Towards an Evolutionary Perspective on Regional Resilience.” Regional Studies 49, no. 5 (May 4, 2015): 733–51. https://doi.org/10.1080/00343404.2014.959481.
+*** TODO Bristow, Gillian, and Adrian Healy. “Innovation and Regional Economic Resilience: An Exploratory Analysis.” Annals of Regional Science 60, no. 2 (March 2018): 265–84. https://doi.org/10.1007/s00168-017-0841-6.
+*** TODO Chopra, Shauhrat S., and Vikas Khanna. “Interconnectedness and Interdependencies of Critical Infrastructures in the US Economy: Implications for Resilience.” Physica A: Statistical Mechanics and Its Applications 436 (October 2015): 865–77. https://doi.org/10.1016/j.physa.2015.05.091.
+*** TODO Crespo, Joan, Ron Boschma, and Pierre-Alexandre Balland. “Resilience, Networks and Competitiveness: A Conceptual Framework.” In Handbook of Regions and Competitiveness. Edward Elgar Publishing, 2017.
+*** TODO Deller, Steven, and Philip Watson. “Spatial Variations in the Relationship between Economic Diversity and Stability.” Applied Economics Letters 23, no. 7 (May 2, 2016): 520–25. https://doi.org/10.1080/13504851.2015.1085630.
+*** TODO Di Caro, Paolo, and Ugo Fratesi. “Regional Determinants of Economic Resilience.” Annals of Regional Science 60, no. 2 (March 2018): 235–40. https://doi.org/10.1007/s00168-017-0858-x.
+*** TODO Diodato, Dario, and Anet B. R. Weterings. “The Resilience of Regional Labour Markets to Economic Shocks: Exploring the Role of Interactions among Firms and Workers.” Journal of Economic Geography 15, no. 4 (July 2015): 723–42. https://doi.org/10.1093/jeg/lbu030.
+*** TODO Dix-Carneiro, Rafael, Rodrigo R Soares, and Gabriel Ulyssea. “Economic Shocks and Crime: Evidence from the Brazilian Trade Liberalization,” 2017, 57.
+*** TODO Doran, Justin, and Bernard Fingleton. “US Metropolitan Area Resilience: Insights from Dynamic Spatial Panel Estimation.” Environment and Planning A: Economy and Space 50, no. 1 (February 2018): 111–32. https://doi.org/10.1177/0308518X17736067.
+*** TODO Faggian, Alessandra, Roberta Gemmiti, Timothy Jaquet, and Isabella Santini. “Regional Economic Resilience: The Experience of the Italian Local Labor Systems.” The Annals of Regional Science 60, no. 2 (March 2018): 393–410. https://doi.org/10.1007/s00168-017-0822-9.
+*** TODO Giannakis, Elias, and Adriana Bruggeman. “Economic Crisis and Regional Resilience: Evidence from Greece: Economic Crisis and Regional Resilience.” Papers in Regional Science 96, no. 3 (August 2017): 451–76. https://doi.org/10.1111/pirs.12206.
+*** TODO Hallegatte, Stephane. Economic Resilience: Definition and Measurement. Policy Research Working Papers. The World Bank, 2014. https://doi.org/10.1596/1813-9450-6852.
+*** TODO Hodler, Roland, and Paul A. Raschky. “Economic Shocks and Civil Conflict at the Regional Level.” Economics Letters 124, no. 3 (September 2014): 530–33. https://doi.org/10.1016/j.econlet.2014.07.027.
+*** TODO Ibrahim, Muazu, and Paul Alagidede. “Financial Sector Development, Economic Volatility and Shocks in Sub-Saharan Africa.” Physica A: Statistical Mechanics and Its Applications 484 (October 2017): 66–81. https://doi.org/10.1016/j.physa.2017.04.142.
+*** TODO Martin, R., P. Sunley, and P. Tyler. “Local Growth Evolutions: Recession, Resilience and Recovery.” Cambridge Journal of Regions, Economy and Society 8, no. 2 (July 1, 2015): 141–48. https://doi.org/10.1093/cjres/rsv012.
+*** TODO Martin, Ron, and Peter Sunley. “On the Notion of Regional Economic Resilience: Conceptualization and Explanation.” Journal of Economic Geography 15, no. 1 (January 2015): 1–42. https://doi.org/10.1093/jeg/lbu015.
+*** TODO ———. “Towards a Developmental Turn in Evolutionary Economic Geography?” Regional Studies 49, no. 5 (May 4, 2015): 712–32. https://doi.org/10.1080/00343404.2014.899431.
+*** TODO Martin, Ron, Peter Sunley, Ben Gardiner, and Peter Tyler. “How Regions React to Recessions: Resilience and the Role of Economic Structure.” Regional Studies 50, no. 4 (April 2, 2016): 561–85. https://doi.org/10.1080/00343404.2015.1136410.
+*** TODO ———. “How Regions React to Recessions: Resilience and the Role of Economic Structure.” Regional Studies 50, no. 4 (April 2, 2016): 561–85. https://doi.org/10.1080/00343404.2015.1136410.
+*** TODO Monras, Joan. “Economic Shocks and Internal Migration,” 2015, 64.
+*** TODO Sensier, Marianne, and Michael Artis. “The Resilience of Employment in Wales: Through Recession and into Recovery.” Regional Studies 50, no. 4 (April 2016): 586–99. https://doi.org/10.1080/00343404.2014.920083.
+*** TODO Sensier, Marianne, Gillian Bristow, and Adrian Healy. “Measuring Regional Economic Resilience across Europe: Operationalizing a Complex Concept.” Spatial Economic Analysis 11, no. 2 (April 2, 2016): 128–51. https://doi.org/10.1080/17421772.2016.1129435.
+*** TODO Weezel, Stijn van. “Economic Shocks & Civil Conflict Onset in Sub-Saharan Africa, 1981–2010.” Defence and Peace Economics 26, no. 2 (March 4, 2015): 153–77. https://doi.org/10.1080/10242694.2014.887489.
+*** TODO Barabási, Albert-László. “Scale-Free Networks: A Decade and Beyond.” Science 325, no. 5939 (2009): 412–413.
+*** TODO Boschma, Ron A., and Koen Frenken. “Why Is Economic Geography Not an Evolutionary Science? Towards an Evolutionary Economic Geography.” Journal of Economic Geography 6, no. 3 (June 1, 2006): 273–302. https://doi.org/10.1093/jeg/lbi022.
+*** TODO Carpenter, Steve, Brian Walker, J. Marty Anderies, and Nick Abel. “From Metaphor to Measurement: Resilience of What to What?” Ecosystems 4, no. 8 (December 2001): 765–81. https://doi.org/10.1007/s10021-001-0045-9.
+*** TODO Cerra, Valerie, Ugo Panizza, and Sweta C. Saxena. “International Evidence on Recovery from Recessions.” Contemporary Economic Policy 31, no. 2 (April 2013): 424–39. https://doi.org/10.1111/j.1465-7287.2012.00313.x.
+*** TODO Cerra, Valerie, and Sweta Chaman Saxena. “Growth Dynamics: The Myth of Economic Recovery.” American Economic Review 98, no. 1 (February 2008): 439–57. https://doi.org/10.1257/aer.98.1.439.
+*** TODO Ciccone, Antonio. “Economic Shocks and Civil Conflict: A Comment.” American Economic Journal: Applied Economics 3, no. 4 (October 2011): 215–27. https://doi.org/10.1257/app.3.4.215.
+*** TODO Conroy, Michael E. “The Concept and Measurement of Regional Industrial Diversification.” Southern Economic Journal, 1975, 492–505.
+*** TODO Cross, Rod. “On the Foundations of Hysteresis in Economic Systems.” Economics & Philosophy 9, no. 1 (1993): 53–74.
+*** TODO Duryea, Suzanne, David Lam, and Deborah Levison. “Effects of Economic Shocks on Children’s Employment and Schooling in Brazil.” Journal of Development Economics 84, no. 1 (September 2007): 188–214. https://doi.org/10.1016/j.jdeveco.2006.11.004.
+*** TODO Ferreira, Francisco H G, and Norbert Schady. “Aggregate Economic Shocks, Child Schooling and Child Health,” 2008, 43.
+*** TODO Fingleton, Bernard, Harry Garretsen, and Ron Martin. “RECESSIONARY SHOCKS AND REGIONAL EMPLOYMENT: EVIDENCE ON THE RESILIENCE OF U.K. REGIONS*.” Journal of Regional Science 52, no. 1 (February 2012): 109–33. https://doi.org/10.1111/j.1467-9787.2011.00755.x.
+*** TODO Friedman, Milton. “The ‘Plucking Model’ of Business Fluctuations Revisited.” Economic Inquiry 31, no. 2 (April 1993): 171–77.
+*** TODO Glaeser, E. L. “Reinventing Boston: 1630-2003.” Journal of Economic Geography 5, no. 2 (April 1, 2005): 119–53. https://doi.org/10.1093/jnlecg/lbh058.
+*** TODO Harding, Don, and Adrian Pagan. “Dissecting the Cycle: A Methodological Investigation.” Journal of Monetary Economics 49, no. 2 (March 2002): 365–81. https://doi.org/10.1016/S0304-3932(01)00108-8.
+*** TODO Iyer, Lakshmi, and Petia B. Topalova. “Poverty and Crime: Evidence from Rainfall and Trade Shocks in India.” SSRN Electronic Journal, 2014. https://doi.org/10.2139/ssrn.2419522.
+*** TODO Markusen, Ann. “Fuzzy Concepts, Scanty Evidence, Policy Distance: The Case for Rigour and Policy Relevance in Critical Regional Studies.” Regional Studies 37, no. 6–7 (August 2003): 701–17. https://doi.org/10.1080/0034340032000108796.
+*** TODO Martin, R. “Regional Economic Resilience, Hysteresis and Recessionary Shocks.” Journal of Economic Geography 12, no. 1 (January 1, 2012): 1–32. https://doi.org/10.1093/jeg/lbr019.
+*** TODO Miguel, Edward, and Shanker Satyanath. “Re-Examining Economic Shocks and Civil Conflict.” American Economic Journal: Applied Economics 3, no. 4 (October 2011): 228–32. https://doi.org/10.1257/app.3.4.228.
+*** TODO Mueller, Hannes. “Growth Dynamics: The Myth of Economic Recovery: Comment.” American Economic Review 102, no. 7 (December 2012): 3774–77. https://doi.org/10.1257/aer.102.7.3774.
+*** TODO Rand, John, and Finn Tarp. “Business Cycles in Developing Countries: Are They Different?” World Development 30, no. 12 (December 2002): 2071–88. https://doi.org/10.1016/S0305-750X(02)00124-9.
+*** TODO Simmie, J., and R. Martin. “The Economic Resilience of Regions: Towards an Evolutionary Approach.” Cambridge Journal of Regions, Economy and Society 3, no. 1 (March 1, 2010): 27–43. https://doi.org/10.1093/cjres/rsp029.
+** 2008 crisis [0/6]
+*** TODO Bajpai, Nirupam. “Global Financial Crisis, Its Impact on India and the Policy Response,” 2011, 13.
+*** TODO Bergeijk, Peter A.G. van, Steven Brakman, and Charles van Marrewijk. “Heterogeneous Economic Resilience and the Great Recession’s World Trade Collapse: Heterogeneous Resilience.” Papers in Regional Science 96, no. 1 (March 2017): 3–12. https://doi.org/10.1111/pirs.12279.
+*** TODO Crescenzi, Riccardo, Davide Luca, and Simona Milio. “The Geography of the Economic Crisis in Europe: National Macroeconomic Conditions, Regional Structural Factors and Short-Term Economic Performance.” Cambridge Journal of Regions, Economy and Society 9, no. 1 (March 2016): 13–32. https://doi.org/10.1093/cjres/rsv031.
+*** TODO Deller, Steven, and Philip Watson. “Did Regional Economic Diversity Influence the Effects of the Great Recession?: Diversity, Stability, and the Great Recession.” Economic Inquiry 54, no. 4 (October 2016): 1824–38. https://doi.org/10.1111/ecin.12323.
+*** TODO Kose, M. Ayhan, and Franziska Ohnsorge. A Decade After the Global Recession: Lessons and Challenges for Emerging and Developing Economies. World Bank, 2019. https://doi.org/10.1596/32641.
+*** TODO Watson, Philip, and Steven Deller. “Economic Diversity, Unemployment and the Great Recession.” The Quarterly Review of Economics and Finance 64 (May 2017): 1–11. https://doi.org/10.1016/j.qref.2016.12.003.
+** Methods [0/7]
+*** TODO Balassa, Bela. “Trade Liberalisation and ‘Revealed’ Comparative Advantage.” The Manchester School 33, no. 2 (1965): 99–123.
+*** TODO Duranton, Gilles, and Henry G. Overman. “Testing for Localization Using Micro-Geographic Data.” The Review of Economic Studies 72, no. 4 (October 2005): 1077–1106. https://doi.org/10.1111/0034-6527.00362.
+*** TODO Eck, Nees Jan van, and Ludo Waltman. “How to Normalize Cooccurrence Data? An Analysis of Some Well-Known Similarity Measures.” Journal of the American Society for Information Science and Technology 60, no. 8 (August 2009): 1635–51. https://doi.org/10.1002/asi.21075.
+*** TODO Feenstra, Robert, C., Robert Inklaar, and Marcel Timmer P. “The Next Generation of the Penn World Table.” American Economic Review 105 (2015).
+*** TODO Fritz, Catherine O., Peter E. Morris, and Jennifer J. Richler. “Effect Size Estimates: Current Use, Calculations, and Interpretation.” Journal of Experimental Psychology: General 141, no. 1 (2012): 2–18. https://doi.org/10.1037/a0024338.
+*** TODO Laursen, Keld. “Revealed Comparative Advantage and the Alternatives as Measures of International Specialization.” Eurasian Business Review 5, no. 1 (June 2015): 99–115. https://doi.org/10.1007/s40821-015-0017-1.
+*** TODO Silverman, B. W. Density Estimation for Statistics and Data Analysis. Monographs on Statistics and Applied Probability 26. Boca Raton: Chapman & Hall/CRC, 1998.
+** General networks [0/4]
+*** TODO Gerrits, Lasse, and Peter Marks. “The Evolution of Wright’s (1932) Adaptive Field to Contemporary Interpretations and Uses of Fitness Landscapes in the Social Sciences.” Biology & Philosophy 30, no. 4 (2015): 459–479.
+*** TODO Hausmann, Ricardo, and César A. Hidalgo. “The Network Structure of Economic Output.” Journal of Economic Growth 16, no. 4 (December 1, 2011): 309–42. https://doi.org/10.1007/s10887-011-9071-4.
+*** TODO Tumminello, Michele, Salvatore Miccichè, Fabrizio Lillo, Jyrki Piilo, and Rosario N. Mantegna. “Statistically Validated Networks in Bipartite Complex Systems.” PLoS ONE 6, no. 3 (March 31, 2011): e17994. https://doi.org/10.1371/journal.pone.0017994.
+*** TODO Wang, Xiao Fan, and Guanrong Chen. “Complex Networks: Small-World, Scale-Free and Beyond.” IEEE Circuits and Systems Magazine 3, no. 1 (2003): 6–20.

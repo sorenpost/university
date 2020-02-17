@@ -1,0 +1,44 @@
+#+TAGS: seminar handin administrative
+* DONE Revised research proposal                                     :handin:
+  CLOSED: [2020-01-20 Sat 18:32]
+* DONE Seminar 1: research proposal                                 :seminar:
+  CLOSED: [2020-01-22 Sat 18:33]
+* TODO Create conceptual framework                                   :handin:
+  DEADLINE: <2020-02-05 Wed 12:00>
+** Literature map [0/3]
+*** TODO Read Creswell and Cresswel chapter for instructions
+    SCHEDULED: <2020-01-25 Sat>
+* TODO Seminar 2: Conceptual framework                              :seminar:
+  SCHEDULED: <2020-02-07 Fri>
+* TODO Revisit research design                                       :handin:
+  DEADLINE: <2020-02-18 Tue 12:00>
+* TODO Seminar 3: Research design                                   :seminar:
+  SCHEDULED: <2020-02-20 Thu>
+* TODO Revisit research questions                                    :handin:
+  DEADLINE: <2020-02-25 Tue 12:00>
+* TODO Seminar 4: Research questions                                :seminar:
+  SCHEDULED: <2020-02-27 Thu>
+* TODO Final paper: extended thesis outline                          :handin:
+  SCHEDULED: <2020-03-17 Tue 17:00>
+* TODO Seminar 5: Thesis outline                                    :seminar:
+  SCHEDULED: <2020-03-23 Mon>
+* TODO First draft submission                                        :handin:
+  SCHEDULED: <2020-04-24 Fri>
+* TODO Final draft submission                                        :handin:
+  SCHEDULED: <2020-05-14 Thu>
+* TODO Final version submission                                      :handin:
+  SCHEDULED: <2020-05-27 Wed>
+* Method stuff
+** Network Science
+*** TODO Network science chapter 1
+*** TODO Network science chapter 2
+*** TODO Network science chapter 3
+*** TODO Network science chapter 4
+*** TODO Network science chapter 5
+*** TODO Network science chapter 6
+*** TODO Network science chapter 7
+*** TODO Network science chapter 8
+*** TODO Network science chapter 9
+*** TODO Network science chapter 10
+** Statistics
+*** TODO organize and type notes

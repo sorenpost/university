@@ -1,0 +1,10 @@
+
+* Economic capabilities and the Product Space
+
+The Product Space is a network representation of the relationship between the economic capabilities required to produce different products. By using we dissagregated trade statistics we observe which countries specialize in which products. 
+
+To perform any productive activity effectively, an economy needs a set of appropriate capabilities. Economic capabilities can be defined as the collection of knowledge, infrastructure, institutional capacity, resource endowments, etc., present in the economy. 
+
+By making two simple assumptions, we can connect countries to their capability bases. Each country exports a set of products. We can assume that a country possess the necessary capabilities to effectively produce the products in its export basket. If products tend be present in the same country-product sets, we assume that these products share more of the economic capabilities required to make them. From this information we can build a network from the "distance" in the capability requirements between products. By mapping where countries' basket of products are positioned in this network, we can then infer their capability-base and thereby quantify how "far" they are from various products. 
+
+Empirically, this measure of the distance between countries and products have shown to condition how 

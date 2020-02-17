@@ -1,0 +1,574 @@
+* DONE Final exam main
+** Text
+
+ Research  question: What is the relationship between economic structure and resilience to economic shocks?
+
+ Economic structure = capability-base 
+
+ 1. An analysis of the research question. What type of question is it (e.g. explanatory, descriptive, hypothesis-driven, etc.)?
+
+    - TODO Hvad er research question?
+      - Network effects
+      - Product space?
+
+ 2. Motivate your question. What is the value added of your question to the general topic you are interested in and why is your way of formulating the question optimal?
+
+    - Understanding the effects of capability-networks is in itself interesting.
+    - The consequences of economic shocks are often hardest on the people that are most vulnerable. This also goes for countries where many people live on thin margins. Additionally, there are documented compounding effects that can be extra harmful to poorer countries. (Shocks and civil conflict, temporary job losses with permanent human capital investment losses, 
+    - Just as the product space innovation can teach un-intuitive lessons to industrial policy, so can the network structure teach resilience-policies.
+
+    - Economic shocks (proxied by rain fall) have been linked to increased conflict [note: It should be noted that some studies refute this claim, cf WEEZEL 2013].
+    - Economic shocks have been linked to hysteresis effects: brazil and schooling (Duryea et al 2007), 
+    - Economic shocks and crime (Brazil) - cf Dix-Carnio et al.
+
+
+ 3. A summary of your research design. E.g.; are you planning to do a single or comparative case study? A discourse analysis? Will you use qualitative or quantitative methods? Describe and motivate how you will go about when answering your research question! 
+
+ Single-country study. Statistical analysis. Network analysis. 
+
+ - [ ] Få styr på hvordan det gøres i Acemoglu et al's empiriske papir
+ - [ ]  
+
+ - A description of the types of sources/data that you will use. Bear in mind that a study will never rely on only one source, i.e. even if you are going to conduct interviews these will only constitute part of the sources/data that you will rely on. Discuss how you will combine the different sources and identify potential biases and strategies to deal with these. Note that you do not have to give a detailed account of the sources used. We are not looking for titles of books/reports etc. We are only interested in the type of sources. 
+
+ Sources: International trade database. Data quality: benefits = international, good coverage, double-recording. Bustos-Yildrim data. Issues:
+
+ 5. A description of how you will manage the data/information you get from the sources. Are you for example going to employ different types of statistical analysis, interview techniques and/or coding techniques, or other types of analysis? Describe your techniques and motivate why this is the best strategy to answer your research question. 
+
+ 6. A discussion of the ethical issues that might arise from your work. Ethics might be involved in the stage of data collection, data analysis or presentation of research results – or in all of those stages. 
+
+ 7. Lastly, identify potential limitations of your study. You must actively refer to the course literature in your text, including page numbers. Papers with no references will automatically be failed. You can also use lectures as reference. Write name and date of lecture in brackets.
+
+ \newpage
+
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id ornare odio, quis ornare lectus. Etiam a leo quam. Maecenas luctus, felis id fringilla commodo, augue dolor feugiat turpis, et hendrerit sem urna sed libero. Sed et tortor porttitor, interdum magna quis, mattis quam. Nulla facilisi. In auctor urna vel felis iaculis commodo at vel magna. Vestibulum felis ipsum, congue hendrerit scelerisque quis, tincidunt nec odio. Vestibulum posuere ultricies dolor nec molestie. Donec eget tellus vehicula urna dignissim efficitur vitae a eros. Nullam vitae tortor nisl. Nam a pharetra justo, quis pellentesque sem.
+
+ In hendrerit ullamcorper vulputate. Suspendisse eu sapien sollicitudin, euismod est sit amet, dapibus ex. Duis at facilisis mi. Curabitur vel ex dictum, lobortis quam sit amet, ullamcorper arcu. Maecenas nec consectetur mi. Ut vel est eleifend, venenatis metus ut, mattis mi. Sed ipsum felis, tristique quis volutpat at, egestas at mauris. Etiam at enim risus.
+
+ Curabitur id euismod tellus. Morbi est eros, ultricies dictum ipsum sit amet, gravida dapibus enim. Quisque congue ullamcorper tincidunt. Nullam vel sapien at nulla cursus imperdiet. Maecenas pharetra consequat erat ut facilisis. Duis diam ligula, elementum fringilla mauris dapibus, laoreet molestie nisl. Donec metus augue, porttitor ullamcorper pharetra ut, rhoncus at leo. Etiam blandit tellus non enim cursus blandit. Morbi et iaculis enim. Vestibulum enim dolor, sodales id ante in, hendrerit consequat metus. Etiam risus eros, dignissim congue quam sit amet, tincidunt scelerisque arcu. Integer laoreet viverra lacus, eu volutpat tellus euismod eu. Mauris auctor est ac est posuere, vitae luctus nunc blandit.
+
+ Fusce et lacinia urna, a feugiat nunc. Nunc nec elit sed diam bibendum ornare vitae vitae libero. Nulla vitae accumsan ipsum. Proin semper, felis id suscipit tempor, purus nunc commodo lorem, eu feugiat dui augue bibendum sem. Duis congue, lectus vel maximus ullamcorper, enim eros congue velit, laoreet pretium nulla eros sit amet nunc. Praesent nibh lorem, lacinia nec diam ac, iaculis posuere neque. Duis ultrices congue est id viverra. Duis pulvinar sem at eleifend eleifend. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+ Curabitur congue vitae enim ut finibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam finibus nisl sit amet dignissim vestibulum. Integer quis pretium risus. Fusce sollicitudin malesuada quam, at bibendum tortor porta quis. Morbi eu ullamcorper tortor, vitae consectetur urna. Sed aliquam a augue at pretium. Aenean purus erat, imperdiet ut tristique in, semper vel purus. Nam cursus mauris lobortis ligula rutrum, ut egestas neque fermentum. Cras mauris dolor, tristique ac ligula a, consequat auctor est. 
+
+** Next-list
+
+ - [ ] Hvilken bog har et afsnit om forskellige typer af researcjh questions
+ - [ ] Skriv motivations-noter og citér en række artikler
+
+** References
+ \newpage 
+ bibliography:UTVC26.bib
+ bibliographystyle:apalike
+* Research prop template
+
+\newpage
+
+- TODO Spatial context, scale, and time frame
+- TODO Key concepts
+- TODO Finish rough introduction
+- TODO Think more on research design.
+- TODO Product Space framework - see Coniglio
+- TODO Product Space 
+
+** Introduction
+ Is the ability of an economy to withstand and recover from economic disruptions conditioned by its productive structure? It has long been recognized that the diversity of an economy's industries and the relationship between them plays an important role in how economic shock propagates through the economy. Recent literature within the role of industrial networks and productive capabilities has highlighted the importance of the kinds of economic structures present in the economy. First, I briefly review previous literature and sketch the theoretical framework guiding the research. Second, the overarching research design, empirical strategy, and use of data is developed. Finally, I discuss potential findings and limitations.
+
+ Most literature has followed the 'portfolio'-style theory of industrial diversity citep:deller_did_2016,martin_how_2016 where, much like stock-portfolios, diversity (defined by some "counting" measurement of concentration, e.g. Hirfendahl-Hirschman Index) has in-itself been assumed as barrier to shocks. The economic complexity literature have --- by quantifying the economic capabilities ---. This proposal delineates a first attempt to integrate ---.
+
+
+*** Background and context
+ Is the ability of an economy to withstand and recover from economic disruptions conditioned by its productive structure? It has long been recognized that the diversity of an economy's industries and the relationship between them plays an important role in how economic shock propagates through the economy cite:conroy_concept_1975. Most literature has followed the 'portfolio'-style theory of industrial diversity citep:deller_did_2016,martin_how_2016 where, much like stock-portfolios, diversity (defined by some "counting" measurement of concentration, e.g. Hirfendahl-Hirschman Index) has in-itself been assumed as barrier to shocks. More recently, research has demonstrated how shocks to specific sectors central in the input-output network have outsized importance when hit by disturbances citep:acemoglu_networks_2016,acemoglu_network_2012,han_predicting_2019,klimek_quantifying_2019. These studies have shown the importance of considering both the structure of the economy and network effects when studying how economies deal with disruptions. Little attention, however, is given to the kind of productive structure that exists in the economy.
+
+ In the past decade, an emerging literature on economic complexity and capabilities have demonstrated the importance of countries' export baskets in determining path dependencies for economic development: future diversification (product space), inequality (Hartman), and growth (Harvard Atlas, Dynamic Systems). An important insight from this literature is the ability to draw information from observable characterisics (the co-occurrence of economic activities) to unobserved determinants of an economy's fitness.  
+
+  This study is a first attempt at combining the resilience and the capability literature. 
+ ... 
+
+ Research question 1:
+
+ Explanation 1
+ Hypothesis 1: --- 
+
+ Explanation 2
+ Hypothesis 2: ---
+
+ Research question 2:
+
+ Explanation 1
+ Hypothesis 1: --- 
+
+ Explanation 2
+ Hypothesis 2: ---
+
+ The literature on economic complexity has in research years provided an important insight to the productive capabilities within the economy. By constructing the 
+
+ bla bla bla capabilities. bla bla cost-discovery. So far, very little attention has been given to the relationship between the ...
+
+
+
+ An important concept in economic complexity is the idea of related diversification (related variety in regional diversification literature). 
+
+
+*** Problem statement and research questions
+ The purpose of the study is to do a first exploration of the relationship between the capability-base of an economy and its resilience to shocks.
+ the impact and duration of economic shocks, and secondly between the structural change following shocks. Understanding this relationship could provide a first insight to an important element of industrial policy. The guiding research problem is thus:
+
+ #+BEGIN_QUOTE
+ How are the structure and sophistication of an economy's productive capabilities related to the impact and recovery from economic shocks?
+ #+END_QUOTE
+
+** Literature review
+*** Key concepts, theories and studies
+
+    *Operationalizing resilience and shocks:* Resilience is a notoriously fuzzy topic[fn:2]. Resilience have generally been conceptualised along three different strands: 'engineered resilience' (the ability to 'bounce back' to a previous state), 'ecological resilience' . A central tensions between these 
+ [Introduction to the concept: engineered, ecological, evolutionary, and introduce the three important elements: depth, recovery, change]. For the purposes of this study, resilience is conceptualized as the ability of an economy to withstand, recover, re-organize when faced with market-shocks.
+
+ *Product Space:* Economies grow by upgrading 
+
+ *Economic complexity:*
+
+*** Gaps in existing knowledge
+** Research design and methods
+ The research follows a standard cross-sectional design [[cite:de_vaus_research_2001][48]]. While the Great Recession has been used in previous studies as intervention in a natural experiment-style design, this unfeasible for two related reasons. First, the use of a flexible dating method allows, and reveals, different onsets of the crisis. This ... 
+
+ The benefit of using a rather wide set of countries is two-fold. Contrary to most studies on the impact of shocks, the evidence covers more than just advanced economies. Secondly, given the larger sample, the individual variation ... washed out, making it easier to parse out the variation accruing to economic complexity-variables.
+
+*** Data
+ The study employs two main sources of data: the international trade network (at the level of exported products) and Gross Domestic Product (GDP) at the national level. The data on international trade is used to construct the Product Space and all the related similarity- and network metrics. The GDP-data is used as the reference metric to identify economic shocks.
+
+ The data on product exports comes from the UN COMTRADE database (United Nations International Trade Statistics Database). Many countries do not report trade consistently which results in errors in the data. They are  harmonized and cleaned through the Bustos-Yildrim method. Essentially, the cleaning procedure exploits the double reporting of trade goods to suss out inconsistencies. Through the distance between the value reported by importers and exporters, each country can be given a 'reliability-score', which then acts as weights when reconciling differences in bilateral trade reportings (i.e. import vs export countries). This allows a wide, reliable coverage of bilateral trade flows at a fairly granular precision. For the purposes of this work, the bilateral trade-flows are aggregated into country-level exports at product level. The Growth Lab at Harvard University distributes the cleaned version of the COMTRADE data. Here, I use Harmonized System classification, 1992 revision (HS-92) at the four-digit level citep:the_growth_lab_at_harvard_university_international_2019. The HS-92 data covers about 5000 products at the 4-digit level, from 1995-2017. 
+
+   - Issues w. trade data: [TODO]
+     - Services are not included in trade data = misses important part of economy. 
+     - Only exports = also misses important part of economy. However, most of the important results on grwoth, inequality, industrial relatedness, etc, from economic complexity literature is based on export data.
+
+   As reference metric to identify shocks, I use GDP per capita data. As main source I use the Penn World Tables (9.1) (PWT) real GDP using national-accounts growth rates (RGDP^{NA}) citep:feenstra_next_2015. Since some variation exists in the estimation of GDP values, I repeat the analysis using the Maddison Project database citep:bolt_rebasing_2018 to avoid any results being an artifact from the source of GDP. There are two important issues with using GDP as the reference metric. First, there are well-documented problems with measurement errors in GDP in many less developed countries. For instance, cite:jerven_poor_2013 documents how certain patterns in GDP have systematic biases for different reasons (e.g. exogenously enforced policy changes) at different times in Sub-Saharan Africa. Second, many important shocks in less developed economies might be missed. The empirical strategy rests on identifying stagnation or absolute declines in GDP. One can think of many types of economic shocks that would qualify as significant disturbances to all or some parts of the economy that does not necessary involve a negative change in the level of the aggregate economy. This becomes doubly problematic for less developed economies, as they tend to experience growth slowdowns rather then declines in the absolute level of GDP [citation].
+*** Limitations
+
+ - cross country design
+ - IV problem
+ - MAUP problem + scale problem. See cite:chen_geographical_2019.
+
+ \newpage
+** Implications and contributions to knowledge
+*** Practical implications
+*** Theoretical implications
+** Ethical considerations
+
+ \newpage 
+ bibliography:UTVC26.bib
+ bibliographystyle:apalike
+
+** Footnotes
+
+[fn:2] For instance, one review found sixteen "overlapping conceptualisations" from the literature on social, ecological and socio-ecological systems citep:bahadur_resilience_2010. As noted by cite:simmie_regional_2014, this is possibly due to the different ontological approaches to concept. 
+
+
+[fn:1] Although some of the rainfall-driven studies are disputed, see for example cite:van_weezel_economic_2015.
+
+
+
+
+ Good thing about economic complexity approach: addresses other linkages and other differences in the industrial structure.
+
+
+ *Product proximity externalities:* An important concept in the economic complexity literature is the idea of related diversification.
+
+  That is, an economy is more likely to enter an economic activity with a capability-requirement
+
+ 
+
+ *Hypothesis 1: Coherent product space:* If an economy has a high capability overlap between its activities (that is, products' pairwise product-space distance is small), it should be easier for the economy to re-direct resources to still productive sectors.
+
+ *Hypothesis 2: diverse activities:* If an economy has a more diverse basket of economic activities, the "space of the possible" is wider. Therefor, it should be easier move 
+
+ As such, there is an emerging consensus that regional economic resilience may be defined as the capacity of a regional or local economy to withstand, recover from and reorganize in the face of market, competitive and environmental shocks to its developmental growth path (Cooke, 2012; Bristow & Healy, 2014; Martin & Sunley, 2014).
+
+
+ For instance, one could imagine the 
+
+
+
+ The relationship between product space and capabilities and economic resilience has not been investigated before.
+
+
+* Final exam draft 2
+
+\newpage
+
+** Introduction
+ - [Remember to highlight how especially the last point is salient w.r.t. structural change]
+
+ - [Something about why the study can shed better light that other attempts - methodological innovations, short]
+
+ While it has long been recognized that economic structure plays an important role in economic resilience, little investigation have been done to the effect of different... [introduce network effects and economic complexity].
+
+ Is the ability of an economy to withstand and recover from economic disruptions conditioned by its productive structure? It has long been recognized that the diversity of an economy's industries and the relationship between them plays an important role in how economic shock propagates through the economy. Empirical lit = inconclusive. 
+
+ Recent literature on the role of economic complexity and productive capabilities has highlighted the importance of the kinds of economic structures present in the economy. + novel ways of inferring the relationship between economic activities. The proposed study is a first, preliminary attempt at integrating the economic complexity literature with the literature on economic resilience.
+
+ First, I briefly review core concepts from the literature and sketch the theoretical framework guiding the research. Second, I present the reserach questions based on this framework. I then develop the general research design, empirical strategy, and use of data. Finally I discuss potential findings and limitations. 
+
+ - More:
+   - The Great Recession (2007-2008) represents the greatest xxx since...
+   - Importance of better understanding structural and policy-questions when thinking about resilience: world bank study ([[https://www.worldbank.org/en/news/press-release/2019/11/19/emerging-and-developing-economies-less-prepared-now-for-a-deeper-downturn-than-prior-to-2009-global-recession-study][link]]) suggests that developing and emerging economies are less prepared now than they were before the 2008 crisis.
+
+** Background and motivation
+** Review of Literature
+*** Resilience
+  Much like sustainability was before it, resilience has become a notoriously fuzzy concept[fn:2]. As such, it is helpful to clarify exactly what we mean by the resilience of an economy and how the research will operationalize the concept[fn:1]. This notion of resilience that is used for the purposes of this study is closely related to the conceptualization used in evolutionary economic geography citep:boschma_towards_2015. In the evolutionary framework, resilience is equally concerned with how regions sustain a long-term development path as with short term responses to disturbances. This is a reflection of evolutionary economics focus on the economy as in continuous change and development. As a broad concept, resilience is here to avoid stagnation and lock-in to a undesirable development path. 
+
+ An important distinction is here the twin concepts of adaptation and adaptability. 
+
+*** The importance of structural factors
+ *Industrial diversity and resilience:* It has long been theorized that the resilience of an economy is connected to its economic structure. Many authors (e.g.cite:chen_geographical_2019,watson_economic_2017,deller_did_2016,martin_how_2016) either explicitly or implicitly follows the idea of a portfolio-theory of industrial diversity and risk citep:conroy_concept_1975. Much like a stock-portfolio, diversity per se is here associated with a spreading of the risk. Macro-economic disruptions are then less concentrated in the economy and "wash out", leaving most of the general economy functional. Empirical evidence of this relationship between economic diversity and resilience to recessionary shocks have been inconclusive [fn:1]. 
+
+*** The promise of the economic complexity approach
+*** The Product Space
+ The product space framework provides us a way to quantify and formalize the relationship between the economic capabilities required for different productive activities. 
+
+ To perform any productive activity effectively, an economy needs a set of appropriate capabilities. If an economy effectively produces a product, we assume that country possess the necessary capabiltiies to produce said products. If two products tend to be effectively produced by the same countries, these products share more of the economic capabilities required to make them. 
+
+ By observing the revealed comparative advantage of countries in exporting different products, we can 
+
+*** Economic Complexity
+*** Operationalising
+
+
+ empirical evidence is inconclusive cite:martin_how_2016,chen_geographical_2019. 
+
+
+
+ Diodato - labour opportunities is important for speed and extent of recovery. 
+ Sunley et al - more diverse economic structures is better for stability. Conceptualised as diverse vs specialized. "Simple" measurements. "put another way, a diverse economic structure can spread risk". Empirical results are mixed
+
+ *Shocks:* One of the central controversies in the resilience literature is the identification and measurement of treatment (i.e. shocks). 
+
+ *Economic complexity and the Product Space framework:*
+ - Economic complexity (200)
+ - How does it fit together?
+** Research design
+ - Context 
+ - Design
+
+ The main issue is endogenous effects in assignment and impact of the treatment. Recessionary shocks are not alike. It has documented that different kinds of shocks hit different economies in different ways, which again various over time. This posses two problems. First, if there is any kind of systematic relationship between the structural characteristics of an [economy] and the way that /specifically/ the Great Recession [impacts economies] the result might be informative for this particular case, but the external validity would be compromised. Second, if the sample of observations is not broad enough, potentially unrelated characteristics (such as national depths, access to foreign credit, market openness, finanzialisation of the local economy) driving which countries are hit by the recession might drown out more general structural effects. 
+
+ - Key metrics
+ - Data
+** Limitations and ethical considerations
+
+ \newpage 
+ bibliography:UTVC26.bib
+ bibliographystyle:apalike
+
+** Footnotes
+
+[fn:2] For instance, one review found sixteen "overlapping conceptualisations" from the literature on social, ecological and socio-ecological systems citep:bahadur_resilience_2010. As noted by cite:simmie_regional_2014, this is possibly due to the different ontological approaches to concept which includes evolutionary biology, economics, psychology, ecology.
+
+[fn:1] For a review, see cite:martin_how_2016 and cite:chen_geographical_2019.
+
+[fn:3] Although some of the rainfall-driven studies are disputed, see for example cite:van_weezel_economic_2015.
+
+\newpage 
+bibliography:UTVC26.bib
+bibliographystyle:apalike
+
+** What is the Product Space
+ The product space is a network representation of the relationship between the economic capabilities required to effectively make products. The network is build from a simple set of assumption: if a country effectively produces a product, we assume that country possess the required economic capabilities to produce said products. We then say that if two products tend to be effectively produced by the same countries, these products share more of the economic capabilities required to make them.
+
+ The products space framework have illutstrated the importance of this relationship between the products already produced by a country (that is, the economic capabilities) and how the economy subsequently diversifies. 
+
+ This also means that not all products are equal. Some products are more densely connected to other products, meaning that they share capabilities with a wider group of products. This also means that countries that produced these more connected products have a wider space of possible future diversification.
+
+** What is economic complexity
+ Not only 
+
+** Loose writing 
+ Just as studying why economies grow is an important part of ..., so is understanding why they fail. Negative economic shocks have been linked to  adverse social welfare outcomes, such as increases in crime citep:dix-carneiro_economic_2017,iyer_poverty_2014 and conflict citep:hodler_economic_2014-1,kim_revisiting_2016,bazzi_economic_2014[fn:3]. Perhaps even more significantly, evidence suggest that economic contractions has lasting effects on the economy's future output. cite:cerra_growth_nodate,cerra_international_2013 demonstrate how, on average, economies does not recoup the lost growth after recessionary shocks. This results in a large welfare-gap between post-recession shocks and counterfactual scenarios. In addition, many economies do not return to earlier growth-trajectories after recessions which has been a significant factor in unconditional divergence in post-world war growth numbers. [Remember to highlight how especially the last point is salient w.r.t. structural change]
+
+ [Something about why the study can shed better light that other attempts]
+
+ The Great Recession (2007-2008) represents the ...
+
+ Importance of better understanding structural and policy-questions when thinking about resilience: world bank study (https://www.worldbank.org/en/news/press-release/2019/11/19/emerging-and-developing-economies-less-prepared-now-for-a-deeper-downturn-than-prior-to-2009-global-recession-study) shows that developing and emerging economies are less prepared now than they were before the 2008 crisis.
+* Final exam draft
+** Introduction
+*** Background and context
+    1. Impact motivation:
+       1. Understanding what makes economies vulnerable to interruptions is important and have spawned an extensive literature.
+       2. Economic disruptions tend to hurt those on the margins, that is, the vulnerable, the most.
+       3. Economic disruptions have been linked to increases in crime citep:dix-carneiro_economic_2017,iyer_poverty_2014 and conflict citep:hodler_economic_2014-1,kim_revisiting_2016,bazzi_economic_2014[fn:1].
+       4.The literature documents hysteresis effects, where temporary shocks create lasting effects in the economy. cite:cross_foundations_1993, cite:martin_regional_2012-1 documents a higher "natural" unemployment after recessionary shocks. Some shock hysteresis effects might be doubly costly for developing countries: for instance, citep:duryea_effects_2007 shows that household job-losses leads to earlier entry to the labor-market for children. This decreases the rate of human capital accumulation, which could affect future growth rates.
+    2. Academic motivation:
+       1. There has long been a link between the industrial structure and the vulnerability of an economy citep:conroy_concept_1975. All else equal, it is assumed that a more diverse "portfolio" of industries results in a more resilient economy citep:martin_regional_2012-1. This line of research has primarily employed "counting" measures of industrial diversity, such as entropy-based indices based on the number of sectors accounting for some share of total output. 
+       2. More recently, attention have been given to how the relationship between industries in the input-output (I/O) network propagates disruptions to the wider economy citep:acemoglu_networks_2016,acemoglu_network_2012,han_predicting_2019,klimek_quantifying_2019. These studies have shown the importance of network effects between economic activities.
+       3. This study would compliment these traditions by using the relationship between economic activities in the capability network (the product space). Does a more "coherent" industry-mix mean the economy can better re-adjust resources to still productive parts of the economy? Or does a more dispersed Product Space lead to an easier "local search" (i.e. cost-discovery is smaller)? I.e. it is important to recognize that industries are not alike, and neither are their pairwise relationships.
+    3. Economic complexity and economic structure: 
+       1. The economic complexity literature has reformulated economic growth with impressive results. The product-space framework has shown the changes in the economy exhibit a "principle of relatedness", which has a strong influence on the development of nations.
+       3. The distance between products in the network can inform us to the capability overlap between products. We can again leverage this information to tell us about the capability base of a given economy. If an economy possess a larger part of the necessary capabilities required by a product, the economy is more likely to begin exporting said in the future. In other words, [bla bla] re-orient productive resources in the economy.
+
+*** Problem statement
+ What is the relationship between economic structure (measured as the capability-base) and the impact and recovery from economic downturns?
+
+*** Research questions
+ [TODO: translate RQs to hypotheses and elaborate formal tests]
+
+ - Relationship between capability-base and impact of economic shocks:
+   1. Is a more coherent industrial structure associated with smaller impacts of economic shocks?
+   2. Is a more coherent industrial structure associated with faster recovery from economic downturns?
+   3. Is a more sophisticated industry-mix associated with smaller impacts of economic shocks?
+   4. Is a more sophisticated industry-mix associated with faster recovery from economic downturns?
+
+ - Relationship between capability-base, economic shocks, and structural change:
+   1. Are economic shocks associated with changes in the rate of economic diversification?
+   2. Are economic shocks associated with changes in the direction of economic diversification (related and unrelated diversification)?
+
+ \newpage
+** Literature review
+*** Key concepts, theories and studies
+ - Key concepts
+   - resilience, following cite:martin_regional_2012-1 defined through three measures: resistance (ability to mitigate initial shock), recovery (ability to quickly return to pre-shock state), and adaptation (level of structural/industrial change after shock or recovery)
+   - shocks
+   - the product space and economic complexity (country fitness and product complexity)  
+
+ - Key metrics:
+   - Revealed Comparative Advantage citep:balassa_trade_1965
+   - product relatedness (distance between products) citep:hidalgo_product_2007 
+   - country density around product (distance between country and product) citep:hausmann_network_2011
+   - country capability coherence citep:neffke_agents_2018
+   - network average shortest path length (proxy for easier discovery of "the possible")
+   - Hirfendahl-Hirschman index (HHI) 
+   - Country fitness and product complexity (Fitness 2012 + 2018 algorithm) citep:tacchella_new_2012,servedio_new_2018
+   - shock metrics citep:sensier_measuring_2016-1: 
+     1. depth of downturn
+     2. duration of downturn
+     3. duration of recovery
+
+*** Gaps in existing knowledge
+ \newpage
+** Research design and methods
+*** Methodology
+
+ *Build product space (similarity-scores):*
+
+ *Identification of shocks:* Economic shocks tend to spread to different economies in many ways, hitting some early and some late, with patterns changing between different types of shocks. As such, it is important to allow for a flexible, data driven dating of the economic shock. I use a modified version of the BBQ algorithm presented by cite:harding_dissecting_2002 to date the business cycles. The BBQ is a refinement of the method presented by cite:bry_cyclical_1971. A business cycle is here defined as lasting from one peak to the next peak, with turning points defined as an observed or implied growth rate of 0. I follow citep:sensier_measuring_2016-1 in adapting the process to yearly data (by adjusting the censoring requirement). Each country is then treated as a separate time-series.
+
+ *Testing the relationship between capability base and shock metrics:* [TODO] Tests: Industrial structure and shocks
+
+ *Testing the relationship between between capability base, shock metrics and industrial change:*
+  - [TODO: tests should be modified and more simple] Testing degree of diversification in post-shock periods vs other periods
+    1. Test 1: Monte Carlo (MC) permutation test between K years after shocks and other periods (post-shock/recovery) ("does a shock represent a 'Schumpeter-like' phase of creative destruction?")
+    2. Test 2: MC permutation test between K years before shocks and other periods (pre-shock/boom period) ("does a boom period lead to more diversification?")
+    3. Test 3: Linear regression: relationship between rate of diversification and depth of shocks ("does the depth of the shock influence the degree of renewal in the economy?")
+  - [TODO: tests should be modified and more simple] Testing related vs unrelated variety diversification in post-shock periods vs other periods
+    1. Test 1: MC permutation test between K years after shocks and other periods (post-shock/recovery) ("does a shock represent a Schumpetarian phase of creative destruction, measured as the degree of unrelated diversification?")
+    2. Test 2: MC permutation test between K years before shocks and other periods (pre-shock/boom period) ("does a boom period lead to more unrelated diversification?")
+    3. Test 3: (Linear) regression: relationship between rate of diversification and depth of shocks ("does the depth of the shock influence the degree of renewal in the economy?")
+
+*** Data
+ The study employs two main sources of data: the international trade network (at the level of exported products) and Gross Domestic Product (GDP) at the national level.
+
+ The data on product exports comes from the UN COMTRADE database (United Nations International Trade Statistics Database). Many countries do not report trade consistently which results in errors in the data. They are  harmonized and cleaned through the Bustos-Yildrim method. Essentially, the cleaning procedure exploits the double reporting of trade goods to suss out inconsistencies. Through the distance between the value reported by importers and exporters, each country can be given a 'reliability-score', which then acts as weights when reconciling differences in bilateral trade reportings (i.e. import vs export countries). This allows a wide, reliable coverage of bilateral trade flows at a fairly granular precision. For the purposes of this work, the bilateral trade-flows are aggregated into country-level exports at product level. The Growth Lab at Harvard University distributes the cleaned version of the COMTRADE data. Here, I use Harmonized System classification, 1992 revision (HS-92) at the four-digit level citep:the_growth_lab_at_harvard_university_international_2019. The HS-92 data covers about 5000 products at the 4-digit level, from 1995-2017. 
+
+   - Issues w. trade data: [TODO]
+     - Services are not included in trade data = misses important part of economy. 
+     - Only exports = also misses important part of economy. However, most of the important results on grwoth, inequality, industrial relatedness, etc, from economic complexity literature is based on export data.
+
+   As reference metric to identify shocks, I use GDP per capita data. As main source I use the Penn World Tables (9.1) (PWT) real GDP using national-accounts growth rates (RGDP^{NA}) citep:feenstra_next_2015. Since some variation exists in the estimation of GDP values, I repeat the analysis using the Maddison Project database citep:bolt_rebasing_2018 to avoid any results being an artifact from the source of GDP. There are two important issues with using GDP as the reference metric. First, there are well-documented problems with measurement errors in GDP in many less developed countries. For instance, cite:jerven_poor_2013 documents how certain patterns in GDP are biased for different reasons (e.g. exogenously enforced policy changes) at different times in Sub-Saharan Africa. Second, many important shocks in less developed economies might be missed. The empirical strategy rests on identifying stagnation or absolute declines in GDP. One can think of many types of economic shocks that would qualify as significant disturbances to all or some parts of the economy that does not necessary involve a negative change in the level of the aggregate economy. This becomes doubly problematic for less developed economies, as they tend to experience growth slowdowns rather then declines in the absolute level of GDP [citation].
+
+*** Limitations
+
+ - No randomisation = no causality, only covariance.
+ - National scale = many of the interesting dynamcs between regions are lost.
+ - No labor-market data = important source of local adjustment is lost.
+ - Cross-country limitations
+ - Value added issue: when export is currently so unbundled/fragmented, it makes less sense to categorise exports into specific products. Instead they should be divided into different activities along the quality ladder. See paper by cite:brakman_closer_2017 (fx. RCA for China in computers dissappear, instead they have RCA in assembly). Issue with the WIOD database is that it only covers 40 countries and 50-something sectors.
+ - Endogeneity issues. Fx market openness affecting both industrial structure and impact of shocks.
+
+ \newpage
+** Implications and contributions to knowledge
+*** Practical implications
+*** Theoretical implications
+** Ethical considerations
+ Besides more research-technical considerations on computational and experimental reproducibility, there are no obvious ethical issues. No microdata, non-public data, or sensitive data is used in the analysis. Given the nature of the design, it is difficult to imagine any sensitive results to emerge. To make reproduction and transparency easier, the final project will be aggregated into a R package (including figures, R code and cleaning producedures) and hosted online. 
+
+ \newpage 
+ bibliography:UTVC26.bib
+ bibliographystyle:apalike
+
+** Footnotes
+* Scratch
+** Introduction and motivation
+
+ Just as studying why economies grow is an important part of ..., so is understanding why they fail. Negative economic shocks have been linked to adverse social welfare outcomes, such as increases in crime citep:dix-carneiro_economic_2017,iyer_poverty_2014 and conflict citep:hodler_economic_2014-1,kim_revisiting_2016,bazzi_economic_2014[fn:1] . Perhaps even more significantly, evidence suggest that economic contractions has lasting effects on the economy's future output. cite:cerra_growth_nodate,cerra_international_2013 demonstrate how, on average, economies does not recoup the lost growth after recessionary shocks. This results in a large welfare-gap between post-recession outcomes and "what could have been". In addition, many economies do not return to earlier growth-trajectories after recessions, which has been a significant factor in unconditional divergence in post-world war growth numbers. [Remember to highlight how especially the last point is salient w.r.t. structural change]
+
+ - [Something about why the study can shed better light that other attempts - methodological innovations, short]
+
+ Is the ability of an economy to withstand and recover from economic disruptions conditioned by its productive structure? It has long been recognized that the diversity of an economy's industries and the relationship between them plays an important role in how economic shock propagates through the economy. Empirical lit = inconclusive. 
+
+ Recent literature on the role of economic complexity and productive capabilities has highlighted the importance of the kinds of economic structures present in the economy. + novel ways of inferring the relationship between economic activities. The proposed study is a first, preliminary attempt at integrating the economic complexity literature with the literature on economic resilience.
+
+ - [Outline rest of proposal]
+
+ First, I briefly review core concepts from the literature and sketch the theoretical framework guiding the research. Second, I present the reserach questions based on this framework. I then develop the general research design, empirical strategy, and use of data. Finally I discuss potential findings and limitations. 
+
+
+** Literature
+ HUSK: SKRIV DET NED I SIMPLE SÆTNINGER. SAMMENKOGNING GØRES SENERE.
+
+
+ - Resilience: as both ability to withstand and recover, but also to re-organize and thrive
+ - The importance of structural factors
+ - The promise of the economic complexity approach
+   - Basic points about product density:
+     - easier to produce new products that are close to your base
+     - more new firms survive i "dense" areas
+     - labor is more easily re-absorbed into the economy when there are related activities in area
+     - denser export might also lead to more lock in. if something in the crisis changes the capabilities of the economy, the whole would suffer more, or if technological change shifts the value of the respective comparative advantage.
+
+** Research questions
+  
+ - Question to the immediate impact
+ - Question to the structural change
+
+** Methodology and data
+
+ - Cross sectional design
+   - Identify important mediating variables.
+ - Identify shocks, use as treatment
+ - Use variables identified in a future lit. review. Preliminary variables: innovation capacity, bla bla bla.
+ - regressions and network effects
+ - monte carlo permutation tests
+ - Data
+
+ - More:
+   - Selection bias in treatment administration
+   - 
+
+** Limitations and ethics
+
+ - Causality is very difficult: no randomisation, no great IV instrument, other types require too strong assumptions.
+ - Cross-sectional design has limitations
+ - Use of countries as main
+ - Limitations that treatment is identified BY the outcome variable. That is, the only effect measured is from the impact of crisis. This misses any important changes in the economy before the recession has an impact
+
+
+ \newpage 
+
+ bibliography:UTVC26.bib
+ bibliographystyle:apalike
+
+** Footnotes
+
+[fn:1] Although some of the rainfall-driven studies are disputed, see for example cite:van_weezel_economic_2015.
+
+** EC
+ - Ting der er interessante i EC ift resilience:
+   - Landes placering i Product Space fortæller om de produktive capabilities de har. Strukturen af disse capabilities og mulige rekombinationer er fundet til at forme den vej path dependency som lande udvikler sig med. 
+   - Tentative hypothesis: for en tættere forbundet production basket vil det være nemmere for lande at reorganisere deres resourcer til ikke ramte sektorer.
+
+
+ - 
+
+
+
+** Importance: 
+ - Understanding the spaces of the possible is important in industrial policy. In recent years, it has been recognized that it is important to look beyond comparative advantage, to how the economic capabiltiies in an economy conditions the fitness landscape (?). An important contribution by this line of research would be guiding industrial policy to build not only a growing economy but a resilient one.
+
+* Test
+** Introduction
+ Short paragraph on importance of understanding recessions and resilience.
+
+ Is the ability of an economy to withstand and recover from economic disruptions conditioned by its productive structure? It has long been recognized that the diversity of an economy's industries and the relationship between them plays an important role in how economic shock propagates through the economy. Empirical lit = inconclusive. 
+
+ Recent literature on the role of economic complexity and productive capabilities has highlighted the importance of the kinds of economic structures present in the economy. + novel ways of inferring the relationship between economic activities. The proposed study is a first, preliminary attempt at integrating the economic complexity literature with the literature on economic resilience.:
+
+*** Problem Statement
+ As will be discussed in the later review of literature, two distinct but related 
+
+*** Purpose
+*** Hypotheses
+*** Definition of Key Terms
+** Review of Literature
+*** Conceptualising resilience
+  Much like sustainability was before it, resilience has become a notoriously fuzzy concept[fn:2]. As such, it is helpful to clarify exactly what we mean by the resilience of an economy and how the research will operationalize the concept[fn:1]. This notion of resilience that is used for the purposes of this study is closely related to the conceptualization used in evolutionary economic geography citep:boschma_towards_2015. In the evolutionary framework, resilience is equally concerned with how regions sustain a long-term development path as with short term responses to disturbances. This is a reflection of evolutionary economics focus on the economy as in continuous change and development. As a broad concept, resilience is here to avoid stagnation and lock-in to a undesirable development path.
+
+ An important distinction is here the twin concepts of adaptation and adaptability. 
+
+*** The relationship between economic structure and resilience
+*** Operationalising key concepts 
+** Methodology
+*** Research design and empirical strategy
+*** Data
+*** 
+
+ \newpage 
+ bibliography:UTVC26.bib
+ bibliographystyle:apalike
+* Peer-review
+- Motivations: Why?
+
+*Research design, scope and context:* 
+So, basically, the study is a cross-country study of how resilient some 120 economies were to the Great Recession. The general idea is to leverage the recessionary shocks to measure how the capability base of an economy affects A) its resilience to disruptions (and how fast it recovers) and B) its ability to reorganize itself at renew or change its growth paths.
+
+*Economic resilience and gaps:*
+So, for a long time, there has been a theorised connection between the economic structure of an economy and how susceptible it is to shocks. Most of the literature has focused on more naive meassurements of industrial concentration or diversity, and on the whole, results have been inconclusive. Recently some important papers have shown how the structure of the input-output relationship between sectors can either transfer or isolate shocks. Very few, if any, efforts have been made to examine the structure of an economy's underlying capabilities and the relationship between economic activities in their similarity for how recessions affect economies. 
+
+*Why cross country?* Most studies have only been based on advanced economies. A large cross country study would be able to catch a larger sample. Secondly, it is a question of data availability and sample size. Very few non-advanced economies have production data on a subnational scale. Those that do are typically only representative on a state-scale, meaning that the sample size becomes very small (like 7 - 15). This makes it hard to get a reliable statistical result.
+
+*Identification of shocks:* Use classical business cycle approach: basically, when an economy shrinks, a recession starts. When the economy grows again to the previous pre-shock level, it has recovered. There is a lot of issues with this. For instance, labor growth would be better, but there is not a lot of data. This also pertains to developing countries which often have growth slowdowns, but less often have actual recessions. One approach is to use modern business cycle or growth cycles, where you estimate a deviation from a trend. But that requires a lot of assumptions on how to estimate trends, when to update them, when to define deviations, and so on. I would rather avoid that.
+
+*Why economic complexity:*
+So bascially, the economic complexity literature offers a way of relating the products an economy produces to each other. This can then tells us something about which economic capabilities exists in an economy. I want to test how the structure of the relationship between the capabilities in an economy can affect its resilience to recessionary shocks.
+
+For instance, if the productive structures and capabilities within an economy is very closely related, that would suggest that many of the same economic capabilities are used by much of the economy. This could suggest that it would be easier for the economy to transfer the productive resources to parts of the economy that is still productive. For instance, research has shown that job-losses in a sector, where closely related sectors exists. The same result has been found between firm survival and related sectors.
+
+On the other hand, such an economy would be less likely to be able to reorganize more distantly related capabilties. THis means that it could suffer a lock-in-effect, which means that if should its comparative advantage be less successful in the future, the economy could stagnate.
+
+*What is the Product Space*
+The product space is a network representation of the relationship between the economic capabilities required to effectively make products. The network is build from a simple set of assumption: if a country effectively produces a product, we assume that country possess the required economic capabilities to produce said products. We then say that if two products tend to be effectively produced by the same countries, these products share more of the economic capabilities required to make them.
+
+The products space framework have illutstrated the importance of this relationship between the products already produced by a country (that is, the economic capabilities) and how the economy subsequently diversifies. 
+
+This also means that not all products are equal. Some products are more densely connected to other products, meaning that they share capabilities with a wider group of products. This also means that countries that produced these more connected products have a wider space of possible future diversification.
+
+* Finalfinal 
+
+\newpage
+** Introduction
+ Between xxxx ... was hit by the largest economic recession in modern time. [something something something] Two recent developments in the literature: the importance of structural links in the economy (the input-ouput network) and the economic complexity and industrial diversification literature. 
+
+
+*** Motivation
+** Background and key concepts
+
+ Just as studying why economies grow is a central part.., so is understanding why they fail. Negative economic shocks have been linked to adverse social welfare outcomes, such as increases in crime citep:dix-carneiro_economic_2017,iyer_poverty_2014 and conflict citep:hodler_economic_2014-1,kim_revisiting_2016,bazzi_economic_2014. Perhaps even more significantly, evidence suggest that economic contractions has lasting effects on the economy's future output. cite:cerra_growth_nodate,cerra_international_2013 demonstrate how, on average, economies does not recoup the lost growth after recessionary shocks. This results in a large welfare-gap between post-recession outcomes and "what could have been". In addition, many economies do not return to earlier growth-trajectories after recessions, which has been a significant factor in unconditional divergence in post-world war growth numbers. 
+
+ - [Remember to highlight how especially the last point is salient w.r.t. structural change]
+
+ - [Something about why the study can shed better light that other attempts - methodological innovations, short]
+
+ Is the ability of an economy to withstand and recover from economic disruptions conditioned by its productive structure? It has long been recognized that the diversity of an economy's industries and the relationship between them plays an important role in how economic shock propagates through the economy. Empirical lit = inconclusive. 
+
+ Recent literature on the role of economic complexity and productive capabilities has highlighted the importance of the kinds of economic structures present in the economy. + novel ways of inferring the relationship between economic activities. The proposed study is a first, preliminary attempt at integrating the economic complexity literature with the literature on economic resilience.
+
+
+*** Resilience and recessionary shocks
+ In reviewing the literature on economic resilience, cite:martin_regional_2012-1 finds three main interpretations of the concept: 'engineered resilience', 'ecological resilience', and 'evolutionary resilience'. 'Engineered resilience' refers to how a system "bounce back" and return to its pre-shock state or path
+
+*** Importance of economic structure
+
+*** Economic complexity
+
+
+
+** Research questions
+** Research design
+** Data
+** Limitations
+
+ \newpage 
+
+ bibliography:UTVC26.bib
+ bibliographystyle:apalike

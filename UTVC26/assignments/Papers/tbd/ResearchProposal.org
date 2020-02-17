@@ -1,0 +1,89 @@
+#+TITLE: Economic structure, networks, and resilience
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+
+- [ ] Finish first draft of structural determinants
+  - [ ] Diversity/concentration
+  - [ ] Input-output linkages
+- [ ] Finish first draft of conceptualising resilience
+- [ ] Revisit structure
+- [ ] Finish introduction
+
+\newpage 
+* Introduction
+Extensive empirical evidence shows large differences in the response to recessionary shocks across both regions and countries. However, the structural factors that determine the economic impacts and subsequent economic adjustments is still not very well understood. [FØLGENDE SKAL FLYTTES ELLER SKRIVES OM. FØLG DEFICIENCY MODEL I CRESSWELL] In the past decade, research within economic complexity and economic geography has provided valuable evidence to... [something]. This paper proposes a new approach to understand the relationship between the structure of an economy's activities, its productive capabilities and the impact and recovery from recessions. By combining methods from econometrics and network science, we can integrate insights from the literature on economic resilience with new evidence on the determinants of economic growth and structural change.
+
+ Negative economic shocks have been linked to adverse social welfare outcomes, such as increases in crime citep:dix-carneiro_economic_2017,iyer_poverty_2014 and conflict citep:hodler_economic_2014-1,kim_revisiting_2016,bazzi_economic_2014. Perhaps even more significantly, evidence suggest that economic contractions has lasting effects on the economy's future output. cite:cerra_growth_2008,cerra_international_2013 demonstrate how, on average, economies does not recoup the lost growth after recessionary shocks. This results in a large welfare-gap between post-recession outcomes and "what could have been". In addition, many economies do not return to earlier growth-trajectories after recessions, which has been a significant factor in unconditional divergence in post-world war growth numbers. In sum, sizable economic disturbances come with enormous potential welfare costs, and presents a important problem for policy makers. A better understanding of what structural factors are associated with resilient economies is thus a 
+
+This paper presents a ....
+
+* Background and significance
+** The Great recession
+The global financial crisis in 2008... 
+
+** Conceptualising resilience
+- What does it mean for an economy to be resilient? Fuzzy concept. This is why clear operationalization is important
+- Traditionally equilibrium approaches have dominated the resilience literature.
+- More recently, it has been recognized that economies are not static and have to keep changing to keep functioning.
+- The approach used in this paper
+
+** Structural determinants of resilience in the literature
+I breifly review the three most significant strands in the literature.
+- Diversity/concentration literature
+
+One strand within the literature on regional resilience have focused on the industrial composition of the economy  citep:chen_geographical_2019,watson_economic_2017,deller_did_2016,martin_how_2016. Industrial composition is here usually defined through the "counting" diversity/specialization of economic output or employment (through measures of concentration, such as the Hirfendahl-Hirschman index (HHI)). Here, no difference is
+The effects of specialisation for resilience 
+
+- Industrial linkages: input/output
+Recent literature within the role of industrial networks and productive capabilities has highlighted the importance of the kinds of economic structures present in the economy. cite:acemoglu_networks_nodate,acemoglu_network_2012 show how smaller asynchronous shocks usually expected to "wash" out of the economy can ... 
+
+cite:han_predicting_2019 viser at mere centrale industrier er mere resilient end ikke centrale industrier 
+"firms in different industries are connected because they exchange goods and services in the form of inputs and outputs. Further, industries have different scales and supply chains of varying complexity manifest in forward and backward linkages (e.g., Lian and Haimes 2006). In the resilience context, an industry can be said to be more influential if it has more transactions with a greater variety of other industries. "
+
+  - More recently, attention have been given to how the relationship between industries in the input-output (I/O) network propagates disruptions to the wider economy citep:acemoglu_networks_2016,acemoglu_network_2012,han_predicting_2019,klimek_quantifying_2019. These studies have shown the importance of network effects between economic activities.
+  - More recently, research has demonstrated how shocks to specific sectors central in the input-output network have outsized importance when hit by disturbances citep:acemoglu_networks_2016,acemoglu_network_2012,han_predicting_2019,klimek_quantifying_2019. These studies have shown the importance of considering both the structure of the economy and network effects when studying how economies deal with disruptions. Little attention, however, is given to the kind of productive structure that exists in the economy.
+
+** Relatedness and structural change
+
+* Research aims
+Based on the above discussion, the aim of the study is then to examine the relationship between economic structure (operationalised through the three pathways outlined above) and resilience outcomes.
+
+
+* Research design
+To answer these questions, the study follows a cross-sectional design [[cite:de_vaus_research_2001][48]]. By using panel data across different countries, the variation in how the 2008 financial crisis impacted national economies can be paired with the structural variables. 
+
+The sample consists of 43 countries, between 2000 and 2014. These are the countries covered by the World Input-Output database (more in the data section) and cover approximately 85% of World GDP. For the structural change variables, the time-series is extended to 2017 (UN COMTRADE) to allow for more data.
+
+** Operationalisation
+See cite:de_vaus_research_2001 p. 24
+
+*Identifying treatment:* Two points are important when measuring recessionary shocks: the choice of reference metric and the dating of shocks. [NEED MORE TEXT, UNFINISHED] Here I focus on absolute declines in the aggregate economy. Economic shocks tend to spread to different economies in many ways, hitting some early and some late, with patterns changing between different types of shocks. As demonstrated by cite:sensier_measuring_2016-1, even under the highly synchronous 2008 global crisis this was the case. As such, it is important to allow for a flexible, data driven dating of the economic shock. I use a modified version of the BBQ algorithm presented by cite:harding_dissecting_2002 to date the business cycles, which is a refinement of the method presented by cite:bry_cyclical_1971. A business cycle is here defined as lasting from one output peak to the next, with turning points defined as an observed or implied growth rate of 0. I follow cite:sensier_measuring_2016-1 in adapting the process to yearly data (by adjusting the censoring requirement). Each country is then treated as a separate time-series. [NEED INTRODUCE MODERN VERSUS CLASSICAL BC'S?]
+
+*Resilience metrics:* Following the resilience concept outlined above, three 
+
+Figure ref:stylized-bc shows a stylized business cycle. *P^1* represents the first peak, *P^2* the subsequent peak. Hence, the time from *B^1* to *B^2* is the duration of the business cycle. *T* is the trough. *A^1* is the amplitude, or the depth, of the downturn, measured as the vertical distance between *P^1* and *T*. The horizontal distance between *B^1* and *T* is the time between the peak and the trough, i.e. the duration of the downturn. I define an economy as having "recovered" from a downturn when the reference metric has reached the pre-shock peak levels. In the figure, the duration of the recovery is marked by the distance between *T* and *R*.
+
+
+#+CAPTION: A stylized business cycle.
+#+LABEL: stylized-bc
+[[./figs/bc.png]]
+
+
+- Structural change
+
+** Data [cut down]
+The study employs three sources of secondary data: the international trade network (at the level of exported products), Input-Output (I/O) tables at the national level, and Gross Domestic Product (GDP) at the national level. The data on international trade is used to construct the Product Space and all the related similarity- and network metrics. The Input-Output tables are used to construct the industry-network for each national economy. Finally, the GDP-data is used as the reference metric to identify economic shocks and recovery.
+
+ The data on product exports comes from the UN COMTRADE database (United Nations International Trade Statistics Database). Many countries do not report trade consistently which results in errors in the data. They are  harmonized and cleaned through the Bustos-Yildrim method. Essentially, the cleaning procedure exploits the double reporting of trade goods to suss out inconsistencies. Through the distance between the value reported by importers and exporters, each country can be given a 'reliability-score', which then acts as weights when reconciling differences in bilateral trade reportings (i.e. import vs export countries). This allows a wide, reliable coverage of bilateral trade flows at a fairly granular precision. For the purposes of this work, the bilateral trade-flows are aggregated into country-level exports at product level. The Growth Lab at Harvard University distributes the cleaned version of the COMTRADE data. Here, I use Harmonized System classification, 1992 revision (HS-92) at the four-digit level citep:the_growth_lab_at_harvard_university_international_2019. The HS-92 data covers about 5000 products at the 4-digit level, from 1995-2017. 
+
+[Cut down/change] As reference metric to identify shocks, I use GDP per capita data. As main source I use the Penn World Tables (9.1) (PWT) real GDP using national-accounts growth rates (RGDP^{NA}) citep:feenstra_next_2015. Since some variation exists in the estimation of GDP values, I repeat the analysis using the Maddison Project database citep:bolt_rebasing_2018 to avoid any results being an artifact from the source of GDP. While GDP is the only widely comparable metric for total output internationally, there are two important issues with using GDP as the reference metric. First, there are well-documented problems with measurement errors in GDP in many less developed countries. For instance, cite:jerven_poor_2013 documents how certain patterns in GDP have systematic biases for different reasons (e.g. exogenously enforced policy changes) at different times in Sub-Saharan Africa. Second, many important shocks might be missed. The empirical strategy rests on identifying stagnation or absolute declines in GDP. One can think of many types of economic shocks that would qualify as significant disturbances to all or some parts of the economy that does not necessary involve a negative change in the level of the aggregate economy. This becomes doubly problematic if there are systematic differences between different types of economies in their propensity to experience to experience growth slowdowns rather then declines in the absolute level of GDP.
+
+** Limitations
+
+\newpage 
+
+bibliography:UTVC26.bib
+bibliographystyle:humannat

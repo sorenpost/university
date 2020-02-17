@@ -1,0 +1,53 @@
+
+* Introduction of proposal
+
+(title, question, theory, methods main findings)
+
+*Research question:*
+
+#+BEGIN_QUOTE
+ Why is the funding of state-financed development finance institutons (DFIs) increasing while the state-funding of NGOs is reducing?
+#+END_QUOTE
+
+The research is motivated by the observation that as an overall trend, DFI capital is increasing, while funding for NGOs is falling.
+
+The purpose of the research is to, through the case selected, to develop more general framework for understanding why this change is occurring. Since there is very little literature on this phenomenon, the study takes an exploratory, theory-building approach. 
+
+*Design:*
+This also means that the study avoids leaning an a specific, existing theoretical framework. The subject will be examined through a case study on the Finnish DFI Finnfund and a set of NGOs that had their funding from the Finish state decreased. The subset of NGOs is to be selected from those NGOs that follow the general trend. The time-fame considered is the period post the Great Recession (2008). 
+
+In order to develop the framework, a very broad approach is taken. The study aims to use several different sources of data: literature on the impact, sustainability, and efficiency of NGOs, broader societal sentiments (such as the political climate, austerity measures), development specific sentiments (such North-South-dependency issues), statements from decision makers, and government statistics. From these sources, a number of indicators will be developed into a general framework.
+
+* Questions, critique
+- Research purpose/problem
+*Maybe a bit broad research aim:* While the proposal states one explicit question, it seems that there are (at least) two questions presented. In the Research design section, there is a mention of both "why" state funding is increasingly being shifted towards DFIs but also at what the social impacts of this shift. You write that you want to understand WHY but also that you want to develop a framework of social performance indicators. I think these are two different, if related, questions.
+
+There is also the risk that they require very different evidence to examine: the why question is to the motivations of the funding changes. That is, there is some need for subjective material from those that make the decisions. The second basically requires an extensive review of impact evaluations of the specific projects funded by each of the institutions studied. While this might very well provide a reference to whether it is good idea to shift the funding, there is no guarantee that is a substantial part of the decision-making. 
+
+*Another related point:* As far as I understand, the aim of the research is to build an understanding of what determines the change in funding structures for the specific organisations. 
+
+I understand that given the inductive nature of the process, nothing is set in stone yet, I think it might be a good idea to consider narrowing the scope of the inquiry a little bit. 
+
+You write that you want to review impacts (service delivery, # of people affected, social and economic catalytic effects and the sustainability of the effect), analyse value judgements (importance of dependency-sentiments, political climate), analyze broad societal circumstances (importance of budget austerity, potential of falling demand of NGO services). I think it is a lot of ground to cover, if you want be thorough. It seems that at least some of these could be full studies in themselves.
+
+- Research Design:
+*The research approach makes sense.* If there is no developed theoretical exlanation, the inductive approach is sensible.
+
+*Sample to study:* Do you have any notion of how many NGOs you want to study? Have you thought about how to screen and select the NGOs you want to study? 
+
+*Difference between DFIs and NGOs:* I had the understanding that DFIs do much of their work as loans or investments. This might be different from what NGOs do. Have you done any thinking to potential issues in how to evaluate and compare these different kinds of activities?
+
+*It is a very good point* that there probably is a greater amount of literature on NGOs - and therefor it might be easier to critique. At the same time, much of the information might be self-evaluations. Have you thought about how to evaluate different sources of information, how to discount them, etc?
+
+- 
+
+** Potential limitations:
+- Which data exists - already mentioned, but also regarding e.g. the studies actually published on some of the finish NGOs.
+- No mention is done on how many NGOs will be reviewed.
+
+* Notes
+
+Things the study want to do:
+p. 2: observe and abstract cases in accordance with the trend. 
+p. 2: purpose is to generate a better account of the subject institutions regarding "efficiency", "sustainability", "popular acceptance of their operation". o
+p. 3: will examine impact-related factors such as: service delivery, efficiency, people affected, social an economic catalytic effects, and sustainability of impact. To this comes value-judgement related factors (dependency, political views of standing coalition, etc). To this comes analysis of broad societal circumstances (impact of budget austerity, potential of falling demand of NGO services). It seems that at least some of these could be full studies in themselves.
