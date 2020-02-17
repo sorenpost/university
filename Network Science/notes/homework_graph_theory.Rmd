@@ -1,0 +1,184 @@
+---
+title: 'Homework: Graph theory'
+author: "SBP"
+date: "1/29/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Königsberg Problem 
+*Instruction:* Which of the icons in Image 2.19 can be drawn without raising your pencil from the paper, and without drawing any line more than once? Why?
+
+*Answer:* For at kunne tegne sådan en linje, i.e. en Eurlerian path, så må der maksimalt være to noder der har ulige antal links (fordi ulige antal links enten skal være start eller slut). Det er altså kun B der ikke kan.
+
+## Matrix Formalism
+*Instruction:* Let A be the $N \times N$ adjacency matrix of an undirected unweighted network, without self-loops. Let 1 be a column vector of N elements, all equal to 1. In other words $1 = (1, 1, ..., 1)^T$, where the superscript T indicates the transpose operation. Use the matrix formalism (multiplicative constants, multiplication row by column, matrix operations like transpose and trace, etc, but avoid the sum symbol $\sum$ to write expressions for: 
+
+ 1. The vector $k$ whose elements are the degrees $k_i$ of all nodes $i = 1, 2,..., N$.
+ 2. The total number of links, $L$, in the network.
+ 3. The number of triangles $T$ present in the network, where a triangle means three nodes, each connected by links to the other two (Hint: you can use the trace of a matrix).
+ 4. The vector $k_{nn}$ whose element $i$ is the sum of the degrees of node $i$'s neighbors.
+ 5. The vector $k_{nnn}$ whose element $i$ is the sum of the degrees of node $i$'s second neighbors.
+
+*Answer:*
+
+1. Vi kan bare tage en kolonne- eller row sums af matricen. Det gøre ved en 1 x N eller N x 1 vector af 1-taller, $\vec{i}$. For at få degree vectoren $\vec{k}$ tager vi derfor bare dot prod eller matrix vector mulitplication: $\vec{k} = A \vec{i}$
+2. Vi tager nu bare og ganger $\vec{k}$ med $i^T$: $L = \vec{k} \vec{i}^T$
+3. TODO
+4. TODO
+5. TODO 
+
+## Graph Representation
+*Instruction:* The adjacency matrix is a useful graph representation for many analytical calculations. However, when we need to store a network in a computer, we can save computer memory by offering the list of links in a $L \times 2$ matrix, whose rows contain the starting and end point $i$ and $j$ of each link. Construct for the networks (a) and (b) in image 2.20: 
+
+ 1. The corresponding adjacency matrices.
+ 2. The corresponding link lists.
+ 3. Determine the average clustering coefficient of the network shown in Image 2.20a
+ 4. If you switch the labels of nodes 5 and 6 in Image 2.20a, how does that move change the adjacency matrix? And the link list?
+ 5. What kind of information can you not infer from the link list representation of the network that you can infer from the adjacency matrix?
+ 6. In the (a) network, how many paths (with possible repetition of nodes and links) of length 3 exist starting from node 1 and ending at node 3? And in (b)?
+ 7. With the help of a computer, count the number of cycles of length 4 in both networks.
+
+*Answer:*
+
+ 1. *Corresponding adjacency matrices:* For undirected networks er $a_{ij} = a_{ji}$. For directed networks er $a_{ij}$ = 1 hvis der er et link fra node $j$ til node $i$. I igraph er det dog omvendt. Jeg ved ikke hvofor. Derfor:
+ 
+```{r}
+library(igraph)
+library(ggraph)
+
+undir_adjmat <- matrix(
+        c(0, 1, 1, 1, 0, 1,
+          1, 0, 1, 1, 0, 0,
+          1, 1, 0, 0, 0, 1,
+          1, 1, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0,
+          1, 0, 1, 0, 0, 0),
+        nrow = 6, ncol = 6, byrow = FALSE)
+
+colnames(undir_adjmat) <- 1:6
+rownames(undir_adjmat) <- 1:6
+
+dir_adjmat <- matrix(
+        c(0, 0, 1, 1, 0, 1,
+          1, 0, 1, 0, 0, 0,
+          0, 1, 0, 0, 0, 1,
+          0, 1, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0),
+        nrow = 6, ncol = 6, byrow = FALSE)
+
+colnames(dir_adjmat) <- 1:6
+rownames(dir_adjmat) <- 1:6
+
+```
+
+
+```{r}
+undir_graph <- graph_from_adjacency_matrix(adjmatrix = undir_adjmat,
+                            mode = "undirected",
+                            diag = TRUE,
+                            add.colnames = NULL # added as node names if present
+)
+
+dir_graph <- graph_from_adjacency_matrix(adjmatrix = dir_adjmat,
+                            mode = "directed",
+                            diag = TRUE,
+                            add.colnames = NULL # added as node names if present
+)
+
+ggraph(undir_graph, layout = 'graphopt') + 
+        geom_edge_link() + 
+        geom_node_point(size = 5) + 
+        geom_node_text(aes(label = name, color = "red"))
+
+ggraph(dir_graph, layout = 'graphopt') + 
+        geom_edge_link(arrow = arrow(length = unit(4, 'mm')),
+                               end_cap = circle(3, 'mm')) + 
+        geom_node_point(size = 5) + 
+        geom_node_text(aes(label = name, color = "Red"))
+```
+ 
+ 2. *Corresponding edge lists:* En edge list er bare en lang list at de linsk der er i et netværk. Altså to kolonner, hvor første kolonne er "afsender" noden og anden kolonne er "modtager" noder. Der er her ikke nogen måde at repræsentere noder der ikke har nogle links. Derfor mangler node 5. Dermed:
+ 
+```{r}
+undir_matlist <- matrix(
+        c("1", "2",
+          "1", "6",
+          "1", "3",
+          "1", "4",
+          "2", "3",
+          "2", "4",
+          "3", "6"),
+        ncol = 2,
+        byrow = TRUE
+)
+
+dir_matlist <- matrix(
+        c("1", "2",
+        "2", "3",
+        "2", "4",
+        "3", "2",
+        "3", "1",
+        "4", "1",
+        "6", "1",
+        "6", "3"),
+        ncol = 2,
+        byrow = TRUE)
+```
+ 
+```{r}
+
+undir_graph2 <- graph_from_edgelist(undir_matlist,
+                                    directed = FALSE)
+dir_graph2 <- graph_from_edgelist(dir_matlist,
+                                  directed = TRUE)
+
+ggraph(undir_graph2, layout = 'graphopt') + 
+        geom_edge_link() + 
+        geom_node_point(size = 5) + 
+        geom_node_text(aes(label = name, color = "red"))
+
+ggraph(dir_graph2, layout = 'graphopt') + 
+        geom_edge_link(arrow = arrow(length = unit(4, 'mm')),
+                               end_cap = circle(3, 'mm')) + 
+        geom_node_point(size = 5) + 
+        geom_node_text(aes(label = name, color = "Red"))
+
+```
+
+ 3. 
+
+
+## Degree, Clustering Coefficient and Components 
+*Instructions:* Consider an undirected network of size N in which each node has degree k = 1. Which condition does N have to satisfy? What is the degree distribution of this network? How many components does the network have?
+
+Consider now a network in which each node has degree k = 2 and clustering coefficient C = 1. How does the network look like? What condition does N satisfy in this case?
+
+##  Bipartite Networks 
+*Instructions:* Consider the bipartite network of Image 2.21.
+
+1. Construct its adjacency matrix. Why is it a block-diagonal matrix?
+2. Construct the adjacency matrix of its two projections, on the purple and on the green nodes, respectively.
+3. Calculate the average degree of the purple nodes and the average degree of the green nodes in the . 4. bipartite network.
+5. Calculate the average degree in each of the two network projections. Is it surprising that the values are different from those obtained in point (c)?
+
+## Bipartite Networks - General Considerations
+Consider a bipartite network with N_1 and N_2 nodes in the two sets.
+
+ 1. What is the maximum number of links $L_{max}$ the network can have?
+ 2. How many links cannot occur compared to a non-bipartite network of size $N = N_1 + N_2$?
+ 3. If $N_1$ << $N_2$, what can you say about the network density, that is the total number of links over the maximum number of links, $L_{max}$?
+ 4. Find an expression connecting $N_1$, $N_2$ and the average degree for the two sets in the bipartite network, $<k_1>$ and $<k_2>$.
+
+
+
+
+
+```{r}
+
+```
+

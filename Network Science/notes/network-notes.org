@@ -1,0 +1,324 @@
+#+TITLE: Notes: Network Science
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\newpage
+
+* Introduction
+
+- *Cascading failure:* Cascading failures = hvis et netwærk er et transport system (informationa, elektricitet, trafik) så vil en lokal failure betyde at "loaden" flytts til andre links. Hvs load er lille, så det ligegyldigt. Hvis load er for stor, så kan disse links også bryde sammen, og loaden der skal flyttes blivern u strre. Dette kan lede til at flere og flere links bryder sammen og at loaden bliver større og større, således at det samlede netværk bryder totalt sammen. Eksemler: DOS angreb å routere, IMF credit limits i pacific central banks 1997.
+  
+* Graph Theory
+- *Bridges of Koenigsberg:* "Kan man krydse alle broerne uden at krydse samme bro to gange?". Euler: Hvis der er en sti der ktrydser alle broer, og aldrig den samme, så må noder med ulige links være enten start eller slut. En sti kan kun have en start og en slut, så et system med mere en to noder med ulige antal links kan ikke ofylde kriterierne.
+
+- Et netværk er et "catalog of a system's components": noder (vertices) og links (edges).
+
+- *N* er antallet af noder. Er ofte referet til som "size of the network". Man adskiller noder ved i = 1, 2, ..., N.
+
+- *L* er antallet af links mellem noderne. Er sjældent labelled, fordi de nemt referes til med hvilke noder til binder sammen (fx (1, 4) er et link mellem node 1 og node 4.
+
+- *Directed vs Undirected:* et netværk er directed hvis alle links har en retning (fx URL'er) (hedder også en digraph). Det er undirected hvis ingen links har et retning (fx dating).
+
+- *Degree* = det antal links en node gar til andre noder er "degree". For den i'ende node er degree $k_i$. For et undirected netwærk bruges $k_i$, for et directed netværk skelnes mellem $k^{in}_i$ og $k^{out}_i$.
+
+- *Total links:* I et undirected network er antallet af links: $$ L = \frac{1}{2} \sum^N_{i = 1} k_i $$. Der ganges med en halv fordi alle links involvere to noder og derfor tælles dobbelt.
+
+- *Brief stat review:*
+  - Mean: $< x > = \frac{x_1 + x_2 + ... + x_N}{N} = \frac{1}{N} \sum^N_{i = 1} x_i$
+  - n^{th} moment: $< x > = \frac{x^n_1 + x^n_2 + ... + x^n_N}{N} = \frac{1}{N} \sum^N_{i = 1} x^n_i$
+  - Standard deviation: $\sigma_x = \sqrt{\frac{1}{N} \sum^N_{i = 1} (x_i - <x>)^2}$
+  - Distributon of x: $p_x = \frac{1}{N} \delta_{x, x_i}$ hvor p_x følger $\sum_i p_x = 1 (\int_{p_x} dx = 1)$
+
+- *Average degree:* er en vigtig egenskab for et netværk: $$ <k> = \frac{1}{N} \sum^N_{i = 1} = \frac{2L}{N} $$ og hvor $k_i = k^{in}_i + k^{out}_i$ og $L = \sum^N_{i = 1} k^{in}_i = \sum^N_{i = 1} k^{out}_i$ (fordi alle links starter et sted og stopper et sted.
+
+- *Average degree for directed network:* er altså: $<k^{in}> = \frac{1}{N} \sum^N_{i = 1} k^{in}_i = <k^{out}> = \frac{1}{N} \sum^N_{i = 1} k^{out}_i = L/N$ fordi der ikke er dobbelt-tælling.
+
+- *Degree distribution:* = p_{k}  giver sandsynligheden for at en given node har degree k. $p_k$ er altså en probability, i.e. $\sum^\infty_{k=1} p_k = 1$. I et netværk med N noder er degree fordelingen det normaliserede histogrm $p_k = \frac{N_k}{N}$, hvor $N_k$ er antallet af noder med degree = k. Simpelt. Antallet af noder med k-degre kan altså også fås ved $N_k = N p_k$ (igen, simpelt nok). Degree distribution er centralt i network science. Mange udregninger kræver at vi kender p_k. Fx: <k> kan skrives $\sum^{\infty}_{k = 0} k p_k$. Den præcise funktionelle form af p_k beskriver desuden ting som robusthed, spread of vira, etc.
+
+- *Adjacency matrix:* er en måde at repræsentere et netværk numerisk. For et netværk med N nod reder N rækker og N kolonner. Adjacency matricen A har $A_{ij} = 1$ hvis der er et link fra j til i. Læg mærke til at det er et link fra kolonne til række. $A_{ij} = 0$ hvis der ikke er et link. En undirected graf har to elementer per forbindelse ($A_{ij} = A_{ij}$). Den er altså symmetrisk. I vægtede netvlrj er $A_{ij}$ linket fra  $j$ til $i$ og $A_{ji}$ er linket fra $i$ til $j$. 
+
+- *Adjacency matrix and degree:* for et undirected netværk er en nodes degree enten kolonne eller row sums: $k_i = \sum^{N}_{j = 1} A_{ji} = \sum^N_{i = 1} A_{ji}$. For directed netwoks er row og column sums hhv ingoing eller outgoing degrees: $$ k^{in}_i \sum^N_{j = 1} A_{ij} \text{ , } k^{out}_i \sum^N_{j=1} A_{ji} $$
+
+- *Real networks are sparse:* Antallet af noder og links varierer meget i reallife netværk. Teoretisk er antallet af links mellem L = 0 og L = $L_{max}$, hvor $L_{max} = \frac{N(N-1)}{2}$ er det antal af links der er i en comlete graph (dvs hvor alle noder er forbundet til alle andre noder, og hvor $A_{ii} = 0, i.e. ingen noder forbinder sig til sig selv). Det fleste netværks er sparse, dvs $L << L_{max}$.
+
+- *Storing sparse networks:* Det betyder at de fleste adjacency matrices er sparse - i.e. mange af elementerne er bare 0'er. For meget store netævkr bliver det derfor hurtigt mere effektivt at obevarer netværker som en liste af links (i formen \{(1, 3), (2, 4), ..., etc \}) snarere end at holde den store matrix i hukkommelsen.
+
+- *Weighted networks:* I de fleste netværk er der i praksis ikke enten et link eller ikke et link. IStedet har links forskellige styrker. Det vil sige: istedet for $A_{ij} = 1,0$ så er det $A_{ij} = w_{ij}$. Det kan dog ofte lade sig gøre at approximate det vgtede netvrk med et binært netværk, der typisk er nemmere at analysere.
+
+- *Metcalfe's law:* "et netværks værdi = N^2". Jo flere der bruger et netværk, desto mere er det værd. Loven er baseret på $L_{max} = N(N-1) / 2$. Når N = 10, så er Lmax = 45. Når N er 20, så er Lmax = 190. Dette er er network externalities. To issues begrænser loven: 1) Fleste real world networks er sparse. Kun en lille del af muligil enks er udnyttet (dvs at den eksponentielle vækst i værdi ikke er helt sand). 2) Et link er ikke bare et link. Nogle link bruges en hel masse, mens andre links kun bruges i sjældne tilfælde.
+
+- *Bipartite networks:*  En bipartite graph er en graph der kan deles op i to sets, U og V, hvor hvert link forbinder en U node med en V node. Et velkendt eksempel: Actors and movies. U = actors, V = movies. En projection = actors (hvor actors er forbundet til handen hvis de har vært med i samme film), en anden projection = movies (hvor movies er forbundet til hinanden, hvis de samme actors var med). Kan udviddes til flere netværk, fx triartite (recipes - ingredients - compounds).
+
+- *Paths and distances:* Distance mellem noder i et netværk styres af deres indbyrdes "path length". En "path" går langs links i et netværk. Den længde er hvor mange links den strllkker sig over. En stig mellem node $i_0$ og $i_n$ er skrevet gennem en ordnet liste af n links: $P = \{ (i_0, i_1), (i_1, i_2), ..., ($_{n - 1}, i_n \}$.
+
+- *Shortest path and distance:* Distancen mellem node 1 og 3 er den korteste sti i mellem de to noder og noteres typisk $d_{1,3}$. I et undirected netværk er $d_{ij} = d_{ji}$. I et directed network er det typisk ikke tilfældet.
+
+- *Average path length:* <d> = average af alle shortest paths.
+
+- *Cycle:* stig med samme start og slut node.
+
+- *Eulerian path:* sti der går over hver link præcis en gang.
+
+- *Hamiltonian path:* en stig der besøger hver node præcis en gang.
+
+- *Number of shortest paths between nodes:* Antallet af shortest paths mellem to noder, $N_{ij}$, og deres længde, $d_{ij}$, kan findes direkte i $A_{ij}$. Hvis $A_{ij} = 1$, så er dij = 1. His $A_{ik}A_{jk} = 1$ så r dij = 2. $$ N^{(2)}_{ij} = \sum^N_{k = 1} A_{ik} A_{jk}  A^2_{ij} $$
+
+- *dij = d:* hvis der er en sti med længden d mellem i og j, så er $A_{ik} ... A_{lj} = 1$. Antallat af ....
+
+- *Breadth-first-search:* Dette er dog besværligt for store netværks. I stedet bruges BFS algoritmen. BFS kan sammenlignes med at lave ringe i vandet. Man bliver ved med at lave nye til man ammer target noden. Antallet af "etaer" med at lave ringe = d. Eksempel: start ved node 0. De noder der er forbundet med 0 hedder nu en. Alle noder (som ikke har et label endnu) som er forbundet til 1ere hedder 2. Og så videre.
+
+- *Average path length in directed network:* <d> for directed network: $$ d = \frac{1}{N(N-1)} \sum_{i,j = 1,N; i \neq j} d_{i,j} $$
+
+- *Connectedness:* To noder i og j er connected hvis der findes en stig i mellem dem. Det vil sige hvis $d_{ij} \neq \infty$. Et netværk er connected hvis der er en stig mllem alle node-ar. Det er disonnecte, hvis der er mindst et ar ij som har $d_{ij]} = \infty$. Hvis et netværk er opdet, således det er disconnected, kaldes de to unerdele for clusters eller components.
+
+- *Component:* En comonent er et ub netowrk, hvor der er en path mellem alle noder, men man ikke kan tiløje flere noder til dem, så de stadig vil have samme egenskaber.
+
+- *Bridge:* Et link der forbinder to comonents er en bridge. Generelt, så er en bridge et link, som hvis det bliver fjernet bertyder at netværket bliver disconnected.
+
+- *Find ud af om network er connected:* Lav BFS. Hvis antallet af labelled nodes  N (i.e. alle) så er netværket connected. Hvis ikke, så gå til en unlabelled node, og start BFS igen. Gentag til der ikke er flere unlabelled noder. De antal gange der startes forfra = antallet af components.
+
+- *Clustering coefficient:* Clustering coefficient viser hvor meget naboer til en given node linker til hinanden.
+
+- *Local clustering coefficient:*  For en node i med degree $k_i$ så er local clustering coefficient defineret som $$ C_i = \frac{2L_i}{k_i(k_i-1)} $$ hvor L_i er antallet af links mellem de k_i naboer til node i har. Det er altså normaliseret til mellem  og 1. 0 = ingen naboer har et links til en anden nabo. 1 = naboerne til i udgær en komlet graph -> alle linker direkte til hinanden.
+
+- *Fortolkning af C_i:* C_i er altså sansynligheden for at to naboer til i er forbundet. Ci er derved den lokale link-density.
+
+- *Average clustering coefficient:* fanger i hviklen hrad et helt netværk er clustered. $$ <c> = \frac{1}{N} \sum^N_{i = 1} c_i $$ Dette er for undirected networks. En anden fortolkning af C_i er antallet af lukkede trekanter som i deltager i.
+
+- *Global clustering coefficient:* $C_\Delta$ = $$ \frac{3 \times \text{number of triangles}}{\text{number of connected triplets}} $$ En connected triplet er et ordnet st af 3 noder ABC, sådan at A forbindes til B og B forbindes til C. En ABC trekant er derved lavet ud af 3 triplets: ABC, BCA, CAB. In contrast, hvis B er forbundet til A og C men A ikke er til C, så er der en åben triplet ABC. Konstanten 3 i formlen referere til at hver trekant er talt gange i triplets. 
+
+* Random Networks
+** The Random Network Model
+(Hedder også Erods-Renyi network.) De fleste netværk vi møder i verdne er ikke-ordnede, men rodede. De ligner lidt random networks. Random Netowrk modeller undersøger virkerlige netowrk egenskaber gennem kunstige netværk, der er truly random. Her placeres links mellem noder tilfældigt. 
+
+Typisk bruges en af to definitioner af random netowrks: 
+- G(N, L) model: N noder er forbundet gennem L tilfældigt placerede links.
+- G(N, P) model: N noder. Hvert node-par har P sansynlighed for at have et link i mellem sig.
+
+Altså, G(N, L) fixer antallet af links, og G(N, P) fixer sandsynligheden for at der et link.  I G(N, L) modellen er nodernes avg. links: $<k> = 2L/N$. Andre netowrk egenskaber er dog nemmere udregne i G(N, P). 
+
+I G(N, P) så starter vi med N isolerede noder. Så vælges et node par, og et tilfældigt tal mellem 0 og 1. Hvis tallet er større en p, såsættes et link. Dette gentages N(N-1)/2 gange (i.e. for alle parrene).
+
+** The Number of Links
+Sandsynligheden for at et random netowrk har L links er produkt af tre ting. 
+
+1. Sandsynligheden for at L af de $\frac{N(N-1)}{2}$ er success'er. Dvs $p^{L}$.
+2. Sandsynligheden for at resten af links ikke er en success. Altså sandsynligheden for at der er $\frac{N(N-1)}{2} - L$ failures. Altså: $$(1 - p)^{N(N-1)/2 - L}$$
+3. en kombinatorisk faktor som tæller hvor mange måder vi kan placere L-links mellem $\frac{N(N-1)}{2}$ par: $$ \binom{\frac{N(N-1)}{2}}{L} $$
+
+Altså: *sandsynligheden for at der er L links*, $p_{L}$, kan skrives som
+
+$$ p_{L} = \binom{\frac{N(N-1)}{2}}{L} p^{L} (1 - p)^{\frac{N(N-1)}{2} - L} $$
+
+Dette er en binomial distribution. Det *forventede antal af links* er derved: 
+
+$$ <L> = \sum^{N(N-1)/2}_{L = 0} L p_{L} = p(\frac{N(N-1)}{2}) = p \text{ gange antallet af forsøg} $$
+
+*Gennemsnits degree er således* bare udtrykt ved $<k> = p(N-1)$. Her er $p$ = sandsynligheden for at noden er forbundet med en given anden node, og N-1 erdet højeste antal af noder man kan være forbundet med (fordi man ikke kan være forbundet med sig selv).
+
+*Binomial distribution: mean and degree:* En binomial distribution giver os sandsynligheden for x antal af successer i N udahængige experimenter, hvor der er to mulige outcomes (success eller failure). Success har sandsynligheden $p$ og failure har sandsynligheden $1 - p$.
+
+- Sandsynligheden for x successer i N trials. $$ p_{x} = \binom{N}{x} p^{x} (1 - N)^{N-x} $$
+
+- Mean (first moment) antal af successer: $$ <x> = \sum^{N}_{x = 0} x p_{x} = Np $$
+
+- Second moment: $$ <x^2> = \sum^{N}_{x=0} x^2 p_{x} = p(1-p)N+p^2N^2$$
+
+- Standard deviation: $$ \sigma_{x} = (<x^2> - <x>^2)^{1/2} = (p(1-p)^N)^{1/2} $$ 
+
+** Degree distribution 
+*Binomial distribution:* I en given instance af et netværk har nogle noder mange likns og nogle noder har færre. Denne fordeling fanges af $p_{k}$, degree distriubtionen (i.e. sansynligheden for at en given noder har $k$ links).
+
+Sandsynligheden for at en node $i$ har præcis $k$ links er produkt af tre termer: 
+
+1. Sandsynligheden for at noden har $k$ links: $p^k$.
+2. Sandsynlighed for at de resterende links ikke er der (dvs N-1-k links mangler): $(1 - p)^{N - 1 - k}$.
+3. Antallat af måder man kan have $k$ links fra N - 1 mulige: $\binom{N-1}{k}$. Altså bare den binomiale fordeling $$ p_{k} = \binom{N - 1}{k} p^{k} (1-p)^{N - 1 - k} $$
+
+*Poisson distribution:* De fleste real world networks er sparse. Det betyder at $<k> << N$.  Her er fordelingen godt approximmeret af Poisson fordelingen: $$ p_{k} = e^{-<k>} \frac{<k>^{k}}{k!} $$
+
+Det den binomiale fordeling og Poisson fordelingen beskriver har den samme kvanitet og de har derfor samme egenskaber.
+- De peaker begge omkring <k>. Når p stiger, så bliver netværket mere dense, og <k> stiger og bevæger sig til højre. Bredden af fordelingen styres af p eller <k>. Desto mere dense, desto bredere fordeling.
+
+Når vi bruger poisson, så skal vi huske på at:
+- Den præcise fordeling er binomial. Poisson er altså kun en approx når <k> << N.
+- Fordelingen ved Poisson er at <k> og <k^2> og $\sigma_k$ har en simplere form for de kun afhænger af <k>.
+- Poisson bruger ikke explicit N og derfor skelnes ikke mellem netværk af forskellige størrelse, så længe <k> er den samme.
+
+For små netværk (N = 10^2) er degree distribution ikke kun approx af Poisson. For N = 10^3, 10^4, så er den indistinguishable fra Poisson. 
+
+** Real networks are not Poisson
+Hvor stor er forskellen på noden med færrest og flest links? Hvis hvert menneske kender ca 1000 mennesker, og der er et samfund med N = 7 * 10^9 menesker, såkan vi udlede (se advanced topics) følgende:
+- den mest forbundne person forventes at have ca $k_{max} = 1.185$ venner (i et random network).
+- Den mindst forbundne node, $k_{min} = 816$.
+- $\sigma_{k}$ (dispersion) $= <k>^{1/2}$. For <k> = 1000, så er dispersion = 31.62. Altså vil de fleste menneske have mellem 968 og 1032 venner = meget smal interval.
+
+Dette er et vigtig resultat: i random networks er de fleste noder i nærgeden af <k>. Dette er i konflikt med de fleste virkelige netværk. Her er der mange outliers (meget eller meget lidt forbundne noder). 
+
+*Hvorfor mangler hubs?:* 1/k! termet i poisson fordelingen sænker sandsynligheden for store degree-noder meget. Sterling-aproximationen $$ k! \approx (\sqrt{2 \pi k}) (\frac{k}{e})^{k} $$ tillader os as omskrive poisson til 
+$$ p_{k} = \frac{e^{-<k>}}{\sqrt{2 \pi k}} ) (\frac{e <k>}{k})^{k} $$ 
+
+Det betyder at for noder med k > e <k> så er terminen i parents mindre end 1, hvilket betyder at for store k, så er begge k-afhængige terminer stlrkrt faldende som k stiger. Det vil sige at i et random netowrk falder sandsynligheden for høje k noder hurtigere end eksponentielt.
+
+** The evolution of a random network
+I vin-concktail party eksemplet snakker folk sammen, som festen forløber. Det vil sige at snakke-links kommer i løbet af aftenen. Det er det samme som i G(N, P) modelelen at øge o langsomt. Det har stor betydning for netværkets udformning. Vi kan se dette ed at kigge på største cluster i netværket, $N_G$, som <k> ændres.  
+
+- For p = 0 har vi <k> = 0, N_G = 1, og N_G/N = 0 for høje N.
+- For P = 1, <k> = N-1, N_G = N, N_G/N = 1.
+
+Denne process er ikke gradvis. For små <k> så er N_G/N = 0 for store N. Så snart <k> overstiger en kritisk værdi så stiger N_G/N og signalere at en stor cluster fremkommer (giant component).
+
+Erdos + Renyi forudsagde at betingelsen for at en gian component fremkommer er <k> = 1. Altså skal der i gennemsnit være et link per node, før der komme en gian component. 
+
+Det vil altså sige at vi kan udtrykke den $p$ nødvendigt for en giant component ved at finde sandsynligheden for <k> >= 1. Fordi vi ved at $<k> = \frac{2<L>}{N} = p(N-1)$ så kan vi skrive $p_{C} \frac{1}{N-1} \approx 1/N$. Det vil altså sige at den link-probaiblity der er nødvendig for at få en giant component falder som N stiger. Det punkt når der emerger en giant component er kun en af flere topologiske regimer vi kan identificere. 
+
+1. *Sub-critical regime: 0 < <k> < 1. (P < 1/N):* Når <k> = 0 er der ingen links. Som <k> stiger tilføjes N<k> links. Giver <k> < 1 er der nu små clusters. Den relative størrelse af den største cluster er stadig N_G/N = 0. Når <k> < 1 så er den største cluster et træ med størrelse $N_G \approx ln N$, det vil sige at den vokser meget langsommere end netvækerts størrelse. Altså: i sub-critical regime er der mange små clusters, hvis størrelse følger en exponentiel distribution.
+2. *Critical point: <k> = 1 (p = 1/N):* Det kritiske punkt er der hvor netværker går fra ikke at have en critical component til at have en. (fra <k> < 1 til <k> > 1). Her er den relative størrelse (N_G/N) stadig 0. Størrelsen af største component = $N_G \approx N^{2/3}$. N_G vokser altså stadig langsommere end netværket så den relative størrelse falder som $N_G/N \approx N^{1/3}$ når N -> $\infty$. I absolutte taler er der dog et stort  hop i størrelsen af N_G. Nu er der altså flere små components. Fleste har en tree form, få er måske loops. Størrelsen følger en power-law fordeling. Egenskaber for netværk ved critical point ligner systemer der undergår en phase transition.
+3. *Supercritical regime: <k> > 1 (p > 1/N):* Dette regime er det der har mest relevans for virkelige netværk. Nu har vi en component der ligner et netævkr. I omegnen af critical point er $\frac{N_G}{N} \approx <k> - 1$ eller $N_G \approx (p - p_{C}$ hvor p_C er givet ved 1/(N-1). Altså så indeholder N_G en finit fraction af noderne (og ikke = 0 som før). Desto længere vi kommer fra ciritcal point, desto højere fraktion. For store <k> gælder $N_G = (p - p_C)N$ ikke. Her er forholdet mellem N_G og <k> ikke-linært. Nu er der en del isolerede components og en giant. Dsse små er tree-formede, giant inderholder loops og cycles. Supercritical regime fortsætter indtil alle components er "opslugte" af giant comp. 
+4. *Connected regime: <k> > ln N (p > ln N / N):* for store nok p absorberer giant component alle de andre. I.e. $N_G \approx N$. <k> = ln N. Netværket er dog stadig ret spare, da ln N / N -> 0 når N -> $\infty$. Netværket er en complete graph ved <k> = N-1. De isolerede noder og minicomponent collapser altså sammen til en giant component gennem en phase transition som <k> stiger.
+
+** Real networks are supercritical
+Fra random networks er der to forudsigelser som er direkte relevante for virkelige netværk. 
+
+1. Som <k> stiger over 1, så skal der komme en giant component. Dvs for <k> > 1 begynder noderne at organisere sig i en netværks form som vi kender det.
+2. For <k> > ln N er alle komonenter absoreret af giant component. = single connected network.
+
+Gælder disse tre forudsigelser så for ægte netværk? Dette kan testes empirisk.
+
+Virkelige netværk overskrider <k> = 1 grænsen markant. Fx: Science collaboration = 8.08, internettet = 6.34, actor network = 87.71, protein interactions = 2.90. 
+
+Vi forventer at der er en giant component for <k> > 1 og et connected network for <k> > ln N. Det gælder dog for ægte netværk at der er en connected netowkr langt før <k> ln N. De fleste ægte netværk overholder ikke <k> > ln N, og er derfor i supercritical fase. De burde derfor have små, disconnected networks og en enkelt giant. Men de har de ofte ikke. Det er altså ikke alle dele af ægte netværk der er godt approximeret af Erdos-Renyi netværk. 
+
+** Small Worlds
+Small World property = seperation mellem noder (stien) er overraskende lav (tænk 6 degrees of seperation). 
+1. Hvad betyder det at en afstand er "lille"?
+2. Hvorfor er afstanden kort?
+
+Hvis et netværk ahr average degree <k> så har en node i gennemsnit:
+- <k> noder ved distancen 1 (et hop)
+- <k>^2 noder ved distancen 2 (et hop)
+- <k>^3 noder ved distancen 3 (et hop)
+- <k>^d noder ved distancen d (et hop)
+
+Det vil sige at hvis der i et social netværtk er <k> = 1000, så er der 10^6 ved 3 degree distance. 100^3 = mia. 
+
+Mere præcist så er antallet af noder distance d fra en en node (hvis der ikke tages notits af overlap og redundancy) = $$ N(d) \approx 1 + <k> + <k>^2 + ... + <k>^d = \frac{<k>^{d+1} -1}{<k> - 1} $$
+
+N(d) kan ikke være større end N, så vi kan identifieres $d_{max}$, eller netværkets diameter ved $N_{d_{max}} \appox N$. Ved at antage at <k> >> 1 kan vi fjerne -1 fra formlen (fordi den ikke giver praktisk betydning) denom og nom. Vi får derved: $<k>^{d_{max}} \appox N$, diameteren er deved $d_{max} = \frac{ln N}{ln <k>}$ som er den matemtiske formulation af small world fænomenet. 
+
+
+Der er dog en vigtig hage. I de fleste real world netværk er $\frac{ln N}{ln <k>}$ en bedre approximation af <d>, dvs afstand mellem to tilfældigt valgte noder. Dette er fordi $d_{max}$ er domineret af få ekstreme stier, og <d< er gennemnsittet af alle stier. Typisk er small world phenom altså defineret ved 
+
+$$ <d> = \frac{ln N}{ln <k>} $$
+
+der beskriver sammenhængen mellem average degree og netværkets størrelse.
+
+- Generelt geælder det at ln N << N og distancen er derved magnitudes mindre end N. Ved "small" menes dermed at avg path length afhænger logaritmisk på system size
+- $\frac{1}{ln <k>}$ termet betyder at distancen er kortere i mere dense netværk
+- I virkewlige netværk er der dog systematisk korrektioner ved approximationen af <d>, fordi antallet af noder ved distancen d > <d> falder meget hurtigt. Det vil sige at der er meget få noder længere væk en gennemsnit (fordelingen er meget smal).
+
+Ud fra disse beregninger er <d> world social network ca 3.3. Altså meget mindre end 6.
+
+** Clustering Coefficient
+Local clustering coefficient fortæller om forholdet mellem en nodes naboer. Er de forbundet til hinanden?
+
+- Local clustering coefficient = $C_i$
+- C_i = 0, ingen links mellem en nodes naboer.
+- C_i = 1, alle en nodes naboer er forbundet til hinanden.
+
+For at udregne C_i skal vi estimere det forventede antal links L_i mellem en nodes k_i naboer. Sandsybligheden for et link mellem to noder er $p$. Siden der $\frac{k_i(k_i - 1}{2}$ mulige links, så er den forventede L_i: $$ <L_i> = p(\frac{k_i(k_i - 1}{2}) $$.
+
+C_i kan således findes ved: $$ C_i = \frac{2 <L_i>}{k_i (k_i - 1) = p = \frac{<k>}{N}} $$
+
+Denne laver to forudsigelser: 
+1. For en fast <k> så betyder større N at C_i bliver mindre. <c> følger også formlen.
+2. Local clustering coefficient er uafhængig af degree for noder.
+
+Når disse to predictions testes mod virkelige netværk finder man at den ikke godt beskriver clustering i dem. <C> / <k> er stort set uafhængig af N i ægte netværk. Det er imod forudsigelsen om $C_i = p = \frac{<k>}{N}$.
+
+C er afhængig af k_o- C(k) falder med degree. Dette er imod forudsigelen også.
+
+Virkelige netværk har altså højere clustering end forventen under random netværk modellen.
+
+** Summary
+Er virkelige netværk Random Networks? Nej. De fejler på en række kvantitative mål. 
+
+1. *Degree distribution:* Random netværk har nn binomial fordeling, som er godt approximeret af Poisson (når <k> << N). Poisson fejler dog i at forklare degree distribution. Virkelige netværk har noder der meget mere forbundne end under Poisson (altså, der er meget flere ekstreme værdier, i.e. fordelingen af bredere).
+2. *Connectedness:* I en random network model fordusiges det at for <k> > 1 skal der være en giant component. Dette gælder for de fleste virkeligt netværk. Det gølder dog ikke at de først er connected når <k> > ln N. I virkelige netværk sker det langt før.
+3. *Average path length:* Random network theory forudsiger at path length følger $<d> \approx \frac{ln N}{ln <k>}$. Dette passer meget godt med empiriske observationer.
+4. *Clustering coefficient:* I et random netværk er clustering coefficient uafhængig af en nodes degree, og acA afhænger af system størrelsen (1/N). Empirisk ser det modsat ud til at der for virkelige netævkr gælder at C(k) falder som en nodes degrees stiger, og er stort set uafhængigt af N.
+
+*Hvorfor overhovedet bruge Random Networks når de kun er gode til at beskrve small world?* Fordi hver ghang vi observerer en egenskab ved et netværk skal ve teste om den egenskab ved et netævrket kan være opstået tilfældigt. Her er random netværk modellen referencen. Det er altså en slags null-model.
+
+** Homework [0/6]
+*** TODO Erdős-Rényi Networks
+Consider an Erdős-Rényi network with N = 3,000 nodes, connected to each other with probability y$p = 10^{–3}$.
+1. What is the expected number of links, <L>?
+2. In which regime is the network?
+3. Given the linking probability $p = 10^{–3}$, calculate the number of nodes $N^{cr}$ so that the network has only one component.
+4. For the network in (3), calculate the average degree <$k^{cr}> and the average distance between two randomly chosen nodes <d>.
+5. Calculate the degree distribution $p_k$ of this network (approximate with a Poisson degree distribution).
+
+1. <L> findes ved $p$ gange antallet af trials. Altså: $$ <L> = 10^{-3} (\frac{3000 (3000 - 1)}{2}) = 4498.5
+2. For at finde det regime som netværket ligger i, skal vi kigge på <k> (avg degree). For et random network gælder det $<k> = p(N-1)$, altså: $10^{-3}(3000-1) = 2.999$. Det betyder at vi er i supercritical eller connected (fordi <k> > 1). Nu skal testes om <k> > ln N. ln(3000) = ca. 8. Altså <k> < ln N. Derfor er vi i supercritical.
+3. For at kun have en component skal netwærket være connected. Det vil sige at vi skal være i det sidste regime. Altså: <k> > ln N. Vi kan derfor bare solve for N: $p(N - 1) = ln N$ eller $p > ln N/N$. Svaret er ca 9120 noder.
+4. Vi har et netværk på 9120 noder og en p på 0.001. Vi kan finde <k> ved p(N-1). Altså: 0.001(9120 - 1) = 9.119. Vi ved at når <k> >> 1 så er <d> = $\frac{ln N}{ln <k>}$. Altså: $<d> = \frac{ln 9120}{ln 9.119} = 4.125$.
+5. 
+
+*** TODO Generating Erdős-Rényi Networks 
+1. Relying on the G(N, p) model, generate with a computer three networks with N = 500 nodes and average degree (a) <k> = 0.8, (b) <k> = 1 and (c) <k> = 8. Visualize these networks.
+
+*** TODO Circle Network 
+1. Consider a network with N nodes placed on a circle, so that each node connects to m neighbors on either side (consequently each node has degree 2m). Image 3.14(a) shows an example of such a network with m = 2 and N = 20. Calculate the average clustering coefficient <C> of this network and the average shortest path <d>. For simplicity assume that N and m are chosen such that (n-1)/2m is an integer. What happens to <C> if N >> 1? And what happens to <d>?
+
+*** TODO Cayley Tree 
+A Cayley tree is a symmetric tree, constructed starting from a central node of degree k. Each node at distance d from the central node has degree k, until we reach the nodes at distance P that have degree one and are called leaves (see Image 3.16 for a Cayley tree with k = 3 and P = 5.)
+
+1. Calculate the number of nodes reachable in t steps from the central node.
+2. Calculate the degree distribution of the network.
+3. Calculate the diameter dmax.
+4. Find an expression for the diameter dmax in terms of the total number of nodes N.
+5. Does the network display the small-world property?
+
+*** TODO Snobbish Network 
+ Consider a network of N red and N blue nodes. The probability that there is a link between nodes of identical color is p and the probability that there is a link between nodes of different color is q. A network is snobbish if p › q, capturing a tendency to connect to nodes of the same color. For q = 0 the network has at least two components, containing nodes with the same color.
+
+ 1. Calculate the average degree of the "blue" subnetwork made of only blue nodes, and the average degree in the full network.
+ 2. Determine the minimal p and q required to have, with high probability, just one component.
+ 3. Show that for large N even very snobbish networks (p≫q) display the small-world property.
+
+*** TODO Snobbish Social Networks 
+ Consider the following variant of the model discussed above: We have a network of 2N nodes, consisting of an equal number of red and blue nodes, while an f fraction of the 2N nodes are purple. Blue and red nodes do not connect to each other (q = 0), while they connect with probability p to nodes of the same color. Purple nodes connect with the same probability p to both red and blue nodes
+
+ 1. We call the red and blue communities interactive if a typical red node is just two steps away from a blue node and vice versa. Evaluate the fraction of purple nodes required for the communities to be interactive.
+ 2. Comment on the size of the purple community if the average degree of the blue (or red) nodes is <k> >> 1.
+ 3. What are the implications of this model for the structure of social (and other) networks?
+
+* The Scale-Free Property
+
+** TODO Introduction
+
+
+
+
+
+
+** TODO Power Laws and Scale-Free Networks
+** TODO Hubs
+** TODO The Meaning of Scale-Free
+** TODO Universality
+** TODO Ultra-Small property
+** TODO The Role of the Degree Exponent
+** TODO Generaiting Networks Arbitrary Degree Distributions
+** TODO Summary
+
+* The Barabasi-Albert Model
+* Evolving Networks
+* Degree Correlations
+* Network Robustness
+* Communities
+* Spreading Phenomenon
