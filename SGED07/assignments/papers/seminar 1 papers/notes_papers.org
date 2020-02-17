@@ -1,0 +1,66 @@
+* DONE Clara: A case study on Sustainability theory and practise in the Swedish Mountain Regions
+  CLOSED: [2020-01-23 Thu 15:34]
+
+*Research question:* What theories of sustainability are used and how do different actors in the Swedish Mountain Areas work towards climate action and sustainability accordingly?
+
+Sub questions:
+ - Do different sectors and actors act according to different theories of sustainability? If so, why and how? What are the underlying agendas? 
+ - What are the biggest environmental challenges facing these areas and what actions are being taken towards mitigation of the effects?
+- What are the actors and interconnections between them in these areas and what influence do they have on climate action? 
+ - How do actors communicate their climate action and what is there motive?
+ - How have behaviours and way of life in these areas changed throughout the climate change debate?
+
+*Idea:* Previous design was aim at doing a more descriptive case study (docs, interviews). Now the goal is to look a how sustainability theories plays a role in relation to the case (a region/municipality) and to the SDGS (esp. 13 on combating climate change). 
+
+*Method:* Discourse analysis, document analysis, interviews. 
+
+*Context:* The idea now is to make a case study of a region or municipality only and compare actors within that geographical limit. Unit of observation is to compare actors within that geographical limit.
+
+*Comments:*
+- "actors from many different sectors" - what does that mean? What kind of sectors? NGO/Non-NGO, different industries, different branches of government?
+- Is there some sort en central information source you can use? How broad are we talking with how theories are used in a region in the Swedish Mountain Areas?
+
+* TODO Francis:
+* TODO Jana:
+* TODO Kira:
+* DONE Søren:
+  CLOSED: [2020-01-24 Fri 10:50]
+
+*Research question:*
+ 
+1. *How is the relationship between economic activities associated with an economy’s impact and recovery from recessionary shocks?*
+   1. How is the structure of the input-output network related to the impact and recovery from recessionary shocks?
+   2. How is the structure of the product-capability network related to the impact and recovery from recessionary shocks?
+   3. In what ways does the structure of the input-output network and the product-capability network condition each others effects on economic resilience?
+
+2. *How is the relationship between economic activities associated with an economy’s structural change following recessionary shocks?*
+   1. How does the depth and duration of recovery from shocks affect the portfolio and development of new economic activities?
+   2. How does the relationship between economic activities (the product-capability network) condition an economy’s structural change after shocks?
+
+*Idea:* There is a lot of evidence that recessions and economic shocks affect different countries and regions very differently. However, there isn't a ton of good evidence on structural factors in the economy that determine the impact. Most of the empirical evidence have focused on if industrial diversity or specialization makes an economy more resilient. 
+
+More recently, there has been a focus on the kind of relationship there is between sectors. This has been modeled on the input-output-relationship between industries. It has been shown how the shape of this network can make sector specific shocks transmit to the whole economy, or help economic shocks wash out of the economy. There has been a lot of work on these network effects recently.
+
+There is another important relationship between economic activities, and that is how similar the activities are. When you quantify this relationship, it has been shown to be a very good predictor of what an economy will start to produce next. Basically, the theory is that these economic capabilities already present in an economy are recombined or reorganized to do something. 
+
+This should also have an effect on an economy's ability to redirect its resources or to redeploy its labor after economic shocks or when some industries go under. If the relationship between economic activities is close, it should be easier to redirect resources, but you might get caught in the same kind of activities, that are not so profitable anymore. If an economy is more widely connected, there might be less overlap between input (so unemployed peoples skills might not be useful) but it could be easier to find sectors to grow in. 
+
+The idea is to study how this network of capabilities affect resilience to economic shocks and how it can modify the impact of the input-output relationship. 
+
+
+*Method:* Study is a cross country study on 43 countries (they are the ones that are covered by harmonized input/output relationship) during the great recession. Test is on the different impact of the recession conditioned on the input-output relationship and the capability relationship between activities. 
+
+*Explain research questions:* 
+
+* Notes:
+** Feedback
+- motivate development-studies part.
+- DONE Husk at få fat i et kort.
+- DONE Send link til Frida. (Hun fandt den selv)
+- *Aim:* Try to only focus on one or two aims.
+- *RQ:* Tend to limit descriptive questions. Its okay, if the statistics are sophisticated/analytical.
+- *Language:* Try to avoid I, We, etc. [Hard disagree].
+- *Reference list:* Not relevant
+
+** Future seminars
+ -  

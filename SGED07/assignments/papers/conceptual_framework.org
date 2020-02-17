@@ -1,0 +1,63 @@
+#+TITLE: SEMINAR DRAFT: Conceptual framework
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+
+\newpage
+
+* Resilience
+  What does it mean for an economy to be resilient? Although resilience is generally occupied with how regions and economies deal with shocks, in practice, the concept has remained ambiguous. Two important notions are "engineered" and "evolutionary" resilience. In economic geography, they represent a conflict that underpins the vagueness that have led to accusations of conceptual "fuzzyness" citep:pendall_resilience_2010,markusen_fuzzy_2003. Whereas "engineered" resilience refers to how a system "bounce back" and return to its pre-shock state or path, evolutionary notions of resilience is concerned with long term transformation, adaptability and fitness of the system citep:boschma_towards_2015. As noted by cite:olsson_why_2015, it seems then that an economy is resilient if it resists change and if it changes. 
+
+A central tension in the different approaches is in how to understand and model economic systems, rather than in the application of resilience alone. For instance, by modeling engineered resilience in way of Friedman's string along a board citep:friedman_monetary_1964,friedman_plucking_1993 (where shocks are "plucking" the string), we define some economic growth equilibrium against which disturbances and recovery is measured. This is in contrast to evolutionary approaches that model economies as undergoing continuous change. In the context of disturbances and resilience, this means that growth paths are subject to change, akin to a punctuated equilibrium dynamic. This is an important distinction, both in theory and in practice. For example, cite:cerra_growth_2008,cerra_international_2013 shows how lingering effects from recessions permanently lowers the growth of economies. Despite whether or not aggregate output rebounds quickly, surely the fact that an economy's long term economic performance is changed should be considered in evaluating its resilience.
+
+I follow the notion of resilience developed in the evolutionary framework in  cite:crespo_resilience_2017. Resilience is here a normative concept and concerns the ability to maintain or recover to "good" outcomes, despite disturbances. For this paper, resilience is measured in three dimensions:
+
+ 1. The ability of the economy to withstand short term shocks
+ 2. The ability of the economy to recover from recessionary downturns
+ 3. The ability of the economy to continually adapt to maintain growth over time
+
+* Industrial composition and input-output network
+It has long been recognized that an economy's mix of industries and the relationship between them play an important role in vulnerability to recessionary shocks and macroeconomic fluctuations citep:conroy_concept_1975. 
+
+In most of literature, the economy has been modeled in one of two ways. First, a substantial literature has treated the economy as group of discrete sectors. Here, the industries in an economy follows a "portfolio"-logic citep:deller_did_2016,martin_how_2016, where higher levels of industrial diversification, often measured through the concentration of industrial output (e.g. the Hirfendahl-Hirschman Index), is assumed to be a barrier to shocks. This approach is related to cite:lucas_understanding_1977 argument that when an economy is diverse enough, sector-shocks dissipate and aggregate output concentrates around the average very quickly.
+
+Second, recent contributions have formalized (and substantiated empirically) how the network linkages between industries in an economy can serve to isolate or magnify shocks. By modeling input-output (I/O) relationships as a network, cite:acemoglu_networks_2016,acemoglu_network_2012 show how smaller asynchronous shocks usually expected to "wash out", can transmit through down- and upstream linkages to the greater economy. Aggregate fluctuations (such as recessionary shocks) are essentially the co-movement of dis-aggregated sectors. As such, the question becomes what kind of economic organization is conducive to co-movement.
+
+For a simple example, consider the three four-sector economies represented in figure [[fig:3networks]] Assume that each sector makes one product which is either sold to households or used as the input in other sectors' production. Let their production function take only two inputs: labor and some combination of intermediate inputs (provided by other sectors).  
+
+#+CAPTION: Three stylized input-output configurations
+#+LABEL: fig:3networks
+[[./tog2.png]]
+
+The first economy is completely horizontal and the production in each sector does not depend at all on the performance of other sectors. A shock to any sector only impacts the aggregate output by the size of the shock. While extreme, this is essentially the model used by many macro-economic and "portfolio"-style approaches. In other words, there are no network effects in play.
+
+The second economy is completely vertical. Here, the source-sector (1) is the full provider of intermediate inputs used in sector 2, which is the full provider of inputs used in sector 3, and so on. Shocks to the output of the first sector in turn limits the available intermediate input to sector 2. This decreases the output of the second sector, impacting the inputs of the third. This means that a shock to the source-sector has (decreasing) knock-on effects throughout the supply-chain. The impact of any upstream-shock is therefor multiplied as it cascades through the economy.   
+
+The third economy follows a spoke-hub configuration. Say that sector 1 produces some general technology, that is used in the more specialized production of the three other sectors. A shock to the central sector has two important effects on volatility. First, it has a first-order effect on each of the peripheral productions. Secondly, however, the link from these sectors spread through the now limited input available for the central sector. As such, each of the peripheral sectors has second-order impacts on all the other peripheral sectors.
+
+While stylized, the last network suggest an important effect in real networks: the presence of highly connected sectors. cite:carvalho_micro_2014 demonstrates that empirically, the link distribution in the U.S. input-output network follows a power law distribution. This means that a few very connected sectors dominate the economy, suggesting that the real-world economic organisation mirrors the spoke-hub-configuration much more than the horizontal economy. In turn, the network as a whole exhibits "small world" phenomena, meaning that the distance between any given node is significantly shortened. These giant hubs thus potentially act as shock conductors. An empirical understanding of how these linkages are conditioned by the relatedness between economic activities (without many of the more rigid assumptions usually attached) could provide an important insight into how economies reacts to shocks.
+
+* Economic capabilities and relatedness between activities
+The literature on economic complexity and diversification has demonstrated how co-export patterns of products can tell us about the economic capabilities in a country citep:hidalgo_product_2007. These productive capabilities can be combined in various ways to produce different products. When modeled as a network, this framework have proven influential in predicting the path-dependent process countries develop along citep:coniglio_pattern_2018,oclery_productive_2018,hausmann_atlas_2013. 
+
+Countries tend to expand into activities closely related to the ones already present in the economy. This means that countries with a basket of productive activities that is widely connected in this product-capability network has a much larger developmental "space of opportunity" than countries that are more sparsely connected. This relationship has implications for resilience and for structural change. 
+
+The relatedness between economic activities can influence its resilience in a couple of ways. First, if an economy's activities are closely related, it follows that they share much of the required know-how, institutional framework, and infrastructure. It should therefor be easier to redirect resources to productive sectors in the economy, should a sector be impacted by shocks. For instance, cite:neffke_agents_2018 finds that establishments in sectors that are more "densely" connected to the capabilities in the economy has a higher likelihood of survival. Similarly, evidence on suggests that the reintroduction of workers after employment is easier when the impacted sectors are closely related to the sectors in the regional economy. This suggests that the "coherence" of an economy's productive activities could facilitate the recovery or flexibility of the economy in face of disruption. However, due to redundancy in such a network, a more extensive, weakly connected network could better facilitate the transfer of information, an important source of unrelated diversification and product "upgrade" citep:zhu_how_2017.
+
+* Re-organization and structural change
+The framework outline above can help our understanding of structural change. Whereas closely related diversification represents the path-dependent evolution of economies, unrelated diversification can produce radical breaks in a country's development trajectory. As such, we can leverage the information in the network between products to measure the degree of actual, structural change the introduction of a new economic activity represents.
+
+Additionally, using measures of economic complexity and economic fitness citep:tacchella_new_2012,tacchella_dynamical_2018, we can quantify the quality of the structural change. That is, does introduction of new activities either represent an increase in economic sophistication, or does it provide an important bridge different "clusters" in the network? Earlier quantitative literature have mostly avoided addressing the level of structural change related to resilience and shocks. An exception is cite:martin_how_2016 who use a measure of regional deviations from national trends in discrete sector-employment to classify the structural shifts. The inclusion of both extent and quality of the structural shifts would be an important improvement[fn:2].  
+
+\newpage
+ 
+ bibliography:SGED07.bib
+ bibliographystyle:humannat
+
+* Footnotes
+
+[fn:2] To see why, assume that an economy has the same amount of professional footballers and nuclear scientists. Now, consider the different implications between every plumber becoming a professional footballer, or every plumber becoming a nuclear scientist. When measuring discrete concentration, as in cite:martin_how_2016, the two scenarios are equivalent.

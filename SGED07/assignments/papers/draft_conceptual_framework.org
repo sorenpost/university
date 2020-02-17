@@ -1,0 +1,87 @@
+#+TITLE: SEMINAR DRAFT: Conceptual framework
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+\newpage
+
+
+* Introduction
+  The central object of the study is how the relationship between activities in an economy condition its vulnerability to economic shocks and its ability to re-organize resources productively. Two relational networks are studied: direct linkages (input-output relationships) and relatedness of activities.
+
+* Resiilience
+  What does it mean for an economy to be resilient? Although resilience is generally occupied with how regions and economies deal with shocks, in practice, the concept has remained ambiguous. Two important notions are "engineered" and "evolutionary" resilience. In economic geography, they represent a central conflict that underpins the vagueness that have led to accusations of conceptual "fuzzyness" citep:pendall_resilience_2010,markusen_fuzzy_2003. Whereas "engineered" resilience refers to how a system "bounce back" and return to its pre-shock state or path, evolutionary notions of resilience is concerned with long term transformation, adaptability and fitness of the system citep:boschma_towards_2015. As noted by cite:olsson_why_2015, it seems then that an economy is resilient if it resists change and if it changes. 
+
+A central tension in the different approaches is in how to understand and model economic systems, rather than in the application of resilience alone. For instance, by modeling engineered resilience in way of Friedman's string along a board citep:friedman_monetary_1964,friedman_plucking_1993 (where shocks are "plucking" the string), we define some economic growth equilibrium against which disturbances and recovery is measured. This is in contrast to evolutionary approaches that model economies as undergoing continuous change. In the context of disturbances and resilience, this means that growth paths are subject to change, akin to a punctuated equilibrium dynamic. This is an important distinction, both in theory and in practice. For example, cite:cerra_growth_2008,cerra_international_2013 shows how lingering effects from recessions permanently lowers the growth of economies. Despite whether or not aggregate output rebounds quickly, surely the fact that an economy's long term economic performance is changed should be considered in evaluating its resilience.
+
+I follow the notion of resilience developed in the evolutionary framework in  cite:crespo_resilience_2017. Resilience is here a normative concept and concerns the ability to maintain or recover to "good" outcomes, despite disturbances. For this paper, resilience is measured in three dimensions:
+
+ 1. The ability of the economy to withstand short term shocks
+ 2. The ability of the economy to recover from recessionary downturns
+ 3. The ability of the economy to continually adapt to maintain growth over time
+
+- *emphasize the reorganization of the economy* 
+
+* Production networks
+It has long been recognized that the industrial organization of an economy matters for its vulnerability to macro-economic fluctuations and economic shocks.
+
+In most of literature, the economy has been modeled in one of two ways. First, a substantial literature has treated the economy as group of discrete sectors. Here, the industries in an economy follows a "portfolio"-logic citep:deller_did_2016,martin_how_2016. Higher levels of industrial diversification, often measured through the concentration of industrial output (e.g. the Hirfendahl-Hirschman Index), is here assumed to be a barrier to shocks. While a larger range of industries is more likely to be hit by stochastic shocks, any given sector constitutes a smaller part of total activity and individual sectoral downturns are less important in aggregate. 
+
+[sektion der binder]
+[It is worth noting that business-cycle fluctuations is the co-movement of dis-aggregated sectors in the economy. When sectors tend to co-move in a negative direction, we classify it as a recessionary shock. So, the question becomes: what organization of the economy facilitates co-movement among sectors?]
+[Lucas critique]
+
+- point: Lucas critique
+- point: Studies have shown how micro can go to macro.
+
+* Capability/relatedness
+In the past decade the literature on economic complexity and diversification has demonstrated how co-export patterns of products can tell us about the economic capabilities in a country citep:hidalgo_product_2007. These productive capabilities can be combined in various ways to produce different products. When modeled as a network, this framework have proven influential in predicting the path-dependent process countries develop along citep:coniglio_pattern_2018,oclery_productive_2018,hausmann_atlas_2013. Countries tend to expand into activities closely related to the ones already present in the economy. This means that countries with a basket of productive activities that is widely connected in this product-capability network has a much larger developmental "space of opportunity" than countries that are more sparsely connected. This relationship has implications for resilience and for structural change. 
+
+... important ways an economy's network structure can influence its resilience. First, if an economy's activities are closely related, it follows that they share much of the required know-how, institutional framework, and infrastructure. It should therefor be easier to redirect resources to productive sectors in the economy, should a sector be impacted by shocks.
+ 
+- point: how does relatedness affect resilience?
+
+* Two networks and a simple model of production
+To understand how the organization of the input-output linkages in the economy can condition its vulnerability to shocks, it is instructive to consider the behavior of a simplified production model. Let an economy have $n$ sectors. Each sector makes a single product (that only it produces), that can either be consumed by a household or be used as intermediate inputs to the production of a product by a different sector. To produce its product, a sector uses one primary input, labor, and intermediate inputs (that is, the product from other sectors). Following cite:acemoglu_network_2012 and cite:carvalho_micro_2014, the output $x$ of sector $i$ can be written as[fn:1]:
+
+$$ x_i = (z_i l_i)^{1-\alpha} (\prod^{n}_{j = 1} x^{w_{ij}}_{ij}})^{\alpha} $$
+
+where $l_i$ is the amount of labor hired by the sector, $\alpha$ is the share of labor (of total inputs) and $x_{ij}$ is the amount of product $j$ (that is, the output of sector $j$) used in the production of product $i$. $z_{ij}$ represents shocks to the production in sector $i$ and is independent between sectors. $w_{ij}$ denotes the share of sector $j$'s product used as input in producing product $i$. That is, $w_{ij} = 0$ if sector doesn't use product $j$ in its production and $w_{ij} = 1$ if it only uses product $j$. For any given sector, these shares sum to 1. In other words, the vector $\vect{w_i} = \left[w_{i1}, w_{i2},\ldots, w_{ij} \right]$ provides a sort of production recipe for product $i$, where each element is amount of input used from the given sector. 
+
+Together, the collection of $\vect{w}$ vectors gives a complete account of the trade in intermediate inputs between sectors. These can be stacked together in an input-output matrix $\vect{W}$. Using $\vect{W}$  we can map the inter-sector relationship as a directed network. Each of the $n$ sectors are here nodes connected through links that are weighted by $w_{ij}$. This means that the link from node $i$ to node $j$ is more important if sector $i$ uses a larger share of sector $j$'s product in its input-basket. 
+
+
+[Section] Aggregate shocks is co-movement of disaggregated sectors. I/O network can facilitate co-movement. Higher relatedness can act counter-cyclical. But can maybe also act towards lock-in.
+
+- consider the differences between the 3 very simple 4-node model and their effect on total output.
+- small worlds, centrality
+- phase-transitions?
+
+
+#+CAPTION: A is a horizontal economy with no input links, B is the vertical economy, and C is the spoke-hub economy.
+#+LABEL: 3network_econs
+[[./tog2.png]]
+
+\newpage
+
+ bibliography:SGED07.bib
+ bibliographystyle:humannat
+
+
+* Identifying shocks
+
+* To-do list
+** TODO Check up on assignment wording
+The student is expected to *identify and define the key concepts* that form the foundation of their research problem. *Elaborate on these concepts and the literature/debates around them.* Explain how you will use these in constructing your analytical device. The submission will receive a Pass/Fail grade
+
+Altså:
+1. Key concepts: resilience
+2. Literature and debates: I/O tables propagation effects and phase-shift
+3. 
+
+* Footnotes
+
+[fn:1] Technologies are Cobb-Douglas with constant returns to scale.

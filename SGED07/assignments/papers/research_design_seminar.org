@@ -1,0 +1,60 @@
+#+TITLE: SEMINAR DRAFT: Research design
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+
+\newpage
+
+*In this submission the student will reflect on the choice of research design, selection of methods and probable sources of data. Elaborate on your understanding of the various methods available to a researcher and make a case for the method(s) you have selected for your project. Summarize the steps involved in carrying out the study and describe the nature of your sources. Also mention the kind of analysis you expect to carry out. The submission will receive a Pass/Fail grade. Word Limit: 1000*
+
+Reflect on: 
+ - choice of research design (cross country analysis)
+ - selection of methods (??)
+ - probable sources of data 
+
+Elaborate on:
+ - various methods available to a researcher
+ - case for using the methods chosen in this project
+
+Summarize steps involved in carrying out the study
+Describe the nature of your sources
+Mention the kind of analysis you expect to carry out
+
+cite:oclery_productive_2018
+
+
+* Research design
+
+I'm planning to do 
+
+Observations are thus 
+
+* Identification of shocks
+It is important to allow for a flexible, data driven dating of the economic shock. Economic shocks tend to spread to different economies in many ways, hitting some early and some late. 
+
+*The reference state:* 
+... I use an adjusted version of the method developed in cite:sensier_measuring_2016-1. Here a  (classical) business cycle approach is used to data and measure the shock. First
+
+The process is simple. If $Y_t$ is the value of a given reference state metric at time $t$, I define $y_t = ln(Y_t)$. I then take first differences of the series $y_t$, such that $\Delta y_t = y_t - y_{t-1}$. If $\Delta y_t$ is negative, I assign the observation a 1. If positive, 0. 1s represent a contraction phase, while 0s represent an expansion. The observations right before a change (0 $\rightarrow$ 1, 1 $\rightarrow$ 0) is a turning point in the business cycle. Changes from 0 to 1 is a peak (growth stops) and changes from 1 to 0 is a trough (decline stops). A business cycle is considered complete when a new peak occurs.
+
+Figure [[fig:stylized_bc]] shows a stylized business cycle. *P^1* represents the first peak, *P^2* the subsequent peak. Hence, the time from *B^1* to *B^2* is the duration of the business cycle. *T* is the trough. *A^1* is the amplitude, or the depth, of the downturn, measured as the vertical distance between *P^1* and *T*. The horizontal distance between *B^1* and *T* is the time between the peak and the trough, i.e. the duration of the downturn. I define an economy as having "recovered" from a downturn when the reference metric has reached the pre-shock peak levels. In the figure, the duration of the recovery is marked by the distance between *T* and *R*.
+
+#+CAPTION: Stylized business cycle
+#+LABEL: fig:stylized_bc
+[[/home/post/MEGAsync/MEGAsync/university/SGED07/assignments/papers/figs/bc.png]]
+
+* Data
+For this, the study should use three main sources of data.
+
+* Treatment assignment issue
+
+The problem becomes clearer if we think of countries as patients and the recessionary shock as the medicine we are testing. Currently, the model I've proposed is interested in looking at whether certain patient specific characteristics (the industrial organisation) has an important impact on how ill the patients are feeling after having ingested the medicine. I'm fairly certain the patients receive different doses of medicine, but I don't know which patient has received a higher or a lower dose. I can only observe that some patients become more ill than others. In other words, I don't know if patients that become more ill has A) received a higher doses of medicine or B) whether unobserved characteristics (say, bad diet) makes them more vulnerable to the medicine. If any of these are true, any effect attributed to .. This becomes much more important if (they co-vary with 
+
+\newpage
+
+bibliography:SGED07.bib
+bibliographystyle:humannat

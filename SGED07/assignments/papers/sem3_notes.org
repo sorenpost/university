@@ -1,0 +1,85 @@
+
+* Introduction
+* Data
+* Metrics
+Based on the definition of resilience, we can identify three main outcomes variables: the immediate impact of a shock, the time to- and extent of recovery, and the reorganization of the economy. The first two are the shock 
+
+** Resilience metrics
+It is important to allow for a flexible, data driven dating of the economic shock. Economic shocks tend to spread to different economies in many ways, hitting some early and some late. 
+
+*The reference state:* 
+... I use an adjusted version of the method developed in cite:sensier_measuring_2016-1. Here a  (classical) business cycle approach is used to data and measure the shock. First
+
+The process is simple. If $Y_t$ is the value of a given reference state metric at time $t$, I define $y_t = ln(Y_t)$. I then take first differences of the series $y_t$, such that $\Delta y_t = y_t - y_{t-1}$. If $\Delta y_t$ is negative, I assign the observation a 1. If positive, 0. 1s represent a contraction phase, while 0s represent an expansion. The observations right before a change (0 $\rightarrow$ 1, 1 $\rightarrow$ 0) is a turning point in the business cycle. Changes from 0 to 1 is a peak (growth stops) and changes from 1 to 0 is a trough (decline stops). A business cycle is considered complete when a new peak occurs.
+
+Figure [[fig:stylized_bc]] shows a stylized business cycle. *P^1* represents the first peak, *P^2* the subsequent peak. Hence, the time from *B^1* to *B^2* is the duration of the business cycle. *T* is the trough. *A^1* is the amplitude, or the depth, of the downturn, measured as the vertical distance between *P^1* and *T*. The horizontal distance between *B^1* and *T* is the time between the peak and the trough, i.e. the duration of the downturn. I define an economy as having "recovered" from a downturn when the reference metric has reached the pre-shock peak levels. In the figure, the duration of the recovery is marked by the distance between *T* and *R*.
+
+
+#+CAPTION: Stylized business cycle
+#+LABEL: fig:stylized_bc
+[[/home/post/MEGAsync/MEGAsync/university/SGED07/assignments/papers/figs/bc.png]]
+
+** Notation
+** Identifying shocks
+
+** Input-output network
+** Revealed Comparative advantage
+ The size of national economies differ in size by many magnitudes. For instance, the economy of the US is around 19 trillion USD in 2019. This is approximately 400 times the size of the economy of Ghana. To meaningfully compare which products different economies specialize in, some normalization procedure is necessary. For this I use the Revealed Comparative Advantage (RCA), originally introduced by cite:balassa_trade_1965.
+
+ RCA compares the share of a product's export value in a region's total export to the share of the products global export value in the total global exports. That is, RCA quantifies if a country exports more that its "fair share" of a given product. In other words, Italy's revealed comparative advantage in pasta is the value of Italian pasta exports divided by the total value of Italy's exports, divided by the share of pasta in total world exports. More formally, RCA for country $c$ in product $p$ is defined as:
+
+  $$ RCA_{pc} = \frac{ X_{cp} }{ \sum_{p} X_{cp} } \bigg/ \frac{ \sum_{c} X_{cp} }{ \sum_{c} \sum_{p} X_{cp}} $$
+
+  where $X_{cp}$ is the export value of product $p$ in country $c$ in a given year. If RCA is at 1 or above, a comparative advantage is considered revealed. It is worth noting that RCA captures relative specialization, not actual proficiency. Say Italy is a feckless producer of pasta. As long as they are even worse at producing other products, the RCA in pasta would still be high.
+
+[Insert figure of RCA distribution]
+
+In order to identify if a product is has been introduced into a country, if it is "new", ... ["peeping over, dipping under", "dancing around the RCA = 1 line"]
+
+** Product relatedness
+Let $\vect{M}$ be a binary matrix, where rows are countries and columns are products. If country $c$ has a revealed comparative advantage in product $p$, $m_{cp}$ has a value of 1, 0 if not. 
+ 
+     $$ M = \begin{cases} 1 \text{ if } RCA_{cp} \geq 1 \\
+     0 \text{ if } RCA_{cp} \leq 1
+     \end{cases} $$
+
+We can think of each product as having a set of countries in which the product occurs (the 1's in $\vect{1}$. The set for product $i$ is denoted $U_i$ and correspond to the i^th column of $\vect{M}$. If two countries have the same country in the respective sets, they co-occur in this country. When products tend to co-occur, they are more similar.
+
+Let $C$ be a $p \times p$ co-occurrence matrix between products. Each element in $C$ is the number of co-occurrences between the row product and the column product. That is, $c_{ij} = |U_i \cap U_j|$. Let then a vector $\vect{v}$ have the cardinality for the set of each product, such that $\vect{v} = \begin{bmatrix} v_1 & v_2 & \dots & v_m \end{bmatrix}$, where $v_m = |U_m|$.
+
+So, $v_i$ is the number of countries that export product $i$ with an RCA value of at least 1 and $c_{ij}$ is the number countries that export both product $i$ and product $j$ with a comparative advantage. Now we can define the association strength (AS) and proximity (Pr) between the $i$^{th} and $j$^{th} products as:
+
+  \begin{align*}
+  \text{AS}(p_i,p_j) &= \frac{|U_i \cap U_j|}{|U_i||U_j|} = \frac{c_{ij}}{v_iv_j} \\
+  \text{Pr}(p_i,p_j) &= \text{min}\{P(U_i|U_j),\text{ }P(U_j| U_j) \}  = \frac{c_{ij}}{\text{max}\{v_{i} \text{, }v_{j}\}}
+  \end{align*}
+
+- Trade-data -> RCA -> M
+
+
+
+- M -> Proximity -> Density
+- Density to own products = coherence
+- Use coherence between new and old export basket or density to new products?
+** Economic complexity and country fitness
+- M -> algorithm (Fitness 2012/2018) (robustness =  method of reflection)
+- Are new products more or less complex? Does it depend on pre-conditions (pre-shock sophistication) or the level of shock? 
+* Statistical approach
+** Regression equation and controls 
+- Controls: effect solely from diversity, effect from I/O structure.
+- 
+* Data
+
+
+
+
+
+\newpage
+ 
+ bibliography:SGED07.bib
+ bibliographystyle:humannat
+
+* Main issues:
+1. Kan financial crisis overhovedet bruges om lande uden for Europa?
+2. Hvordan sørger man for at netværks effekterne ikke bare er drevet af andre effekter, som ikke er observerede. Eller som er stockastiske?
+3. Hvordan opsummere man 
