@@ -8,7 +8,7 @@
 #+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
 
 \newpage
-
+* Assignment
 *In this submission the student will reflect on the choice of research design, selection of methods and probable sources of data. Elaborate on your understanding of the various methods available to a researcher and make a case for the method(s) you have selected for your project. Summarize the steps involved in carrying out the study and describe the nature of your sources. Also mention the kind of analysis you expect to carry out. The submission will receive a Pass/Fail grade. Word Limit: 1000*
 
 Reflect on: 
@@ -24,16 +24,14 @@ Summarize steps involved in carrying out the study
 Describe the nature of your sources
 Mention the kind of analysis you expect to carry out
 
-cite:oclery_productive_2018
+*
+This paper presents an informal discussion of the research design. The point of
+the study is to investigate the relationship between the productive structures
+of an economy and its resilience to economic shocks.
 
-
-* Research design
-
-I'm planning to do 
-
-Observations are thus 
-
-* Identification of shocks
+The empirical strategy is based around a
+* Some other shit
+** Identification of shocks
 It is important to allow for a flexible, data driven dating of the economic shock. Economic shocks tend to spread to different economies in many ways, hitting some early and some late. 
 
 *The reference state:* 
@@ -47,10 +45,10 @@ Figure [[fig:stylized_bc]] shows a stylized business cycle. *P^1* represents the
 #+LABEL: fig:stylized_bc
 [[/home/post/MEGAsync/MEGAsync/university/SGED07/assignments/papers/figs/bc.png]]
 
-* Data
+** Data
 For this, the study should use three main sources of data.
 
-* Treatment assignment issue
+** Treatment assignment issue
 
 The problem becomes clearer if we think of countries as patients and the recessionary shock as the medicine we are testing. Currently, the model I've proposed is interested in looking at whether certain patient specific characteristics (the industrial organisation) has an important impact on how ill the patients are feeling after having ingested the medicine. I'm fairly certain the patients receive different doses of medicine, but I don't know which patient has received a higher or a lower dose. I can only observe that some patients become more ill than others. In other words, I don't know if patients that become more ill has A) received a higher doses of medicine or B) whether unobserved characteristics (say, bad diet) makes them more vulnerable to the medicine. If any of these are true, any effect attributed to .. This becomes much more important if (they co-vary with 
 
