@@ -8,79 +8,102 @@
 #+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
 
 \newpage
-* Assignment
-*In this submission the student will reflect on the choice of research design, selection of methods and probable sources of data. Elaborate on your understanding of the various methods available to a researcher and make a case for the method(s) you have selected for your project. Summarize the steps involved in carrying out the study and describe the nature of your sources. Also mention the kind of analysis you expect to carry out. The submission will receive a Pass/Fail grade. Word Limit: 1000*
 
-Reflect on: 
- - choice of research design (cross country analysis)
- - selection of methods (??)
- - probable sources of data 
-
-Elaborate on:
- - various methods available to a researcher
- - case for using the methods chosen in this project
-
-Summarize steps involved in carrying out the study
-Describe the nature of your sources
-Mention the kind of analysis you expect to carry out
-
-
-1. Choice of research design
-   - Cross country regression
-
-2. Why cross country?
-   - Allows product-level data for relatedness
-   - allows a broad examination of the effects (not just advanced economies like
-     most papers)
-
-3. Use of data
-   - UN COMTRADE
-   - WIOD
-   - PWT
-
-4. Empirical strategy
+1. Empirical strategy
    - Identification of shocks
    - Dependent variable metrics
    - Network effects
    - Complexity of products
    - Regression
 
-5. Issues:
+2. Issues:
    - Omitted variable bias
    - Treatment intensity
    - ex post impact of recessions
 
-*1* The research approach is based around a cross-country regression design. At the
-basic level, I construct a number of metrics the quantifies various qualities of the industrial
+* Introduction
+This paper is a brief presentation of the current research design in my
+thesis-work. Given the limits on space, it doesn't make sense to be too detailed
+on the construction or math involved in constructing the regression metrics. I
+therefor outline the basic empirical strategy, use of data, and turn to a discussion of the main design issues.
+
+* General design
+The research approach is based around a cross-country regression design. At the
+basic level, I construct a number of metrics that quantifies various qualities of the industrial
 structure in a country and regress them on measures of how a recessionary shock
-has impacted the economy. The benefit of using the cross sectional approach is
-two fold. First, it allows a wider examination of the effect. Most studies have
-focused on a single advanced economy, neglecting potentially important
+has impacted the economy. I use exposure to the financial crisis of the mid- to late 2000s
+to identify different resilience-outcome between economies. The country sample
+consists of 43 countries, covering about 85% of global GDP.
+
+The benefit of using the cross sectional approach is two fold. First, it allows
+a wider examination of the effect. Most studies have focused on a single advanced economy, neglecting potentially important
 geographical and "developmental" differences internationally. Second, since
-commodity data is mostly recorded in at customs offices,  using countries as the
+commodity data is mostly recorded at customs offices,  using countries as the
 unit of analysis makes it possible to leverage international trade data to infer
 the productive capabilities in each country. Commodity-level production data is
 extremely rare at regional levels.
 
-*2*
+* Data
+I use three main sources of data: national economic output (GDP),
+international trade flows, and national input-output tables.
+
+The data on product exports comes from the UN COMTRADE database (United Nations International Trade Statistics Database). This data is used to build the product-capability network. For the purposes of this work, the bilateral trade-flows are aggregated into country-level exports at product level. The Growth Lab at Harvard University distributes the cleaned version of the COMTRADE data. Here, I use Harmonized System classification, 1992 revision (HS-92) at the four-digit level citep:the_growth_lab_at_harvard_university_international_2019. The HS-92 data covers about 5000 products at the 4-digit level, from 1995-2017.
+
+The World Input Output Database (WIOD) citep:timmer_illustrated_2015-1 provides the input-output tables used to build the input-output networks. The study uses the 2016-release covering 43 countries and 56 sectors (4 digit ISIC)from 2000-2014.
+
+Finally, as reference metric to identify shocks, I use GDP per capita data. As main source I use the Penn World Tables (9.1) (PWT) real GDP using national-accounts growth rates (RGDP^{NA}) citep:feenstra_next_2015. Since some variation exists in the estimation of GDP values, I repeat the analysis using the Maddison Project database citep:bolt_rebasing_2018 to avoid any results being an artifact from the source of GDP.
+
+* Key variables
+I'm interested in estimating the effect of the relationship between productive
+activities in an economy and its resilience to recessionary shocks. I quantify
+the economic structure in three dimensions: network characteristics of
+input-output relationships, the relatedness between products exported by the
+economy, and the complexity of the products exported by the economy. Resilience
+is measured in three dimensions: the depth of economic downturn after a shock,
+the duration (and extent) of recovery, and the quality and degree of structural
+change.
 
 
-This requires an identification of countries
-affected by economic shocks, operationalizing the impact of the shock, and
+
+
+I'm interested in three resilience metrics: the depth of the
+economic downturn, the duration and extent of recovery, and the degree and
+quality of structural change.
+
+I define recessionary shocks in terms of the classical business cycle approach.
+Sinharding_dissecting_2002harding_dissecting_2002ks hits economies at different times, it is important to
+allow for a data-driven dating of the shock. I follow
+cite:sensier_measuring_2016-1 in adapting the BBQ dating algorithm from
+cite:harding_dissecting_2002. The approach is simple. I treat each country's GDP
+observations as a separate time series. A business cycle lasts from one local
+peak to the next. Figure [[fig:stylized_bc]] shows a stylized business cycle. P^1
+represents the first peak, P^2 the next.
+When the first difference in the series becomes negative, a
+shock starts (P^1 in figure [[fig:stylized_bc]]). The depth of the downturn is the
+total decline in GDP until the first difference becomes positive. This is the
+vertical distance between P^1 and B^1 in figure [[fig:stylized_bc]]. Recovery from a
+shock is defined as having reach the pre-shock output level. The duration of the
+recovery is therefor the time between B^1 and R.
+
+#+CAPTION: Stylized business cycle: e is economic output, t is time.
+#+LABEL: fig:stylized_bc
+#+ATTR_LATEX: :width 0.75\textwidth
+[[/home/post/Dropbox/university/SGED07/assignments/papers/figs/bc.png]]
+
 
 *Identifying economic shocks and shock impacts.*
 *Network metrics*
 
-* Data
+* Key independent variables
 
-
+* Issues
+ - No randomization
+ - Omitted variable bias (treatment assignment)
+ -
 * Text
 This paper presents an informal discussion of the research design. The point of
 the study is to investigate the relationship between the productive structures
 of an economy and its resilience to economic shocks.
-
-The empirical strategy is based around a cross country analysis on
-
 
 *Identifying observations:*
 
@@ -117,24 +140,6 @@ Most studies either does not address the issue, builds their results from highly
 stylized models, or makes the assumption that within a country every region is
 subjected to the same economic pressure (and variation in outcomes is therefor
 attributable to difference in regional resilience).
-
-* Some other shit
-** Identification of shocks
-It is important to allow for a flexible, data driven dating of the economic shock. Economic shocks tend to spread to different economies in many ways, hitting some early and some late. 
-
-*The reference state:* 
-... I use an adjusted version of the method developed in cite:sensier_measuring_2016-1. Here a  (classical) business cycle approach is used to data and measure the shock. First
-
-The process is simple. If $Y_t$ is the value of a given reference state metric at time $t$, I define $y_t = ln(Y_t)$. I then take first differences of the series $y_t$, such that $\Delta y_t = y_t - y_{t-1}$. If $\Delta y_t$ is negative, I assign the observation a 1. If positive, 0. 1s represent a contraction phase, while 0s represent an expansion. The observations right before a change (0 $\rightarrow$ 1, 1 $\rightarrow$ 0) is a turning point in the business cycle. Changes from 0 to 1 is a peak (growth stops) and changes from 1 to 0 is a trough (decline stops). A business cycle is considered complete when a new peak occurs.
-
-Figure [[fig:stylized_bc]] shows a stylized business cycle. *P^1* represents the first peak, *P^2* the subsequent peak. Hence, the time from *B^1* to *B^2* is the duration of the business cycle. *T* is the trough. *A^1* is the amplitude, or the depth, of the downturn, measured as the vertical distance between *P^1* and *T*. The horizontal distance between *B^1* and *T* is the time between the peak and the trough, i.e. the duration of the downturn. I define an economy as having "recovered" from a downturn when the reference metric has reached the pre-shock peak levels. In the figure, the duration of the recovery is marked by the distance between *T* and *R*.
-
-#+CAPTION: Stylized business cycle
-#+LABEL: fig:stylized_bc
-[[/home/post/MEGAsync/MEGAsync/university/SGED07/assignments/papers/figs/bc.png]]
-
-** Data
-For this, the study should use three main sources of data.
 
 ** Treatment assignment issue
 

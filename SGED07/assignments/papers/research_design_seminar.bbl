@@ -1,15 +1,34 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\astroncite{O'Clery et~al.}{2018}]{oclery_productive_2018}
-O'Clery, N., M.~A. Yildirim, and R.~Hausmann\leavevmode\nopagebreak\newline
-  2018.
-\newblock Productive {{Ecosystems}} and the {{Arrow}} of {{Development}}.
-\newblock {\em arXiv:1807.03374 [physics]}.
+\bibitem[\protect\astroncite{Bolt et~al.}{2018}]{bolt_rebasing_2018}
+Bolt, J., R.~Inklaar, H.~{de Jong}, and J.~L. {van
+  Zanden}\leavevmode\nopagebreak\newline 2018.
+\newblock Rebasing `{{Maddison}}': New income comparisons and the shape of
+  long-run economic development.
+\newblock {\em GGDC Research Memorandum}, 174.
+
+\bibitem[\protect\astroncite{Feenstra et~al.}{2015}]{feenstra_next_2015}
+Feenstra, C., R., R.~Inklaar, and M.~Timmer, P.\leavevmode\nopagebreak\newline
+  2015.
+\newblock The {{Next Generation}} of the {{Penn World Table}}.
+\newblock {\em American Economic Review}, 105.
 
 \bibitem[\protect\astroncite{Sensier et~al.}{2016}]{sensier_measuring_2016-1}
 Sensier, M., G.~Bristow, and A.~Healy\leavevmode\nopagebreak\newline 2016.
 \newblock Measuring {{Regional Economic Resilience}} across {{Europe}}:
   {{Operationalizing}} a complex concept.
 \newblock {\em Spatial Economic Analysis}, 11(2):128--151.
+
+\bibitem[\protect\astroncite{{The Growth Lab at Harvard
+  University}}{2019}]{the_growth_lab_at_harvard_university_international_2019}
+{The Growth Lab at Harvard University}\leavevmode\nopagebreak\newline 2019.
+\newblock International {{Trade Data}} ({{HS}}, 92).
+
+\bibitem[\protect\astroncite{Timmer et~al.}{2015}]{timmer_illustrated_2015-1}
+Timmer, M.~P., E.~Dietzenbacher, B.~Los, R.~Stehrer, and G.~J.
+  De~Vries\leavevmode\nopagebreak\newline 2015.
+\newblock An illustrated user guide to the world input\textendash{}output
+  database: The case of global automotive production.
+\newblock {\em Review of International Economics}, 23(3):575--605.
 
 \end{thebibliography}

@@ -78,10 +78,50 @@ Second I find the share of each products total export value (C) in the total val
 
 Finally, I divide the outcome of part 1 with the outcome of part two. This is essentially that same idea as step one. I transpose the matrix from part 1 in order for R to divide the vector from part two element-wise, one column at a time. Finally I transpose the result to get the country-product format for the RCA matrix.
 
+#+begin_src R
+    incidence_mat <- t(
+        t(share_unit_region) / share_unit_global
+    )
+#+end_src
+
+*** Function
+
+As input, the ~rca~-function takes a matrix of export values in dollars. Countries are
+in rows, products in columns. The function outputs a matrix of with the revealed
+comparative advantage. Countries are in rows, products in columns. The "binary"
+parameter controls whether the RCA values should be binarized to 0 and 1.
+
+#+BEGIN_SRC R
+rca <- function(mat, binary = FALSE) {
+
+  country_names <- rownames(mat)
+  product_names <- colnames(mat)
+
+
+  share_unit_region <- mat / rowSums(mat)
+  share_unit_global <- colSums(mat) / sum(mat)
+
+  incidence_mat <- t(
+    t(share_unit_region) / share_unit_global
+  )
+
+  rownames(incidence_mat) <- country_names
+  colnames(incidence_mat) <- product_names
+
+  if(binary = TRUE) {
+
+   incidence_mat <- ifelse(incidence_mat >= 1, 1, 0)
+
+  }
+
+ return(incidence_mat)
+}
+#+END_SRC
+
+
+
 ** TODO Revealed Comparative Advantage per capita
 *** Description
-
-
 *** Coding
 ** TODO Product-product similarity
 *** Description
@@ -101,7 +141,7 @@ Finally, I divide the outcome of part 1 with the outcome of part two. This is es
 * Figures [0/0]
 ** Product Space graph
 ** Distribution of RCA
-** Distribution of complexity 
+** Distribution of complexity
 ** Distribution of degrees (sum of product proximities)
 
   bibliography:SGED07.bib
