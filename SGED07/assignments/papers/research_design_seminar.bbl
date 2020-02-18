@@ -13,11 +13,35 @@ Feenstra, C., R., R.~Inklaar, and M.~Timmer, P.\leavevmode\nopagebreak\newline
 \newblock The {{Next Generation}} of the {{Penn World Table}}.
 \newblock {\em American Economic Review}, 105.
 
+\bibitem[\protect\astroncite{Harding and Pagan}{2002}]{harding_dissecting_2002}
+Harding, D. and A.~Pagan\leavevmode\nopagebreak\newline 2002.
+\newblock Dissecting the cycle: A methodological investigation.
+\newblock {\em Journal of Monetary Economics}, 49(2):365--381.
+
+\bibitem[\protect\astroncite{Hausmann et~al.}{2013}]{hausmann_atlas_2013}
+Hausmann, R., C.~A. Hidalgo, S.~Bustos, M.~Coscia, A.~Simoes, and M.~A.
+  Yildrim, eds.\leavevmode\nopagebreak\newline 2013.
+\newblock {\em The Atlas of Economic Complexity: Mapping Paths to Prosperity}.
+\newblock {Cambridge, MA}: {The MIT Press}.
+
+\bibitem[\protect\astroncite{Hidalgo et~al.}{2007}]{hidalgo_product_2007-1}
+Hidalgo, C.~A., B.~Klinger, A.-L. Barab{\'a}si, and
+  R.~Hausmann\leavevmode\nopagebreak\newline 2007.
+\newblock The product space conditions the development of nations.
+\newblock {\em Science}, 317(5837):482--487.
+
 \bibitem[\protect\astroncite{Sensier et~al.}{2016}]{sensier_measuring_2016-1}
 Sensier, M., G.~Bristow, and A.~Healy\leavevmode\nopagebreak\newline 2016.
 \newblock Measuring {{Regional Economic Resilience}} across {{Europe}}:
   {{Operationalizing}} a complex concept.
 \newblock {\em Spatial Economic Analysis}, 11(2):128--151.
+
+\bibitem[\protect\astroncite{Servedio et~al.}{2018}]{servedio_new_2018}
+Servedio, V. D.~P., P.~Butt{\`a}, D.~Mazzilli, A.~Tacchella, and
+  L.~Pietronero\leavevmode\nopagebreak\newline 2018.
+\newblock A new and stable estimation method of country economic fitness and
+  product complexity.
+\newblock {\em Entropy}, 20(10):783.
 
 \bibitem[\protect\astroncite{{The Growth Lab at Harvard
   University}}{2019}]{the_growth_lab_at_harvard_university_international_2019}

@@ -7,19 +7,9 @@
 #+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
 #+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
 
+Word count: 1289
+
 \newpage
-
-1. Empirical strategy
-   - Identification of shocks
-   - Dependent variable metrics
-   - Network effects
-   - Complexity of products
-   - Regression
-
-2. Issues:
-   - Omitted variable bias
-   - Treatment intensity
-   - ex post impact of recessions
 
 * Introduction
 This paper is a brief presentation of the current research design in my
@@ -32,8 +22,8 @@ The research approach is based around a cross-country regression design. At the
 basic level, I construct a number of metrics that quantifies various qualities of the industrial
 structure in a country and regress them on measures of how a recessionary shock
 has impacted the economy. I use exposure to the financial crisis of the mid- to late 2000s
-to identify different resilience-outcome between economies. The country sample
-consists of 43 countries, covering about 85% of global GDP.
+to identify different resilience-outcome between economies. The sample
+consists of yearly observations of 43 countries from 2000-2014, covering about 85% of global GDP.
 
 The benefit of using the cross sectional approach is two fold. First, it allows
 a wider examination of the effect. Most studies have focused on a single advanced economy, neglecting potentially important
@@ -59,19 +49,14 @@ activities in an economy and its resilience to recessionary shocks. I quantify
 the economic structure in three dimensions: network characteristics of
 input-output relationships, the relatedness between products exported by the
 economy, and the complexity of the products exported by the economy. Resilience
-is measured in three dimensions: the depth of economic downturn after a shock,
+is also measured in three dimensions: the depth of economic downturn after a shock,
 the duration (and extent) of recovery, and the quality and degree of structural
 change.
 
-
-
-
-I'm interested in three resilience metrics: the depth of the
-economic downturn, the duration and extent of recovery, and the degree and
-quality of structural change.
-
-I define recessionary shocks in terms of the classical business cycle approach.
-Sinharding_dissecting_2002harding_dissecting_2002ks hits economies at different times, it is important to
+** Resilience metrics
+The first two resilience metrics is constructed from the recessionary shock.
+I define recessionary shocks in terms of the classical business cycle approach
+with GDP per capita as reference metric. Since shocks hits economies at different times, it is important to
 allow for a data-driven dating of the shock. I follow
 cite:sensier_measuring_2016-1 in adapting the BBQ dating algorithm from
 cite:harding_dissecting_2002. The approach is simple. I treat each country's GDP
@@ -87,63 +72,58 @@ recovery is therefor the time between B^1 and R.
 
 #+CAPTION: Stylized business cycle: e is economic output, t is time.
 #+LABEL: fig:stylized_bc
-#+ATTR_LATEX: :width 0.75\textwidth
+#+ATTR_LATEX: :width 0.60\textwidth
 [[/home/post/Dropbox/university/SGED07/assignments/papers/figs/bc.png]]
 
 
-*Identifying economic shocks and shock impacts.*
-*Network metrics*
+** Economic structure metrics
+Input-output characteristics: to capture the effects of supply-linkages between
+  industries in each economy, I use input-output tables. These tables can readily be modeled as a weighted, directed network. Using this network, a series of network characteristics can be quantified (degree distribution, average path length, centrality measures).
 
-* Key independent variables
+Relatedness between products: I follow the Product Space framework
+citep:hidalgo_product_2007-1,hausmann_atlas_2013 to quantify the relatedness
+between products. From the international trade data we can identify which
+products each country specialize in. If products tend to be present in the same
+countries' export basket, they are more similar. If we model the relationship
+between products in a weighted network (where links are relatedness-values) we
+can leverage use the list of which products are present in a country to get
+information on the relationship between countries and products. This allows us
+to say something about how radical structural changes are. If countries expand
+into products further from the products already in their export basket, this
+represents are more radical departure than expanding into closely related
+products. In addition, the pair-wise relatedness between products in a country's
+export basket can tell us about the coherence of the economy's activities (that
+is, how much overlap is there in inputs required).
 
-* Issues
- - No randomization
- - Omitted variable bias (treatment assignment)
- -
-* Text
-This paper presents an informal discussion of the research design. The point of
-the study is to investigate the relationship between the productive structures
-of an economy and its resilience to economic shocks.
+Economic sophistication: To quantify the economic sophistication of economies I implement the
+Fitness algorithm developed in cite:servedio_new_2018. Essentially, the
+algorithm uses an iterative approach to "refine" information which products are
+hardest to export. This results in a quantitative measure of which countries are
+the most fit and which products are the most complex. If a country tends to
+export more complex products, it is more fit. Similarly, if a product tends to
+be exported only by very fit countries, the product is more complex.
 
-*Identifying observations:*
+* Limitations and obstacles
+There are currently several issues with the design. The two most significant
+both pertains to the assignment of shocks.The issues becomes clearer if we think
+of countries as patients and recessionary shocks as exposure to radiation. We are then interested in studying whether some
+personal characteristic, height fx, impacts how long a person lives after
+radiation exposure.
 
+The first issue is simple. There is no random assignment of radiation between
+patients. We can therefor only observe if the personal characteristics are
+associated with outcomes are radiation exposure, not if they cause different outcomes.
 
+The second issue is more serious. As the research design stands currently, there
+is no observation of how strong the shock is, only how impacted an economy is.
+This makes building a counterfactual scenario extremely difficult. In terms of
+patients, there is no observation of how much radiation patients are submitted
+to, only how sick they become. This means that should two patients live the same
+number of years after exposure, they would be deemed equally resilient in my
+model. However, if one of the patients were submitted to a very large dose and
+the other a very small one, clearly one patient is more resilient than the
+other. In my model, this is difference is not accounted for.
 
-*The main issue:* concerns the assignment of treatment. While the lack of
-randomization is itself an issue, there is a more significant obstacle in the
-empirical approach.
-
-Generally speaking, most (quasi-) experimental designs has some sort of treatment (applied a
-given time) which affects the level of a variable. The difference in outcomes of the variable
-across either different levels of treatment or treated/not treated groups is
-used to infer the relationship between the treatment and the variable.
-
-This differs from the approach in this paper in a few important ways. First, a
-recessionary shock is essentially an observation of
-
-
-
-The problem becomes clearer if we think of countries as patients and the
-recessionary shock as the medicine we are testing. Currently, the model I've
-proposed is interested in looking at whether certain patient specific
-characteristics (the industrial organisation) has an important impact on how ill
-the patients are feeling after having ingested the medicine. I'm fairly certain
-the patients receive different doses of medicine, but I don't know which patient
-has received a higher or a lower dose. I can only observe that some patients
-become more ill than others. In other words, I don't know if patients that
-become more ill has A) received a higher doses of medicine or B) whether
-unobserved characteristics (say, bad diet) makes them more vulnerable to the
-medicine. If any of these are true, any effect attributed to .. This becomes
-much more important if (they co-vary with
-
-Most studies either does not address the issue, builds their results from highly
-stylized models, or makes the assumption that within a country every region is
-subjected to the same economic pressure (and variation in outcomes is therefor
-attributable to difference in regional resilience).
-
-** Treatment assignment issue
-
-The problem becomes clearer if we think of countries as patients and the recessionary shock as the medicine we are testing. Currently, the model I've proposed is interested in looking at whether certain patient specific characteristics (the industrial organisation) has an important impact on how ill the patients are feeling after having ingested the medicine. I'm fairly certain the patients receive different doses of medicine, but I don't know which patient has received a higher or a lower dose. I can only observe that some patients become more ill than others. In other words, I don't know if patients that become more ill has A) received a higher doses of medicine or B) whether unobserved characteristics (say, bad diet) makes them more vulnerable to the medicine. If any of these are true, any effect attributed to .. This becomes much more important if (they co-vary with 
 
 \newpage
 
