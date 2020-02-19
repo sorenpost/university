@@ -14,24 +14,431 @@ This document presents the code used to produce the data, analysis, and figures 
 To see how to reproduce the thesis,  see the README.txt file.
 
 * Data
-** International trade
-:PROPERTIES:
-:header-args: :session clean_trade_data :tangle tangled/clean_trade_data.R :export both :results output silent
-:END:
+** TODO International trade [16/20]
 
 The data on international trade is compiled by UN COMTRADE and distributed by the Growth Lab at Harvard University. I run the analysis with two different classifications of products, the Harmonized System revision 92 (HS92) citep:the_growth_lab_at_harvard_university_international_2019 and the Standard International Trade Classification revision (SITC rev. 2) cite:the_growth_lab_at_harvard_university_international_2019-1.
 
-*** Cleaning procedure
+*** Cleaning procedure: SITC2 [1/5]
+:PROPERTIES:
+:header-args: :session clean_sitc_data :tangle tangled/clean_sitc_data.R :export both :results output silent
+:END:
+**** DONE Download file
+
+The file is provided by the Harvard Dataverse and is available for download here: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/H8SFD2 (as "country_sitcproduct4digit_year.tab").
+
+For consistency across all functions and data sets, I rename the year-variable to ~time~, the country-variable to ~region~, the product variable to ~unit~, and the export value-variable to ~intensity~.
 
 #+BEGIN_SRC R
-map <- 1 + 1
+library(here)
+library(tidyverse)
+library(vroom)
 
-if(map == 2) {
-  print("OK")
-}
+sitc_path <- here("data/downloaded/trade/country_sitcproduct4digit_year.tab")
+sitc_raw <- vroom(sitc_path, delim = "\t")
+
+sitc <- sitc_raw %>%
+	select(
+        time = year,
+        region = location_code,
+        unit = sitc_product_code,
+        intensity = export_value
+    )
+#+END_SRC
+
+**** TODO Time independent filters
+
+Following the Atlas of Economic complexity, four time-independent filters are used to filter the SITC-data.
+
+The filters are:
+ - countries must have data in 2010
+ - countries must have a total export value > 1 bill in 2010
+ - countries must have a population of at least 1.25 mio in 2010
+ - countries must not be Tchad (TCD), Iraq (IRQ), Afghanistan (AFG)
+
+#+BEGIN_SRC R
+ref_year <- 2010
+ref_export <- 1000000000
+ref_pop <- 1250000
+ref_reliable <- c("AFG", "TCD", "IRQ")
 #+END_SRC
 
 
+***** Availability filter
+
+I first create a set of countries that have data available in the reference year. This removes no-longer present countries, which helps for continuity in the time-series, but is a bit of an issue in earlier periods, given the prominence of fx the Soviet Union.
+
+#+BEGIN_SRC R
+available_set <- filter(sitc, time == ref_year) %>%
+    pull(region) %>%
+    unique()
+#+END_SRC
+
+***** Export filter
+
+To create the set of countries that clear the export filter, I use the trade data itself.
+
+#+BEGIN_SRC R
+export_set <- sitc %>%
+	filter(time == ref_year) %>%
+	group_by(region) %>%
+	summarise(
+        total_export = sum(intensity)
+    ) %>%
+	filter(total_export >= ref_export) %>%
+	pull(region) %>%
+    unique()
+#+END_SRC
+
+***** Population filter
+
+I use the World Development Indicators (WDI) population data to filter for minimum population in the reference year. The WDI distributes a package of the same name, from which I download the data.
+
+#+BEGIN_SRC R
+library(WDI)
+
+pop_raw <- WDI(country = "all", indicator = "SP.POP.TOTL", extra = TRUE) %>%
+	as_tibble()
+
+pop_data <- pop_raw %>%
+	mutate_if(is.factor, as.character) %>%
+	mutate(
+        region = str_to_upper(iso3c)
+    ) %>%
+	select(
+        time = year,
+        region,
+        pop = SP.POP.TOTL
+    )
+
+pop_set <- pop_data %>%
+	filter(time == ref_year & pop >= ref_pop) %>%
+	pull(region) %>%
+    unique()
+#+END_SRC
+
+***** Reliability filter
+The Atlas lists a few countries with unreliable trade data. I exclude these countries.
+
+#+BEGIN_SRC R
+reliable_set <- sitc %>%
+	filter(!(region %in% ref_reliable)) %>%
+	pull(region) %>%
+	unique()
+#+END_SRC
+
+***** Apply filters
+
+I now apply the filters from above.
+
+#+BEGIN_SRC R
+sitc_filtered <- sitc %>%
+	filter(region %in% export_set) %>%
+	filter(region %in% pop_set) %>%
+	filter(region %in% available_set) %>%
+	filter(region %in% reliable_set)
+#+END_SRC
+
+***** TODO Write file
+
+Finally I write the file filtered only by the time-independent filtered into the data/prepared/ folder as hs92_filtered_ti.csv.
+
+#+BEGIN_SRC R
+write_csv(
+  sitc_filtered,
+  here("data/prepared/sitc_filtered_ti.csv")
+)
+#+END_SRC
+
+**** TODO Time dependent filters
+
+Albaeik et al ("Improving the Economic Complexity Index", 2017) uses three time-dependent filters, in addition to the time-independent filters above. These three filters are:
+
+ - exclusion of products for which, in a given year, 80% of countries have an export value of 0.
+ - exclusion of countries that, in a given year, have an export value of 0 for 95% of products
+ - exclusion of products with a global export value of less than 10 mio in a given year
+ - lastly, all country-product export values of less than 5000 are set to 0.
+
+#+BEGIN_SRC R
+product_prop_limit <- 0.80
+region_prop_limit <- 0.95
+product_export_min <- 10000000
+#+END_SRC
+
+***** First time-dependent filter
+
+#+BEGIN_SRC R
+product_summary <- sitc_filtered %>%
+    group_by(time, unit) %>%
+    summarise(
+        regions_with_0_export = sum(intensity == 0),
+        total_regions = n(),
+        proportion_0 = regions_with_0_export / total_regions
+    )
+
+unit_year_exclusions <- product_summary %>%
+    filter(proportion_0 >= product_prop_limit)
+#+END_SRC
+
+***** Second time-dependent filter
+
+#+BEGIN_SRC R
+region_summary <- sitc_filtered %>%
+    group_by(time, region) %>%
+    summarise(
+        units_with_0_export = sum(intensity == 0),
+        total_units = n(),
+        proportion_0 = units_with_0_export / total_units
+    )
+
+region_year_exclusions <- region_summary %>%
+    filter(proportion_0 >= region_prop_limit)
+#+END_SRC
+
+***** Third time-dependent filter
+
+
+#+BEGIN_SRC R
+global_product_export_vals <- sitc_filtered %>%
+    group_by(time, unit) %>%
+    summarise(
+        total_export_val = sum(intensity)
+    )
+
+global_product_exclusions <- global_product_export_vals %>%
+    filter(total_export_val < product_export_min)
+#+END_SRC
+
+***** Apply filters
+
+I remove excluded observations (i.e. region-unit pairs) by using anti-join. anti-join(x, y) keeps all columns from x, and all the observations from x that does not have a match in y.
+
+#+BEGIN_SRC R
+sitc_filtered_td <- anti_join(sitc_filtered, unit_year_exclusions) %>%
+    anti_join(region_year_exclusions) %>%
+    anti_join(global_product_exclusions)
+#+END_SRC
+
+***** TODO Write file
+
+#+BEGIN_SRC R
+output_path <- here("data/prepared/sitc2_4digit_both_filters.csv")
+write_csv(sitc_filtered_td, output_path)
+#+END_SRC
+
+
+*** DONE Cleaning procedure: HS92 [3/3]
+:PROPERTIES:
+:header-args: :session clean_hs_data :tangle tangled/clean_hs_data.R :export both :results output silent
+:END:
+**** DONE Download file
+
+The file is provided by the Harvard Dataverse and is available for download here: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/T4CHWJ (as "country_hsproduct4digit_year.tab").
+
+For consistency across all functions and data sets, I rename the year-variable to ~time~, the country-variable to ~region~, the product variable to ~unit~, and the export value-variable to ~intensity~.
+
+#+BEGIN_SRC R
+
+library(here)
+library(tidyverse)
+library(vroom)
+
+hs_path <- here("data/downloaded/trade/country_hsproduct4digit_year.tab")
+hs_raw <- vroom(hs_path, delim = "\t")
+
+hs <- hs_raw %>%
+	select(
+        time = year,
+        region = location_code,
+        unit = hs_product_code,
+        intensity = export_value
+    )
+#+END_SRC
+
+**** DONE Time independent filters
+
+Following the Atlas of Economic complexity, I use four time-independent filters to filter the HS92-data.
+
+The filters are:
+ - countries must have data in 2010
+ - countries must have a total export value > 1 bill in 2010
+ - countries must have a population of at least 1.25 mio in 2010
+ - countries must not be Tchad (TCD), Iraq (IRQ), Afghanistan (AFG)
+
+#+BEGIN_SRC R
+ref_year <- 2010
+ref_export <- 1000000000
+ref_pop <- 1250000
+ref_reliable <- c("AFG", "TCD", "IRQ")
+#+END_SRC
+
+
+***** DONE Availability filter
+
+I first create a set of countries that have data available in the reference year. This removes no-longer present countries, which helps for continuity in the time-series, but is a bit of an issue in earlier periods, given the prominence of fx the Soviet Union.
+
+#+BEGIN_SRC R
+available_set <- filter(hs, time == ref_year) %>%
+    pull(region) %>%
+    unique()
+#+END_SRC
+
+***** DONE Export filter
+
+To create the set of countries that clear the export filter, I use the trade data itself.
+
+#+BEGIN_SRC R
+export_set <- hs %>%
+	filter(time == ref_year) %>%
+	group_by(region) %>%
+	summarise(
+        total_export = sum(intensity)
+    ) %>%
+	filter(total_export >= ref_export) %>%
+	pull(region) %>%
+    unique()
+#+END_SRC
+
+***** DONE Population filter
+
+I use the World Development Indicators (WDI) population data to filter for minimum population in the reference year. The WDI distributes a package of the same name (that uses an API), from which I download the data.
+
+#+BEGIN_SRC R
+library(WDI)
+
+pop_raw <- WDI(country = "all", indicator = "SP.POP.TOTL", extra = TRUE) %>%
+	as_tibble()
+
+pop_data <- pop_raw %>%
+	mutate_if(is.factor, as.character) %>%
+	mutate(
+        region = str_to_upper(iso3c)
+    ) %>%
+	select(
+        time = year,
+        region,
+        pop = SP.POP.TOTL
+    )
+
+pop_set <- pop_data %>%
+	filter(time == ref_year & pop >= ref_pop) %>%
+	pull(region) %>%
+    unique()
+#+END_SRC
+
+***** DONE Reliability filter
+The Atlas lists a few countries with unreliable trade data. I exclude these countries.
+
+#+BEGIN_SRC R
+reliable_set <- hs %>%
+	filter(!(region %in% ref_reliable)) %>%
+	pull(region) %>%
+	unique()
+#+END_SRC
+
+***** DONE Apply filters
+
+I now apply the filters from above.
+
+#+BEGIN_SRC R
+hs_filtered <- hs %>%
+	filter(region %in% export_set) %>%
+	filter(region %in% pop_set) %>%
+	filter(region %in% available_set) %>%
+	filter(region %in% reliable_set)
+#+END_SRC
+
+***** DONE Write file
+
+Finally I write the file filtered only by the time-independent filtered into the data/prepared/ folder as hs92_filtered_ti.csv.
+
+#+BEGIN_SRC R
+write_csv(
+  hs_filtered,
+  here("data/prepared/hs92_filtered_ti.csv")
+)
+#+END_SRC
+
+**** DONE Time dependent filters
+
+Albaeik et al ("Improving the Economic Complexity Index", 2017) uses three time-dependent filters, in addition to the time-independent filters above. These three filters are:
+
+ - exclusion of products for which, in a given year, 80% of countries have an export value of 0.
+ - exclusion of countries that, in a given year, have an export value of 0 for 95% of products
+ - exclusion of products with a global export value of less than 10 mio in a given year
+ - lastly, all country-product export values of less than 5000 are set to 0.
+
+#+BEGIN_SRC R
+product_prop_limit <- 0.80
+region_prop_limit <- 0.95
+product_export_min <- 10000000
+#+END_SRC
+
+***** DONE First time-dependent filter
+
+#+BEGIN_SRC R
+product_summary <- hs_filtered %>%
+    group_by(time, unit) %>%
+    summarise(
+        regions_with_0_export = sum(intensity == 0),
+        total_regions = n(),
+        proportion_0 = regions_with_0_export / total_regions
+    )
+
+unit_year_exclusions <- product_summary %>%
+    filter(proportion_0 >= product_prop_limit)
+#+END_SRC
+
+***** DONE Second time-dependent filter
+
+#+BEGIN_SRC R
+region_summary <- hs_filtered %>%
+    group_by(time, region) %>%
+    summarise(
+        units_with_0_export = sum(intensity == 0),
+        total_units = n(),
+        proportion_0 = units_with_0_export / total_units
+    )
+
+region_year_exclusions <- region_summary %>%
+    filter(proportion_0 >= region_prop_limit)
+#+END_SRC
+
+***** DONE Third time-dependent filter
+
+
+#+BEGIN_SRC R
+global_product_export_vals <- hs_filtered %>%
+    group_by(time, unit) %>%
+    summarise(
+        total_export_val = sum(intensity)
+    )
+
+global_product_exclusions <- global_product_export_vals %>%
+    filter(total_export_val < product_export_min)
+#+END_SRC
+
+***** DONE Apply filters
+
+I remove excluded observations (i.e. region-unit pairs) by using anti-join. anti-join(x, y) keeps all columns from x, and all the observations from x that does not have a match in y.
+
+#+BEGIN_SRC R
+hs_filtered_time_dep <- anti_join(hs_filtered, unit_year_exclusions) %>%
+    anti_join(region_year_exclusions) %>%
+    anti_join(global_product_exclusions)
+#+END_SRC
+
+***** DONE Write file
+
+I save the final filtered file in data/prepared/ as hs92_filtered_ti_and_td.csv.
+
+#+BEGIN_SRC R
+output_path <- here("data/prepared/hs92_filtered_ti_and_td")
+write_csv(hs_filtered_time_dep, output_path)
+#+END_SRC
+
+** GDP per capita
+*** Penn World Tables
+*** Maddison database
 * Metrics [0/7]
 ** TODO Revealed Comparative Advantage
 *** Description
