@@ -1,0 +1,554 @@
+  
+#+TITLE: Data, metrics, figures, and code
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+
+* Introduction
+This document presents the code used to produce the data, analysis, and figures used in the thesis work. Each piece of code (that is, each header) is tangled into a seperate .r-file available in the "coding"-folder.
+
+To see how to reproduce the thesis,  see the README.txt file.
+
+* Data
+** International trade
+
+The data on international trade is compiled by UN COMTRADE and distributed by the Growth Lab at Harvard University. I run the analysis with two different classifications of products, the Harmonized System revision 92 (HS92) citep:the_growth_lab_at_harvard_university_international_2019 and the Standard International Trade Classification revision (SITC rev. 2) cite:the_growth_lab_at_harvard_university_international_2019-1.
+
+*** Cleaning procedure: SITC2 [0/3]
+:PROPERTIES:
+:header-args: :session clean_sitc_data :tangle tangled/clean_sitc_data.R :export both :results output silent
+:END:
+**** TODO Download file
+
+The file is provided from the Harvard Dataverse and is available for download here: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/T4CHWJ
+
+#+BEGIN_SRC R
+
+sitc_path <- "~/sorensfolder/sbpdata/data/trade/sitc-rev2/year_origin_sitc_rev2.tsv"
+sitc_raw <- read_tsv(sitc_path)
+
+sitc <- sitc_raw %>%
+	mutate(
+        export_val = as.numeric(export_val),
+    ) %>%
+	select(
+        time = year,
+        region = origin,
+        unit = sitc4,
+        intensity = export_val
+    )
+#+END_SRC
+
+**** TODO Time independent filters
+
+Following the Atlas of Economic complexity, four time-independent filters are used to filter the SITC-data.
+
+The filters are:
+ - countries must have data in 2010
+ - countries must have a total export value > 1 bill in 2010
+ - countries must have a population of at least 1.25 mio in 2010
+ - countries must not be Tchad (TCD), Iraq (IRQ), Afghanistan (AFG)
+
+#+BEGIN_SRC R
+ref_year <- 2010
+ref_export <- 1000000000
+ref_pop <- 1250000
+ref_reliable <- c("afg", "tcd", "irq")
+#+END_SRC
+
+
+***** Availability filter
+
+I first create a set of countries that have data available in the reference year. This removes no-longer present countries, which helps for continuity in the time-series, but is a bit of an issue in earlier periods, given the prominence of fx the Soviet Union.
+
+#+BEGIN_SRC R
+available_set <- filter(sitc, time == ref_year) %>%
+    pull(region) %>%
+    unique()
+#+END_SRC
+
+***** Export filter
+
+To create the set of countries that clear the export filter, I use the trade data itself.
+
+#+BEGIN_SRC R
+export_set <- sitc %>%
+	filter(time == ref_year) %>%
+	group_by(region) %>%
+	summarise(
+        total_export = sum(intensity)
+    ) %>%
+	filter(total_export >= ref_export) %>%
+	pull(region) %>%
+    unique()
+#+END_SRC
+
+***** Population filter
+
+I use the World Development Indicators (WDI) population data to filter for minimum population in the reference year. The WDI distributes a package of the same name, from which I download the data.
+
+#+BEGIN_SRC R
+library(WDI)
+
+pop_raw <- WDI(country = "all", indicator = "SP.POP.TOTL", extra = TRUE) %>%
+	as_tibble()
+
+pop_data <- pop_raw %>%
+	mutate_if(is.factor, as.character) %>%
+	mutate(
+        region = str_to_lower(iso3c)
+    ) %>%
+	select(
+        time = year,
+        region,
+        pop = SP.POP.TOTL
+    )
+
+pop_set <- pop_data %>%
+	filter(time == ref_year & pop >= ref_pop) %>%
+	pull(region) %>%
+    unique()
+#+END_SRC
+
+***** Reliability filter
+The Atlas lists a few countries with unreliable trade data. I exclude these countries.
+
+#+BEGIN_SRC R
+reliable_set <- sitc %>%
+	filter(!(region %in% ref_reliable)) %>%
+	pull(region) %>%
+	unique()
+#+END_SRC
+
+***** Apply filters
+
+I now apply the filters from above.
+
+#+BEGIN_SRC R
+sitc_filtered <- sitc %>%
+	filter(region %in% export_set) %>%
+	filter(region %in% pop_set) %>%
+	filter(region %in% available_set) %>%
+	filter(region %in% reliable_set)
+#+END_SRC
+
+***** TODO Write file
+
+**** TODO Time dependent filters
+
+Albaeik et al ("Improving the Economic Complexity Index", 2017) uses three time-dependent filters, in addition to the time-independent filters above. These three filters are:
+
+ - exclusion of products for which, in a given year, 80% of countries have an export value of 0.
+ - exclusion of countries that, in a given year, have an export value of 0 for 95% of products
+ - exclusion of products with a global export value of less than 10 mio in a given year
+ - lastly, all country-product export values of less than 5000 are set to 0.
+
+#+BEGIN_SRC R
+product_prop_limit <- 0.80
+region_prop_limit <- 0.95
+product_export_min <- 10000000
+#+END_SRC
+
+***** First time-dependent filter
+
+#+BEGIN_SRC R
+    group_by(time, unit) %>%
+    summarise(
+        regions_with_0_export = sum(intensity == 0),
+        total_regions = n(),
+        proportion_0 = regions_with_0_export / total_regions
+    )
+
+unit_year_exclusions <- product_summary %>%
+    filter(proportion_0 >= product_prop_limit)
+#+END_SRC
+
+***** Second time-dependent filter
+
+#+BEGIN_SRC R
+region_summary <- sitc_tidy %>%
+    group_by(time, region) %>%
+    summarise(
+        units_with_0_export = sum(intensity == 0),
+        total_units = n(),
+        proportion_0 = units_with_0_export / total_units
+    )
+
+region_year_exclusions <- region_summary %>%
+    filter(proportion_0 >= region_prop_limit)
+#+END_SRC
+
+***** Third time-dependent filter
+
+
+#+BEGIN_SRC R
+global_product_export_vals <- sitc_tidy %>%
+    group_by(time, unit) %>%
+    summarise(
+        total_export_val = sum(intensity)
+    )
+
+global_product_exclusions <- global_product_export_vals %>%
+    filter(total_export_val < product_export_min)
+#+END_SRC
+
+***** Apply filters
+
+I remove excluded observations (i.e. region-unit pairs) by using anti-join. anti-join(x, y) keeps all columns from x, and all the observations from x that does not have a match in y.
+
+#+BEGIN_SRC R
+sitc_filtered2 <- anti_join(sitc_tidy, unit_year_exclusions) %>%
+    anti_join(region_year_exclusions) %>%
+    anti_join(global_product_exclusions)
+#+END_SRC
+
+***** TODO Write file
+
+#+BEGIN_SRC R
+output_path <- "~/sorensfolder/sbpdata/data/sitc2_4digit_both_filters.csv"
+write_csv(sitc_filtered2, output_path)
+#+END_SRC
+
+
+*** Cleaning procedure: HS92 [0/5]
+:PROPERTIES:
+:header-args: :session clean_hs_data :tangle tangled/clean_hs_data.R :export both :results output silent
+:END:
+
+**** TODO Download and read file
+
+The file is provided from the Harvard Dataverse and is available for download here: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/T4CHWJ
+
+#+BEGIN_SRC R
+
+sitc_path <- "~/sorensfolder/sbpdata/data/trade/sitc-rev2/year_origin_sitc_rev2.tsv"
+sitc_raw <- read_tsv(sitc_path)
+
+sitc <- sitc_raw %>%
+	mutate(
+        export_val = as.numeric(export_val),
+    ) %>%
+	select(
+        time = year,
+        region = origin,
+        unit = sitc4,
+        intensity = export_val
+    )
+#+END_SRC
+
+**** TODO Time independent filters
+
+Following the Atlas of Economic complexity, four time-independent filters are used to filter the SITC-data.
+
+The filters are:
+ - countries must have data in 2010
+ - countries must have a total export value > 1 bill in 2010
+ - countries must have a population of at least 1.25 mio in 2010
+ - countries must not be Tchad (TCD), Iraq (IRQ), Afghanistan (AFG)
+
+#+BEGIN_SRC R
+ref_year <- 2010
+ref_export <- 1000000000
+ref_pop <- 1250000
+ref_reliable <- c("afg", "tcd", "irq")
+#+END_SRC
+
+
+***** Availability filter
+
+I first create a set of countries that have data available in the reference year. This removes no-longer present countries, which helps for continuity in the time-series, but is a bit of an issue in earlier periods, given the prominence of fx the Soviet Union.
+
+#+BEGIN_SRC R
+available_set <- filter(sitc, time == ref_year) %>%
+    pull(region) %>%
+    unique()
+#+END_SRC
+
+***** Export filter
+
+To create the set of countries that clear the export filter, I use the trade data itself.
+
+#+BEGIN_SRC R
+export_set <- sitc %>%
+	filter(time == ref_year) %>%
+	group_by(region) %>%
+	summarise(
+        total_export = sum(intensity)
+    ) %>%
+	filter(total_export >= ref_export) %>%
+	pull(region) %>%
+    unique()
+#+END_SRC
+
+***** Population filter
+
+I use the World Development Indicators (WDI) population data to filter for minimum population in the reference year. The WDI distributes a package of the same name, from which I download the data.
+
+#+BEGIN_SRC R
+library(WDI)
+
+pop_raw <- WDI(country = "all", indicator = "SP.POP.TOTL", extra = TRUE) %>%
+	as_tibble()
+
+pop_data <- pop_raw %>%
+	mutate_if(is.factor, as.character) %>%
+	mutate(
+        region = str_to_lower(iso3c)
+    ) %>%
+	select(
+        time = year,
+        region,
+        pop = SP.POP.TOTL
+    )
+
+pop_set <- pop_data %>%
+	filter(time == ref_year & pop >= ref_pop) %>%
+	pull(region) %>%
+    unique()
+#+END_SRC
+
+***** Reliability filter
+The Atlas lists a few countries with unreliable trade data. I exclude these countries.
+
+#+BEGIN_SRC R
+reliable_set <- sitc %>%
+	filter(!(region %in% ref_reliable)) %>%
+	pull(region) %>%
+	unique()
+#+END_SRC
+
+***** Apply filters
+
+I now apply the filters from above.
+
+#+BEGIN_SRC R
+sitc_filtered <- sitc %>%
+	filter(region %in% export_set) %>%
+	filter(region %in% pop_set) %>%
+	filter(region %in% available_set) %>%
+	filter(region %in% reliable_set)
+#+END_SRC
+
+***** TODO Write file
+
+**** TODO Time dependent filters
+
+Albaeik et al ("Improving the Economic Complexity Index", 2017) uses three time-dependent filters, in addition to the time-independent filters above. These three filters are:
+
+ - exclusion of products for which, in a given year, 80% of countries have an export value of 0.
+ - exclusion of countries that, in a given year, have an export value of 0 for 95% of products
+ - exclusion of products with a global export value of less than 10 mio in a given year
+ - lastly, all country-product export values of less than 5000 are set to 0.
+
+#+BEGIN_SRC R
+product_prop_limit <- 0.80
+region_prop_limit <- 0.95
+product_export_min <- 10000000
+#+END_SRC
+
+***** First time-dependent filter
+
+#+BEGIN_SRC R
+    group_by(time, unit) %>%
+    summarise(
+        regions_with_0_export = sum(intensity == 0),
+        total_regions = n(),
+        proportion_0 = regions_with_0_export / total_regions
+    )
+
+unit_year_exclusions <- product_summary %>%
+    filter(proportion_0 >= product_prop_limit)
+#+END_SRC
+
+***** Second time-dependent filter
+
+#+BEGIN_SRC R
+region_summary <- sitc_tidy %>%
+    group_by(time, region) %>%
+    summarise(
+        units_with_0_export = sum(intensity == 0),
+        total_units = n(),
+        proportion_0 = units_with_0_export / total_units
+    )
+
+region_year_exclusions <- region_summary %>%
+    filter(proportion_0 >= region_prop_limit)
+#+END_SRC
+
+***** Third time-dependent filter
+
+
+#+BEGIN_SRC R
+global_product_export_vals <- sitc_tidy %>%
+    group_by(time, unit) %>%
+    summarise(
+        total_export_val = sum(intensity)
+    )
+
+global_product_exclusions <- global_product_export_vals %>%
+    filter(total_export_val < product_export_min)
+#+END_SRC
+
+***** Apply filters
+
+I remove excluded observations (i.e. region-unit pairs) by using anti-join. anti-join(x, y) keeps all columns from x, and all the observations from x that does not have a match in y.
+
+#+BEGIN_SRC R
+sitc_filtered2 <- anti_join(sitc_tidy, unit_year_exclusions) %>%
+    anti_join(region_year_exclusions) %>%
+    anti_join(global_product_exclusions)
+#+END_SRC
+
+***** TODO Write file
+
+#+BEGIN_SRC R
+output_path <- "~/sorensfolder/sbpdata/data/sitc2_4digit_both_filters.csv"
+write_csv(sitc_filtered2, output_path)
+#+END_SRC
+
+** GDP per capita
+*** Penn World Tables
+*** Maddison database
+* Metrics [0/7]
+** TODO Revealed Comparative Advantage
+*** Description
+ The economy of the US is around 19 trillions USD in 2019. This is approximately 400 times the size of the economy of Ghana. To meaningfully compare which products different economies specialize in, some normalization procedure is necessary. For this I use the Revealed Comparative Advantage (also known as the Balassa Index). Originally introduced by cite:balassa_trade_1965.
+
+  RCA compares the share of a products export value in a regions total export to the share of the products global export value in the total global exports. More formally:
+
+  $$ RCA_{pc} = \frac{ x_{cp} }{ \sum_{p} x_{cp} } \bigg/ \frac{ \sum_{c} x_{cp} }{ \sum_{c} \sum_{p} x_{cp}} $$
+
+  where $x_{cp}$ is the export value of product $p$ in country $c$ in a given year. If RCA is at 1 or above, a comparative advantage is considered revealed.
+
+*** Coding
+Calculating RCA is fairly simple. If the matrix $X$ contains export values with countries in rows and products in columns, we can use some matrix multiplication to get an RCA-matrix instead.
+
+TODO For data I use the cleaned trade data in SITC rev. 2 format (four digit). I only use data for the year 2010.
+
+TODO:
+    #+begin_src R
+      library(tidyverse)
+      library(vroom)
+      ## read data
+      path <- "~/sorensfolder/sbpdata/data/sitc-rev2_tidy.csv"
+      trade <- vroom(path) %>%
+        filter(time == 2010) %>%
+        select(-rca)
+    #+end_src
+
+First, I build the country-product matrix, where the elements are the export-value in constant dollars. This matrix is the $X$ matrix. Each element $x_{cp}$ is the intensity, i.e. the export value, of the country-product pair.
+
+    #+begin_src R
+      mat <- spread(trade, key = unit, value = intensity) %>%
+        select(-time) %>%
+        column_to_rownames(var = "region") %>%
+        as.matrix()
+    #+end_src
+
+Following the above definition of RCA, we need four elements:
+1. The matrix of individual country-product intensities. This is individual elements in $X$.
+2. A vector of the total export from each country. This is the row sums of $X$.
+3. A vector of the total export of a each product (by all countries). This is the column sums of $X$.
+4. The total global export. This is the full sum of all elements in $X$.
+
+We can represent the calculation in three steps.
+
+#+CAPTION: Depiction of the RCA calculation.
+#+LABEL: fig:RCA_standard_formula
+[[./figs/pngs/RCA_standard_formula.png]]
+
+First we find the share of each product (A) in the country's total exports (B). This is represented by part 1 in figure [[fig:RCA_standard_formula]].
+
+ #+begin_src R
+   share_unit_region <- mat / rowSums(mat)
+ #+end_src
+
+~rowSums~ sums the product export values for each country. This results in a vector with each country's total export value. This is then divided into the intensity matrix, element-wise. It is repeated column by column, meaning that each product is divided by respective country's total export.
+
+The result of part 1 is a matrix, where each element is the share of the product in the countries total exports.
+
+Second I find the share of each products total export value (C) in the total value of global exports (D). This is part 2 in figure [[fig:RCA_standard_formula]].
+
+#+begin_src R
+   share_unit_global <- colSums(mat) / sum(mat)
+ #+end_src
+
+ This is essentially the same procedure as before, but with the column sums (a vector containing the total value of a products exports over all countries) divided by a vector (global exports). The result is vector, where each element $i$ is product $i$'s total global export divided by all products total export.
+
+Finally, I divide the outcome of part 1 with the outcome of part two. This is essentially that same idea as step one. I transpose the matrix from part 1 in order for R to divide the vector from part two element-wise, one column at a time. Finally I transpose the result to get the country-product format for the RCA matrix.
+
+#+begin_src R
+    incidence_mat <- t(
+        t(share_unit_region) / share_unit_global
+    )
+#+end_src
+
+*** Function
+
+As input, the ~rca~-function takes a matrix of export values in dollars. Countries are
+in rows, products in columns. The function outputs a matrix of with the revealed
+comparative advantage. Countries are in rows, products in columns. The "binary"
+parameter controls whether the RCA values should be binarized to 0 and 1.
+
+#+BEGIN_SRC R
+rca <- function(mat, binary = FALSE) {
+
+  country_names <- rownames(mat)
+  product_names <- colnames(mat)
+
+
+  share_unit_region <- mat / rowSums(mat)
+  share_unit_global <- colSums(mat) / sum(mat)
+
+  incidence_mat <- t(
+    t(share_unit_region) / share_unit_global
+  )
+
+  rownames(incidence_mat) <- country_names
+  colnames(incidence_mat) <- product_names
+
+  if(binary = TRUE) {
+
+   incidence_mat <- ifelse(incidence_mat >= 1, 1, 0)
+
+  }
+
+ return(incidence_mat)
+}
+#+END_SRC
+
+** TODO Revealed Comparative Advantage per capita
+*** Description
+
+
+
+*** Coding
+** TODO Product-product similarity
+*** Description
+*** Coding
+** TODO Country-product density
+*** Description
+*** Coding
+** TODO Country coherence
+*** Description
+*** Coding
+** TODO New products
+*** Description
+*** Coding
+** TODO Fitness algorithm
+*** Description
+*** Coding
+* Figures [0/4]
+** TODO Product Space graph
+** TODO Distribution of RCA
+** TODO Distribution of complexity
+** TODO Distribution of degrees (sum of product proximities)
+
+* References
+
+bibliography:humgeo_thesis.bib
+bibliographystyle:humannat
