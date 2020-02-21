@@ -8,3 +8,5 @@ tmp/
 *.mobi
 *.epub
 *.csv
+*.tab
+*.tsv
