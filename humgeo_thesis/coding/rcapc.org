@@ -244,9 +244,12 @@ To calculate RCApc data, we need two inputs: population data and trade data. The
 I first create the RCApc data for one year. I then generalize the code in a function to be able to create it for all the years in one go.
 
 *** RCApc for 2015
+:PROPERTIES:
+:header-args: :tangle tangled/rcapc2015_hs92.R :export both :results output silent
+:END:
 **** Prepare trade data
 
-#+BEGIN_SRC R :session rcacp_data
+#+BEGIN_SRC R :session rcacp_data2015
 library(tidyverse)
 library(vroom)
 library(here)
@@ -269,7 +272,7 @@ export_mat <- trade_data %>%
 
 **** Prepare population data
 
-#+BEGIN_SRC R :session rcacp_data
+#+BEGIN_SRC R :session rcacp_data2015
 library(WDI)
 library(tidyverse)
 
@@ -290,7 +293,7 @@ pop_mat <- pop_raw %>%
 
 First I define the function:
 
-#+BEGIN_SRC R rcacp_data
+#+BEGIN_SRC R rcacp_data2015
 
 rca_pc <- function(export_mat, population_vector) {
 
@@ -347,298 +350,56 @@ rca_pc <- function(export_mat, population_vector) {
 }
 #+END_SRC
 
+#+BEGIN_SRC R rcacp_data2015
+
+rca_mat <- rca_pc(export_mat = trade_mat, population_vector = pop_mat)
+
+#+END_SRC
+*** RCApc for all years
+
+I first prepare the population data.
+
+#+BEGIN_SRC R
+
+#+END_SRC
+
+I then read in the filtered trade data.
+
+
+#+BEGIN_SRC R
+
+#+END_SRC
+
+Now I nest the long trade data by year. This means that the ~data~ column in the nest contains each yearly observations in the same long format, but without the grouping variable (time). I now write a helper function that turns a long data frame into wide matrix, applies the RCApc function, and gathers it to a long RCA data frame again.
+
+#+BEGIN_SRC R
+
+#+END_SRC
+
+Finally, I unnest and write the data.
+
+
 ** TODO Create RCApc for SITC92 data
-* DONE Fitness algorithm 2012
-** DONE Description
-The fitness algorithm is developed in cite:tacchella_new_2012-1,tacchella_economic_2013-2. The algorithm is an iterative process, where each iteration leverages the information from the previous to "refine" the information on which countries are the most fit and which products are the most complex. Basically, the most fit countries are those that export the most complex products, and the most complex products are those that are exported by the fittest countries. The main novelty of the fitness algorithm (compared to the Method of Reflections) is the insight that because many advanced countries export all kinds of products, but that less developed countries only export less complex products, there is more information in whether a less-fit country exports a product than if a more fit country does. Therefor, there is a non-linear penalty  to a product's complexity by having less fit countries export it (where the penalty is greater, the less fit the country is).
+*** RCApc for all years at once
 
-At each iteration $n$ the algorithm is defined as:
-
-\begin{cases}
-\hat{F}_{c}^{(n)} = \sum_{p} M_{cp} Q_{p}^{(n - 1)} \\
-\hat{Q}_{p}^{(n)} = \frac{1}{\sum_c M_{cp} \frac{1}{F_c^{(n - 1)}}}
-\end{cases}
-
-with normalization procedure
-
-\begin{cases}
-F_{c}^{(n)} = \frac{\hat{F}_{c}^{(n)}}{<\hat{F}_{c}^{(n)}>}_c \\
-Q_{p}^{(n)} = \frac{\hat{Q}_{p}^{(n)}}{<\hat{Q}_{p}^{(n)}>}_p
-\end{cases}
-
-$F_c^{n}$ is the fitness of country $c$ in iteration $n$ and $Q^{(n)}_p$ is the complexity of product $p$ and iteration $n$. $M$ is the country-product RCA matrix. It is usually defined as a binary matrix, but it does not have to be.
-
-The starting conditions (at iteration 0) is defined as $F^{0}_c = Q^{0}_c = 1 \forall c, p$. That is, the starting conditions for $F_c$ and $Q_p$ is just a vector of 1's that has the same length as the number of countries or products respectively.
-
-** DONE Implementation
-*** F hat:
-The equation for $\hat{F}_c^{(n)}$ is simple. Each product RCA value in $M$ should be weighted by their complexity values ($Q_p$). We then just take the sum of each countries complexity weighted RCA and get a vector of country values. This is $\hat{F}^{(n)}_c$. Computationally, this is simple: we can simply just take a matrix-vector multiplication between $M_{cp}$ and the previous iterations $Q_p$.
-
-$$\begin{bmatrix}
-m_{11} & m_{12} & m_{13}  \\
-m_{21} & m_{22} & m_{23}  \\
-\end{bmatrix} \times
-\begin{bmatrix}
-q_{11} \\
-q_{21} \\
-q_{31}
-\end{bmatrix} = \begin{bmatrix}
-m_{11}q_{11} + m_{12}q_{21}  + m_{13}q_{31}   \\
-m_{21}q_{11}  + m_{22}q_{21}  + m_{23}q_{31}   \\
-\end{bmatrix}$$
-
-Using real numbers, we get:
-
-$$\begin{bmatrix}
-11 & 12 & 13  \\
-21 & 22 & 23  \\
-\end{bmatrix} \times
-\begin{bmatrix}
-11 \\
-21 \\
-31
-\end{bmatrix} = \begin{bmatrix}
-11 \cdot 11 + 12 \cdot 21  + 13 \cdot 31   \\
-21 \cdot 11  + 22 \cdot 21  + 23 \cdot 31   \\
-\end{bmatrix} = \begin{bmatrix}
-121 + 252 + 403 \\
-231 + 462  + 713  \\
-\end{bmatrix} = \begin{bmatrix}
-776 \\
-1406  \\
-\end{bmatrix}$$
-
-To see that this works in R, first I define M:
-
-#+BEGIN_SRC R :session test :exports both
-
-M <- matrix(
-  c(11, 12, 13,
-    21, 22, 23),
-  ncol = 3,
-  nrow = 2,
-  byrow = TRUE
-)
-#+END_SRC
-
-#+RESULTS:
-
-then Q:
-#+BEGIN_SRC R :session test :exports both
-Q <- c(11, 21, 31)
-#+END_SRC
-
-#+RESULTS:
-| 11 |
-| 21 |
-| 31
-
-And then the calculation:
-
-#+BEGIN_SRC R :session test :exports both
-M %*% Q
-#+END_SRC
-
-#+RESULTS:
-|  776 |
-| 1406 |
-
-Voila. I therefor implement the equation to $\hat{F}^{n}_c$ as:
+1. separate into yearly data frames.
+2. spread
+3. apply rcapc function to each dataframe
+4. gather
 
 #+BEGIN_SRC R
-F_hat <- M %*% Q
+#stud
+
+trade_data <- vroom(here("data/prepared/hs92_filtered_ti.csv"))
+
+country_list <- trade_data %>%
+  filter(time == ref_year) %>%
+  distinct(region)
+
+export_mat <- trade_data %>%
+  filter(time == ref_year) %>%
+  select(region, unit, intensity) %>%
+  spread(key = unit, value = intensity) %>%
+  column_to_rownames(var = "region") %>%
+  as.matrix()
 #+END_SRC
-
-*** Q hat:
-
-We can use the same basic idea for $\hat{Q}_{p}^{n}$. We first divide the scalar 1 by the $F^{n - 1}_c$  vector, then matrix-vector multiply $M_{cp}$ with the resulting vector. Finally we just divide outcome vector by the scalar 1 one more time.
-
-To see that it works:
-
-$$ 1 / \begin{bmatrix}
-f_{11} \\
-f_{21}
-\end{bmatrix} \rightarrow 1 / \begin{bmatrix}
-11 \\
-21
-\end{bmatrix} = \begin{bmatrix}
-1/11 \\
-1/21
-\end{bmatrix} = \begin{bmatrix}
-0.09 \\
-0.05
-\end{bmatrix} $$
-
-and in R:
-
-#+BEGIN_SRC R :session test :exports both
-F <- c(11, 21)
-round(1/F, 2)
-#+END_SRC
-
-#+RESULTS:
-| 0.09 |
-| 0.05 |
-
-I now need to weight each product with the country-fitness values of the countries that export them ($M_{cp} \frac{1}{F^{n - 1}_c}$). That is, the vector $\frac{1}{F^{n - 1}_c}$ needs to be multiplied column-wise into M. Essentially, I want the whole first row of M to be multiplied by the fitness of the country in the first row, the whole second row to be multiplied by the fitness of the second country, and so on. I then want to sum each column, so that the resulting vector becomes the same length as the number of products, where the first value is the sum of the fitness of all countries exporting the first product, and so forth.
-
-This means that we must first transpose M so that dimensions fit:
-
-\[
-M^t \times (1 / F_c) = \begin{bmatrix} 11 & 21 \\
-12 & 22 \\
-13 & 23
-\end{bmatrix} \times (1 / \begin{bmatrix}
-11 \\
-21
-\end{bmatrix}) = \begin{bmatrix} 11 \cdot (1 / 11) + 21 \cdot (1 / 21) \\
-12 \cdot (1 / 11) + 22 \cdot (1 / 21) \\
-13 \cdot (1 / 11) + 23 \cdot (1 / 21)
-\end{bmatrix} = \begin{bmatrix}  2  \\
-2.14 \\
-2.28 \end{bmatrix}
-\]
-
-Now each product is weighted by the country that exports it, and is summed column-wise in the original M (i.e. product wise).
-
-In R:
-
-#+BEGIN_SRC R :session test :exports both
-F <- c(11, 21) # two countries in M
-round(t(M) %*% (1/F), 2)
-#+END_SRC
-
-#+RESULTS:
-|    2 |
-| 2.14 |
-| 2.28 |
-
-I therefor implement the equation to $\hat{Q}^{n}_p$ as:
-
-#+BEGIN_SRC R
-Q_hat <- 1 / (t(M) %*% (1/F))
-#+END_SRC
-
-*** Normalization:
-The normalization procedure is simple enough. Each fitness value is divided by the average fitness value of the current iteration, and each complexity value is divided by the average complexity value of the current iteration.
-
-For a sample $\hat{F}$ of $[11, 21, 31]$, we simply take the average and divide it into the vector. For the $\hat{F}$ from before, the average is $(11 + 21 + 31) / 3 = 21$. The new F is then:
-$$ \begin{bmatrix} 11 / 21 & 21 / 21 & 31 / 21 \end{bmatrix} = \begin{bmatrix} 0.52 & 1 & 1.48 \end{bmatrix} $$
-
-In R:
-
-#+BEGIN_SRC R :session test :exports both
-F_hat <- c(11, 21, 31)
-
-F <- F_hat / mean(F_hat)
-
-round(F, 2)
-#+END_SRC
-
-#+RESULTS:
-| 0.52 |
-|    1 |
-| 1.48 |
-
-The normalisation procedures are therefor:
-
-#+BEGIN_SRC R
-Q <- Q_hat / mean(Q_hat)
-F <- F_hat / mean(F_hat)
-#+END_SRC
-
-** DONE Coding
-I now put the elements from above together in a function. N is the number of iterations, M is the RCA matrix. The M matrix should have product names as colnames and country names as rownames. I use two matrices to collect the results. The first matrix is an N times C matrix, where each column is a country and each row is an iteration number. The elements are the fitness of the country in the given iteration. The second matrix is the equivalent matrix for products.
-
-- [X] Collection of all iteration results (for covergence graph)
-- [X] Define return frame
-
-#+BEGIN_SRC R
-fitness2012 <- function(M, N) {
-
-  # NA values introduce all sorts of problems. These are not allowed in the M matrix
-  if(sum(is.na(M) != 0) {
-  stop("M contains NA values. This makes things funky. Stopping.")
-  }
-
-  # define konstants
-  ## number of countries
-  C <- nrow(M)
-  ## number of products
-  P <- ncol(M)
-
-  # define collection matrices
-  country_matrix <- matrix(NA, ncol = C, nrow = N, dimnames = list(1:N, rownames(M)))
-  product_matrix <- matrix(NA, ncol = P, nrow = N, dimnames = list(1:N, colnames(M)))
-
-  # starting conditions
-  F <- rep(1, C)
-  Q <- rep(1, P)
-
-  # Loop starts
-  for(i in 1:N) {
-
-    F_hat <- M %*% Q
-    Q_hat <- 1 / (t(M) %*% (1/F))
-
-    # Normalize
-    F <- F_hat / mean(F_hat)
-    Q <- Q_hat / mean(Q_hat)
-
-    country_matrix[i, ] <- F
-    product_matrix[i, ] <- Q
-  }
-
-  # Make country_matrix into a long, tidy data frame
-  country_long <- country_matrix %>%
-    as_tibble() %>%
-    rownames_to_column(var = "iteration") %>%
-    gather(-iteration, key = "name", value = "value") %>%
-    mutate(entity = "country",
-           metric = "fitness")
-
-  # Make product_matrix into a long, tidy data frame
-  product_long <- product_matrix %>%
-    as_tibble() %>%
-    rownames_to_column(var = "iteration") %>%
-    gather(-iteration, key = "name", value = "value") %>%
-    mutate(entity = "product",
-           metric = "complexity")
-
-  # Join the two long data frames and return them
-  return_tbl <- rbind(country_long, product_long)
-
-  return(return_tbl)
-}
-
-#+END_SRC
-
-* TODO Fitness algorithm 2018
-The 2018 version of the fitness algorithm was developed to avoid certain
-
-* TODO Method of Reflections
-The Method of Reflections was developed in cite:hidalgo_building_2009.
-
-\begin{align}
-k^{(n)}_c &= \frac{1}{k^{(0)}_c} \sum^{N_p}_{p = 1} M_{cp}k^{(n - 1)}_p \\
-k^{(n)}_p &= \frac{1}{k^{(0)}_p} \sum^{N_c}_{c = 1} M_{cp}k^{(n - 1)}_c \\
-k^{(0)}_c &= \sum^{N_p}_{p = 1} M_{cp} \\
-k^{(0)}_p &= \sum^{N_c}_{c = 1} M_{cp}
-\end{align}
-
-
-
-
-bibliography:../writing/humgeo_thesis.bib
-bibliographystyle:humnnat
-
-* To-do
-- [ ] Code RCA (fix divide by 0 problem)
-- [X] Code RCApc
-- [ ] Lav rca by complexity measure (for each algortihm). Simple graph + linear function
-  - [ ] Method of reflections
-  - [ ] Fitness2012
-  - [ ] Fitness2018
-- [ ]
-- [ ] Set up trade unit values
-- [ ] Set up REA

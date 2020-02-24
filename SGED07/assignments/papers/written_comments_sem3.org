@@ -1,0 +1,38 @@
+* Kira Uhline: Zipline
+
+Hi Kira,
+
+I like a lot of things about your project. Your case is both different and very interesting, and there seems to be a lot of broader aspects that can examined in it (ethical issues, the "tech fix" to social problems, private distribution of social services, crowding-out effects on local health care provision, etc.).
+
+My main concern is how you distinguish your work from being "journalistic" rather than a scientific examination. You present a rather broad empirical investigation, and it could be challenging to examine
+
+For instance, you want to investigate issues of efficiency and costs using GIS. If you want more tan just describe their costs or comparae what their idea their benefit advantage is, this could be quite a big undertaking. For instance: what do you comparae
+
+How do you manage this? Supposedly, you would need to build some comparison or reference service.
+
+If you do want to to contribute to theory building, it might be interesting to compare with other "technical fix"-projects. Like the one laptop for every child, the  ff
+
+** Purpose
+
+** Data selection
+
+** Data analysis
+
+** Notes
+* Jana Schmidt
+
+Hi Jana,
+
+As I understand, you want to identify possible climate adaptation strategies for smallholder farmers in Southern Malawi. To do this, you are reading a variety of papers and reports from international organizations (FAO, WFP), the Malawian government, and some papers on resilience in other SSA countries.
+
+** Data selection
+ - Documents and reports published by international organisations (UN FAO, UN WFP)
+ - WFP Rural Resilience Initiative has publish data and other articles on effects of climate variability in S. Malawi
+ - Relevant government papers
+ - Papers dealing with agricultural resilience in other SSA countries
+ - "One or two" interviews
+** Data analysis
+ - identify patters in collected data by: using a coding scheme based on a conceptual framework
+ - content analysis = extract relevant parts of the text and analyze what they say. Also take into account the context in which they are produced
+** Notes
+- Consider making it more clear on what literature is used to build a conceptual framework and what is used as data for the analysis

@@ -1,0 +1,660 @@
+# Define RCA function
+
+## Definition
+ The economy of the US is around 19 trillions USD in 2019. This is approximately 400 times the size of the economy of Ghana. To meaningfully compare which products different economies specialize in, some normalization procedure is necessary. For this I use the Revealed Comparative Advantage (also known as the Balassa Index). Originally introduced by cite:balassa_trade_1965.
+
+  RCA compares the share of a products export value in a regions total export to the share of the products global export value in the total global exports. More formally:
+
+  $$ RCA_{pc} = \frac{ x_{cp} }{ \sum_{p} x_{cp} } \bigg/ \frac{ \sum_{c} x_{cp} }{ \sum_{c} \sum_{p} x_{cp}} $$
+
+  where $x_{cp}$ is the export value of product $p$ in country $c$ in a given year. If RCA is at 1 or above, a comparative advantage is considered revealed.
+
+## Implementation
+First, I build the country-product matrix, where the elements are the export-value in constant dollars. This matrix is the $X$ matrix. Each element $x_{cp}$ is the intensity, i.e. the export value, of the country-product pair. Here the $X$ matrix is called  ~mat~.
+
+Following the above definition of RCA, we need four elements:
+1. The matrix of individual country-product intensities. This is individual elements in $X$.
+2. A vector of the total export from each country. This is the row sums of $X$.
+3. A vector of the total export of a each product (by all countries). This is the column sums of $X$.
+4. The total global export. This is the full sum of all elements in $X$.
+
+We can represent the calculation in three steps.
+
+#+CAPTION: Depiction of the RCA calculation.
+#+LABEL: fig:RCA_standard_formula
+[[./figs/pngs/RCA_standard_formula.png]]
+
+First we find the share of each product (A) in the country's total exports (B). This is represented by part 1 in figure [[fig:RCA_standard_formula]]:
+
+```{R}
+share_unit_region <- mat / rowSums(mat)
+```
+
+rowSums sums the product export values for each country. This results in a vector with each country's total export value. This is then divided into the intensity matrix, element-wise. It is repeated column by column, meaning that each product is divided by respective country's total export.
+
+The result of part 1 is a matrix, where each element is the share of the product in the countries total exports.
+
+Second I find the share of each products total export value (C) in the total value of global exports (D). This is part 2 in figure [[fig:RCA_standard_formula]].
+
+```{R}
+share_unit_global <- colSums(mat) / sum(mat)
+```
+
+ This is essentially the same procedure as before, but with the column sums (a vector containing the total value of a products exports over all countries) divided by a vector (global exports). The result is vector, where each element $i$ is product $i$'s total global export divided by all products total export.
+
+Finally, I divide the outcome of part 1 with the outcome of part two. This is essentially that same idea as step one. I transpose the matrix from part 1 in order for R to divide the vector from part two element-wise, one column at a time. Finally I transpose the result to get the country-product format for the RCA matrix:
+
+```{R}
+incidence_mat <- t(t(share_unit_region) / share_unit_global)
+```
+
+I return the incidence matrix.
+
+## Define the rca function
+Calculating RCA is fairly simple. If the matrix $X$ contains export values with countries in rows and products in columns, we can use some matrix multiplication to get an RCA-matrix instead. I first define the function, then I turn to explain the details.
+
+```{R}
+rca <- function(mat, binary = FALSE) {
+
+
+  if(!is.matrix(mat)) {
+    stop("The export matrix is not a matrix. It needs to be a country (row) by product (col) matrix. The rownames needs to be the country names.")
+  }
+
+  # check for NA values
+  if(sum(is.na(mat)) != 0) {
+    stop("NA values exist in the export matrix. This is not allowed. Stopping.")
+  }
+
+  country_names <- rownames(mat)
+  product_names <- colnames(mat)
+
+  share_unit_region <- mat / rowSums(mat)
+  share_unit_global <- colSums(mat) / sum(mat)
+
+  incidence_mat <- t(
+    t(share_unit_region) / share_unit_global
+  )
+
+  rownames(incidence_mat) <- country_names
+  colnames(incidence_mat) <- product_names
+
+  if(binary == TRUE) {
+
+   incidence_mat <- ifelse(incidence_mat >= 1, 1, 0)
+
+  }
+
+ return(incidence_mat)
+}
+
+```
+
+## Run rca function on HS92 trade data
+The rca function is based on the $X_{cp}$ matrix from one year. The trade data
+covers many years. I therefor nest the observations for each year seperately and
+apply the function. To achieve this, I define a helper function that turns the
+yearly long-form trade data into the $X_{cp}$ format used by the rca function. The helper function also re-formats the rca-matrix output as long data. 
+
+1. First, I read the trade data and nest it. 
+
+```{R}
+library(tidyverse)
+library(vroom)
+library(here)
+
+# read filtered hs92 data
+hs_long <- vroom(here("../data/prepared/hs92_filtered_ti.csv"))
+
+hs_nest <- hs_long %>%
+  group_by(time) %>%
+  nest() %>%
+  rename(hs92 = data)
+
+```
+
+2. I now build the helper function, that spreads each trade data frame to the $X_{cp}$ matrix and applies the RCApc function.
+
+```{R}
+
+helper_spread_rca <- function(hs_long_df) {
+
+  ## Check if NA values exist in the long data
+  if(sum(is.na(hs_long_df)) != 0) {
+    stop("NA values exist in the the long data. Stopping")
+  }
+    
+ ## spread long trade data to X_cp
+  hs_mat <- hs_long_df %>%
+    spread(key = unit, value = intensity) %>%
+    as.data.frame() %>%
+    column_to_rownames("region") %>%
+    as.matrix()
+
+  ## check if divide-by-zero problem occurs
+  if(0 %in% colSums(hs_mat)) {
+    stop("One of more of the columns in hs_mat sums to 0 (i.e. no country exports the product). This means that a divide-by-zero problem occurs. Stopping.")
+  }
+
+  ## Since there is not an observation for each country-product pair in each year, some NAs are introduced. I set these values to 0.
+  hs_mat[is.na(hs_mat)] <- 0
+  
+ ## apply rca_pc function to X_cp and pop data
+  rca_mat <- rca(mat = hs_mat)
+
+  ## make it long, and return it.
+  rca_long <- rca_mat %>%
+    as.data.frame() %>%
+    rownames_to_column(var = "region") %>%
+    gather(-region, key = unit, value = rca) %>%
+    as_tibble()
+
+  return(rca_long)
+    
+}
+```
+
+I now apply the helper function to the nested data and create a binarized version.
+
+```{R} 
+hs_nest <- hs_nest %>%
+  mutate(rca_long = map(.x = hs92, .f = helper_spread_rca))
+
+hs_rca_long <- hs_nest %>% 
+  select(time, rca_long) %>%
+  unnest(cols = c(rca_long)) %>%
+  mutate(rca_bin = ifelse(rca >= 1, 1, 0),
+         metric = "RCA")
+
+```
+
+Finally I write the file.
+
+```{R}
+write_csv(hs_rca_long, here("../data/prepared/hs92_ti_rca.csv"))
+```
+
+# Define RCA per capita function
+## Definition
+The per capita version of the RCA substitutes the reference distribution with population. That is, the RCA instead measures a countries export value per capita for a product divided by the global export value of the product per capita (ie. world population). There is a few benefits of this. First, it lessons the importance of price movements in a few products having large effects on the RCA of others (it is still not completely removed). Second, on a more practiacal note, it removes the divide-by-zero problem in the traditional equation.
+
+Revealed Comparative Advantage per capita ($RCA^{pc}$) for country $c$ in product $p$ is defined as fined as:
+
+$$ RCA_{cp}^{pc} = \frac{X_{cp}}{pop_c} / \frac{\sum_c X_{cp}}{\sum_c pop_c} $$
+
+where $X_{cp}$ is a country by product matrix where the elements is the dollar amount of exports a country exports of a product (in the given year). $pop_c$ is the total population in the given year.
+
+We implement the formula rather simply. First we build the $X_{cp}$ matrix and divide the $pop_c$ vector into it column wise (so that each countries exports are divided by its population). This gives us a population adjusted version of the $X_{cp}$ matrix. Next we take the column sums $X_{cp}$. This gives us a $p$-length vector of total global exports for each product. This vector is divided by the totalt global population. Now we have a country by product adjusted export matrix and a population adjust total export vector. Now remains just to divide the adjusted export matrix by the adjusted global export vector product wise.
+
+Thus, if we take red wine as an example, the $RCA^{pc}$ measures the ration between a country's export of red wine divided the country's population, and the global export of red wine divided by the global population.
+
+## Implementation
+
+First I create a sample X matrix.
+
+```{R} 
+set.seed(1)
+
+X <- matrix(
+  round(runif(12, 1, 100), 0),
+  ncol = 4,
+  nrow = 3,
+  dimnames = list(c("c1", "c2", "c3"), c("p1", "p2", "p3", "p4"))
+  )
+
+```
+
+and a sample population vector.
+
+```{R}
+set.seed(1)
+pop_vec <- round(runif(3, 30, 100), 0)
+```
+
+I then find the population adjusted X matrix. Because I just need to multiply the vector into the X matrix (and not sum it afterwards), I cannot do straight up matrix-vector multiplication. I therefor turn pop into a matrix, POP, with the same dimensions as X, where each column is the current pop vector.
+
+$$ pop = \begin{bmatrix} 49 \\ 56 \\ 70 \end{bmatrix} \rightarrow POP =  \begin{bmatrix} 49 & 49 & 49  & 49\\ 56 & 56 & 56 & 56\\ 70 & 70 & 70 & 70 \end{bmatrix} $$
+
+Thus, when I divide $X_{cp}$ with $POP$, I get the following:
+
+$$ \frac{X_{cp}}{POP} =  \begin{bmatrix} 27 & 91 & 95 & 7 \\ 38 & 21 & 66 & 21 \\ 58 & 90 & 63 & 18 \end{bmatrix} / \begin{bmatrix} 49 & 49 & 49  & 49\\ 56 & 56 & 56 & 56\\ 70 & 70 & 70 & 70 \end{bmatrix} = \begin{bmatrix} 27 / 49  & 91 / 49 & 95 / 49 & 7 / 49 \\ 38 / 56  & 21 / 56  & 66 / 56  & 21 / 56  \\ 58 / 70 & 90 / 70 & 63 / 70 & 18 / 70 \end{bmatrix} = \begin{bmatrix} 0.55 & 1.86 & 1.94 & 0.14 \\ 0.68 & 0.38 & 1.18 & 0.38 \\ 0.83 & 1.29 & 0.9 & 0.26 \end{bmatrix} $$
+
+In R:
+
+```{R}
+POP_mat <- matrix(pop_vec,
+                  ncol = 4,
+                  nrow = 3,
+                  byrow = FALSE)
+
+
+round(X / POP_mat, 2)
+```
+
+I now turn to the denominator. First I create the global product vector by taking the column sums of the original $X_{cp}$. I then just sum the $pop$ vector to give me the global population.
+
+\begin{align}
+\sum_c X_{cp} &= \begin{bmatrix} 123 & 202 & 224 & 46 \end{bmatrix} \\
+\sum_c pop_c &= 175
+\end{align}
+
+Column sums in R:
+
+```{R}
+colSums(X)
+```
+
+Global population in R:
+
+```{R}
+sum(pop_vec)
+```
+
+I now just divide the global export value of each product with the global population scalar:
+
+$$ \frac{\sum_c X_cp}{\sum_c pop_c} = \begin{bmatrix} 123 / 175 & 202 / 175 & 224 / 175 & 46 / 175 \end{bmatrix} = \begin{bmatrix} 0.70 & 1.15 & 1.28 & 0.26 \end{bmatrix} $$
+
+
+```{R}
+round(colSums(X) / sum(pop_vec), 2)
+```
+
+Now I turn to the final calculation, the division between the local product export adjusted by local population and the global product export adjusted by global population. Since the nominator is a matrix and the denominator is a vector of the products on a global scale, I turn the denominator into a matrix of identical rows. This means that each product is divided by the same factor (its global export divided by global population). Thus the vector from above is stacked on it self:
+
+$$ \begin{bmatrix} 0.70 & 1.15 & 1.28 & 0.26 \\  0.70 & 1.15 & 1.28 & 0.26 \\ 0.70 & 1.15 & 1.28 & 0.26 \end{bmatrix} $$
+
+```{R}
+matrix(round(colSums(X) / sum(pop_vec), 2), ncol = 4, nrow = 3, byrow = TRUE)
+```
+
+Finally, I do the element-wise division of the nominator matrix (the local export in each product divided by local population) and the denominator matrix (global export in each product divided by global population). The result is a county by product matrix containing the RCA per capita values.
+
+\begin{align}
+RCA_{cp}^{pc} &= \frac{X_{cp}}{pop_c} / \frac{\sum_c X_{cp}}{\sum_c pop_c} \\
+              &=  \begin{bmatrix} 0.55 & 1.86 & 1.94 & 0.14 \\ 0.68 & 0.38 & 1.18 & 0.38 \\ 0.83 & 1.29 & 0.9 & 0.26 \end{bmatrix} / \begin{bmatrix} 0.70 & 1.15 & 1.28 & 0.26 \\  0.70 & 1.15 & 1.28 & 0.26 \\ 0.70 & 1.15 & 1.28 & 0.26 \end{bmatrix}
+\end{align}
+
+```{R}
+round((round(X / POP_mat, 2)) / matrix(round(colSums(X) / sum(pop_vec), 2), ncol = 4, nrow = 3, byrow = TRUE), 2)
+```
+
+And that's it.
+
+## Define the rca_cp function
+
+We start with the same X matrix and pop vector as above:
+
+
+```{R}
+
+rca_pc <- function(export_mat, population_vector) {
+
+  # check for types
+  if(!is.matrix(population_vector)) {
+    stop("The population_vector is not a matrix. It needs to be a matrix with the same number of rows as the export matrix and 1 column. The rownames needs to be the country names (in the same order and format as the export matrix).")
+  }
+
+  if(!is.matrix(export_mat)) {
+    stop("The export_mat is not a matrix. It needs to be a country (row) by product (col) matrix. The rownames needs to be the country names (in the same order and format as the population_vector).")
+  }
+
+  # check for NA values
+  if(sum(is.na(export_mat)) != 0 | sum(is.na(population_vector)) != 0) {
+    stop("NA values exist in either the export matrix or the population_vector. This is not allowed. Stopping.")
+  }
+
+  # check for the same number of countries in export matrix and population vector
+  if(!identical(rownames(export_mat), rownames(population_vector))) {
+    stop("The rownames of the export_mat and the population_vector are not identical. Stopping.")
+  }
+
+  # check for the dimensions of the population_vector and the export matrix
+  if(ncol(population_vector) != 1 & nrow(population_vector) != nrow(export_mat)) {
+    stop("The population_vector does not have the correct dimensions. It needs to be a matrix with the same number of rows as the export matrix and 1 column.")
+  }
+
+  # find local export per capita
+  ## turn population vector into population matrix
+  population_mat <- matrix(population_vector,
+                           ncol = ncol(export_mat),
+                           nrow = nrow(export_mat),
+                           byrow = FALSE)
+
+  ## Divide export matrix by population matrix element-wise
+  local_pc_mat <- export_mat / population_mat
+
+
+  # find global export per capita
+  ## divide global exports by global population
+  global_pc_vec <- colSums(export_mat) / sum(population_vector)
+
+  ## turn global exports per capita vector into matrix
+  global_pc_mat <- matrix(global_pc_vec,
+                          ncol = ncol(export_mat),
+                          nrow = nrow(export_mat),
+                          byrow = TRUE)
+
+  # Divide local export per capita by global export per capita
+  rca_pc_mat <- local_pc_mat / global_pc_mat
+
+  return(rca_pc_mat)
+  # ending function
+}
+
+```
+
+Besides some rounding error, the results fit.
+
+```{R}
+
+set.seed(1)
+X <- matrix(
+  round(runif(12, 1, 100), 0),
+  ncol = 4,
+  nrow = 3,
+  dimnames = list(c("c1", "c2", "c3"), c("p1", "p2", "p3", "p4"))
+)
+
+set.seed(1)
+pop_vec <- round(runif(3, 30, 100), 0)
+
+pop_vec <- matrix(pop_vec, ncol = 1, dimnames = list(rownames(X), "1"))
+export_mat <- X
+
+rca_pc(export_mat = X, population_vector = pop_vec)
+
+```
+
+## Run rca_pc function on HS92 trade data
+
+The rca_pc function is based on the $X_{cp}$ matrix and population input from one year. The HS92 data
+covers many years, though. I solve this issue by first nesting the HS92 data by
+year. I then define a helper function that takes a long data frame (the nest
+frames), turns them into the $X_{cp}$ matrix and applies the RCApc function. One issue is that, in contrast to a standard RCA function, it is also necessary to have population input. I therefor nest the population data by year as well, and join the two frames. This allows two inputs to the helper function.
+
+
+1. First, I read the trade data, the population data and nest it.
+
+```{R}
+library(tidyverse)
+library(vroom)
+library(here)
+library(WDI)
+
+# read filtered hs92 data
+hs_long <- vroom(here("../data/prepared/hs92_filtered_ti.csv"))
+
+# use API to get World Dev Ind population data for all regions
+pop_raw <- WDI(country = "all", indicator = "SP.POP.TOTL", extra = TRUE) %>%
+  as_tibble() %>% 
+  select(time = year, region = iso3c, pop = SP.POP.TOTL) 
+```
+
+I now nest the two frames by year. 
+
+```{R}
+hs_nest <- hs_long %>%
+  group_by(time) %>%
+  nest() %>%
+  rename(hs92 = data) # without renaming, join doesn't work (bc duplicate names)
+
+pop_nest <- pop_raw %>%
+  group_by(time) %>%
+  nest() %>%
+  rename(pop = data)
+
+```
+
+2. Because there is a discrepancy between the countries and areas included in the population data and the trade data, I create a list of countries in each year in the HS92 data. I use this list to filter the yearly data in the population data. 
+
+I join the two data frames by the time variable. I then create a function that reads the country list of the year in the hs92 data and filters the population data by it. The left_join function keeps only observations in the population nest that has a match in the joining column in the hs nest. This means that all the years of population data that does not exists for the trade data are dropped.
+
+```{R}
+join_nest <- hs_nest %>% left_join(pop_nest)
+```
+
+I now define a function that filters the population data to countries available in the hs92 data. First, I create a list of unique regions in the hs92 data for the given year. Next I filter the population data according to this list. Finally, I return the filtered population data.
+
+```{R} 
+filter_regions <- function(hs_data, pop_data) {
+
+hs_country_list <- hs_data %>%
+  distinct(region)
+
+pop_filter <- pop_data %>%
+  filter(region %in% hs_country_list$region)
+
+return(pop_filter)
+
+}
+```
+
+```{R}
+join_nest <- join_nest %>%
+  mutate(filtered_pop = map2(.x = hs92, .y = pop, .f = filter_regions))
+```
+
+3. I now build the helper function, that spreads each trade data frame to the $X_{cp}$ matrix and applies the RCApc function.
+
+```{R}
+
+helper_spread_rca_pc <- function(hs_long_df, pop_filtered_long) {
+
+  ## Check if NA values exist in the long data
+  if(sum(is.na(hs_long_df)) != 0 | sum(is.na(pop_filtered_long)) != 0) {
+    stop("NA values exist in the the long data (either pop or hs). Stopping")
+  }
+  
+  # To make sure the population vector and the hs matrix have countries listed in the same order,
+  # i arrange the observations alphabetically
+  hs_long_df <- hs_long_df %>% 
+    arrange(region)
+    
+ ## spread long trade data to X_cp
+  hs_mat <- hs_long_df %>%
+    spread(key = unit, value = intensity) %>%
+    as.data.frame() %>%
+    column_to_rownames("region") %>%
+    as.matrix()
+
+  ## Since there is not an observation for each country-product pair in each year, some NAs are introduced. I set these values to 0.
+  hs_mat[is.na(hs_mat)] <- 0
+  
+  # To make sure the population vector and the hs matrix have countries listed in the same order,
+  # i arrange the observations alphabetically
+  pop_filtered_long <- pop_filtered_long %>% 
+    arrange(region)
+  
+  ## turn long pop data into matrix with regions as rownames. 
+  pop_vec <- pop_filtered_long %>%
+    as.data.frame() %>%
+    column_to_rownames("region") %>%
+    as.matrix()
+  
+ ## apply rca_pc function to X_cp and pop data
+  rca_mat <- rca_pc(export_mat = hs_mat, population_vector = pop_vec)
+
+  ## make it long, and return it.
+  rca_pc_long <- rca_mat %>%
+    as.data.frame() %>%
+    rownames_to_column(var = "region") %>%
+    gather(-region, key = unit, value = rca) %>%
+    as_tibble()
+
+  return(rca_pc_long)
+    
+}
+
+```
+
+4. Apply the helper function and create a binarized version.
+
+```{R}
+join_nest <- join_nest %>%
+  mutate(rca_pc_long = map2(.x = hs92, .y = filtered_pop, .f = helper_spread_rca_pc))
+
+hs_rcapc_long <- join_nest %>% 
+  select(time, rca_pc_long) %>%
+  unnest(cols = c(rca_pc_long)) %>%
+  mutate(rca_bin = ifelse(rca >= 1, 1, 0),
+         metric = "RCApc")
+```
+
+5. Finally I just write the file.
+
+```{R}
+write_csv(hs_rcapc_long, here("../data/prepared/hs92_ti_rcapc.csv"))
+```
+
+# Some basic descriptive figures
+
+1. [X] Change in mean, median, sd of all countries over time. RCA vs RCApc
+
+```{R}
+library(here)
+library(tidyverse)
+library(vroom)
+
+rca_pc_df <- vroom(here("../data/prepared/hs92_ti_rcapc.csv"))
+
+binary_rca_pc_df <- rca_pc_df %>%
+  group_by(time, region) %>%
+  summarize(
+    total_rca_pc = sum(rca_bin)
+  )
+
+bin_rca_pc_summary <- binary_rca_pc_df %>% 
+  group_by(time) %>%
+  summarize(
+    mean_rca = mean(total_rca_pc),
+    median_rca = median(total_rca_pc),
+    sd_rca = sd(total_rca_pc)
+  ) %>%
+  gather(-time, key = stat, value = val) %>%
+  mutate(metric = "RCApc")
+```
+
+```{R}
+library(here)
+library(tidyverse)
+library(vroom)
+
+rca_df <- vroom(here("../data/prepared/hs92_ti_rca.csv"))
+
+binary_rca_df <- rca_df %>%
+  group_by(time, region) %>%
+  summarize(
+    total_rca = sum(rca_bin)
+  )
+
+bin_rca_summary <- binary_rca_df %>% 
+  group_by(time) %>%
+  summarize(
+    mean_rca = mean(total_rca, na.rm = TRUE),
+    median_rca = median(total_rca, na.rm = TRUE),
+    sd_rca = sd(total_rca, na.rm = TRUE)
+  ) %>%
+  gather(-time, key = stat, value = val) %>%
+  mutate(metric = "RCA")
+```
+
+```{R}
+library(ggthemes)
+
+sum_rca_joined <- rbind(bin_rca_summary, bin_rca_pc_summary)
+
+ggplot(sum_rca_joined, aes(x = time, y = val, col = stat)) +
+  geom_line() +
+  facet_wrap(~ metric) +
+  ggtitle("RCA vs RCApc over time") +
+  scale_color_fivethirtyeight(name = "Stat", labels = c("Mean", "Median", "Standard deviaton")) +
+  theme_fivethirtyeight()
+```
+
+2. [ ] Distribution of RCA vs RCApc in 1995, 2005, 2015, both number of products in binary and RCA distribution (density) with non-bin.
+
+Distribution of number of (binary) RCA values between countries (number of RCA >= 1 products within each country):
+
+```{R}
+library(here)
+library(tidyverse)
+library(vroom)
+
+rca_df <- vroom(here("../data/prepared/hs92_ti_rca.csv"))
+rca_pc_df <- vroom(here("../data/prepared/hs92_ti_rcapc.csv")) 
+
+joined_df <- rbind(rca_df, rca_pc_df)
+
+rca_distr <- joined_df %>%
+  filter(time %in% c(1995, 2005, 2015)) %>% 
+  group_by(metric, time, region) %>%
+  summarize(
+    rca = sum(rca_bin)
+  ) 
+
+ggplot(rca_distr, aes(x = rca, fill = metric)) +
+  geom_histogram(color = "#e9ecef") +
+  facet_wrap(vars(metric, time)) +
+  ggtitle("Distribution of (binarized) RCA vs RCApc") +
+  scale_fill_fivethirtyeight(name = "Metric", labels = c("RCA", "RCA per capita adj")) +
+  theme_fivethirtyeight() 
+```
+
+Distribution of non-binary RCA values: 
+
+3. [ ] Relationship between GDP and RCA/RCApc
+
+4. [ ] Relationship between population and RCA/RCApc
+
+```{R}
+# trade data
+rca_df <- vroom(here("../data/prepared/hs92_ti_rca.csv"))
+rca_pc_df <- vroom(here("../data/prepared/hs92_ti_rcapc.csv")) 
+joined_df <- rbind(rca_df, rca_pc_df)
+
+
+# pop data
+joined_df %>%
+  group_by(metric, time, region) %>%
+  summarize(
+    tot_reg_rca = sum(rca)
+  )
+
+```
+
+5. [ ] Biggest difference between RCA/RCApc
+
+```{R}
+rca_st_2015 <- rca_df %>%
+  filter(time == 2015) %>%
+  rename(rca_standard_bin = rca_bin) %>%
+  group_by(region) %>%
+  summarise(
+    products_w_rca_st = sum(rca_standard_bin)
+  )
+
+rca_pc_2015 <- rca_pc_df %>% 
+  filter(time == 2015) %>%
+  rename(rca_pc_bin = rca_bin) %>%
+  group_by(region) %>%
+  summarise(
+    products_w_rca_pc = sum(rca_pc_bin)
+  )
+
+diff_dist <- left_join(rca_st_2015, rca_pc_2015) %>%
+  mutate(diff_rca = products_w_rca_st - products_w_rca_pc)
+
+ggplot(diff_dist, aes(x = diff_rca)) +
+  geom_histogram(color = "#e9ecef") +
+  ggtitle("2015: Number of products w. RCA >= 1 minus \n number of products w. RCApc >= 1") +
+  scale_fill_fivethirtyeight() + 
+  theme_fivethirtyeight() 
+
+diff_dist %>% 
+  arrange(desc(diff_rca))
+
+```
+
+# TODO LISt
+1. [ ] Implement standard RCA
+2. [ ] Compare RCA and RCApc

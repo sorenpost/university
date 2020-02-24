@@ -1,0 +1,44 @@
+#+TITLE: Comments: Kira Uhlin
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+
+Hi Kira,
+
+I like a lot of things about your project. Your case is both different and very interesting, and there seems to be a lot of broader aspects that can examined in it (ethical issues, the "tech fix" to social problems, private distribution of social services, crowding-out effects on local health care provision, etc.).
+
+My main concern is how you distinguish your work from being "journalistic" rather than a scientific examination. You present a rather broad empirical investigation, and it could be challenging to hit all of the beats thoroughly. That is, if you want to investigate too many things, do each part become superficial?
+There seems to be a lot of work in constructing and examining
+
+For instance, in your quantitative analysis you want to examine the efficiency and costs of the operation using some spatial statistical analysis. If the analysis consists of more than just reporting and comparing numbers presented by Zipline itself, this could require a lot of work. For example, how do you identify what is efficient? Say that you build some model of efficiency as health outcomes by costs, how do you build a counter factual scenario? An additional point could be the sort of crowding-out or substitution-effects (or even enhancing effects) that a private venture like Zipline could have on the capacity development of public options.
+
+As for the qualitative part..
+
+You write that one data source will be unstructured interviews.
+
+
+
+It seems that Zipline is a major recipient of VC funding. It might be interesting to examine the aspect of a controversial technology (private drone use in public service delivery) being "piloted" in a developing country as a "proof of concept".
+
+It could also be interesting to examine the de-politisation that sometimes happens
+
+And for whom? What should Zipline be compared to? How does GIS software
+
+
+** test
+1. quantitative: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dolor metus, porttitor ac consequat quis, congue vel sem. In libero est, mattis congue lacus id, auctor tristique diam. Pellentesque turpis diam, gravida gravida neque sit amet, tempor placerat ex. Vivamus libero nisl, scelerisque at imperdiet vel, sagittis nec mi. Morbi efficitur facilisis turpis et efficitur. Pellentesque elit ex, dignissim vitae enim ut, condimentum ullamcorper dui. Phasellus et viverra arcu. Nulla ut sodales magna. Suspendisse lorem risus, finibus et lacinia sit amet, pulvinar id est. Duis commodo varius lacus sit amet ultricies. Praesent sollicitudin lacus feugiat rhoncus pharetra. Pellentesque pretium erat quis mi molestie, non ornare leo volutpat. Vestibulum nec enim molestie sem scelerisque vestibulum. Nam laoreet pulvinar nulla, nec hendrerit enim sollicitudin vel. Vivamus maximus magna vitae eleifend porttitor.
+
+
+2. theory building: Aliquam vel efficitur dui, id consectetur massa. Suspendisse sit amet fringilla arcu. Proin semper elit et massa cursus gravida. In non enim non lectus cursus vulputate eu sed augue. Fusce vel auctor nibh. Aenean porttitor sollicitudin lorem, eget ultricies metus laoreet ut. Maecenas hendrerit gravida nibh, fringilla pellentesque eros. Donec hendrerit, ipsum sit amet commodo tempus, leo est egestas nisi, quis mollis nulla metus vel nunc. Ut hendrerit lectus et est tristique, id rhoncus nunc rutrum. Praesent sed risus dui. Mauris vitae tellus vitae erat maximus eleifend a non neque. In hac habitasse platea dictumst. Pellentesque dignissim, orci vel bibendum posuere, nisi nisl condimentum nisl, ac pellentesque ligula dolor ac risus. Nullam cursus convallis pellentesque. Phasellus at ligula sed leo fermentum interdum vel a ligula. Maecenas blandit, nisl eget finibus placerat, leo erat sollicitudin mi, et ultrices sapien metus eu elit.
+
+3. test: Pellentesque a fermentum elit. Pellentesque id lectus metus. Nunc quis scelerisque velit. Fusce sagittis leo leo. Sed porttitor risus a tortor fermentum sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas ultrices enim nec lectus egestas, rhoncus ornare massa tempor. Etiam interdum vitae enim id faucibus. Nunc est nisl, pellentesque vitae rhoncus nec, lacinia nec justo. Mauris a eros vitae nulla varius ultricies. Pellentesque vitae turpis molestie, ullamcorper metus vitae, tincidunt est. Cras mollis posuere elit ut sollicitudin. Maecenas et massa pretium, scelerisque dui a, tincidunt turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+For instance, you want to investigate issues of efficiency and costs using GIS. If you want more tan just describe their costs or comparae what their idea their benefit advantage is, this could be quite a big undertaking. For instance: what do you comparae
+
+How do you manage this? Supposedly, you would need to build some comparison or reference service.
+
+If you do want to to contribute to theory building, it might be interesting to compare with other "technical fix"-projects. Like the one laptop for every child, the  ff
