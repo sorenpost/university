@@ -1,0 +1,12 @@
+#+TITLE: Comments to Seminar 3: Jana Schmidt
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+
+Hi Jana,
+
+ - When I think about what kind of sources would be used in xxxx iit would be something like a combination of beween papers that wori

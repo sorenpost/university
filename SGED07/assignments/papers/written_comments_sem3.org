@@ -4,7 +4,15 @@ Hi Kira,
 
 I like a lot of things about your project. Your case is both different and very interesting, and there seems to be a lot of broader aspects that can examined in it (ethical issues, the "tech fix" to social problems, private distribution of social services, crowding-out effects on local health care provision, etc.).
 
-My main concern is how you distinguish your work from being "journalistic" rather than a scientific examination. You present a rather broad empirical investigation, and it could be challenging to examine
+My main concern is how you distinguish your work from being "journalistic" rather than a scientific examination. You present a rather broad empirical investigation, and it could be challenging to examine a
+
+Three points:
+1. quantitative: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dolor metus, porttitor ac consequat quis, congue vel sem. In libero est, mattis congue lacus id, auctor tristique diam. Pellentesque turpis diam, gravida gravida neque sit amet, tempor placerat ex. Vivamus libero nisl, scelerisque at imperdiet vel, sagittis nec mi. Morbi efficitur facilisis turpis et efficitur. Pellentesque elit ex, dignissim vitae enim ut, condimentum ullamcorper dui. Phasellus et viverra arcu. Nulla ut sodales magna. Suspendisse lorem risus, finibus et lacinia sit amet, pulvinar id est. Duis commodo varius lacus sit amet ultricies. Praesent sollicitudin lacus feugiat rhoncus pharetra. Pellentesque pretium erat quis mi molestie, non ornare leo volutpat. Vestibulum nec enim molestie sem scelerisque vestibulum. Nam laoreet pulvinar nulla, nec hendrerit enim sollicitudin vel. Vivamus maximus magna vitae eleifend porttitor.
+
+
+2. theory building: Aliquam vel efficitur dui, id consectetur massa. Suspendisse sit amet fringilla arcu. Proin semper elit et massa cursus gravida. In non enim non lectus cursus vulputate eu sed augue. Fusce vel auctor nibh. Aenean porttitor sollicitudin lorem, eget ultricies metus laoreet ut. Maecenas hendrerit gravida nibh, fringilla pellentesque eros. Donec hendrerit, ipsum sit amet commodo tempus, leo est egestas nisi, quis mollis nulla metus vel nunc. Ut hendrerit lectus et est tristique, id rhoncus nunc rutrum. Praesent sed risus dui. Mauris vitae tellus vitae erat maximus eleifend a non neque. In hac habitasse platea dictumst. Pellentesque dignissim, orci vel bibendum posuere, nisi nisl condimentum nisl, ac pellentesque ligula dolor ac risus. Nullam cursus convallis pellentesque. Phasellus at ligula sed leo fermentum interdum vel a ligula. Maecenas blandit, nisl eget finibus placerat, leo erat sollicitudin mi, et ultrices sapien metus eu elit.
+
+3. test: Pellentesque a fermentum elit. Pellentesque id lectus metus. Nunc quis scelerisque velit. Fusce sagittis leo leo. Sed porttitor risus a tortor fermentum sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas ultrices enim nec lectus egestas, rhoncus ornare massa tempor. Etiam interdum vitae enim id faucibus. Nunc est nisl, pellentesque vitae rhoncus nec, lacinia nec justo. Mauris a eros vitae nulla varius ultricies. Pellentesque vitae turpis molestie, ullamcorper metus vitae, tincidunt est. Cras mollis posuere elit ut sollicitudin. Maecenas et massa pretium, scelerisque dui a, tincidunt turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
 For instance, you want to investigate issues of efficiency and costs using GIS. If you want more tan just describe their costs or comparae what their idea their benefit advantage is, this could be quite a big undertaking. For instance: what do you comparae
 
@@ -14,6 +22,11 @@ If you do want to to contribute to theory building, it might be interesting to c
 
 ** Purpose
 
+
+
+
+
+Aenean id eleifend elit. Morbi feugiat nibh id ante facilisis luctus. Nam vel maximus urna. Nunc eget justo vitae mauris commodo convallis id lobortis dolor.
 ** Data selection
 
 ** Data analysis

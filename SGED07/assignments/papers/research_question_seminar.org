@@ -1,0 +1,45 @@
+#+TITLE: Seminar: revisit research questions
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+
+Word count:
+
+
+\newpage
+
+The questions formulated in the research proposal submitted for the first seminar was as follows:
+
+ 1. How is the relationship between economic activities associated with an economy's impact and recovery from recessionary shocks?
+    1) How is the structure of the input-output network related to the impact and recovery from recessionary shocks?
+    2) How is the structure of the product-capability network related to the impact and recovery from recessionary shocks?
+    3) In what ways does the structure of the input-output network and the product-capability network condition each others effects on economic resilience?
+ 2. How is the relationship between economic activities associated with an economy's structural change following recessionary shocks?
+    1) How does the depth and duration of recovery from shocks affect the portfolio and development of new economic activities?
+    2) How does the relationship between economic activities (the product-capability network) condition an economy's structural change after shocks?
+
+ The idea was examine the relationship between economic resilience and productive structures in two dimensions: robustness to economic decline and structural change. I developed the conceptual framework around the questions, and while the questions could use some narrowing down and less generality, the overall framework was pretty consistent. However, when developing the empirical strategy, I ran into identification issues.
+
+Previously, the proposed thesis work was centered around variation in the impact of the great recession on different national economies. The central idea was to identify the effect of the relationship between economic activities through production networks and relatedness-measures on either propagating or cushioning the shocks. It has proven difficult to disentangle exposure to the shock from the impact of the shock. In other words, I have not found a way to see if the variation in how severely countries were hit by the recession is because they were more vulnerable du to characteristics in the economy or that they were hit by "more" shock (for any other reason). This means that it becomes impossible to identify the effects of the network characteristics.
+
+ In the literature, studies have dealt with the issue in two general ways: by looking only at outcomes associated with a variable (like innovation capacity), or using sub-national data. The first approach suffers from the same issues as I ran into. I remain unconvinced by their methodological approach. The second group of studies solve the problem by focusing on a single country, looking at variation in the recession impact on different national regions. Variation, it is assumed, arise because of different resilience-characteristics of regions. This unsatisfactory for a few reasons. First, an implicit assumption in these studies is that resilience is well measured against a national average impact baseline. However, national effects are mostly aggregation of firm effects. Firms are here the first-order conduit of the shock: firms can't access credit, firms' markets shrink, etc. And firms are present in regional spaces, not national ones. Say countries' resilience were measured against the global GDP as baseline: surely not all countries were subjected to the same recessionary pressures during the Great Recession (e.g. Greece vs Ghana vs Georgia), and their resilience should not be measured against the same baseline. A similar argument applies to the national baseline. Therefor, the uneven (and unknown) exposure problem, in large parts, persist. Second, product-level data usually does not exist at the regional level. When it does, it is almost exclusively for advanced economies.
+
+ As a result, I've moved away from the resilience concept in the broader sense. I'm currently in process of re-formulating a new set of research questions. I am looking at two approaches, both with economic disturbances as their main theme.
+
+   1. One possible approach could be  focus on the structural change during recessions. We know that countries change during recessions, and evidence suggests that the growth potential in the medium-long term is lowered after recessionary shocks. Evidence also support the Shumpterian concept of accelerated structural change during economic crises.  It would therefor be interesting to examine how structural changes are related to sophistication of economic activities, or the relationship between production networks and the sector that declines. Are changes typically more radical or do they still happen gradually, but at a faster rate than normal?
+
+   2. A different approach would be more micro-focused. A recent paper... suggests that input disruptions could lead to a poverty-trap style effect on the productive activities in an economy. If supply chains are more disturbed, less complex products would be produced. This could be examined empirically by looking at local electricity shortages and plant-level production data. Panel data on both of these exists. The literature on economic complexity suggests a robust link between more sophisticated manufactoring and economic growth. Understanding the micro-foundations of the aggregate complexity-patterns would be an interesting contribution.
+
+I've found that one of the challenges when developing research questions is that without substantial work on data tidying and developing empirical strategy, it can be difficult to assess the feasibility of the project. In other words, it is hard to develop the "right" research questions without actually doing the work.  Given the frame for the thesis work, much of the high quality data that could perhaps be interesting are either off-limits (prohibitively expensive, like IDA- and LISA-databases) or have long application processing times (so that a potential rejection would leave too little time to readjust,  like the EUROSTAT LFS). Therefor, the strategy going forward is to address the empirical process at an earlier stage.
+
+\newpage
+
+bibliography:SGED07.bib
+bibliographystyle:humannat
+
+* STRT Original research questions
+* TODO How did conceptual framework fit around original questions
