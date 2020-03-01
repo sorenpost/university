@@ -1,0 +1,26 @@
+#+TITLE: Seminar 4 comments: Jana Schmidts
+#+AUTHOR: Søren Post
+#+Options: toc:nil date:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=blue}
+
+Word count:
+
+\newpage
+
+- Research questions makes sense, they are well tied together;
+
+  1. identify vulnerabilities
+  2. identify relevant adaptation strategies
+  3. identify factors that constrain better efforts
+
+One issue could be that some them are to answer with the data, but that is hard to know until you've done the work. So all I
+
+\newpage
+
+bibliography:SGED07.bib
+bibliographystyle:humannat

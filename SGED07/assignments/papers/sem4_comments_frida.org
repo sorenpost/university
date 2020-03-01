@@ -1,0 +1,42 @@
+#+TITLE: Seminar 4 comments
+#+AUTHOR: Søren Post
+#+Options: toc:nil date:nil
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=blue}
+
+\newpage
+
+* Notes to Frida
+1. Good submission. You present it well. There is a clear aim, it is easy to see why you null-hypothesis are related to your aim, and it does seem to have an importance.
+
+2. I have a few things you maybe want to think about regarding your hypotheses.
+
+3. The first thing, is that you maybe want to re-formulate your null-hypothese in general. Normally, null hypos are used as the status quo, and then you try to reject them. This means that instead of writing "Individuals with low BMI are not mainly found in poor households", you would try to reject the null hypothesis that "individuals with low BMI are mainly found in poor households". When you reject it, you show support for your alternative hyp. This is a minor point that should be easy to fix.
+
+4. On the second hypothesis, "equal distribution of BMI within HHs", you'd might run into some funky statistics if you're not careful. For instance, say that under the null scenario where people are completely equal inside a household. Would you expect that their BMI is equal? There might all sorts of reasons why it isn't. My main point is that is could be tricky to build a suitable and reasonable reference distribution for this test.
+
+5. A related point is how you measure the differences between HH income and BMI in general. So, I don't know your methodology, but it i would assume that you either divide households into some discrete income-level buckets or you do some version of an HH income by BMI-level regression. Do you know about Simpons paradox? Basically, it just that results might change quite a lot depending on the groups you build and the aggregation level. An example would be if there is a strong relationship between HH income and BMI inside each group, but the relationship could disappear when the data is ungrouped.
+
+6. Let's say that a low BMI is a perfect indicator for individual-level poverty. I could then easily imagine the both your first and second null-hypothesis are not rejected by but that you STILL find a result that suggest that we undercount poverty by a lot. Essentially, it seems like you are interested in two aspects. First, how is the distribution of low BMI individuals across HHs in absolute numbers, and second, how is the conditional probability of finding a low BM individual given the HH income. For instance, if we say that BMI is a good proxy for individual affluence, there might be a low conditional probability of finding a low-BMI individual in a non-poor HH but the absolute number might still be very important because there are much more non-poor HHs. You null hypos does reflect this fact, but they might be made more precise.
+
+7. A final thing is that I might have some doubts about using BMI, but you've probably looked into that. Have you thought about the possibility that low BMI might be a very good indicator on poverty at the very low level of income, but might be unrelated at higher incomes? Then you would overcount the number of poor individuals by a substantial margin. Example: In Denmark or Sweden, there are only few people that are truly poor by international standards. There is still a broad range of BMI though. If the relationship is monotonic (lower BMI = lower income) at some income levels but is not at higher, then you end up measuring something different then you think.
+
+
+\newpage
+
+bibliography:SGED07.bib
+bibliographystyle:humannat
+
+* Notes to Jana
+
+- Research questions makes sense, and they are well tied together;
+
+  1. identify vulnerabilities
+  2. identify relevant adaptation strategies
+  3. identify factors that constrain better efforts
+
+One issue could be that some them are to answer with the data, but that is hard to know until you've done the work.

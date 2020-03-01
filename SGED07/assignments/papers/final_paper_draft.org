@@ -1,0 +1,115 @@
+#+LATEX_HEADER: \pagenumbering{roman}
+#+TITLE: Thesis outline [DRAFT]
+#+SUBTITLE: Final exam SGED07
+#+AUTHOR: Søren Post
+#+Options: toc:2
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+
+#+TOC: listings
+#+TOC: tables
+
+\newpage
+
+*Submission 5: Final Course Paper- Extended Thesis Outline:* This is the final submission for SGED07 and will be graded on the A-F scale. The submission should be in the form of an extended thesis outline that can be developed into a full-fledged thesis in the course of SGED10. It should follow the suggested framework of the research proposal, further building on each section. The previous submissions from the course should be used as the base for the thesis outline. Elaborate on the chapters that are likely to follow, and the contents of the same.
+
+Word Limit: 4000.
+
+Deadline: March 17, 2020 (17.00).
+
+Seminar: March 23, 2020 (13-16 Johannesburg).
+
+\newpage
+\pagenumbering{arabic}
+
+* Introduction
+** Background
+- Preliminary stats: data-set from input hoarding (enterprise surveys) and complexity
+- Preliminary stats: Paper on electricity stuff and
+** Research questions
+* Conceptual framework
+** Economic complexity (and country fitness)
+** A simple model of contagious disruptions
+
+- Firms can either be functional or dysfunctional
+- Firms use the outputs of other firms as inputs to their production
+- [Firms use can use buffers (more input suppliers than critical threshold)]
+- Shocks can propogate through the network. This can change the behavoir of firms
+- If hub-spoke configs are present in the
+
+
+\newpage
+
+* Data
+** Annual Survey of Industries (ASI)
+I use the Annual Survey of Industries (ASI) for plant-level micro-data. The ASI follows two schemes
+
+** Weather data
+
+** Electricity data
+
+I use two sources of power data.
+
+*** Demand estimate based shortages
+The first data set is constructed by cite:allcott_how_2016 in cooperation with India's Central Electricity Authority (CEA). The authors worked with the CEA to gather, digitize, and clean the archival information on the Indian Power Sector since 1992.
+
+Electricity shortages are measured as the percent energy deficit listed in the Load Generation Balance Reports (citation needed). At the end of each year, the CEA and the Regional Power Committees estimate the monthly counterfactual quantity that would have been demanded in each state if there were no shortages. This annual figure, listed in current prices, is the /assessed demand/ ($A$). The sum of electricity available from power plants and net imports is the /energy available/ ($E$). The measure of shortages ($S$) is then defined by the CEA as the percent of demand in state $s$ in year $t$ that is not met:
+
+\[
+S_{st} = \frac{A_{st} - E_{st} }{A_{st}}
+\]
+
+In addition, the CEA reports a measure of the power shortages during peak hours ($S^p$). This "peak shortage" is defined analogously to $S$ but using only /peak assessed demand/ ($A^{p}$) and /peak energy available/ ($E^p$):
+
+\[
+S^{p}_{st} = \frac{A^{p}_{st} - E^{p}_{st}}{A^{p}_{st}}
+\]
+
+*Measurement bias:* The essential component of these shortage variables is the estimation of the counterfactual demand. This is likely to introduce measurement bias.
+
+Alam (2013) shows that "peak shortage" is correlated to a nighttime light based measure of blackouts.
+
+*** Other electricity figures
+- From the /General Review/ (CEA 1994 - 2012): total electricity sold to consumers, hydro-electric generation, total hydroelectric generation capacity, total generation capacity, previous year capacity (all aggregated to state-level). Also included: state-specific allocations for power plants that are jointly owned by mutliple states.
+
+- From the annual /Review of Performance of Hydro Power Stations/: annual inflows into major reservoirs and electricity generation at plants behind each reservoir. The coverage increases during the sample (new construction + entry of exisiting resrvois into sample) (CEA 1993-2011b). 1992 = 16 reservoirs, 2010 = 31 reservoirs (comprising 50 percent of national hydro-electric generation capacity).
+
+- To get inflow-predicted capacity factors separately for each reservoir-year, the authors regress generation on inflows and divide predicted generation by annual generation capacity. /Annual generation capacity/ = potential generation at full capacity. /Annual generation capacity/ in megawatt-hours is power production in capacity in megawatts multiplied by 8760 hours (365 times 24).
+
+[TODO Create figure showing how demand and Energy available grows]
+[TODO Create figure showing how peak shortage and shortage is related to WBES Survey answers]
+[TODO Create figure showing how demand and Energy available grows]
+
+
+** International trade data
+** [Måske] Input-output network
+
+\newpage
+
+* Methodology
+** Empirical strategy
+
+*** Instrumenting shortages
+(from cite:allcott_how_2016:)
+
+** Limitations
+
+\newpage
+
+* Results
+
+\newpage
+
+* Discussion
+
+\newpage
+
+* Conclusion
+
+\newpage
+
+bibliography:SGED07_final.bib
+bibliographystyle:humannat

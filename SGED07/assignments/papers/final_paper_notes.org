@@ -1,0 +1,40 @@
+#+LATEX_HEADER: \pagenumbering{roman}
+#+TITLE: Thesis outline [NOTES]
+#+SUBTITLE: Final exam SGED07
+#+AUTHOR: Søren Post
+#+Options: toc:2
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+
+* To-do list
+** Build some preliminary data graphs [0/2]
+*** TODO Complexity by input hoarding
+*** TODO Interruptions by complexity
+* Reading list [0/8]
+*** TODO Alcott et al (2016) - India
+*** TODO Aberese et al (2019) - Ghana
+*** TODO Chakravorty et al (2013) - India
+*** TODO Samad and Zhang (2016) - India
+*** TODO Abeberese (2017) - India
+*** TODO Fisher- Vanden et al (2012) - China
+*** TODO Grainger and Zhang (2017) - Pakistan
+*** TODO Min et al (2017) - India
+* Notes
+** Aberese et al (2019)
+
+*** Relevant findings
+- From conclusion: Second, firms are able to reduce the negative productivity impacts of outages by altering their product mix in favor of less electricity-intensive products. This coping strategy can have broader implications for the variety of products available to consumers. Further, the results suggest that one of the most common strategies employed worldwide, the use of a generator, is unable to alleviate the negative productivity impact potentially due to the inability of small firms to efficiently use generators, given the substantial economies of scale in electricity generation. - /I.E. There can be effects on "complexity downgrading" in response to poor reliability./
+
+-
+
+
+** Allcott et al (2016)
+*** Data
+**** Annual survey of industries
+**** Electricity data
+** Potential data sources
+- Nightlight in India (http://api.nightlights.io/) remember that large urban areas are not implemented.
+- Allcott et al electricity data

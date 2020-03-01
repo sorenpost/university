@@ -1,0 +1,202 @@
+---
+title: "Fitness by GDP/Cap"
+author: "SBP"
+date: "2/29/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(here)
+library(tidyverse)
+library(countrycode)
+library(haven)
+library(pwt9)
+library(WDI)
+```
+
+
+- [ ] Klargør GDP data
+- [ ] Klargør population data
+- [ ] Klargør pop/cap data
+- [ ] Klargør Trade data
+- [ ] Klargør fitness data
+
+## Reference year
+
+```{r}
+ref_year <- 2013
+```
+
+## Prepare Fitness data
+
+```{r}
+fitness_df <- vroom("/home/post/university/humgeo_thesis/data/downloaded/Economic_Fitness_CSV/Data.csv")
+
+fitness_tidy <- fitness_df %>%
+  rename(country_code = `Country Code`, metric = `Indicator Name`) %>%
+  select(-c(`Country Name`, `Indicator Code`)) %>%
+  gather(-c(country_code, metric), key = year, value = fitness) %>%
+  mutate(year = as.numeric(year)) %>%
+  filter(metric == "Economic Fitness Metric" & year == ref_year) %>%
+  select(-metric)
+```
+
+## Prepare Economic complexity data
+
+```{r}
+econ_comp_df <- vroom("/home/post/university/humgeo_thesis/data/downloaded/Economic Complexity/eci_country_rankings_2013_2017.csv") %>%
+  mutate(country_code = countrycode(Country, 'country.name', 'iso3c')) %>%
+  select(country_code, year = Year, ECI, ECI_plus = `ECI+`) %>%
+  filter(year == ref_year)
+```
+
+
+## Create list of countries to sort GDP and trade data by
+
+```{r}
+fit_country_set <- fitness_tidy %>%
+  distinct(country_code) %>%
+  pull()
+
+eco_country_set <- econ_comp_df %>%
+  distinct(country_code) %>%
+  pull()
+
+country_set <- intersect(eco_country_set, fit_country_set)
+```
+
+## Prepare GDP data
+The WDI package provides the WDI function, which uses an API to source the data from the indicators. The GDP data is measured in PPP (constant 2011 international $). Link: https://data.worldbank.org/indicator/NY.GDP.MKTP.PP.KD.
+
+```{r}
+wdi_gdp <- as_tibble(
+     WDI(
+       country = "all",
+       indicator = "NY.GDP.MKTP.PP.KD",
+       extra = TRUE,
+       start = 2010)
+   ) 
+
+wdi_gdp_tidy <- wdi_gdp %>% 
+  select(
+    country_code = iso3c, year, gdp = NY.GDP.MKTP.PP.KD
+  ) %>%
+  filter(country_code %in% country_set & year == ref_year) %>%
+  mutate(country_code = as.character(country_code))
+
+```
+
+The variable NY.GDP.PCAP.PP.CD is in GDP per capita, PPP (current international $). This variable is national accounts-based (https://datatopics.worldbank.org/world-development-indicators/themes/economy.html).
+
+```{r}
+wdi_gdp_cap <- as_tibble(
+     WDI(
+       country = "all",
+       indicator = "NY.GDP.PCAP.PP.CD",
+       extra = TRUE,
+       start = 2010)
+   )
+
+wdi_gdp_cap_tidy <- wdi_gdp_cap %>% 
+  select(
+    country_code = iso3c, year, gdp_cap = NY.GDP.PCAP.PP.CD
+  ) %>%
+  filter(country_code %in% country_set & year == ref_year) %>%
+  mutate(country_code = as.character(country_code))
+
+```
+
+## Prepare population data
+
+## Prepare trade data
+
+```{r}
+sitc_df <- vroom("/home/post/university/humgeo_thesis/data/downloaded/trade/country_sitcproduct2digit_year.tab", delim = "\t")
+
+sitc_tidy <- sitc_df %>%
+  select(
+    country_code = location_code, year, sitc_code = sitc_product_code, export_value
+    ) %>%
+  filter(year == ref_year)
+```
+
+## Create list raw natural resource code list
+
+1. Fish (SITC division 03)
+2. Raw materials (SITC divisions 21, 23, 24, 25, 26, 29)
+of which: Raw hides, skins and furskins (21), Crude rubber (23), Cork and wood (24), Wood pulp (25), Textile fibres (26), Crude animal and vegetable materials, not elsewhere specified (29)
+3. Fuels and mining products (SITC section 3 and divisions 27, 28, 68) of which: Ores and other minerals (SITC divisions 27, 28), Fuels (SITC section 3), Non-ferrous metals (SITC division 68). 
+
+"The sum of the above three product groups provides us with a basic, usable statistical definition of natural resources." 
+
+```{r}
+natural_res_set <- c("03", "21", "23", "24", "25", "26", "29", "27", "28", "68", "32", "33", "34", "35")
+
+natural_res_export <- sitc_tidy %>% 
+  filter(sitc_code %in% natural_res_set) %>%
+  group_by(country_code, year) %>%
+  summarize(
+    total_nat_res_export = sum(export_value)
+  ) %>%
+  arrange(total_nat_res_export)
+
+```
+
+## Find natural resource export % of GDP
+
+```{r}
+natural_res_countries <- wdi_gdp_tidy %>%
+  left_join(natural_res_export) %>%
+  mutate(nat_res_of_gdp_perc = total_nat_res_export / gdp * 100) %>%
+  mutate(nat_res_dummy = ifelse(nat_res_of_gdp_perc >= 10, 1, 0))
+
+```
+
+## Join datasets
+
+```{r}
+joined_tidy <- natural_res_countries %>%
+  left_join(fitness_tidy) %>%
+  left_join(econ_comp_df) %>%
+  left_join(wdi_gdp_cap_tidy) %>%
+  filter(!is.na(gdp)) 
+```
+
+## Create figure
+
+```{r}
+joined_tidy
+
+lm(gdp_cap ~ fitness + nat_res_dummy, data = joined_tidy) %>%
+  summary()
+
+lm(log(gdp_cap) ~ ECI + nat_res_dummy, data = joined_tidy) %>%
+  summary()
+
+lm(log(gdp_cap) ~ ECI_plus + nat_res_dummy, data = joined_tidy) %>%
+  summary()
+
+lm(log(gdp_cap) ~ ECI, data = joined_tidy %>% filter(nat_res_dummy != 1)) %>%
+  summary()
+
+lm(log(gdp_cap) ~ ECI_plus, data = joined_tidy %>% filter(nat_res_dummy != 1)) %>%
+  summary()
+
+
+ggplot(joined_tidy, aes(y = log(gdp_cap), x = ECI, label = country_code, col = as.factor(nat_res_dummy))) +
+  geom_text() +
+  geom_smooth(method = "lm", se = FALSE)
+  
+
+ggplot(joined_tidy, aes(y = log(gdp_cap), x = ECI_plus, label = country_code, col = as.factor(nat_res_dummy))) +
+  geom_text() +
+  geom_smooth(method = "lm", se = FALSE)
+
+```
+
+
+

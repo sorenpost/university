@@ -1,12 +1,32 @@
-#+TITLE: Comments to Seminar 3: Jana Schmidt
+#+TITLE: Seminar 3 comments: Jana Schmidt
 #+AUTHOR: Søren Post
-#+Options: toc:nil
+#+Options: toc:nil date:nil
 #+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
 #+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
 #+LATEX_HEADER: \usepackage{natbib}
 #+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
 #+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=blue}
+
+Word count: 621
+
+\newpage
 
 Hi Jana,
 
- - When I think about what kind of sources would be used in xxxx iit would be something like a combination of beween papers that wori
+You have a done a good job of limiting you case both in space and topic. It seems that the scope would both allow some interesting results and should be doable within the frame of the thesis work. You also present good considerations of the limitation and potential of the research design. In general, I think you seem to have solid idea of the work you will be doing. I therefor only have a few comments.
+
+You write that you will cross-examine your data by adding content analysis. My understanding of triangulation is that the purpose is to correct for biases in the sources and methods. While I'm not too familiar with content analysis, I'm not sure it necessarily qualifies. For instance, if your documents have biases in what they study or in choosing their results, how would a more structured reading of them correct these? It might also be worth paying attention to the underlying data of the different papers/reports used. Since the case is fairly restricted geographically, I would be surprised if a lot of different data sources exists on the small holder farmers. There could be a risk, then, that government products and different international organizations use the same underlying data. This could be useful if you examine /their/ bias, but might be less informative in saying something about the actual object of study.
+
+You write that you, in addition to reviewing the literature, want to conduct "one or two" interviews with an expert. What is the purpose of the interview? If you want to add a different source of information, perhaps one or two interviews is not enough. If you aren't really interested in interviews as a comprehensive source of data, why conduct it all?
+
+Since much of the research design is based around reviewing the literature, it might be beneficial to formalize the literature search (so that you conduct a structured literature review). This could both make it easier to select sources, and make it accessible for readers to understand the process (and have confidence in the conclusions). As I understand, you want to produce an identification of feasible climate adaptation strategies for small holder farmers. I assume this would also include organizing some sort of comprehensive framework to understand and classify challenges or threats. It might be useful to use the broader literature to build this model and then "take it to data" on the literature on Malawi.
+
+Finally, if you're not aware, the LSMS-Integrated Surveys on Agriculture covers panel data on 8 SSA countries (including Malawi) from 2008-2020. It might be useful if you are interested in complimenting some of the insights or models from your literature review with some empirical substantiation.  cite:christiaensen_agriculture_2017 presents the project and some results from the project.
+
+Another point that might be interesting (but could also be completely irrelevant) for your work is usefulness of the international recommendations on adaptation, etc. The literature on state capability and policy implementation have found that a lot of the "blueprint" or "best practice" frameworks is not useful for implementation purposes. I would assume that the literature on climate challenges could be rife with these kind of overarching frameworks and logframes. It might be an interesting angle to look at how some of these fall short of requirements because of local conditions, politics, or government structure/capability in Malawi. If you are interested, there is some work by Pritchett and colleagues that might be useful (links to an [[https://www.cgdev.org/publication/capability-traps-mechanisms-persistent-implementation-failure-working-paper-234][old paper]] and a related [[https://www.cgdev.org/media/one-size-doesn%E2%80%99t-fit-all-lant-pritchett-mimicry-development-0][audio interview]]).
+
+\newpage
+
+bibliography:SGED07.bib
+bibliographystyle:humannat
