@@ -1,0 +1,33 @@
+* Simple linear regression and Least Sqaures Line
+  :LOGBOOK:
+  CLOCK: [2019-10-18 Fri 15:25]--[2019-10-18 Fri 15:50] =>  0:25
+  :END:
+
+- *Residuals:* er forskellen mellem den forusagte værdi og den observerede værdi. e$e_i = y_i - \hat{y_i}$
+
+- *Hvorfor bruge Least Squares?* Der findes andre metode at finde den "bedste linie". Fx. absolute values i stedet. Least Squares bruges fordi det er a) computationally efficient, og fordi man gerne vil vægte store fejl højere end små fejl.  
+
+*Least Squares Line:* $\hat{y} = \beta_0 + \beta_1 x$. $\beta_0$ er punktet hvor linien bryder y-aksen, $\beta_1$ er hældningen på linien, $\hat{y}$ er response variable (den vi forudsiger), og $x$ er den uafhængige variable.
+
+*Notation:* 
+|           | parameter                                                  | point-estimate                                                                 |
+|-----------+------------------------------------------------------------+--------------------------------------------------------------------------------|
+| parameter | $\beta_0$, i.e. unknown population parameter for intercept | $b_0$ er den observeree (samplens) intercept. Kan også skrives $\hat{\beta}_0$ |
+| slope     | $\beta_1$                                                  | $b_1$ eller $\hat{\beta_1}$                                              |
+
+*Find hældningnen:* Når vi finder hældningen i en Least Squares linie, så finder vi den linie, der minimimerer $\sum_{i} e_i$ hvor $e_i$ er: $e_i = (\hat{y_i} - \bar{y})^2$. Dette kræver typisk noget calculus, i.e. vi finder minimum af linien. Der er dog en genvej der hedder $b_1 = \frac{s_y}{s_x} * R$, det vil sige sample standard diviation for y over sample standard deviation for x, ganget med correlation coefficient. 
+
+*Fortolkning af hældning:* En enheds ændring i X giver $b_1$ * y-enheds ændring i y. Det vil sige at hvis $b_1$ er -0.62, og y = poverty %, og x = % af mennesker med gymnasielt uddannelse, så vil 1% stigning i antallet af mennesker med gymnasiel uddannelse give et fald i fattigdoms-procentdelen med 0.62 procentpoint. 
+
+*Find intercept:* Vi ved at linien _altid_ går gennem punktet $\bar{x}$, $\bar{y}$. Vi kan derved skifte vores x- og y-værdier med deres gennemsnit, og arrangere ligningen lidt anderledes. Således:
+\begin{align*}
+\bar{y} &= b_0 + b_1 \bar{x} \\
+b_0 &= \bar{y} - b_1 \bar{x}
+\end{align*}
+
+** Simple Linear Regression in R
+p
+
+
+
+

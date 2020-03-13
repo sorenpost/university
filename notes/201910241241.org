@@ -1,0 +1,240 @@
+* Good practice approach to multiple linear regression, MLR
+  :PROPERTIES:
+  :header-args:R: :session lin_reg :results value
+  :END:
+
+Eksempel: Lav en MLR model over hvor langt man kan gå på 6 minutter (MWT1Best i dataen) som produkt af forskellige variabler i daten.
+
+Dataen er fra kurset on linear regression i public health:
+
+#+begin_src R :results silent
+  library(tidyverse)
+  copd <- read_csv("/home/post/MEGAsync/coursera/linear_reg/COPD_student_dataset.csv")
+#+end_src
+
+Dataen indeholder:
+ - fire patient karakteristika: age, gender, pack history, smoking
+ - to mål af sygdoms severity: COPD severity score, CAT (COPD assessment test)
+ - fire mål af lunge funktion: FEV1, FVC, FEV1PRED, FVCPRED. De sidste to er predictions af de to første ud fra en person med samme alder og køn i gennemsnit.
+
+Jeg begrænser mig selv til de variabler beskrevet ovenfor.
+
+#+begin_src R :results silent
+  copd <- copd %>%
+    select(
+      AGE,
+      PackHistory,
+      COPDSEVERITY,
+      copd,
+      MWT1Best,
+      FEV1,
+      FEV1PRED,
+      FVC,
+      FVCPRED,
+      CAT,
+      smoking,
+      gender
+      )
+#+end_src
+
+** Inspect data
+Først er det god praksis it inspecte sine variabler for manglende værdier, outliers, og så videre.
+
+#+begin_src R :results output
+  library(Hmisc) 
+  describe(copd)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+
+copd 
+
+ 10  Variables      101  Observations
+--------------------------------------------------------------------------------
+AGE 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     101        0       33    0.998     70.1     8.73       55       60 
+     .25      .50      .75      .90      .95 
+      65       71       75       79       81 
+
+lowest : 44 49 52 53 54, highest: 80 81 82 83 88
+--------------------------------------------------------------------------------
+PackHistory 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     101        0       48    0.998     39.7    27.35        6       10 
+     .25      .50      .75      .90      .95 
+      20       36       54       75       90 
+
+lowest :   1   3   5   6   8, highest:  90 100 103 105 109
+--------------------------------------------------------------------------------
+COPDSEVERITY 
+       n  missing distinct 
+     101        0        4 
+                                                          
+Value             MILD    MODERATE      SEVERE VERY SEVERE
+Frequency           23          43          27           8
+Proportion       0.228       0.426       0.267       0.079
+--------------------------------------------------------------------------------
+MWT1Best 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     100        1       71        1    399.1    119.7    215.7    240.0 
+     .25      .50      .75      .90      .95 
+   303.8    420.0    465.2    518.7    540.9 
+
+lowest : 120 176 201 210 216, highest: 558 575 577 582 699
+--------------------------------------------------------------------------------
+FEV1 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     101        0       85        1    1.604   0.7645     0.68     0.73 
+     .25      .50      .75      .90      .95 
+    1.10     1.60     1.96     2.70     2.90 
+
+lowest : 0.45 0.47 0.51 0.60 0.65, highest: 2.93 2.97 3.02 3.06 3.18
+--------------------------------------------------------------------------------
+FEV1PRED 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     101        0       51    0.999    58.53    25.56       24       30 
+     .25      .50      .75      .90      .95 
+      42       60       75       90       93 
+
+lowest :   3.29   3.39  14.00  17.00  24.00, highest:  92.00  93.00  95.00  98.00 102.00
+--------------------------------------------------------------------------------
+FVC 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     101        0       80        1    2.955    1.108     1.56     1.89 
+     .25      .50      .75      .90      .95 
+    2.27     2.77     3.63     4.39     4.70 
+
+lowest : 1.14 1.31 1.47 1.52 1.56, highest: 4.72 4.90 5.15 5.23 5.37
+--------------------------------------------------------------------------------
+FVCPRED 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     101        0       57    0.999    86.44    24.92       53       60 
+     .25      .50      .75      .90      .95 
+      71       84      103      118      122 
+
+lowest :  27  45  48  51  53, highest: 121 122 123 125 132
+--------------------------------------------------------------------------------
+CAT 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     101        0       30    0.997    19.34    12.28        5        5 
+     .25      .50      .75      .90      .95 
+      12       18       24       29       30 
+
+lowest :   3   4   5   6   7, highest:  29  30  31  32 188
+--------------------------------------------------------------------------------
+smoking 
+       n  missing distinct     Info     Mean      Gmd 
+     101        0        2      0.4    1.842   0.2693 
+                      
+Value          1     2
+Frequency     16    85
+Proportion 0.158 0.842
+--------------------------------------------------------------------------------
+#+end_example
+
+For categorical variables kan man også bruge cross table for se fordelingen.
+
+#+begin_src R :colnames yes 
+  library(gmodels)
+
+  CrossTable(copd$copd)
+#+end_src
+
+#+RESULTS:
+| t.1 | t.2 | t.3 | t.4 |        prop.row.1 |        prop.row.2 |        prop.row.3 |         prop.row.4 | prop.col.1 | prop.col.2 | prop.col.3 | prop.col.4 |        prop.tbl.1 |        prop.tbl.2 |        prop.tbl.3 |         prop.tbl.4 |
+|-----+-----+-----+-----+-------------------+-------------------+-------------------+--------------------+------------+------------+------------+------------+-------------------+-------------------+-------------------+--------------------|
+|  23 |  43 |  27 |   8 | 0.227722772277228 | 0.425742574257426 | 0.267326732673267 | 0.0792079207920792 |          1 |          1 |          1 |          1 | 0.227722772277228 | 0.425742574257426 | 0.267326732673267 | 0.0792079207920792 |
+
+** Examine relationship between candidate predictor variables
+
+Her er to forskellige impementeringer af correlation matrix:
+
+- PerformanceAnalytics pakken:
+   #+begin_src R :results output graphics :file ./figures/cor_mat1.png
+     library(PerformanceAnalytics)
+     con_vars <- copd %>%
+       select(-c(COPDSEVERITY, copd))
+
+     chart.Correlation(con_vars, histogram=TRUE, pch=19)
+   #+end_src
+
+   #+RESULTS:
+   [[file:./figures/cor_mat1.png]]
+   
+- GGally pakken:
+
+#+begin_src R :results output graphics :file ./figures/cor_mat2.png
+  library(GGally)
+  ggpairs(con_vars)
+#+end_src
+
+#+RESULTS:
+[[file:./figures/cor_mat2.png]]
+
+For categorical variables, så kan bruges crosstable igen.
+
+#+begin_src R :colnames yes
+  library(gmodels)
+
+  fact_vars <- copd %>% select(copd, COPDSEVERITY)
+
+  CrossTable(fact_vars$copd, fact_vars$COPDSEVERITY)
+#+end_src
+
+#+RESULTS:
+| t.x | t.y         | t.Freq | prop.row.x | prop.row.y  | prop.row.Freq | prop.col.x | prop.col.y  | prop.col.Freq | prop.tbl.x | prop.tbl.y  |      prop.tbl.Freq |
+|-----+-------------+--------+------------+-------------+---------------+------------+-------------+---------------+------------+-------------+--------------------|
+|   1 | MILD        |     23 |          1 | MILD        |             1 |          1 | MILD        |             1 |          1 | MILD        |  0.227722772277228 |
+|   2 | MILD        |      0 |          2 | MILD        |             0 |          2 | MILD        |             0 |          2 | MILD        |                  0 |
+|   3 | MILD        |      0 |          3 | MILD        |             0 |          3 | MILD        |             0 |          3 | MILD        |                  0 |
+|   4 | MILD        |      0 |          4 | MILD        |             0 |          4 | MILD        |             0 |          4 | MILD        |                  0 |
+|   1 | MODERATE    |      0 |          1 | MODERATE    |             0 |          1 | MODERATE    |             0 |          1 | MODERATE    |                  0 |
+|   2 | MODERATE    |     43 |          2 | MODERATE    |             1 |          2 | MODERATE    |             1 |          2 | MODERATE    |  0.425742574257426 |
+|   3 | MODERATE    |      0 |          3 | MODERATE    |             0 |          3 | MODERATE    |             0 |          3 | MODERATE    |                  0 |
+|   4 | MODERATE    |      0 |          4 | MODERATE    |             0 |          4 | MODERATE    |             0 |          4 | MODERATE    |                  0 |
+|   1 | SEVERE      |      0 |          1 | SEVERE      |             0 |          1 | SEVERE      |             0 |          1 | SEVERE      |                  0 |
+|   2 | SEVERE      |      0 |          2 | SEVERE      |             0 |          2 | SEVERE      |             0 |          2 | SEVERE      |                  0 |
+|   3 | SEVERE      |     27 |          3 | SEVERE      |             1 |          3 | SEVERE      |             1 |          3 | SEVERE      |  0.267326732673267 |
+|   4 | SEVERE      |      0 |          4 | SEVERE      |             0 |          4 | SEVERE      |             0 |          4 | SEVERE      |                  0 |
+|   1 | VERY SEVERE |      0 |          1 | VERY SEVERE |             0 |          1 | VERY SEVERE |             0 |          1 | VERY SEVERE |                  0 |
+|   2 | VERY SEVERE |      0 |          2 | VERY SEVERE |             0 |          2 | VERY SEVERE |             0 |          2 | VERY SEVERE |                  0 |
+|   3 | VERY SEVERE |      0 |          3 | VERY SEVERE |             0 |          3 | VERY SEVERE |             0 |          3 | VERY SEVERE |                  0 |
+|   4 | VERY SEVERE |      8 |          4 | VERY SEVERE |             1 |          4 | VERY SEVERE |             1 |          4 | VERY SEVERE | 0.0792079207920792 |
+
+De er temmeligt tæt correlerede.
+
+** Fit Simple Linear Regressions
+
+Nu fittes alle de forskellige variabler til outcome variablen parvis.
+
+   #+begin_src 
+   
+   #+end_src
+   
+ - Plot residuals
+
+** Evaluate MLR model
+ - Compare MLR coefficients to SLR
+
+   #+begin_src R
+     mlr_model <- lm(MWT1Best ~ FEV1 + AGE + as.factor(gender) + as.factor(COPDSEVERITY), data = copd)
+
+     summary(mlr_model)
+   #+end_src
+
+   #+RESULTS:
+
+- Tjek for colinearity issues with VIF:
+
+#+begin_src R 
+
+  library(mctest)
+
+  imcdiag(model.matrix(mlr_model)[, -1], mlr_model$model[1], method = "VIF")
+
+
+#+end_src
+
+   #+RESULTS:

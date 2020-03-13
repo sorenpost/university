@@ -1,0 +1,15 @@
+* Cosine Rule and dot product
+
+Cosinus reglen er en måde at finde den modsatte side i en trekant, uanset trekantens form. Hvis vi har to vektorer, R og S og vinklen i mellem dem er $\theta$, så kan vi finde længden på den sidste side i trekanten (dvs R - S) ved følgende formel:
+
+$$ |R - S|^2 = |R|^2 + |S|^2 - 2|R||S|Cos(\theta) $$
+
+Ud fra dette kan edledes at dot-produktet mellem to vektorer i virkeligheden også udtrykker længden af hver vektor ganget med cos af vinklen i mellem dem. Med andre ord:
+
+$$ R \cdot S = |R||S|Cos(\theta) $$
+
+Det betyder at hvus vinklen mellem de to ectors er 90 grader, så er Cos$\theta$ = 0, og dot produktet er også 0. (Ford |R||S|*Cos(90) = |R||S|*0).
+
+Tilsvarende så er Cos(0) = 1, og Cos(180) = -1.
+
+

@@ -1,0 +1,12 @@
+* Assumptons for multiple linear regression
+
+De første fem assumptions henvises oftest til Gauss-Markov assumptions. Under disse betingelser er modellen BLUE.
+
+- *Assumption 1: Linearity i parameters.* Parameters skal følge følgende form: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_k x_k + e$
+- *Assumption 2: Observationer kommer fra en random sample*.
+- *Assumption 3: Ingen perfekt colinearity.* Dette kan tjekkes gennem en correlation matrix. To predictor variabler (x_k) må ikke have en meget stor correlation. Hvis de har, så forklarer de begge den samme variation i y. Dette betyder at variationen ikke kan opdelss mellem dem og standard error bliver enormt stor.-
+- *Assumption 4: Zero conditional mean.* Errors skal være randomly distributed 
+- *Assumption 5: Homoskedasticity.* Variance for errors over alle predictor variabler skal være lige stor. Det vil sige at for alle værdier af fx $x_1$ skal variance for errors være lige fordelt. Errors må ikke være mere spredt for store eller små værdier. 
+
+TJEK OGSÅ AT:
+- Outcome variable er normalt fordelt blandt x-værdier 

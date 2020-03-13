@@ -1,0 +1,7 @@
+* Simmie (2014) Regional Economic Resilience: A Schumpetarian Perspective
+
+- I en Schumpert'sk tænkning er recessioner defineret som en periode af økonomisk "decline" efter en periode med vækst, modsat den mere udbredte nuværende definition af to quarters med negativ vækst.
+- *Creative destruction:* når recession og depression idtræder, siger Schumpeter, så kommer en økonomi af med de uproduktive industrier. Samitdig øges raten af teknologisk innovation. Dette er drovlraftem bag recovery perioden.
+- *Resilience er et fuzzy koncept.* Det er et begreb der typisk mangler konceptuel clarity, og er derfor svært at operationalisere ift en empirisk testning. Dette betyder også at policy-recommendations er dårlige. Et resilience litteraturen fandt ikke mindre end 16 forskellige "forståelser" af resilience i sociale, økonlogiske og social-økologiske systemer (Bahadur, Ibrahim ,Tanner 2010).
+- *Tilsvarende, så beskriver Gardner, Matrin, Sunley (2012) fire forskellige ontologiske kilder* til ideer om at konceptualisere resilience (økologi, evolutionær udviklings biologi, økonomi og psykologi).
+- *konomiske approaches* til a fortå regional økonomiske resilience er centeret omkring tre modeller: "plucking model", "hysteresis" og "adaptive evolution". Plucking model = engineered resilience. Se fx Friedman 1993. Hysteresis: situation where one-time disturbances permanently affect the path of the economy" (Romer 2001). Her er resilience altså defineret som reaktionen i en økonomi på et bestemt shock. 

@@ -1,0 +1,33 @@
+* Changing basis
+
+En vektors har nogle basis-vektors. Basis vektors er de "målestok" som en vektor beskrives ud fra. Typisk er det unit vektorerne i (med hat) og j (med hat). Det kan dog sagtens være andre. 
+
+Essentielt er det kun beskrivelses af vektoren der ændres, hvis man ændrer basisvektoren. Fx hvis basis vektoren ændres fra i, j til x, y hvor til x = 2i, og y = 2j, så vil en vektor der før blev beskrevet [4, 8] nu blive beskrevet [2, 4].
+
+Så længe vi kender det nye koordinatsystems (altså de nye basis-vektorer) forhold til den gale basis så kan i bruge projection og dot-product til at vinde vektoren i den nye basis. 
+
+*Case - orthogonal basis vectors:*
+Hvis de nye basis vektorer er vinkelrette til hinanden er omregningen til nye basis-vektorer simpel. 
+
+1) Tjek om nye basis vektorer er vnkelrette på hinanden. Hvis de to bye basis-vectorer er B1 og B2, så kan vi tjekke om de er vinkelrette ved at tage deres dot product. Vi ved at dot product mellem to vektorer er lig cosinus af vinklen mellem dem. Siden cosinus af 90 er 0, så er vinklen 90 hvis dot product er 0. 
+2) Vi har vektoren R i basisvektorerne E1 og E2. Hvis vi kender vores nye basis-vektorer i forhold til E1 og E2, så kan vi nemt finde R i de nye basis vektorer B1 og B2. Først tages projection af R på B1, resultatet er hvor mange B1'ere vi skal bruge for at beskrive R. Derefter tages R's projection på B2, resultatet er hvor mange B2'ere vi skal bruge til at beskrive R. 
+3) E1 er [1, 0], E2 er [0, 1], R_e er [3, 4], B1_e er [2, 1], B2_e er [-2, 4].
+- Først tjekkes om B1_e og B2_e er vinkelrette: 
+$$ B1_e \cdot B2_e = [2 * -2 + 1 * 4] = [-4 + 4] = 0 $$.
+- Derefter tages R_e's projection på B1_e: 
+$$ \frac{R_e \cdot B1_e}{|B1_e|^2} = \frac{[3 * 2 + 4 * 1]}{[2 * 2 + 1 * 1]} = \frac{10}{5} = 2 $$ 
+
+altså er R's projection på B = 2. Det vil sige at "in terms of B1", R er 2.
+
+- Samme metode bruges på B2_e:
+
+$$ \frac{R_e \cdot B2_e}{|B2_e|^2} = \frac{[3 * -2 + 4 * 4]}{[-2 * -2 + 4 * 4]} = \frac{10}{20} = 1/2 $$ 
+
+Altså er R i B = [2, 1/2].
+
+*Den grundlæggende formel er altså simpel:* For at finde R i en anden basis (B1, B2), tag så: (R dot B1) / (B1 dot B1) = R_b1, og (R dot B2) / (B2 dot B2) = R_b2. R er altså nu [R_b1, R_b2]. Husk at dette kun gælder for vinkelrette B1, B2. Ellers brug en transformation matrix.
+
+** Se også:
+- Transformation matrix
+
+

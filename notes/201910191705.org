@@ -1,0 +1,32 @@
+#+TITLE:Gradent descent: mulitdimensional hill descent 
+#+AUTHOR: S B Post
+#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes 
+-----
+
+En gradient descent algoritme er den fler-dimensionelle version af en hill descent algoritme. Det gøres ved at istedet for ændre en enkelt w, så opdateres alle w på en gang (hvor w er et given parameter, fx $w_0$ for intercept og $w_1$ for slope). Det vil sige at $w_0$ går i en retning, $w_1$ går i en retning, $w_2$ går i en retning, osv.
+
+Altså:
+
+\begin{align*}
+\begin{bmatrix}
+$w_0^{t+1}$ \\
+$w_1^{t+1}$ \\
+\vdots \\
+$w_p^{t+1}$ \\
+\end{bmatrix} <- \begin{bmatrix}
+$w_0^{t}$ \\
+$w_1^{t}$ \\
+\vdots \\
+$w_p^{t}$ \\
+\end{bmatrix} + \eta * \begin{bmatrix}
+$dg/dw_0 \\
+$dg/dw_1$ \\
+\vdots \\
+$dg/dw_p$ \\
+\end{bmatrix}
+\end{align*}
+
+*Convergence* betegnes i denne version som når $|| \nabla g(w) || < \epsilon$ , for en given epsilon. 
+
+** Se også:
+- Derivatives in more dimensions gradients: [[file:201910191501.org]] 

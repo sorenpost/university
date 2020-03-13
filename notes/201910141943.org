@@ -1,0 +1,20 @@
+* Cosine similarity, cosine distance
+
+"Cosine similarity" er en måde at måle ligheden mellem to vektorer. Et simpelt eksempel er i to dimensioner. Hvis vi har to vectorer, [0.5, 0.1] og [0.9, 0.3], og de begge starter i origin ([0, 0]), så er theta vinklen mellem de to vektorer. Cosinus ligheden er så Cos(theta). Altså måles ligheden i "retningen" af vektorerne.
+
+Vi finder cosinus ligheden ved at tage dot-produktet af de to vektorer, dividered med produktet af deres længde (magnitude). For to vektorer *A* og *B* så er "cosinus similarity" $C(A,B)$ altså:
+
+$$ C(A, B) = cos(\theta) = \frac{A \cdot B}{||A||||B||} = \frac{\sum^{n}_{i = 1} A_{i} B_{i}}{\sqrt{\sum^{n}_{i = 1} A^{2}_{i}} \sqrt{\sum^{n}_{i = 1} B^{2}_{i}}} $$ 
+
+hvor $A_i$ og $B_i$ er de i'ende elementer af *A* og *B*.
+
+Dette resulterer i en lighedsværdi der ligger mellem -1 og 1, hvor 0 er vinkelret. Typisk så bruges dog kun positive tal. Det vil sige at cosinus ligheden altid findes mellem 0, for vinkelrette vektorer, og 1, for vektorer i samme retning. "Cosine Distance" er blot consinus ligheden trukket fra 1.
+
+Consinus lighed bruges meget i analyse af tekst.
+
+** Se også:
+- [[file:201910142048.org::*Association%20strength][Association strength]] 
+- [[file:201910142049.org::*Proximity][Proximity]] 
+- [[file:201910142116.org::*Jaccard%20similarity][Jaccard similarity]] 
+- Trigonometry
+- Linear Algebra

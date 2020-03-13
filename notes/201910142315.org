@@ -1,0 +1,61 @@
+* R coding: Proximity
+    :PROPERTIES:
+    :header-args:R: :session rca_and_rel :exports code
+    :END:
+
+ The starting point is the RCA matrix M.
+
+ As above, I define proximity as: 
+
+ \begin{equation}
+ \text{Pr}(i,j) = \text{min}\{P(U_i|U_j),\text{ }P(U_j, U_j) \} = \frac{c_{ij}}{\text{max}\{v_{i} \text{, }v_{j}\}}
+ \end{equation}
+
+ First we need the co-occurrence matrix, ~cooc_ij~. This matrix is a product-product matrix, where element $c_{ij}$ is the number of times a country exports both product $i$ and product $j$.
+
+ #+begin_src R
+   ## set binary rca mat to mat
+   mat <- binary_incidence_mat
+   cooc_ij <- t(mat) %*% mat # co-occurrence matrix
+ #+end_src
+
+ Next I need to get a matrix containing the largest of each unit-pairs cardinality, the ~max_mat~. I get this matrix by first taking the column sums of M. This is just the number of occurrences of each product, $v$. I then build two matrices, each representing $i$ and $j$ for each pairwise comparison of largest cardinality. These matrices are just the vector $v$ put on top of each other as a row vector, or next to each other as a unit vector. I then go through the two matrices, one element at a time, selecting the largest of the two to the respective place in ~max_mat~. In other words, I check element 1, 1 in ~set_i~ and ~set_j~, and put the largest element in element 1, 1 in ~max_mat~. Next, I compare element 2, 1. And so on.
+
+ #+begin_src R
+     set_i <- colSums(mat)
+     set_j <- colSums(mat)
+
+     max_mat <- matrix(0L, nrow = length(set_i), ncol = length(set_i)) # empty matrix to populate.
+
+     set_i <- matrix(set_i, nrow = length(set_i), ncol = length(set_i), byrow = TRUE) # col 1 is A, col 2 is B, etc
+     set_j <- matrix(set_j, nrow = length(set_j), ncol = length(set_j), byrow = FALSE) # row 1 is A, row 2 is B, etc.
+
+     for(i in 1:nrow(set_i)){
+       for(j in 1:ncol(set_j)){
+         max_mat[i, j] <- max(set_i[i, j], set_j[i, j])
+       }
+     }
+ #+end_src
+
+ Now, I just need to perform the element wise division between the co-occurrence matrix and the maximum matrix. 
+
+ #+begin_src R
+   prox_mat <- cooc_ij / max_mat
+ #+end_src
+
+ Two final notes: 
+ 1) NAs can be introduced due to a division-by-zero error, if there are 0s in the denominator. That is, if there are some products that are not exported with a comparative advantage at all. This only occurs if no country exports the product in the year. This should not be an issue given the cleaning procedure.
+ 2) The diagonal of the proximity matrix is a products similarity to itself and is therefor always 1. This is not valuable information. I set the diagonal to 0. 
+
+ #+begin_src R
+ diag(prox_mat) <- 0
+ #+end_src
+
+ The final output is a product-product matrix with values between 0 and 1. Here are the first elements:
+
+ #+begin_src R :exports both :results output
+ prox_mat[1:10, 1:5] 
+ #+end_src
+
+** Se også:
+- [[file:201910142049.org::*Proximity][Proximity]] 

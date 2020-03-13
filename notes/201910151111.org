@@ -1,0 +1,18 @@
+* Parametric representation of lines
+Hvis vi har en vector V = [2, 1] og laver sættet $S = \{ c (V) | c \in I\!{R} \}$ så er S = vektoren V der blevet til en uendeligt lang linie der går igennem den oprindelge V. En position vector = coordinat vector = vector der starter i 0,0 (etc) og peger med et bestemt punkt på koordinat-systemet.
+
+[[./figures/parametrisations-of-lines1.png]]
+
+Altså S er en linie der går igennem 0,0 der har en slope = 0.5. Hvis vi vil repræsentere en linie, med samme hældning, der går igennem punktet (2, 4) tilføjer i bare en position vector [2, 4] til S. Hvis X = [2, 4], så $S = \{X + c(V) | c \in I\!{R} \}$. Dette er en parametrisering af linien. Parametrisering har den fordel af det bliver meget mere simpelt at vise linier i mange dimensioner. 
+
+Eksempel: Hvilken linie går igennem a og b? (a = [2, 1], b = [0, 3])
+
+[[./figures/parametrisation-of-lines2.png]]
+
+1) Hvis vi tager b - a, så tager vi $$ b + (-1) * a = \begin{bmatrix} 0-2 \\ 3-1 \end{bmatrix} \begin{bmatrix} 2 \\ 2 \end{bmatrix} $$
+2) Dette giver, i standard position, en linie c = t(b - a), som har den rigtige slope, men den forkerte position. Vi kan lægge en af de oprindelige vektorer til for at få den rigtige position: $$ c = b * t (b - a) | \in I\!{R} $$
+$$ c = \begin{bmatrix} 0 \\ 3 \end{bmatrix} + t\begin{bmatrix} -2 \\ 2 \end{bmatrix} | t \in I\!{R} $$
+3) Hvordan relateres det til standard algebra? Det er simpelt nok. X koordinaterne styres af de øverste tal, y koordinaternes styres af de nederste: x = 0 + (-2)t og y = 3 + 2t.
+4) Ideen er samme hvis der er flere dimensioner. Hvis $P_{1} = [-1, 2, 7]$ og $P_{2} = [0, 3, 4]$, hvilken linie går så igennem de to punkter i $I\!{R}^3$? $$ L = \{P_{1} + t(P_{1} - P{2}) | t \in I\!{R} \} = \begin{bmatrix} -1 \\ 2 \\ 7 \end{bmatrix} + t \begin{bmatrix} -1 \\ -1 \\ 3 \end{bmatrix} | t \in I\!{R}$$
+
+Det vil altså sige at: $$ x = -1 + t(-1) \\ y = 2 + t(-1) \\ z = 7 + t(3)$$

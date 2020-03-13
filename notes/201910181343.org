@@ -1,0 +1,26 @@
+* Pearson correlation coefficient
+
+Correlation coefficient fortæller om styrken af de forhodlet med de relative bevægelser af to variabler. Hvis de altid går op på samme tid og ned på samme tid, så er værdien høj. Hvis de altid går i modsat retning så går er værdien negativ. Hvis der er ikke er et stærkt forhold, så er værdien tæt på nul. Værdien går mellem -1 til 1. 
+
+*Formula:* 
+Formlen for correlation coefficient mellem to variable x og y: $Cor(x, y) = \frac{ Cov(x,y) }{ \sigma_{x} \sigma_{y} }$
+
+Correlation er typisk noteret med et *R*.
+
+*Properties:*
+ 1) magnitude (absulte value) af correlation coefficient måler styrken af det linære forhold mellem to numeriske variabler.
+ 2) fortegnet (+ eller -) for correlation coefficient viser retningen af forholdet
+ 3) Coefficienten er altid mellem -1 og 1. R = 0 er intet forhold.
+ 4) Correlation coefficient er unit-less, det vil sige at scalaen/enheden som de to variabler bliver målt på er ligegyldigt.
+ 5) Correlation af X med Y er = Y med X.
+ 6) Coefficienten er følsom overfor outliers.
+
+*Assumptions:*
+ 1) Observations are taken from random sample.
+ 2) Both variables are continuous.
+ 3) Both variables are approximately normally distributed.
+
+** Se også
+ - variance:[[deft:201910181216.org][201910181216]] 
+ - standard deviation:  
+ - covariance: [[file:201910181336.org::*Covariance][Covariance]] 

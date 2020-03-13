@@ -1,0 +1,177 @@
+* Creswell and Creswell (2018) Research Design
+** Chapter 5: Introduction
+*** Spørgsmål:
+- Hvorfor er introduktionen særligt vigtig?
+- Hvilken form og formål (og dele) har et abstract?
+- Hvilken roller spiller det overordnede metode valg for introduktionen?
+  - For kvalitative studier?
+  - For kvantitative studier?
+  - For mixed-methods studier?
+- Hvad er "deficiency" modellen for en introduktion?
+- Hvad er "the research problem"? og hvordan adskiller problemete sig fra "research questions"?
+- Hvilke dele indeholder "deficiency model"?
+- Hviklen roller spiller afsnittene:
+  - Review of studies
+  - Past literature's deficiencies
+  - Significance of current study
+
+*** Importance of the introduction
+Sætter scenen for publikum. Wilson (1991): Introduktionen giver baggrunds-information + sætter framework for at forstå projektet.
+Introduktionen skal: 
+- vække læserens interesse
+- etablere problemet der leder til studiet
+- placere studiet i en større kontekst (litteratur)
+- række mod et specifikt publikum
+
+Et research problem er det problem eller "issue" der skaber behovet for et studie. Problemet kan komme fra et hul i litteraturen, policy-debat (eller problem), negatvie outcomes, personlig erfaring, etc. Det er vigtigt at påpege at et research problem ikke er det samme som et research questions. Research questions er spørgsmål som forskeren vil have klarlagt, for at forstå problemet. De er altså mere konkrete, og stilles efter man har identificeret et klart research problem.
+
+*** Abstract
+Er en kort opsumering af hvad studiet indeholder. Kommer før teskten, og skal være præcist og non-evaluative (i.e. der skal ikke kommer information der går videre end artiklen). Et abstract er typisk mellem 100 og 250 ord (ifølge APA).
+
+Et abstract for en empirisk artikel indholder ofte 5 dele:
+1. *The issue*; problemet som leder til studiet. tænk på en mini indledning.
+2. *The purpose*; det centrale emne eller fæmnomen der studeres, hvikle deltagere eller type af observationer der gøres, og hvor studiet finder sted.
+3. *Data*; Hviklen data indsamles, hvorfra, og hvordan.
+4. *Results*; kvalitative temarer, kvantitative resultater, elelr integerede mixed-methods resultater.
+5. *Implications*; hvikle praktiske resultater eller konsekvenser har resultaterne for en speficik gruppe læsere?
+
+*** Forskellige tpyer introduktion ud fra metodevalg
+Siden en introduktion generelt består i at beskrive et problme, og hvorfor det er vigtigt, så afhænger introduktionen af typen af problem. Typen af problme afhænger af hvilken metode der brgues, og derfor afhænger introduktionen af metodevalget. 
+
+Kvalitative studier er typisk eksplorative og beskriver derfor problmete som bedst undersgæøt gennem koncepter eller fænomener. Et kvalitative research problme karakteriseres ofte som "immature" (mangler teori), mangl3ende beskrivlese for udvikling af teori, og som værende et fænomen som er dårligt undersøgt med kvantitative metoder.
+
+Kvantitative reserach problems fokuserer typisk på hvilken faktorer har indflydelse på et givent fænomen, beskriver og udvælger en teori der skal testes, og skrives typisk i en upersonlig form (som kan være modsat i kvalitative studier).
+
+Mixed methods: bruger begge typer af introduktion, men informeres typisk at den metode der er mest dominerende i studiet.
+
+*** En model for introduktionen
+"Deficiency" modellen er en grundlæggende og generel arkitektur for en introduktion, der er baseret på huller i den nuværende litteratur. Modellen bestpr af 5 dele der typisk er ca 1 afsnit langt hver, hvilket giver en introduktion på ca 2 sider.
+
+1. Udlæg research problem
+2. Review studies that adressed problem
+3. Indicate deficiencies in said studies
+4. Fremlæg vigtigheden af studiet for et specifikt publikum
+5. Fremlæg purpose statement
+
+*** pt 1: The Research Problem
+Narative hook: skab interesse og beskriv specifik issue. En god NH er typisk skrevet så alle kan forstå det. Herfra gås til en identifikation af det specifikke problem der gør studiet nødvendigt eller interesseret.
+
+*** pt 2: Studies Addressing The Problem
+Dette er ikke litteratur review, men mere en overordnet gruppering (fx ved hjælp af lit map) af litteraturen (det omfattende lit review kommer senere i artiklen). 
+
+Formålet er at gøre klart hvordan denne artikel adskiller sig/stiller sig op i mod tidligere literatur.
+
+Typisk vil man bruge den empiriske literatur.
+
+- Referer til litteraturen ved at henvise til grupper af opsumeret litteratur.
+- For at fremhæve specifik litteratur, citer dem.
+- Citer primært nyere litteratur (< 10 år gammel) eller gamle, særligt vigtige studier.
+
+*** pt 3: Deficiencies of past literature
+Formålet er at styrke sagen for hvorfor specifikt dette studie er vigtigt - hvordan løser studiet problemer i litteraturen.
+- Citer specifikke mangler (emner, variabler, typer af sbservationer)
+- identificer deficiencies ved specifikke studier - metoder, omitted vars, etc
+- Diskutér hvordan det gældende studie specifik overkommer disse problemer, eller tilføjer på en viogtig måde til litteraturen.
+- Kom typisk med 3-4 forskelleige små bud, eller fokuser på et bud.
+
+*** pt 4: Significance of a study for audiences
+Desto flere der kan bruge den nye viden, desto stækrere studie. Gør klart hvorledes dette studie kan bruges af forskellige grupper (policy-makers, andre reserachers, etc).
+
+Typisk vil man inkludere mellem 3 og 4 grune til at forskllige grupper kan gøre brug af den nye viden.
+
+** Chapter 7: Research Questions and Hypotheses
+   
+*** Spørgsmål 
+1. Hvad kendetegner gode kvalitative research questions?
+   - og hvad er forskellen på research questions i grounded theory, case-studies, phenomonology, etnography?
+2. Hvad kendetegner gode kvantitative research questions/hypoteser?
+3. Hvad er forskellen på descriptive og inferential questions?
+4. Hvordan er research question-modellen der bygget op om at gå fra descriptive RQs til inferential RQs opbygget?
+5. Hvad er en god mixed-method model for research questions?
+*** Qualitative research questions
+1. Kvalitative studier stiller spørgsmål, ikke hypoteser. Spørgsmålene har typisk to former: Det centrale spørgmsål og Underspørgsmål Det anbefales at have et eller to centrale spørgsmål. Disse spørgsmål skal være så brede som muligt. Det anbefales også ikke have mere end 5-7 underspørgsmål (i.e. opfølgende spørgsmål). Deres rolle er at fokusere studiet, men stadig at lade noget være åben til udvikling. De opfølgende spørgsmål kan typisk blive til specifikke spørgsmål brugt i interveiws eller i dokument fortolkning.
+
+2. Relater det centrale spørgsmål til den kvalitative medtode eller strategi. Med det menes at det centrale spørgsmål vil være afhængigt af om man laver grounded theory, etnografi, case study, etc.
+   - For eksempel, så vil entografiske studier være mere specifikke, og ofte følge en forudbbestemt taksonomi, som er tilgængelig i literaturen. 
+   - En fænomologisk undersøgelse vil istedet være mere gearet mod bredere stillede spørgsmål, uden nødvendigvis at referere til litteraturen. 
+   - I grounded theory vil spørgmsålene typisk være rettet imod at skabe teori over en given process (fx hvordan interaktionen mellem patienter og behandlere er).
+   - I et case study vil spørgsmålene rette sig mod beskrivelse af den givne case og de temaer der belyses ved at studere casen.
+
+3. Kvalitative research spørgsmål åbnes ofte med "what" eller "how". Dette er for at fremelske det åbne, og process-orienterede design (i.e. studiet udvikler sig medens det foregår). "Why" undgås typisk, da der deri ligger en tendens til allerede at have antaget cause-effect forhold, noget man prøver at undgå i det åbne design.
+
+4. Fokuser på et fænomen eller koncept. Konceptet vil udvikle sig over tid med studier, men start med et enkelt fokus.
+
+5. Brug udforskende verber. Dette bidrager tiol at holde fast i et "emerging design". Disse verber fortæller læseren at gøre følgende: 
+   - rapporter historierne (narrativ forsking)
+   - beskriv oplevelsenns essens (fænomologi)
+   - opdage eller generere (grounded theory)
+   - udforske en process (case study)
+
+6. Undgå retningsbestemte verber (affect, influence).
+
+7. Forvent at research questions ændrer sig løbende som studier udvikler sig. Det vil sige at spørgsmålene er under gentagen udvikling og revision (i.e. "emerging design").
+
+8. Brug open-ended spørgsmål. Undgå at refere til literaturen, medmindre det er specifikt krævet igennem metode valget (fænomologi vs etnografi, fx).
+
+9. Specificer deltagerne og research site for studiet.
+
+For eksempler, se bogen.
+
+*** Quantitative research questions
+
+1. Kvantitative reserach questions er kendetegnet ved at de henvender sig til de specifikke variabler, forskeren er interesseret i. Kvantitative hypoteser derimod er typisk en fremsat påstand om hvordan variablerne forholder sig til hinanden (og som dernæst testes).
+
+2. Objectives bruges typisk kun i study-proposals, og udtrykker hvad man foprventer at studiet kan belyse.
+
+*Guidelines for gode kvantitative research questions:*
+
+- Brugen af variabler er typisk begrænset til tre former:
+  + sammenhæng mellem grupper ud fra en bestem uafhængig variable
+  + relatering af en eller flere variabler til andre variabler
+  + beskrivelse af respons til en eller flere variablers ændring
+
+- Den mest "rigorous" form for kvantitative studier tester en teori. Det foregår typisk ved at udlede logiske hypoteser ud fra teorien og så teste om de holder.
+
+- Det anbefales altid at den afhængige og den uafhængige variabel måles separat.
+
+- Brug enten kun hypoteser eller reserach questions. Hvis man bruger begge kan det nemt være overlap eller forvirring. Især gælder det, fordi hypotser (Ha og H0) skal være mutually exclusive og collectively exhaustive.
+
+- Brug klart sammenhængende sprog mellem hypotser. Det skal være tydeligt hvilke variabler der refereres til (fx "variabel B har ingen effekt på A" og "variable B har en effekt på A").
+
+*** A model for descriptive questions and hypothesis
+Denne model henvender sig til kvantitative studier, og en illustration til hvordan man kan opstille deskriptive spørgsmål, og udfra disse opstille inferentielle spørgsmål. 
+
+*Descriptive questions:* 
+1. Hvordan scorer studenterne på critical thinking? (ind var)
+2. Hvordan scorer studenterne på educational achievement? (dep var)
+3. Hvad er studenternes tidliger grades og critical thinking scores? (moderating var)
+4. Hvilket uddannelses niveau har studenters forældre? (mediation var)
+
+*Inferential questions:* 
+1. Hvordan påvirker critical thinking student achievement? (inf questions mellem ind og dep var)
+2. Hvordan er critical thinking og tidligere grades påvirkning på student achievement? (inf question mellem moderating og ind og dep var)
+3. Hvordan er critical thinking relateret til student achievement, mediating for effects of ... (inf question hvor man kontrollerer for andre variablers inflydelse).
+
+*** Mixed methods research questions
+ 1. En stærk mixed methods study indeholde mindst 3 spørgsmål:
+    + et kvalitativt spørgsmål
+    + et kvantitativt spørgsmål
+    + og et mixed methods spørgsmål
+
+ 2. Mixed metohds delen indeholden hvad forskeren skal vide om integrationen at de to første typer af data.
+
+ 3. Det er nødvendigt at analyserer de to forskllige typer af data seperat, før man gør til integrationen mellem dem.
+
+ 4. Rækkefølgen af spørgsmålene afhænger af studie-designet. Hvis man har studie med kun en fase, så kan rækkefølgen være som man har lyst. Hvis har et multi-stadie projekt, så bliver rækkerfølgen mere vigtig, og bestemmes af studiets design.
+
+ 5. Typisk inkluderes et mixed-methods spørgsmål der specifik henvender sig til integrationen af de to første data-typer. Dette kaldes et "hybrid"- eller "integrated" spørgsmål.
+
+ 6. Mixed method spørgmsål kan typisk stilles i en af tre former:
+
+    + en form der gengiver hivlker metoder bruges: "Does the qualitative data help explain the quantitative results?"
+
+    + en form der udlæger studiets indhold: "Hjælper social støtte med at forklare hvorfor nogle studenter bliver mobbere?"
+
+    + en form hvor man kombinere metoderne til et hybrid-spørgsmål: "Hvordan hjælper de kvalitative interveiws med at forklare hvorfor social støtte, målt kvantitativt, typisk sørger for at folk ikke bliver mobbere?"
+
+ 7. En god måde at præsentere de forskellige spørgsmål på er opdelt i de sektioner, der bruger de forskellige metoder. Således opdelt i en kvalitativ sektion, en kvantitativ sektion og en mixed-method sektion.

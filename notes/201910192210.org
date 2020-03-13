@@ -1,0 +1,15 @@
+* Polynomial regression
+  :LOGBOOK:
+  CLOCK: [2019-10-19 Sat 22:15]--[2019-10-19 Sat 22:40] =>  0:25
+  :END:
+
+Polynomial regression er en form hvor man alle features er funktioner af den samme input variable. En generisk form hedder:
+
+$$ y _i = w_0 + w_1 x_i + w_2 x_i^2 + ... + w_p x^p + \epsilon_i $$
+
+- Features er bare en funktion af inputtet. I den eneriske model er feature 1 = constant, feture 2 = x, feature 3 = x^2, ..., feature p + 1 = x^p.
+
+Hver feature har også en parameter, $w_p$. i.e. $w_0$ for feature 1, $w_1$ for feature 2, etc.
+
+
+** Se også:

@@ -1,0 +1,2 @@
+* Assymetrisk cost-function
+RSS (residual sum of squares) er en symetrisk cost-function, i.e. over og undervurderinger af værdier bliver vægtet lige højt. Der er dog rtilflfde hvor omkostning ved at gætte for lavt eller for højt er mere onkostningsfuldt end den anden vej.  I disse tilfælde vil man vægte under eller over skud anderledes (isetdet for at sætte lige ved at tage forskellen i anden som i RSS).

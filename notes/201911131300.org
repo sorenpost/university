@@ -1,0 +1,6 @@
+* Research ideer:
+
+** Brug input output tables til måle shock propagation; brug derefter microdata på employment og social outcomes til at måle hvordan social konsekvenser bliver conditioned af økonomiens struktur.
+- TODO Tjek op på World Input Output database - hvilken data findes der?
+- TODO Få skrevet en temp projekt beskrivelse
+- TODO Få forberedt en ansøgning til EUROSTAT

@@ -1,0 +1,18 @@
+* Spearman correlation
+
+Når antagelserne ikke holder for Pearsons correlation, så bruges Spearman typisk. Hvor det i Pearsons correlation er de rå dataværdier der sammenlignes, tages i Spearman oreraltion den rank hver observation har i variablerne, og så tages correlationen mellem ranks.
+
+Der er to krav for at man kan bruge Spearman correlation:
+
+- Der skal være en monotonic relationship mellem de to variabler. Det vil sige at variablerne skal være forbundet i samme "retning" hele tiden. Det vil sige, at hvis forholdet generelt skal være at når x bliver større, så bliver y større, eller omvendt. Forholdet behøver ikke være linært, men det må ikke vr convex eller concave. 
+
+- Observationerne skal komme fra en random sample.
+
+Formlen er simpel. Hvor værdierne bruges i Pearsons, indsættes bare rank for observationener. Hvis $\rho$ er pearsons correlation og $\Gamma$ er spearmans correlation. $R(x_i)$ og $R(y_i)$ er rank for x og y værdi for observation i.
+
+\begin{align*}
+\rho =& \frac{Cov(x,y)}{s(x)s(y)} \\
+     =& \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_i (x_i - \bar{x})^2 \sum_i (y_i - \bar{y})^2}} \\
+\Gamma =& \frac{Cov(R(x),R(y))}{s(R(x))s(R(y))} \\
+     =& \frac{\sum_i (R(x_i) - \bar{R(x)})(R(y_i) - \bar{R(y)})}{\sqrt{\sum_i (R(x_i) - \bar{R(x)})^2 \sum_i (R(y_i) - \bar{R(y)})^2}} 
+\end{align*}

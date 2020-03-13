@@ -1,0 +1,7 @@
+* Mutliplying a vector by a scalar
+
+Hvis vi har $$  a = \begin{bmatrix} 2 \\ 1 \end{bmatrix} \text{, } 3 * a =  3\begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 9 \\ 3 \end{bmatrix}$$
+
+Retningen er altså den sammen, men længden (magnituden) øges med 3 gange. Hvis vi tager: $$ -1 * a = -1\begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} -2 \\ -1 \end{bmatrix} $$ så ændres retningen til omvendt. 
+
+[[./figures/vector-scalar-mulitplication.png]]

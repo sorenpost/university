@@ -1,0 +1,25 @@
+* SQ3R study method
+** Survey
+Formålet er at få et hurtigt overblik over et kapitel som helhod. Det vil sige: hvordan det udviklerser, forholdet mellem hoved-værdierne, etc. Dette gøres FØR man læser kapitlet. 
+
+Brug 1-2 minutter på at "surveye" ved at:
+1. Hold kapitlets navn fast i hovedet.
+2. Læs hurtigt introduktinen, outline og formålet med kapitlet. Dette giver baggrundsinformationen til at forstå kapitlets formål.
+3. Tag note af overskrifter og under-overskrifter. Titlerne er typisk emner som forfatteren mener er vigtige.
+4. Se efter andre vigtige ideer: dette er typisk tekst i fed, eller pointer der er fremhævede på lignende vis.
+5. Læs summary. 
+
+** Question
+Lav spørgsmål ud af headings og subheadings. For eksempel: hvis emnet er The Judiciary and the Constitutional Courts,” skim så detaljerne som en guide til hvilken slags spørgsmål kan laves. *Dette afhænger typisk af indholdet i kapitlet (som er skimmet i Survey).
+
+** Read
+Læs teksten med spørgsmålene i hovedet. Dette forhindre "blank mind"-syndromet.
+
+** Recite
+Reciting er et vigtigt retention redskab.
+1. Se på spørgsmålene der var lavet.
+2. Uden at se efter i teksten, reciter svaret højlydt. Svar som om du underviser en klasse. En anden metode er ved at svare gennem en paragraf.
+3. Tjek om svaret er rigtigt ved at kigge i noter eller i bogen.
+
+** Review
+Gennemgå noter og spørgsmål igen. Test spørgsmål. Dette skal gøres regelmæssigt.

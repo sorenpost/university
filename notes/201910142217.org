@@ -1,0 +1,40 @@
+* Size corrections in co-occurrence similarity methods
+
+Som nævnt under ligheds-målene baseret på co-occurrence data, så er størrelses-korrigeringen vigtig. Her er et eksempel på tre forskellige mål under 3 scenarier. 
+
+$m$ er antallet af rækker i occurrence matricen *M*. Det vil sige antallet af mulige occurrences. $o_i$ er antallet af occurrences af sæt $i$. $u_{ij}$ er antallet af co-occurrences af det to sæt, $i$ og $j$. $mA_{ij}$ er Association Strength normaliseret med $m$. Det vil sige at værdien er ratioen mellem observerede occurrences og det forventede antal af occurrences. $J_ij$ er jaccard coefficient. $P_ij$ er proximity.
+
+#+name: create_set_table
+#+begin_src R :results value table :colnames yes
+      library(tidyverse)
+
+      m <- rep(1000, 3)
+      o_i <- c(300, 20, 50)
+      o_j <- c(300, 20, 20)
+      u_ij <- c(90, 6, 15)
+      scenario <- c("Scenario 1", "Scenario 2", "Scenario 3")
+
+      data <- tibble(m, o_i, o_j, u_ij, scenario) %>%
+        mutate(
+          mA_ij = u_ij/(o_i * o_j) * m,
+          J_ij = round(u_ij / (o_i + o_j - u_ij), digits = 3),
+          P_ij = round(u_ij / o_i, digits = 3) # very bad ad-hoc solution. Had an issue with row-wise max, selected manually the lowest col.
+               ) %>%
+        select(
+          scenario, m, o_i, o_j, u_ij, mA_ij, J_ij, P_ij
+        )
+
+  data
+#+end_src
+
+#+RESULTS: create_set_table
+| scenario   |    m | o_i | o_j | u_ij | mA_ij |  J_ij | P_ij |
+|------------+------+-----+-----+------+-------+-------+------|
+| Scenario 1 | 1000 | 300 | 300 |   90 |     1 | 0.176 |  0.3 |
+| Scenario 2 | 1000 |  20 |  20 |    6 |    15 | 0.176 |  0.3 |
+| Scenario 3 | 1000 |  50 |  20 |   15 |    15 | 0.273 |  0.3 |
+
+** Se også:
+- [[deft:201910142116.org][201910142116]]
+- [[deft:201910142048.org][201910142048]]
+- [[file:201910142049.org::*Proximity][Proximity]] 

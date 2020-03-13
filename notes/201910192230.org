@@ -1,0 +1,20 @@
+* Modeling seasonality
+Der findes mange tilfælde, hvor selve lniien også bølger, ud over den generelle trend. Den situtation man oftest støder på er i forbindelse med seasonality. Dette kan indkorporeres i regressionsmodellen ved at indkludere en bølge-funktion. 
+
+I dette eksempel er indsæt i en feature, der sørger for at linien bølger over en 12-måneders periode (t er en given måned). 
+
+$$ y_i = w_0 + w_1 t_i + w_2 sin( 2 \pi t_i / 12 - \phi) + e_i $$
+
+hvor $\phi$ er hvor meget bølgen skal skiftes med (i.e. i hvilken måned er "toppen" af bølgen?). Nu er der dog et problem. Siden $\phi$ også er et parameter der skal estimeres, men som ligger inden i en funktion, så er regressionen ikke længere linær. Heldigvis kan man udnytte noget trigonometri. 
+
+Vi kender den trigonometriske identitet:
+
+\begin{align*} 
+sin(a - b) &= sin(a)cos(b) - cos(a)sin(b) \\
+sin(2 \pi t_i / 12 - \phi) &= sin(2 \pi t_i / 12) cos(\phi) - cos(2 \pi t_i / 12) sin(\phi)
+\end{align*}
+
+Vi kan dermed omskrive, således at vi bare tænker på cos($\phi$) og sin($\phi$) som parameters, hhv $w_2$ og $w_3$, så finder modellen de bedste værdier.
+
+$$ y_i = w_0 + w_1 t_i + w_2 sin (2 \pi t_i / 12) + w_3 cos(2 \pi t_i / 12) + \epsilon_i $$
+

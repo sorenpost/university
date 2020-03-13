@@ -1,0 +1,18 @@
+# Model
+
+The approach taken in this paper is closely related to the "O-ring" theory...
+
+Where Kremer's model assumes that more complex production processes takes in more tasks, and risk therefor is related to the quality of the workers undertaking each task, 
+
+Instead of focusing on the risk of each productions $n$ tasks and the risk of workers "messing them up", I focus on exogenous disruptions to the production process. a
+
+
+The O-ring production function in Kremer (): Each firm combines some amount of capital (K) with a group of $n$ workers or tasks. Each task has $q$ probability of being produced accurately. If an error happens (food spoil, vases are dropped, wood is mishandled) the production output is 0. I the long run, $q$ thus represents the value of a given worker to the production output.
+
+The expected output of a production is thus:
+
+$$
+E(y) = k ^{\alpha} (\prod^{n}_{i = 1} q_i) n B
+$$
+
+Hvis firmaet er alene så er det en simpel model, men hvis den er en del af et produktionsnetværk, så er det lig Kremers model.

@@ -1,0 +1,31 @@
+* Test if a square matrix has an inverse
+
+Der er grundlæggende to måder at finde ud af om en kvadratisk matrix har en inverse, rank og determinant. Det gælder at ikke-kvadratiske matricer ikke har en inverse. (De kan dog være right- eller left-invertible)
+
+*Rank:* Hvis en matrix's af størrelse n x n er mindre end n så har matricen ikke en inverse. I.e. Hvis en 4 x 4 matrix har færre end 4 linært uafhængige rækker/kolonner, så har matricen ikke en inverse.
+
+En matrix' rank er a) det højeste antal af linært uafhængige kolonner eller b) det højeste antal af linært uafængige rækker. Begge definitioner er ens. Hvis vi har en matrix r x c, så er hvis 
+ - r er mindre end c, så er maximum rank for matricen = r
+ - r er større end c, så er maximum rank for matricen = c
+
+Ranken i en matrix er = antallet af ikke-0-rækker i en matrix row echelon form. Når alle rækker/kolonner i en matrix er linært uafhængige, så siges at matrixen er full-rank. 
+
+*Determinant:* Det er kun kvadratiske matricer der har determinanter. Hvis en matrix's determinant er 0, så kan matricen ikke invertes. 
+
+En matrix determinant er essentielt bare arealet dækket af matricen. Det noteres $|A|$. For en 2 x 2 matrix A, er det således:
+
+\begin{align*}
+A &=
+\begin{bmatrix}
+A_{11} &  A_{21} \\
+A_{21} & A_{22}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+a &  b \\
+c & d
+\end{bmatrix} \\
+|A| &= (A_{11} * A_{22}) - (A_{12} * A_{21}) \\
+ &= ad - bc
+\end{align*}
+
+Dette kan forholdsvist nemt generaliseres til alle square matricer, men det er lidt langhåret. Typisk får man computeren til det (med Det()). Se her: https://stattrek.com/matrix-algebra/matrix-determinant.aspx

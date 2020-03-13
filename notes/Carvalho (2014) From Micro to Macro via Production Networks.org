@@ -1,0 +1,35 @@
+* Carvalho (2014) From Micro to Macro via Production Networks
+
+Organisation af production i et supply chain netowrk kan udstille økomomien mod shocks til særæligt kritiske sektorer. Hvis strukturen er domineret af få meget forbundede hubs, så er der især to grunde til denne effekt:
+
+1. Fluctuations i de meget centralt forbundne noder (sektorer) kna first-order sprede sig til resten af økonomien (på samme måde som hvis en lufthavn der lukker)
+2. Disse hubs skaber small-world fænomener, ie der er ikke lant til nogle steder i økonomen, og hubs mindsker derfor den distance som shocks skal "rejse" gennem netværket. Hubs er altså shock-conductors.
+
+Essayets hoved-argument: production netowrks facilitate propogation af localized distrubances, og laver en bro mellem micro (uforudsete events, individual production decisions) og macro - dvs syncrhonized business cycle behaviour.
+
+Spørgsmål der undersøges: 
+- er organisationen af økonomien langs production networks en kilde til aggre. fluctutations?
+- kan vi finde empiriske mønstre af sectoral co-movement sådan?
+- Er niveauet af sectoral co-movement product af distancen i netværket?
+- co-mover centrale sectors mere med aggregate?
+
+** Simple model of production network
+En økonomi har $n$ sektorer. Hver node (sektor) specialiserer sig i forskellige goder (et hver). Disser goder kan både være final consumption (i husholdninger) eller bruges som inputs i andre sektorer. I modellen simplificeres final deman siden til at husholdninger værdisætter alle forskellige produkter ens, og derfor forbruger dem i lige mængder. På samme måde antages det at labor gives uelastisk til produkttiion og at alle penge bruges på forbrug. 
+
+Det antages at Cobb-Douglas production function er en god approximation af produktionen i hver sektor. Der er konstant reutrns to scale (alpha + beta = 1). Output er defineret som produkt af primary input (labor) og intermediate inputs. Output af sektor $i$ er givet ved:
+
+$$ x_i = (z_i l_i)^{1-\alpha} \prod^{n}_{i = 1} x^{w_{ij}}_{ij}} $$
+
+Det første term, $(z_i l_i)$ viser bidraget fra primary input labor ($l_i$). $1 - \alpha$ = saher of labor in production. $z_i$ er sector specfic produktivitets shocks (forstyrrelser), som "shifts production possibilities frontier of sector i in a random fashion". Dette er den eneste usikkerheds kilde i modellen. Det antages at disse produktivitets shocks er uafhængige af noderne.
+
+Det andet term, $\prod^{n}_{i = 1} x^{w_{ij}}_{ij}}$, repræsenterer hvordan produktion er relateret til andre sektorer. $x_{ij}$ er den andel af goder fra sektor $j$ der bruges til at producerer i sektor $i$. Potensen $w_{ij}$ giver andelen af goder $j$ i den totalte intermediate input-use i sektor $i$.
+
+For en given sektor $i$ antages det at $\sum_j {w_{ij}} = 1$ og $w_{ij}$ er konstant over tid. For en given sektor $i$ er vektoren af $w_{ij}$'er altså en art "production recipe". Hvis $w_{ij}$ = 0, så bruges $j$ ikke i $i$'s production, uanset prisen.
+
+Alle production technologies  er stort set symmetriske. Samme labor input ($\alpha$ holdes lige over alle sectors). Den eneste forskel er i hvordan deres intermediate input-mix er.  Samlingen af $n$ $w_{ij}$ er altså bare en input-output matrix (W). W kan også virke som en adjacency matrix for et netværk. Betyder formen at dette netværk nogen for co-movement af sectors? 
+
+** Network structure models:
+
+1. Baseline case: ingen input-output trade i økonomien. Alle $w_{ij} = 0$. "The horizontal economy". Her påvirker ingen sector specifikke shocks andre sektorer. Der er altså ingen propagation mechanism, og der er ingen amplification af micro volatility. Selvom denne økonomi virker urealistisk, så ligner den modelleringen af intermediate outputs is i meget macro-lit - der antages typisk at intermediate inputs produceres a primary goods, og der er derved ingen intermediate input use af intermediate producers.
+2. Vertical economy: Input flyder i en retning gennem økonomien. Eksemple: mining sector: magneter fra rare minerals -> bruges til at lave højtalere -> sættes ind i smartphones. Dette er en tree/line structure med en single source og en single sink. På samme mpåde som case 1, har sector specifikke shocks på økonomien en indflydelse. Men modsat første eksempel har de også knock-on effekter. Shocks til sector 1 (source) har en first-order effekt på sektor 2 gennem $w_{2, 1}$, en second-order effekt på node 3 gennem $w_{3, 2}, osv. Effekter aftager gennem netværket. Network multiply effekten er altså større end 1.
+3. Spoke-hub model: "Star network" en hub producerer et intermediate good (en "general technology") som er det eneste input brugt af alle andre sektorer. Denne general technology skal bruge nogle særlige inputs (flere) for at virke. Disse "periphery sectors" producerer hver især et 

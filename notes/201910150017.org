@@ -1,0 +1,10 @@
+* R coding: Density
+
+For at udregne density skal vi bruge to matricer: en occurrence matrix, *M*, og en similarity matrix, *S*.
+
+Den grundlæggende metode er simpel. Hvert element i *M* er enten 1, hvis landet (rækken) har en RCA værdi på mindst 1 i produktet (kolonnen), 0 ellers. For density omkring et givent produkt er vi interesseret i at tage summen af similarity værdierne mellem produktet og så de produkter som landet har 1-taller i i *M*. Dette er er heldigvist nemt ved at tage dot-product af de to matricer. Her ganges tages en rækker i *M* og ganges med den tilsvarende kolonne i *S*, og resultatet summes. Dette betyder at alle produkters similarity værdier som et givent land ikke eksporterer bliver 0, mens resten bevarer deres similarity værdi som summes. Det betyder at outcommet bliver en matrix med de 'lokale' similarity værdier. Disse skal derefter divideres med 
+
+  #+begin_src R
+    M <- matrix(1, ncol = 5, nrow = 3)
+    S <- matrix(rnor)
+  #+end_src

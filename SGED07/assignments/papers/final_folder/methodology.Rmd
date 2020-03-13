@@ -1,0 +1,67 @@
+
+The main feature of the study is designed to exploit the state-level variation in electricity shortages to explain differences in the complexity of products produced by individual plants. At the most general level, this includes three steps. 
+First, I construct a product-complexity index and assign a value to each plants production. Next I estimate average electricity shortages for each state. This state-level value is also assigned to each plant. Finally, I regress the state-level electricity-variable on the plant-level complexity variable and a number of relevant controls.
+
+# Empirical strategy
+## Instrumental variable
+
+There are a couple of reasons the effect of electricity disruptions on economic activities are diffult to study empirically. First, the relationship is likely to have a significant endogenous component. More complex production could be related to a more intensely developed economy, which could also be related to mre stabile electricity supply. On the other hand, a more developed economy could have a more complex production, but would also have a higher electricity demand which could lead to shortages. Secondly, both the measurements of electricity used in this study very likely suffers from measurement error, leading to attenuation bias. æ 
+
+I therefor follow @allcott_how_2016 in constructing an instrumental variable based on hydeo-electricity generation. A good instrument must affect the supply of electricity, but impact only the manufactoring plants through shortages. Hydro plants have a very low marginal cost of generating electricity, and the yearly generation of electricity is therefor primarily dependent on water availbility. This water availability is determined by rain- and snowfall at higher elevations.
+
+The instrumental variable $Z_{st}$ is defined as the share of the predicted hydro plant generation $H_{st}$ in the total predicted electricity demand $\hat{Q}_{st}$:
+
+$$
+Z_{st} = \frac{H_{st}}{\hat{Q}_{st}}
+$$
+
+Shortages of electricity directly impacts the consumption of electricity. Therefor, the predicted electricity for a state $s$ is the average electricity of the other states (without state $s$) times the average ratio of state $s$ electricity use as a share of the given year's total electricity use in the other states (again not including $s$). This means that the predicted electricity use for state $s$ in year $t$, $\hat{Q}_{st}$ is defined as:
+
+$$
+\hat{Q}_{st} = \frac{1}{R-1} \sum_{r \neq s}^{R-1}Q_{rt} \cdot \frac{1}{Y} \sum_{y}^{Y} \frac{Q_{sy}}{\sum_{r \neq s}^{R-1} Q_{ry}}
+$$
+
+where states are indexed by $r$, $R$ is the total number of states, years are indexed by $y$, and $Y$ is the total number of years in the sample.
+
+## Estimation
+
+## Limitations
+
+# Draft
+
+
+## Product Complexity
+I calculate product complexity-values based on the Method of Reflections developed in TODO. 
+
+- RCA => Mcp
+
+- Formular
+
+- Graph
+
+## Plant complexity
+For each plant, I quantify the complexity of their production output as the weighted average the complexity-values for each product it produces. I assign weights based on the value of the production. That is, the complexity for factory $f$ at time $t$, $C_{ft}$, is defined as:
+
+$$
+C_{ft} = \sum_p Q_{pt} \frac{O_{fpt}}{\sum_p O_{fpt}}
+$$
+
+where $Q_{pt}$ is the product complexity of product $p$ at time $t$ and $O_{fpt}$ is the output (in current prices) of factory $f$ in product $p$ at time $t$. 
+
+However, this definition potentially underestimates the complexity of large, multi-product factories that produce very complex products, but happen to sell markedly more of their low-complex ones. I therefor also include a stricter measure of plant complexity ($C^{\text{max}}_{ft}$) that uses only the most complex product in a factory's product-portfolio, regardless of the output volume. 
+
+$$
+C^{\text{max}}_{ft} = max \{ Q_{1t} I_{1ft}, \text{ ...}, Q_{pt} I_{pt} \}
+$$
+
+where 
+
+$$
+I_{pft} = \begin{cases}
+ 1 & \text{if } O_{fpt} \geq 0 \\ 
+ 0 & \text{if } O_{fpt} = 0
+\end{cases}
+$$
+
+## Electricity shortages
+TODO

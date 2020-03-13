@@ -1,0 +1,7 @@
+*  Linear Combinations
+
+En linær kombination er, når man lægger en række tal smmen, der er skaleret med en eller anden faktor. For eksempel: Hvis vi har en række vektorer, *V1, V2, V3*, og vi ligger dem sammen, men skaleret med nogle scalars, *C1, C2, C3*, så har vi en linær kombination: C1V1 + C2V2 + C3V3. Det gælder at C og V skal være medlemmer af de ægte tal. 
+
+C kan være negativ, 0, 1, mellem 0 og 1, etc. For eksempel, hvis V1 = [1, 2] og  V2 [8, 8], så kan C1 være 0 og C2 være 0.5. Således: 
+
+0 * [1, 2] + 0.5 * [8, 8] = [0, 0] + [4, 4] = [4, 4]

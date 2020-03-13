@@ -1,0 +1,14 @@
+* Adding vectors
+
+Hvis vi har to vectors $a = \begin{bmatrix} 6 \\ -2 \end{bmatrix}$ og $b = \begin{bmatrix} -4 \\ 2 \end{bmatrix}$, så er: $$a + b = \begin{bmatrix} 6 + (-4) \\ -2 + 4 \end{bmatrix} = \begin{bmatrix} 2 \\ 2 \end{bmatrix} $$
+
+Nåt vi lægger to vektorer sammen, så sættes dem tilføjede vektor (her **b**) til på den første vektors ende (pilens ende) og resultater vektoren fra den første vektors start (**a**) til den sidste vektors ende. De lægges ligesom i forlængelse af hnanden og derhvor der ende tegnes der en vektor fra begyndelsen til. 
+
+![Lilla + grøn = blå](figures/vector-addition.png){ width=75% }
+
+Træk en vektor fra en anden: Hvis:
+$$  a = \begin{bmatrix} 3 \\ 2 \end{bmatrix} \text{, } b = \begin{bmatrix} 1 \\ 4 \end{bmatrix}$$ så er $$ a - b = \begin{bmatrix} 3 - 1 \\ 2- 4 \end{bmatrix} = \begin{bmatrix} 2 \\ -2 \end{bmatrix} $$. 
+
+Intuitionen er at resultatet af at minusse to vektorer er at tage vektoren fra enderne af de to vektorer. Det er typsik nemmere, i stedet for at tage a - b, så tage a + (-1) * b. 
+
+** So også:

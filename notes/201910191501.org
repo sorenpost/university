@@ -1,0 +1,35 @@
+#+TITLE:Derivatives in more dimensions: gradients
+#+AUTHOR: S B Post
+#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes 
+-----
+
+Når man snakker om derivatives over flere dimensioner, så snakker man istedet og gradients. 
+
+$$ \nabla g(w) = \begin{bmatrix}
+ \frac{dg}{dw_0} \\
+ \frac{dg}{dw_1} \\
+\vdots \\
+ \frac{dg}{dw_p} \\
+\end{bmatrix}
+$$
+
+Her er $\frac{dg}{dw_p}$ partial derivative ift $w_p$. Det betyder at for hver derivative der behandles de andre variabler bare som en kosntant.
+
+*Eksempel:* 
+
+\begin{align*}
+g(w) &= 5w_0 + 10w_0w_1+2w_1^2 \\
+\\
+\frac{dg}{dw_0} &= 5 + 10 w_1 + 0 \\
+\frac{dg}{dw_1} &= 0 + 10 w_0 + 4w_1 \\
+\\
+\nabla g(w) &= \begin{bmatrix}
+5 + 10 w_1 \\
+10 w_0 + 4 w_1
+\end{bmatrix}
+\end{align*}
+
+
+** Se også:
+- Optimization in one dimension: [[file:201910191423.org]]
+- Gradient descent: multidimensional hill descent: [[file:201910191705.org]] 

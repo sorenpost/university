@@ -1,0 +1,5 @@
+* Matrices transform space
+
+Vi kan tænke på en matrix som en funktion der tager en input vektor, ændrer vektorens unit vektorer, og spytter en output vektor ud. Hvis input vektoren følger basis vektorerne [0, 1], [1, 0] (eller flere), så er vores matricens kolonner hhv hvordan vi vil have den første basis vektor til at se ud i outputtet, den anden kolonne er hvordan vil vil have den anden basis vektor til at se ud, etc. 
+
+Dette bliver tydeligt når vi ser på fx Identity matrix, som har 1-taller på diagonalen, 0'er ellers. Ligelides bliver matricen spejlvendt hvis du første kolonne hedder [0, 1], anden hedder [1, 0], osv. 

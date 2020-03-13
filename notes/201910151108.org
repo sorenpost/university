@@ -1,0 +1,40 @@
+* Vector addition (w. direction in degrees) and magnitude
+Hvis vi har to vectors, og vi kender deres magnitude og deres retning i grader, hvordan får vi dem lagt sammen?
+[[./figures/vectors-mag-and-dir.png]]
+
+Vektorer som disse udtrykkes også i formen (r, $\theta$), hvor r = magnitude of og $\theta$ er retningsvinklen. Grundlæggende kan man finde vektorens componenter ([x,y] formatet) ved at udnytte sinus og cosinus. Siden magnitude er hypotenusen i retvinklet trekant, så er $x = cos(\theta) * r$, og   $y = sin(\theta) * r$. Altså, i eksemplet herover er a = [$cos(30) * 3$, $sin(30) * 3$] og b = [$cos(180-135) * 2$, $sin(180-135) * 2$]. 
+
+Følgende er en funktion der omdanner en magnitude og direction vector til en component vector.
+
+#+begin_src R
+  to.component <- function(magnitude, degrees) {
+    x <- magnitude * cos(0.01745329252 * degrees)
+    if (degrees < 90) {
+    x <- magnitude * cos(0.01745329252 * degrees)
+    y <- magnitude * sin(0.01745329252 * degrees)
+    v <- vector("numeric")
+    v <- c(x, y)
+    print(v)
+    }
+    else if (degrees > 90 & degrees < 180) {
+    x <- -(magnitude * cos(0.01745329252 * (180 - degrees)))
+    y <- magnitude * sin(0.01745329252 * (180 - degrees))
+    v <- vector("numeric")
+    v <- c(x, y)
+    print(v)
+    } else if(degrees > 180 & degrees < 270) {
+    x <- -(magnitude * cos(0.01745329252 * (270 - degrees)))
+    y <- -(magnitude * sin(0.01745329252 * (270 - degrees)))
+    v <- vector("numeric")
+    v <- c(x, y)
+    print(v)
+    }
+    else{
+     x <- (magnitude * cos(0.01745329252 * (360 - degrees)))
+    y <- -(magnitude * sin(0.01745329252 * (360 - degrees)))
+    v <- vector("numeric")
+    v <- c(x, y)
+    print(v)
+    }
+  }
+#+end_src

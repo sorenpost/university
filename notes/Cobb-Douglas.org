@@ -1,0 +1,49 @@
+*Production function:* En production function er basalt set bare en funktion der beskriver sammenhængen mellem total output og en række inputs (typisk kaldet factors): $$ Q = f(L,K) $$
+
+hvor:
+ - Q = hvor mange produkter der laves
+ - L = labor input
+ - K = capital input.
+
+*Cobb-Douglas* er en særlig form for production function, der har nogle ønksværdige egenskaber. Den basale form er: $$ Q(L, K) = A L^{\beta} K^{\alpha} $$
+
+hvor:
+ - Q = quantity of products
+ - L = quantity of labor
+ - K = quantity of capital
+ - A = positive constant (typisk er A = TFP)
+ - $\beta$, $\alpha$ = konstanter mellem 0 og 1 (udtrykker input shares for hhv labor og capital)
+
+*Marginal product* er ændringeri totalt production når der er en minimal ændring i inputus. Det vil sige at marginal product = første derivative af production function ift inputs, $\frac{\partial Q}{\partial L}$. I forhold til Cobb-Douglas: $$ \frac{\partial Q}{\partial L} = A \Beta L^{\beta - 1} K^{\alpha} $$
+
+Det betyder at når L eller K stiger, så stiger total output. Marginal product er altså positiv men aftagende.
+
+*Output elasticity* = procentvis ændring i output som følge af ændring i input (labor eller capital). $$ \frac{\partial Q}{Q} / \frac{\partial L}{L} = \frac{\partial Q}{\partial L} / \frac{Q}{L} $$
+
+Hvis output elasticity er større end 1, så er production function elastic. I Cobb-Douglas kan elasticiteten ret nemt måles: 
+
+\begin{align} 
+\frac{\partial Q}{Q} / \frac{\partial L}{L} &= \frac{\partial Q}{\partial L} / \frac{Q}{L} \\
+&= (A \beta L^{\beta - 1} K^{\alpha}) / (A L^{\beta} K^{\alpha} / L) \\
+&= (A \beta L^{\beta - 1} K^{\alpha}) / (A L^{\beta - 1} K^{\alpha}) \\
+&= \beta
+\end{align}
+
+Output elasticity ift labor er konstant og = $\beta$. Hvis $\beta = 0.2$, og labor stiger med 10 procent, så stiger output altså med 2 procent. Hhv $\alpha$ og $\beta$ er output elasticiteten for capital og labor og er konstante.
+
+*Returns to scale* viser hvor meget mere output der kommer hvis inputs hæves proportionelt. Altså: hvis output stiger mere end proportionelt (inputs stiger med 10 procent, output med 20), så er der increasing returns to scale. Hvis output stiger mindre end proportionelt, så er der decreasing returns. 
+
+I forhold til Cobbs-Douglas, så kan vi gange med en konstant $c$ og følge ændringen i Y (output). Hvis Y' er det nye output:
+
+\begin{align}
+Y' &= A(cL)^{\beta} (cK)^{\alpha} \\
+&= A c^{\beta} L^{\beta} c^{\alpha} K^{\alpha} \\
+&= c^{\beta + \alpha} Y
+\end{align}
+
+Vi kan dermed se at når alle inputs ændrer sig med en faktor $c$ så stiger output med $c^{\beta + \alpha}$. Det følger derfor at hvis:
+
+- $\beta + \alpha = 1$ så har production function constant returns to scale
+- $\beta + \alpha > 1$ så har production function increasing returns to scale
+- $\beta + \alpha < 1$ så har production function decreasing returns to scale
+

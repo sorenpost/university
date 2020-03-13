@@ -1,0 +1,3 @@
+* Total Factor Productivity 
+
+TFP er en måde at måle produktiviteten i en økonomi. TFP er typisk defineret som ratioen mellem total output, Q, og det vægtede gennemsnit af labor input (L) og capital input (K). Typisk bruges standard vægte på 0.7 for labor og 0.3 for capital. Vækst i TFP er derved den vækst i output, der ikke kommer er forklaret af vækst i nogle af inputs. I en Cobb-Douglas funktion er denne faktor A. 

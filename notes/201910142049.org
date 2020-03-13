@@ -1,0 +1,18 @@
+* Proximity 
+
+På samme måde som Association Strength og Jaccard coefficient, så er proximity en måde at måle ligheden mellem to vektorer ud fra deres co-occurrence data.
+
+Proximity er primært brugt i Economic Complexity literaturen som en måde at kvantificere hvor lig to produkter er i deres capability overlap. Definitionen er simpel. For to produkter, A og B, så er Pr(A,B) sandsynligheden for at et land eksporterer produkt A, såfremt det eksporterer produkt B, eller omvendt. Siden dette ikke er symmetrisk, så bruges bare den mindste af de to værdier.
+
+Mere formelt,
+
+$$ Pr(A,B) = \text{min} \{ P(A | B), P(B | A)\} = \frac{A \cap B}{ \text{max\{A, B \}}} $$ 
+
+Hvor Association Strength korrigerer for set-størrelse ved at tage forventet overlap, og Jaccard Coefficient gør det ved set-union, så tages den mindste af de to værdier her. For at en artikel der bruger målet, se Hidalgo et al (2007) "The Product Space conditions the development of nations".
+
+** Se også
+
+-[[file:201910142048.org::*Association%20strength][ Association strength]]  
+- [[file:201910141943.org::*Cosine%20similarity,%20cosine%20distance][Cosine similarity, cosine distance]]
+- [[file:201910142116.org::*Jaccard%20similarity][Jaccard similarity]] 
+- [[file:201910142050.org::*Density%20(economic%20complexity)][Density (economic complexity)]]  

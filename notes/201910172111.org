@@ -1,0 +1,21 @@
+* Matrix composition/matrix multiplication
+
+Hvis vi har to matrix transformationer af en vector, fx A1(A2 r), så kan vi bare tage de to matricer, matrix-multiplicere dem, og så transfomrer r med resultat-matricen. 
+
+Fx:
+
+$$ A_1 = \begin{bmatrix} 0 & 1 \\ 
+               -1 & 0 \end{bmatrix} $$
+
+$$ A_2 = \begin{bmatrix} -1 & + \\ 
+                0 & 1 \end{bmatrix}
+$$
+
+Det vil sige at A_1 A_2 er = $\begin{bmatrix} 0 & -1 \\ -1 & 0 \end{bmatrix}$.
+
+Når man ganger to matricer, så tages dot-product af første række i første matrix og første kolonne i anden matrix, anden række og anden kolonne, etc. 
+
+*Egenskaber for matrix multiplication:* 
+ - matrix multiplication er ikke commutative: dvs A1A2 != A2A1
+ - matrix multiplication er associationm: dvs A1(A2A3) = (A1A2)A3.
+

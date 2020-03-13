@@ -1,0 +1,86 @@
+* Finding the Least Squares Line, Simple Linear Regression
+
+For at finde Least Squares Line skal vi vælge parameters $w_0, w_1$ der minimere følgende RSS:
+
+$$
+\frac{min}{w_0, w_1} \sum_i(y_i - (w_0 + w_1x_i)^2)
+$$
+
+funktionen er convex (det kan vises) i.e. løsningen er unik og vi ved at en gradient descend algoritme vil finde minimum.
+
+Vi kan approahce solve for minimum på to måder: closed form (i.e. gennem en ligning) og gennem gradient descent. 
+
+Begge løsninger kræver at vi først finder gradient af vores cost-function. Som ovenfor er vores cost function = $Rss(w_0, w_1)$. 
+
+$$ \nabla RSS(w_0, w_1) = \begin{bmatrix}
+-2 \sum_i (y_i - (w_0 + w_1 x_i)) \\
+-2 \sum_i (y_i - (w_0 + w_1 x_i))x_i \\
+\end{bmatrix} $$
+
+** Approach 1: Closed form solution:
+Jeg gider ikke skrive mellemregningerne, men de kan findes online. Resultatet bliver til at:
+
+- Øverste term:
+
+\begin{align*}
+\hat{w}_o = \frac{\sum_i y_i}{N} - \hat{w}_i \frac{\sum_i x_i}{N}
+\end{align*}
+
+- Nederste term:
+- *noterne var forkerte*
+
+Nu proppes ligning for top term ned i ligningen for term 2, og så får vi:
+
+\begin{align*}
+\hat{w}_1 = \frac{\sum_i y_i x_i - \frac{\sum_i y_i \sum_i x_i}{N}}{\sum_i x_i^2 - \frac{\sum_i x_i \sum_i x_i}{N}}
+\end{align*}
+
+
+** Approach 2: Gradient descent
+Vi har vores gradient:
+
+$$ \nabla RSS(w_0, w_1) = \begin{bmatrix}
+-2 \sum_i (y_i - (w_0 + w_1 x_i)) \\
+-2 \sum_i (y_i - (w_0 + w_1 x_i))x_i \\
+\end{bmatrix} $$
+
+$y_i$ er den observerede værdi, $(w_0 + w_1 x_i)$ er den forudsagte værdi ud fra params $W_0$ og $w_1$. Det kan derfor omskrives til: 
+
+$$ \nabla RSS(w_0, w_1) = \begin{bmatrix}
+-2 \sum_i (y_i - \hat{y}_i(w_0, w_1))  \\
+-2 \sum_i (y_i - \hat{y}_i(w_0, w_1))x_i \\
+\end{bmatrix} $$
+
+Altså bliver algoritmen til:
+
+\begin{align*}
+\begin{bmatrix}
+ w_0^{t+1}\\
+ w_1^{t+1}\\
+\end{bmatrix} &= \begin{bmatrix}
+ w_0^{t}\\
+ w_1^{t}\\
+\end{bmatrix} - \eta \nabla RSS(w_0, w_1) \\
+&= \begin{bmatrix}
+ w_0^{t}\\
+ w_1^{t}\\
+\end{bmatrix} - \eta \nabla  \begin{bmatrix}
+-2 \sum_i (y_i - \hat{y}_i(w_0, w_1))  \\
+-2 \sum_i (y_i - \hat{y}_i(w_0, w_1))x_i \\
+\end{bmatrix} \\
+&= \begin{bmatrix}
+ w_0^{t}\\
+ w_1^{t}\\
+\end{bmatrix} + 2\eta \nabla  \begin{bmatrix}
+ \sum_i (y_i - \hat{y}_i(w_0, w_1))  \\
+ \sum_i (y_i - \hat{y}_i(w_0, w_1))x_i \\
+\end{bmatrix}
+\end{align*}
+
+Det betyder at sfåremt vi nu under-predictor $\hat{y}_i$ for et givent sæt af $w_0$, $w_1$, så er $\sum_i (y_i - \hat{y}_i)$ positiv, og $w_0$ og $w_1$ stiger, og vores næste gæt på $\hat{y}_i$ bliver højere.
+
+Grunden til at man bruger gradient descent er at der for nogle problemer i machine leraning ikke findes en closed form solution. Desuden så er gradient descent i nogle tilfælde mere effektiv (i.e. hurtigere).
+
+** Se også:
+- Optimization in one dimension: [[file:201910191423.org]]
+- Gradient descent: multidimensional hill descent: [[file:201910191705.org]] 

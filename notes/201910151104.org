@@ -1,0 +1,8 @@
+* Unit vectors introduction
+En unit vector er en blot en vector der går i en given retning, med en magnituge på 1. Notation: $i$ og $j$ med en hat i stedet for prikken. $i = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ og $j = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$. Altså: alle vektorer kan repræsenteres som en linær kombination af $i$ og $j$. For eksempel: $$V = 2i + 2j = \begin{bmatrix} 2 \\ 2 \end{bmatrix} \\ B = -1i + 4j =  \begin{bmatrix} -1 \\ 4 \end{bmatrix} \\ V + B = (2 - 1)i + (3+4)j = 1i + 7j$$ 
+
+[[./figures/unit-vectors-2.png]]
+
+*Worked example:* Find unit vector ud fra retningen: A = [3, 4]. 
+1) Først skal vi bruge A's magnitude: ||A||.Vi kan finde A's magnitude med pythagoras, hvor magnitude bare er hypotenusen: $$ ||A|| = \sqrt{3^2 + 4^4} = 5 $$
+2) S skal vi finde den vector der har samme retning som A men blot med en magnitude på 1. Siden A er fem gange så lang som en unit vector, så er det nemmest at tage en vektor med en femtedel af A's to længder, dvs unit vector = [3/5, 4/5].

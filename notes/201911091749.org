@@ -1,0 +1,53 @@
+* Sensier, Bristow & Healy (2016) Measuring Economic Resilience across Europe: Operationalizing a complex concept
+
+** Introduktion
++ *Resilience er et fuzzy topic, og der er i litteraturen ikke enighed om hvordan det skal operationaliseres.* Der er bred debat om hvad præcist økonomisk resilience er for noget. Uagtet, så erder i de seneste år været en stigning i udvklingen af "resilience indicer" og metrics. Der er dog ingen konsensus om hvordan prlcist resilience defineres eller måles. De indicer der findes er typisk enten uprøvede, eller har vist sig at være dårlige til at forudsige hvilke regioner der er resilient i løbet af kriser.
++ *Evolutionær resilience.* Den evolutionære tilgang til resilience omfavner en bred definition: resilience omfatter både bevarelsen af performance outcomes og 'regional state' efter shocks, samt et mere process-orienteret fokus på tilpasning når regionen rammes af shocks.
+
+** Udfordringer ved operationalisering
+
++ *Engineered vs evolutionær konceptualisering.* Engineered: Evnen til at "bounc'e" tilbage efter shocks, samt "resistance" mod shocks. Hvor hurtigt en region vender tilbage til før-shock tilstand. Evolutionær: Dynamisk koncept - regiioners økonomier er komplekse, ikke-linære, og har en "non-equilibrium" tilstand. Her tænkes økonomier som at have en path-dependent growth path, som shocks så har indflydelse på. Resilience kan derfor være at blive på denne growth-path til trods for shocks.
++ *Multi-dimensional resilience.* For at forstå resilience, så skal man forstå:
+  - Forstyrrelsernes natur og varighed
+  - regionernes sårbarhed overfor disse forstyrrelser
+  - regionernes evne til at modstå forstyrrelser
+  - tidslinjen og omfangende af eventuel recovery.
++ *Denne kompleksitet i resilience konceptet leder ofte til sammenblanding af "resilience outcomes" og "resilience capacities".* I litteraturen er der en tendens til at sammenblande "resilience outcomes" mede "resilience capacatities". "Outcomes" er eom regioner undgår eller kommer tilbage fra shocks. "Capacities" er hvad der gør, at outcomes er forskellige mellem økonomier. En af de belastende faktorer er, at outcomes påvirkes af mange ting - hvordan en økonomi er bundet integreret i markedet, institutioner, arbejdsmarkeder, etc. Regioner kan derved være modstandsdygtig over for forskellige typer af shocks. Vi kan kun observere om en evolutionær adaptation er givet resultater når regionen rammes af et shock. Dette er "revealed resilience".
++ *Udfordringer ved konceptualisering.*.
+  1. Identifikation af "reference state" som en given region er i før shocket. Altså, hvad skal ændringen som shocket giver måles op i mod. Er det den økonommie er stadig vokser, til trods for shocket, som er mest resilient? Eller er det den økonommi der hurtig kommer sig igen? Og hvad vil det sige at "komme sig"?
+  2. Man skal også finde den rigtige metric at måle "reference state" ud fra. Det gøres typisk med GDP eller employment, men det kan godt bliver kompliceret ift når den ene går op, og den anden går ned. Hvis man ikke har kendskab til en equilibrium tilstand, så bliver reference state endnu mere krinlget. Fx: hvis shocks kan have forskellige "hysterectic" effects, det vil sige at økonomiers komposition ændrer sig, og derved ændrer deres growth path sig også. Hvornår vil man så sige at man er kommet tilbage på en growth path?
+  3. En relateret udfording er om resilience måles relativt eller absolut. For eksempel: er en græsk region der klarer sig langt bedre end resten af Grækenland mere resilient end en tysk region der i absolutte tal bliver mindre påvirket af shocket?
+  4. Man skal også definere hvorledes shocks eller forstyrrelser måles. Fx så kan makro-økonomiske shocks komme i mange forskellige varianter, bl.a. fiscal shocks, financial shocks, exchange rate shocks, commodity price shocks, productivity shocks, regulatory shocks, capital stock shocks.
+  5. En nøgle-udfordring er: hvornår har et shock indfundet sig? Hvis vi accepterer den evolutionære ide om at økonomier hele tiden ændrer sig og tilpasser mindre forstyrrelser i markedet (internationale priser, skift i teknologier, etc), så er der altså hele tiden mindre shocks. På samme måde som at der altid er små forstyrrelser i jorden, så skal vi definere hvad der gælder som et økonomisk jordskælv.
+  6. Datering af shockets begyndelse: IMF (2013) viser at dateringen af finanskriser og store shocks typisk er rent subjektive. Det er vanskeligt at sætte en præcis dat på. Fx bruges Lehman-crashet typisk til at sige hvornår den store 2008 finanskrise startede. Men tidligere end det varder sub-prime mortgage crisis, som spredte sig gennem markeder, handelslinks, opsparings opfrøsel hos forbrugere, osv. Det er altså vigtig at have en defineret "anatomi" af shocket. Dette bliver især vigtigt således at man ikke blandet data fra regioner hvor shocket lige har ramt, med regioner hvor shocket ikke har ramet endnu, eller hvor shocket er ved at være ovre.
+  7. Hvordan sættes tidslinien for recovery?
+  8. En sidste hurdle er analyse-niveauet. Bruges nationer, regioner, byer? For lokale regioner, se Fingleton et al 2012, Capollo et al 2015, Doran and Fingleton 2014.
+
+* Measuring Economic Resilience
+
+- *Det er et klassisk problem at definere måle-enheden for resilience.* Nogle studier har brugt en "basket of indicators" men dette kan sammenblande årsag og effekt. Det er nødvendigt at finde en metric der undgår autocorrelation.
+- *I stedet bruges to dataserier: GDP og employment.* Employment er et mere meningsfuldt mål end GDP da det tæller antallet af mennesker ansat i en region, og bliver ikke revideret ligesom GDP.
+- *Artiklen følger Martin (2012) for reference state.* Reference state er baseret på en mål af absolut resilience. Det vil sige om en økonomi: 
+  1. resisted the economic shock
+  2. recovered from the economic shock
+  3. has yet to recover from the economic shock
+- *Et absolut mål bruges at to årsager.*
+  1. Selvom en økonomi er mere resilient end en anden, så er det tivlsomt at nogen af dem er resilient, såfremt de begge er recessionsramt.
+  2. Relative mål er svært at operationalisere ved cross national studier.
+- *Hver region behandles som sin egen tidsserie i datering af shocket.* Dette bygger på at indentificere hvornår business cycle'en vender og tillader datering af både tidlige og sene ramte af shocks. Denne metode (som bliver udbygget senere) bygger på Sensier og Artis (2014) Denne metode (som bliver udbygget senere) bygger på Sensier og Artis (2014).
+- *Denne business cycle approach bygger på "classical business cycle*. Det vil sige at man måler det absolutte fald i økonomisk aktivetet, og altså ikke afvigelser omkring en growth cycle. Se Harding and Pagan (2002) for en definition af classical business cycle. _Dette indebærer et muligt problem, da udviklingslande sjældent har recession, kun growth recession._
+- *Definition af daterings modellen:* En økonomi kan have en af to ekslusive faser: expansion phase ($E_t$) eller recession phase ($R_t$). I $E_{t+1}$ kan E enten fortsætte fasen ($CE_{t}$) eller have opnået peak $P_t$. Efter et peak, så er der nødvendigvis skift til recession phase, R. I $R_{t+1}$ kan økonomien enten fortsætte recession fasen ($CR_t$) eller opnår trough, $T_t$. Efter et trough, som er et local minimum, skifter økonomien nedvendigvis til $E_t$. Siden dataen er års-baseret, så er har alle faser en minimumslængde på 1. Der er derved også en minimumslængde for en businesscycle (peak til peak) på 2 år. For at finde vendepunkterne tages "first difference" (Se Senier and Artis (2014) side 588 og linket i artikel. For en R implementation af algoritmen, se  https://rdrr.io/cran/BCDating/man/BBQ.html "BBQ: Harding-Pagan (Quarterly Bry-Boschan) Business Cycle Dating..." eller  ) af den naturlige log af hhv employment og GDP hver for sig. Når den transformerede serie er negativ, så kodes værdien 1 fro recession, og når den er positiv, så kodes den for 0 for en udviddelse.  Peak turninng point dateres således på observationen før recession og trough turning point dateres som observationen før expansion. 
+
+- Om dating algoritmen: For Hardings opdaterede papir og algortimen https://mpra.ub.uni-muenchen.de/33583/2/MPRA_paper_33583.pdf. For den algoritme (stata) der bruges i artiklen, se https://ideas.repec.org/c/boc/bocode/s457288.html. For en pakke der har implementeret BBQ algoritmen, se https://cran.r-project.org/web/packages/BCDating/BCDating.pdf.
+
+- *Metrics for resilience.* Se figuren nedenfor. _Størrelsen eller "dybden" af shocket_ måles som (employment ved trough - employment ved peak) / (employment ved peak). Dette giver den procentvise (ikke procent point) nedgang i employment under krisen. Dybden måles også gennem tiden fra A til B (length of downturn) og tiden fra A til Y (length of cycle). Altså i figuren nedenfor er det dybden på $H_1$, AB, AY. _Lændgen på recovery_ måles som tiden fra trough til højden ved før-shock peak. Det er RC på figuren. Stejlheden på downturn ($S_1$) er amplitude/duration. I forhold til resistance, så defineres resistance "RS" som hvis vækstraten af regional employment forbliver positiv gennem perioden af shocket der gælder den nationale serie. Altså er en lokal region RS hvis den ikke bliver berørt af den dårlige nationale arbejdsløsheds udvikling. Hvis en region der oplever sammentrækninger, i.e. ikke er RS, så er de recovered "RC" når de vender tilbage til pre-shock peak-niveau. For de regioner der ikke er recovered, så er de enten "NR1" = de er forbi trough eller "NR2" = de er stadig på vej ned.
+
+[[./figures/resilience_dating_model.png]]
+
+** Reflections on the Approach
+
+- Denne metode viser klart at dateringen af fianskrisen til 2008 blot er et produkt af at det var dér der var flest lande, der var i recession samtidigt, men at shockene startede tidlgere og senere end det. 
+- Brugen af GDP eller employment kan debaters. I princippet kan andre måle enheder bruges også. resultaterne viser at der er forskel er resultaterne, men ikke meget.
+- Der er en risiko ved valget af en aboslute metric. Det overser regioner som er ramt en meget hård nationalt miljø, men som klarer sig bedre end gennemsnittet i landet. Dette kunne for eksempelt være tilfældet i Sydeuropa.
+- Der sammenlignes ikke pre-shock vækst-rater med post-shock vækstrater. ;an risikere at pre-shock var a) uholdbare og b) med til at lede til shocket i sig selv. Dette overkommes ikke helt ved fokus på output (GDP) eller employment, som kan lide af samme skæbne ift overophedning af økonomien, men det er bedre end vækst.
+- Denne metode kan kritiseres for kun at vise short-run effekter. 

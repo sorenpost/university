@@ -1,0 +1,11 @@
+#+TITLE:Simple Linear Regression in R 
+#+AUTHOR: S B Post
+#+INFOJS_OPT: 
+#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes 
+-----
+
+#+TITLE:test 
+#+AUTHOR: S B Post
+#+INFOJS_OPT: 
+#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes 
+-----

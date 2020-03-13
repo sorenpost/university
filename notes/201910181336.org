@@ -1,0 +1,13 @@
+* Covariance
+
+Covariance er et mål for hvordan to variabler typisk opfører sig. Hvis Covariance er positiv, så går variabler typisk i samme retning. Hvis covariance går er negativ, så når den ene variable går op, så går den anden typisk ned. Hvis covariance er 0, så er der ingen sammenhæng. Det er vigigt at sige at størrelsen af covariance ikke fortæller om styrken af forholdet. I stedet skal man kigge på correlation. 
+
+Coveriance mellem variablerne X og Y kan skrives som:
+
+$$ 
+Cov(X,Y) = \frac{\sum_{i = 1}^n (x_i - \bar{x})(y_i - \bar{y})}{n - 1}
+$$
+
+** Se også:
+- TODO Correlation
+- Variance: [[deft:201910181216.org][201910181216]]

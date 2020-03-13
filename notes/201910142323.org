@@ -1,0 +1,33 @@
+* R Coding association strength
+  :PROPERTIES:
+  :header-args:R: :session rca_and_rel :exports code
+  :END:
+
+The method for computing the association strength is very similar to the proximity values. The only difference is that instead of a loop populating a ~max_mat~, the matrices ~set_i~ and ~set_j~ are multiplied element-wise.
+
+#+begin_src R 
+    cooc_ij <- t(mat) %*% mat # cooccurance matrix
+    set_i <- colSums(mat)
+    set_j <- colSums(mat)
+
+    set_i <- matrix(set_i, nrow = length(set_i), ncol = length(set_i), byrow = TRUE) # col 1 is A, col 2 is B, etc
+    set_j <- matrix(set_j, nrow = length(set_j), ncol = length(set_j), byrow = FALSE) # row 1 is A, row 2 is B, etc.
+
+    assoc_mat <- (cooc_ij) / (set_i * set_j) # calculate association strength
+#+end_src
+
+Again, the diagonal is set to 0. 
+
+#+begin_src R
+diag(assoc_mat) <- 0
+#+end_src
+
+The final output is a product-product matrix with values between 0 and 1. Here are the first elements:
+
+#+begin_src R :exports both :results output
+assoc_mat[1:10, 1:5] 
+#+end_src
+
+** Se også:
+- [[file:201910142048.org::*Association%20strength][Association strength]] 
+- [[file:201910142315.org::*R%20coding:%20Proximity][R coding: Proximity]] 

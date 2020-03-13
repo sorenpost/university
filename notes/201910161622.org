@@ -1,0 +1,15 @@
+* Modulus and inner product
+
+Inner product er det samme som dot product. Dot product er en scalar, der findes ved at gange de i'ende elementer i to vectorer med hinanden, og derefter tager summen.
+
+Eksempel: dot product af [1, 2, 3] og [4, 5, 6] er 1 * 4 + 2 * 5 + 3 * 6.
+
+Egenskaber ved dot product:
+ - commutative: R dot S = S dot R
+ - distributive over addition: R dot (S + T) = R dot S + R dot T
+ - associative: R dot (aS) = a(R dot S)
+ 
+Modulus er længden på en vector (også kaldet norm eller magnitude). R dot R = |R|^2. Modulues = |R|, altså er modulus = $\sqrt(R dot R)$. 
+
+
+

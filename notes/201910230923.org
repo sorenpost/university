@@ -1,0 +1,11 @@
+* R squared and adjusted R squared
+
+Når vi laver en linær regression, så bruger vi typisk R squared til at forteælle os noget om hvor god vores linie er til at beskrive ændringer i den afhængige variabel. 
+
+
+Problemer med R squared: 
+ 1) Hver gang man tilføjer en uafhængig variable til modellen, så stiger R-squared. Den falder aldrig. Derfer ser en model der har flere predictors altid bedre ud på R squared.
+ 2) Hvis en model har for mange predictors, så begnder modellen af modellerer den random noise der er i dataen. Dette er overfitting, og betyder at den R squared der produceret er misvisende. 
+
+** R squared adjusted
+R squared adjusted prøver at løse dette problem. R squared adjusted stiger kun ved introduktionen af en ny variabel, hvis variablen fjerne mere variance end man kunne forvente ved ren tilfældighed. R squared adjusted er altid lavere end ren r squared. 

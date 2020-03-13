@@ -1,0 +1,27 @@
+* Association strength
+
+Også kendt som "Probabilistic Affinity Index" (PAI). Association Strentgh er en metode til at måle ligheden mellem vectorer på baggrund af co-occurrence data. Et eksempel er ligheden mellem to produkter ud fra hvilke lande der producerer dem. Hvis lande produkterne typisk eksporteres af samme land, så kan man sige at de er er mere lig hinanden end produkter der ikke typisk eksporteres.
+
+Der er generelt to vigtige elementer ved ligheds-metoder der baseres på co-occurrence data. Det første er hvor to elementer 'co-occur'. Det næste er hvordan metoden tager højde for størrelsen af de respektive sæt. Hvis det ene produkt fx eksporteres af alle lande, det vil sige at produktets sæt er meget stort, så vil co-occurrences alt andet lige være større. Men dette er ikke så informativt. Association Strength korrigerer for størrelses-effekten ved at dividere de to sets overlap med den hvor ofte man statistisk vil forvente at de to sæt overlapper hvis de var ufahængige af hinanden. 
+
+Altså, for to vektorer (sæt) *A* og *B* defineres deres association strength $AS(A,B)$ som:
+
+$$ AS(A,B) = \frac{A \cap B}{AB} $$
+
+Mere praktisk, så kan vi sigea t hvis vi har en occurrence matrix *M* (hvor $m$ er 1 eller 0), med sæt i kolonnerne og occurrences i rækkerne (fx produkter i kolonner og lande i rækker), så kan få en en co-occurrence matrix *C* ved:
+
+$$ C = MM^T $$
+
+Et element i *C*, $c_{ij}$ nu antallet af gange sæt $i$ 'co-occurs' $j$. I forbindelse med lande og produkter er det antallet af lande der eksporterer begge produkter. 
+
+Kardinaliteten (størrelsen af sættet, her tælles nullerne i *M* ikke med) for sættet $i$ kan noteres $|i|$. Ligeledes med $j$. Dette er hhv summen af kolonne $i$ eller $j$ i *C*. Nu kan formlen skrives:
+
+$$ AS(i,j) = \frac{c_{ij}}{|i||j|} $$ 
+
+For mere teknisk breakdown af forskellige co-occurrence lighedsmål, se artiklen: van Eck & Waltman (2009) "How to Normalize Cooccurrence Data? An Analysis of Some Well-Known Similarity Measures". 
+
+ 
+** Se også:
+- [[file:201910142049.org::*Proximity][Proximity]] 
+- [[file:201910142116.org::*Jaccard%20similarity][Jaccard similarity]] 
+- [[file:201910141943.org::*Cosine%20similarity,%20cosine%20distance][Cosine similarity, cosine distance]] 

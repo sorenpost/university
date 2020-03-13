@@ -1,0 +1,14 @@
+* Jaccard similarity
+
+Som association strength og proximity er jaccard coeffecienten også et lighedsmål baseret på co-occurrence data. Jaccard coefficienten bruges ofte i scientometrisk literatur. 
+
+Jaccard C. er simpelt at udregne, coefficienten for sæt A og B $J(A,B)$ kan skrives som:
+
+$$ J(A,B) = \frac{A \cap B}{A \cup B} = \frac{A \cap B}{A + B - A \cap B} $$ 
+
+** Se også:
+- [[file:201910142049.org::*Proximity][Proximity]]
+- [[file:201910142048.org::*Association%20strength][Association strength]]
+- [[file:201910142217.org::*Size%20corrections%20in%20co-occurrence%20similarity%20methods][Size corrections in co-occurrence similarity methods]] 
+
+ 

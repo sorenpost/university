@@ -1,0 +1,10 @@
+* Conceptual framework
+** TODO Read Jones paper
+** TODO Write some introduction draft
+* Figures
+** DONE Skrevet en mail til forfatteren af IO
+** TODO I/O network: get a hold of MR Saluja
+* Inbox
+** Background
+** Empirical strategy
+** Data sources

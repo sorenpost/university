@@ -1,0 +1,5 @@
+* Vectors
+
+En vektor er en ting der har en *magnitude* og en *direction*. Hvis vektoren er en linie, så er *magnitude* = længden og *direction* = retningen (for eksempel 5 km/t mod øst). Det gælder at alle vektorer med samme magnitude og samme retning er de samme. De kan placeres overalt. De eneste vektorer der har et fast 'standpunkt' er positon vectors (eller vectors med standard position) som starter i 0,0 (i $I\!{R}^2$, 0,0,0 i $I\!{R}3$, etc). 
+
+Matematisk notation: to tal, de øverste er hvor meget bevægelsen er henad den vandrette akse, den anden er hvor langt den bevæger sig af den lodrette akse. Normal bliver vektorer noteret som: $\begin{bmatrix} x \\ y \end{bmatrix}$. Det er muligt at udvidde vektoren til uendeligt mange dimensioner, en tilføjer bare flere tal i kolonnen: $\begin{bmatrix} x \\ y \\ z \end{bmatrix}$.

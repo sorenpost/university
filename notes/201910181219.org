@@ -1,0 +1,6 @@
+* Covariance
+
+** Se også:
+- TODO correlation
+- TODO variance
+- TODO linear regression

@@ -1,0 +1,157 @@
+* Chi-square test
+
+** Chi-square test intution
+En Chi-square test hjælper med at forstå forholdet mellem two categoriske variabler. Testen bruger frekvensen af events, dvs vi bruger antallet af medlemmer af kategorierne. I dette eksempel bruger vi antal af medlemmerne i de forskellige klasser fra år til år.
+
+Testens mekanik er at den sammenligner vores observerede data med hvad vi kunne forvente dataen til at se ud, hvis null-hypotesen var sand. Det vil sige at vi sammenligner mod population-data'en eller et teoretisk data-sæt (i.e. Chi-square distribution). Grundlæggende, så er vi interesserede om forandringen er større end et limit vi sætter på for hvad der kunne forventes under random variation.
+
+## Intuition i Chi-square testen: terninge kast
+Hvis vi har to terninger. En terning er 'fair' og en terning er 'vægtet'. Den terning der er fair har lige stor sandsynlighed for at få tallene 1:6. Den vægtede terning er mere tilbøjelig til at få 1, 5 eller 6. Hvis vi tilfældigt vælger en af terningerne, hvordan kan vi være 95 procent sikker på om vi har den vægtede eller den retfærdige terning?
+
+For at teste terningerne, så kaster vi over de næste 6 dage terningerne 100 gange hver dag, og skriver ned hvor mange gange vi får hvert tal. Hvis terningen er fair, hvad kan vi forvente der sker? Siden vi har 6 sider, og vi kaster terningen 600 gange, så vil vi forvente at vi slår hvert tal 100 gange.
+
+Dette er vores forventede værdi mod vores observerede værdier:
+
+#+begin_src R
+number <- factor(c(1:6))
+exp.freq <- c(100, 100, 100, 100, 100, 100) 
+obs.freq <- c(111, 90, 81, 102, 124, 92)
+dice <- data.frame(number, exp.freq, obs.freq)
+
+library(knitr)
+kable(dice)
+#+end_src
+
+Vi har altså en null-hypotese og en alternative hypotese:
+- $H_{0}$: terningen er fair.
+- $H_{A}$: terningen er vægtet.
+
+I vores hypotese-test arbejder vi med en confidence på 95, dvs vores alpha = 0.05. Degrees of Freedom i Chi-square er antal af kategorier - 1, så df = 6 - 1 = 5.
+
+Vi finder vores Chi-square critical ved at bruge en Chi-square distribution. Chi-square distributionen modellere hvad vi kan forvente at vores fordeling over de 6 kategorier er ved chance alone. Hvis vores observerede fordeling er højere end vores chi-squre critical, så afviser vi null-hypotesen.
+
+Vi kan finde Chi-sq-critical ved: 
+#+begin_src R
+chi.sq.crit <- qchisq(.95, df = 5)
+#+end_src
+
+Første skridt til at finde vores Chi-square værdi er at finde observeret frekvens - forventet frekvens.
+
+#+begin_src R
+dice$diff.o.e <- dice$obs.freq - dice$exp.freq
+kable(dice)
+#+end_src
+
+Andet skridt er at square vores OE difference:
+
+#+begin_src R
+dice$diff.o.e.sq <- (dice$diff.o.e)^2
+kable(dice)
+#+end_src
+
+Tredie skridt er dividere vores squared differences med vores forventede værdi.:
+
+#+begin_src R
+dice$sq.diff.div <- (dice$diff.o.e.sq/dice$exp.freq)
+kable(dice)
+#+end_src
+
+Sidste skridt er at vi tager summen af sidste kolonne. Denne værdi er vores Chi-sq statistic. Hvis denne værdi er over vores Chi-sq critical afviser vi vores null hypotese med 95 procent confidence:
+
+#+begin_src R
+sum(dice$sq.diff.div) > chi.sq.crit
+#+end_src
+
+Altså kan vi afvise at vores terning er fair, med 95 procent confidence. Denne process kan gøres markant nemmere med chi-square test funktionen i r. Denne kræver en kolonne eller en vektor med sandsynligheden (under null-hypotesen) for hvert outcome: 
+
+#+begin_src R
+## Først laver jeg en kolonne med de forventede probabilities under null hypotesen: (hvis de ikke specificeres, så antager testen bare at alle probabilities er lige sandsynlige, hvilket er fint nok i vores tilfælde.)
+dice$exp.p <- 1/6
+
+## Så laver jeg chisq testen: x = de observerede værdier, p = den forventede sandsynlighed for de givne outcome. 
+chisq.test(x = dice$obs.freq, p = dice$exp.p)
+#+end_src
+
+Hvis vi istedet for 95 procent sikkerhed ville have 99 procent sikkerhed, så kan vi bare tjekke op mod en lavere p-værdi:
+
+#+begin_src R
+## For 95 procent confidence:
+(1-0.95) > chisq.test(x = dice$obs.freq)$p.value
+(1-0.99) > chisq.test(x = dice$obs.freq)$p.value
+#+end_src
+
+** Chi-square test: cliff notes
+- Chi-square test kan bruges som en test of independence:
+  - er de to variabler statistisk signifikant forskellige?
+  - er der et forhold/ikke et forhold?
+
+- Hypotese: 
+ - $H_{0}$: De to kategoriske variabler er uafhængige af hinanden.
+ - $H_{1}$: De to kategoriske variabler er relaterede.
+- Testen undersøger: er forskellen mellem den observerede værdi og den forventede værdi større end hvad man kan forvente ud fra tilfældig variation alene?
+- Testen bruger contingency tables: en variable i top, resten ned langs venstre side.
+- Degress of freedom = (antallet af kolonner - 1) ganget (antallet af rækker - 1)
+
+** Problem 1: College enrollment
+Problem: Over de sidste 5 år har antallet af elever på forskellige årgange skiftet. Man kan forvente en smule variation over tid, men er skiftet i fordelingen statistisk signifikant?
+
+Først laver jeg dataen (taget fra [[linket][https://www.youtube.com/watch?v=SvKv375sacA&t=121s]]
+```
+#+begin_src R
+library(tidyr)
+library(dplyr)
+x.2007 <- c(560, 396, 209, 267, 64)
+x.2008 <- c(495, 385, 226, 277, 70)
+x.2009 <- c(553, 358, 248, 304, 93)
+x.2010 <- c(547, 361, 268, 328, 77)
+x.2011 <- c(512, 393, 285, 340, 126)
+class <- factor(c("freshman", "sophomore", "junior", "senior", "unclassified"))
+students.obs <- data.frame(class, x.2007, x.2008, x.2009, x.2010, x.2011)
+students.obs
+#+end_src
+
+** Løsning på problem:
+Vi har altså:
+#+begin_src R
+kable(students.obs)
+#+end_src
+
+For at lave en chi-squared test med en sample skal vi bruge vores forventede værdier. I dette tilfælde finder vi det forventede antal studerende for hvert år med formlen $\frac{(\text{total for årgangen}) * (\text{total for året})}{\text{totalt antal studerende}}$:
+
+#+begin_src R
+x.2007 <- c(507.8, 355.3, 235.3, 288.7, 81.9)
+x.2008 <- c(502.3, 351.4, 232.8, 285.5, 81)
+x.2009 <- c(537.9, 376.3, 249.3, 305.8, 86.7)
+x.2010 <- c(546.5, 382.3, 253.3, 310.7, 88)
+x.2011 <- c(572.5, 400.5, 265.3, 325.4, 92.3)
+class <- factor(c("freshman", "sophomore", "junior", "senior", "unclassified"))
+students.exp <- data.frame(class, x.2007, x.2008, x.2009, x.2010, x.2011)
+
+students.exp
+#+end_src
+
+#+begin_src R
+chisq.test(x = students.obs)
+#+end_src
+
+** Problem 2: Association test
+
+Først, hent data:
+
+#+begin_src R
+dat <- read.csv("assoctest.csv")
+kable(dat)
+#+end_src
+
+Lav contigency table og kør chi-square på table.
+
+#+begin_src R
+chisq.test(table(dat))
+#+end_src
+
+En anden, mere præcis test er Fisher's exact test of independence. Dette kræver to nominelle variabler. Se mere [her](http://www.biostathandbook.com/fishers.html).
+
+#+begin_src R
+fisher.test(table(dat))
+#+end_src
+

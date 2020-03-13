@@ -1,0 +1,12 @@
+* Density (economic complexity)
+Hvis vi går ud fra similarity-målene (proximity, association strength) siger noget om hvor tæt to produkter er på hinanden, og at vi antager at lande har evnerne til at producere de produkter de specialiserer sig i, så kan vi også sige noget om hvor langt et land er fra et givent produkt. 
+
+Ideen er forholdsvist simpel. Vi kan sige at alle produkter har en global similarity-kvantitet. Det vil sige, for produkt $j$, så summen af alle de parvise similarity-værdier mellem $j$ og andre produkter. I et lands eksport-kurv (dvs RCA >= 1) er der også en række produkter. Summen af disse produkters parvise similarity værdier til $j$ kan siges at være den lokale similarity kvantitet. Ratioen mellem den lokale similarity og den globale similarity er density. For land $c$ til produkt $j$ kan density værdien $D(c,j)$ skrives:
+
+ $$
+ D(c,j) = \frac{ \sum_{i} m_{ci} \text{Pr}(ij) }{ \sum_{i} \text{Pr}(ij) }
+ $$
+
+hvor $m_{ci}$ er 1 hvis produkt $i$ eksporteres af land $c$ med en RCA på 1 eller over.
+
+** Se også:

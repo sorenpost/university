@@ -1,0 +1,18 @@
+* Variance
+
+Variance er et mål af hvor spredt data er: hvor langt er hvert data punkt fra gennemsnitsværdien.
+
+Variance tages ved at at trække gennemsnitsværdien fra hvert tal, og så tage forskellen opløftet i anden. Det vil sige:
+
+$$
+\text{variance} = \sigma^2 = \frac{\sum_{i = 1}^n (x_i - \bar{x})^2}{n}
+$$
+
+hvor $x_i$ er det i'ende data punkt, $\bar{x}$ er gennemsnitsværdien for X og $n$ er antallet af data punkter.
+
+Standard afvigelsen ($\sigma$) er bare kvadratroden af variance. 
+
+** Se også:
+
+- covariance TODO 
+- variance covariance matrix TODO

@@ -1,0 +1,103 @@
+* De Vaus (2001) Research Design
+** Chapter 1: The context of design
+*** Spørgsmål
+ - Hvad er descriptive research?
+ - Hvad er explanatory research?
+ - Hvad er forskellen på deterministisk og probabilistisk konceptualisering af "causation"?
+ - Hvad er design forskellen for theory building research og theory testing research?
+ - Hvad er forskellen på research design og research methods?
+ - Hvorfor er det vigtigt at undersøge plausible rivaliserende forklaringer?
+ - Hvad er "logical fallacy of affirming the consequent"?
+ - Hvad vil det sige at teori er provisional?
+ 
+*** Chapter notes
+- Social scientists laver to former for forskning: Hvad foregår der, og hvorfor foregår det? Den første del er descriptive, den anden er explanatory. 
+
+- *Descriptive research* har lidt et bad rap, men er enormt vigtigt. Vi kan ikke begynde at snakke om hvorfor noget foregår eller ændrer sig, uden at have god viden om hvordan landskabet ser ud. Altså, *descriptive = what, explanatory = why*.
+
+- *Deterministic vs probabilistic causations*: Vi kan tænke på causation på to måder. Causation er deterministisk if and only if hver gang der er X, så er der Y. Probabilistic causation er mere relevant i social science: X øger/sænker sandsynligheden for Y.
+
+- *Theory building:* Teory er et forsøg på at besvare "hvofor". Theory building er en process hvor man går fra en række observationer til en generel teori, i.e. det er en induktiv process. (Kaldes også post-faktum teory - efter observationerne)
+
+- *Theory testing:* er hvor man har en teori og tester om den er konsistent med observationationerne. Når man går fra det generelle til det specifikke, så bruger man deduktiv reasoning. Altså: hvis teorien gælder, så bør observationerne gøres således. Gør det det?
+
+- *Research design:* Vi siger at research design skal løse et logisk problem, ikke et logistisk. Det vil sige at vi skal løse: ud fra denne teori, hvilken data eller evidencs skal bruge for at undersøge eller teste teorien? Altså, hvordan skal vi designe vores studie, således at vi får det mindst muligt ambivalente svar på vores spørgsmål?
+
+- *Design vs method:* Design er studiets logiske struktur. Methoder er specfikke - hvordan indsamler vi data, hvordan analyserer vi dataen. Et givent research design er ikke forbundet til en given metode. For eksempel: selvom cross-sectional studier ofte bruger surveys er der ikke noget der siger at det er den eneste mulighed. På samme måde så er kvalitative eller kvantitative metoder ikke bundet til et specifikt research design. De er et metode valg. Designet er udelukkende forbundet med hvilken slags logisk evidens kan understøtte eller modbevise vores teori/spørgsmål.
+
+- *Plausible rival hypothesis:* Det er muligt at finde evidens der er konsistent med stort set enhver teori. Det er derfor vigtigt at daten ikke blot er konsistent, men compelling.  Dette kræver også en udforskning af rivaliserende forklaringer på de fænomener man ser i dataen. Et godt research design har allerede tænkt på rivaliserende forklaringer fra starten. Et endnu bedre research design er struktureret således at man kan differenciere mellem de vigtigeste rivaliserende forklaringer i dataen.
+
+- *Logical fallacy of affirming the consequent:* er en logisk fejlslutning, hvor man ukritisk accepterer sin teori, fordi evidence er consistent med den. Den har følgende form: Hvis A er sand, så får vi B. Vi får B. Derfor gælder A. Men dette er ukorrekt, der kan være mange veje til B som ikke er afsøgt: C, D, E, F, G kan muligvis lede til B. Her er de andre muligheder u-undersøgte alternative forklaringer.
+
+- *Falsification:* Netop på grund af den overstående fejlslutning er det det en god strategi at forsøge at modbevise (falsificere) sin teori. Dette indebærer at man aldrig kan bekræfte sin teori, kun undlade at afvise den. Hvilket leder til teoriers provisionelle natur:
+
+- *Provisional nature of support for theories:* Uanset hvor mange gange en teori ikke kan afkræftes, så betyder det ikke at teorien er sand. Dette er indeen om at induktion er umuilig: vi ved aldrig om den næste observation vil modbevise vores teori (den sorte svane og om solen står op i morgen). Hertil kommer at der muligvis er en bedre forklaring på de data vi har, der er bare ikke nogen der har tænkt på den endnu. Derfor er alle teorier i deres natur provisionelle - de er vores bedste forklaring /indtil videre/.
+** Chapter 2: Tools for research design
+*** Spørgsmål
+- Hvorfor er det vigtigt at fokusere sine research questions? Hvad er nogle måde at fokusere hhv descriptives og explanatory?
+- Hvad er substantive and theoretical rivals, og hvad er nogle strategier til at identificerer dem?
+- Hvilke typer at metode-fejl fines der? (mange, nævn nogle af de vigtigeste)
+- Hvad hhv nominel og operatinel definition, og hvorfor er det essentielt at have gode af begge?
+- Hvad er forskellen på internal og external validity? Hvor kommer truler mod disse typisk fra?
+- Hvad er indicator/measurement validity? Hvad er tre måder at måle validity på?
+- Hvad er indicator/measurement reliability? Hvor kommer truslerne mod reliability typisk fra?
+- Hvad er det tre former for measurement error? Hvilken er mest alvorlig?
+
+*** Noter
+1. *Focusing descriptive research questions:*
+   * Hvad er scope af core concepts? Hvad inkluderes, hvad menes med forskellige elementer under konceptet?
+   * Hvad er time frame?
+   * Hvor? - geografisk placering.
+   * Hvor generel skal beskrivelsen være?
+   * Hvad er abstraktionsniveauet? Er det vi undersøger blot en krystallisering eller repræsentation af et bredere koncept vi egentligt er interesseret i?
+   * Hvad er unit of analysis? (individder, år, events, organisationer, etc)
+
+2. *Focusing explanatory research questions:* Det er vigtigt at være klar om præcis hvilke casue-effekt forhold vi undersøger. Først, nogle koncepter: dependent variable = "effekt", "outcome" variable (Y), independent variable = "cause", "explanatory" variable (Y), intervening variable = variable mellem X og Y i causal chain (fx klog forældre -> børn i privatskole -> kloge børn), extranous variable: to variabler der er correlated men ikke cuasally forbundet (Z).
+   - *Searching for causes and effects* er den mindst fokuserede måde at lave explanatory research. Fx: Identificer core fænomen (divorce rates efter WWII), derefter ledes efter mulige vauses (fx religion, nye værdier). Research designes så til at identificere hvilken af de mulige årsager er bedst til at forklare det observerede mønster.
+   - *Exploring simple causal explanation* er mere fokuseret. Her vælges en enkelt forklaring, som derefter testes.
+   - *More complex causal models:* De simple modeller et netop simple, og undersøger ikke hele the causal chain. En mere kompleks model laver ogsåe en model over den mellemværende led mellem X og Y.
+   - *Rival hypotheses* er hypoteser der forsøger at forklare den samme data med forskellige forklaringer. Her findes en række af teoretiske bud på hvad der sker, og disse holdes så op i mod dataen. En sådan forklaring er "partial", eller *nomothetic*. Det betyder at man er interesseret i en explanation for en klasse af cases. Altså, hvilken effekt har denne indicator på dette outcome. Dette er i kontrast til en *idiographic* forklaring, som for en specifik case forsøger at afdække præcis hvilke årsager var grunden til ædnringen.
+ 
+3. *Theoretical and substantive rivals:* Tips til at finde alternative (rival) hypteser:
+   - Litteraturen: "Hvordan vil en feminist/demograf/økonom/etc forklare dette mønster?"
+   - Other researchers: læs andre bud fra andre studier i literaturen
+   - Insiders (practitioners, key informants, policy makers, etc): praktisk viden kan være enormt værdifulgt til at kontekstualisere noget viden og nogle mønstre.
+
+4. *Technical/methodological rivals:* Metode problemer forringer værdien af studiets resultater. Her er nogle highlights:
+   - Demand characteristics of the situation
+   - Transient personal characteristics (respondenters humør, helbred, attention span, etc).
+   - Situational factors: anonymity, køn, de folk der er tilstede da data indsamles, investigator, etc.
+   - Sampling of items: er koncepterne godt målt og repræsenteret gennem det evidence der indsamles?
+   - Nature of sample: kan der generaliseres ud fra samplen?
+   - Lack of clarity from the instrument: er instrumentet nemt og klart forståeligt? Fx er spørgsmålene i et interview klare og non-ambiguous?
+   - Format of data collectin: Påvirkes resultaterne signifikant af hvordan dataen indsamles? (Robusthed)
+   - Variation in instrument (or instrument use) over tid: ændres måden som daten indsamles på over tid? (de fakto, ikke kun de jure)
+   - Fejl i data behandling eller analyse.
+
+5. *Operationalisering:* For at gå fra et koncept til et studie gør vi også antagelser om hvilke typer observationer siger noget om konceptet. Vi skal defor definere konceptet på to måde: ved at udvikle en nominel definition og en operationel definition.
+
+6. *Nominel definition:* koncepter har ikke en fastsat eller korerkt definition. Derfor er definitionen af konceptet også med til at bestemme hvilke findings vi får. Der er tre skridt i at fasttømre en nominel definitton af et koncept:
+   1. Find en række af definitioner (typisk gennem litteraturen)
+   2. Beslut dig for en af defintionener
+   3. Delineate præcist hvad denne definition indebærer, inklusivt underdele. Dette skal helst gøres så præcist som muligt.
+
+7. *Operationelle definition:* Hvordan passer observationerne ind i den nominelle definition? Hvilke indicatorer målet de dele der er i den nominelle definition? Hvis den valgte operationalisering ikke er god, så ender studiet med at målet noget andet, end det der er meningen, og så kan det smides ud.
+
+8. *Concepts for research design:*
+   1. *Internal validity:* Hvordan er studiets interne logiske struktur - kan det givne design logisk give svar på det, som det siger? Kan vi drage en unambiguous konklusion?
+   2. *External validity:* kan resultaterne generaliseres fra studiet? Hvis studiet er ekstremt specifikt, så gælder det måske kun for specifikt den gruppe der er målt, hvilket gør det mindre interessant. Typisk så kommer lav external validity fra overspecifik kontekst (RCT problemet) eller ikke-repræsentative samples.
+
+9. *Measurement error:* Indicators (variabler) skal overholde to kriterier: de skal være valide og robuste.
+   1. *Validity:* en valid indicator målet konceptet som vi siger. Altås: hvis vi bruger IQ til at mål intelligens, så måler det intelligens, og ikke fx persons uddannelses niveau eller kulturelle baggrund. Vi måler typisk validity på tre måder:
+      - /Criterion validity/: her måles et nyt mål op mod hvordan folk har svaret på andre, allerede etablerede mål. Hvis det nye mål stemmer overns med de etablerede, så accepterer vi validity. Dette har to vigtige begænsninger: a) det kræver at det etablerede mål er validt, b) der er mange sociale koncepter der ikke har et etablerede valide indikatorer. En anden måde er at lave en "pilot-trial" hvor man grundigt undersøger og målet konceptet på en lille gruppe, og så holder ens indicator op mod hvor godt den proxyer den målte værdi.
+      - /Content validity/: hvor godt måler indicatoren de forskellige elementer vi har defineret i vores concept (fx vil regning ikke være godt målt ved kun at undersøger om elever er gode til at lægge sammen).
+      - /Construct validity/: hvor godt matcher vores mål de teoretiske forventerninger vi har? Fx hvis vi ved at happiness (fra litteraturen) varierer på en bestemt måde gennem livets faser, har vores mål af happiness så en lignende variation? Dette er selvfølgeligt stærkt afhængigt af kvaliteten af vores forventninger.
+   2. *Reliability:* en reliable indicator få det samme resultat, når man måler den samme observation (såfremt der ikke er sket ændringer). Fx så sakl den samme person der tage gentagne IQ tests gerne få ca den samme score på alle testene. Unreliability kan komme fra mange kilder.
+      - dårligt formulerede spørgsmål kan give uklarhed i svaret (som derfor ændrer sig)
+      - Forskellige interviewers kan få forskellige svar alt eftersom deres køn, klasse, udseende, etc, varierer.
+      - Spørgsmål som respondenterne ikke har nogen mening om, som kræver for megen viden eller effort at svare på, etc, kan betyde at folk svarer forskelligt.
+   3. *Former for measurement error:*
+      - Random error: error uden systematisk form. Ikke correlated med andre faktorer, og er ikke så slemt, da de "udligner hinanden" i det store billede.
+      - Constant error: fejl der er den samme for alle cases. Fx en vægt der altid måler for meget eller for lidt. Dete giver en samlet forskydning, men påvirkerne ikke forholdet variablerne i mellem.
+      - Correlated error: dette er den mest alvorlige type fejl. Her er måle-fejl systematisk forbundet med andre variabler, som fx køn eller klasse. Dette betyder at ens resultater vil bliver biased, og man vil måle noget andet, end det man tror.
+

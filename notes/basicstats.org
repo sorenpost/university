@@ -1,0 +1,513 @@
+* Week 3: Probability 
+** Joint Probability 
+Case: Hvis vi er på stranden, så er der x antal mænd, y antal kvinder. De kan enten bade eller sole sig. Sandsynligheden for at der er en mand der soler sig er joint probability for at køn = mand, aktivitet = soler sig.
+
+Med andre ord, så er joint probability = $P(A \cap B)$
+
+** Marginal probability
+Er sandsynligheden, når an kun kigger på en variable. Det vil sige hvad er sandsynigheden for at strandgæsten er en mand, eller hvad er sandsynligheden for at strandgæstens aktivitet er at sole sig. 
+
+Det vil sige at marginal probabiliy = $P(A)$.
+
+** Conditional probability
+Er sandsynligheden for at en man får et outcome, givet at man allerede har fået et outcome. Det vil sige hvis vi ved at vores strandgæst er en mand, hvad er sandsynligheden så for at han soler sig. 
+
+Det vil sige at conditional probabilit = $P(A | B) = \frac{P(A \cap B)}{P(B)}$.
+
+** Independence and Random events
+To events er uafhængige, hvis viden om at et event er sket ikke påvirker sandsynligheden for at det anden event sker. Det vil sige at A og B er uafhængige, såfremt at P(A|B) = P(A) og P(B|A) = P(B). Der gælder derfor også at P(A n B) = P(A)*P(B).
+
+Det er værd at påpege at to independent events ike siger noget om hvornår de to sæt er disjoint, kun at vi ikke kan sige noget om det ene sæt ud fra det andet sæt. 
+
+** Bayes Law
+   :LOGBOOK:
+   CLOCK: [2019-10-30 Wed 10:33]--[2019-10-30 Wed 10:58] =>  0:25
+   :END:
+Bayes lov bruges primært i to funktioner: til konkret at finde en conditional probability ud fra den omvendte conditional probability, og til at sige noget mere generelt priors i Bayesian statistics. Først det konkrete:
+
+Vi ved at 
+
+\begin{align*}
+P(A \cap B) &= P(A|B)P(B) \\
+            &= P(B|A)P(A)
+\end{align*}
+
+Fra dette kan vi udlede Bayes Lov:
+
+$$ P(A | B) = \frac{P(B|A)*P(A)}{P(B)} $$
+
+Vi kan altså udtrykke en conditional probability gennem den modesatte conditional probability. Den længere version er:
+
+\begin{align*}
+P(B) &= P(B \cap A_1) + P(B \cap A_2) + ... + P(B \cap A_i) \\
+P(B) &= P(B|A_1)P(A_1) + P(B|A_2)P(A_1) ... + P(B|A_i)P(A_i)
+\end{align*}
+
+Derfor får vi den endelige version:
+
+$$ P(A | B) ) \frac{P(A|B)P(A)}{\sum_i P(B | A_i)P(A_i)} $$
+
+Bayes Law bruges også ofte i en mere abstrakt facon. Venstre side (P(A|B)) udtrykker grade af tiltro til hypotese A efter at have observeret B. Højre side udtrykker troen på A før vi vidste at B ville være til stede. I dene context er P(A) "prior probability", P(B|A) er "posterior probability". Her er P(A) typisk vurderet kvalitativt (Bayiesian belief vs frequentist counting).
+
+* Week 4: Probability ditributions
+** Random variables and probability distributions
+
+- En random variable (RV) er en variabel vis mulige værdier er numeriske outcomes af random phenomenons.
+- En probabiliy distribution for en random variable er en beskrivelse af sandsynligheden for at en random variable tager en bestemt værdi.
+- En probability distribution for en discrete RV er en 'probability mass function'.
+- Continuous random variables har i stedet en probability density function (en 'PDF').
+
+** Cumulative distribution function (CDF)
+
+Cumulative probability er sandsynligheden for at en RV har værdien x eller mindre. Altså det er den "rullende" sum af proabilities allerede dæket af den givne værdi. Altså så stiger en CD altid, og ender på 1. Median værdien findes derved ved punktet hvor CDF'en = 0.5. For eksempel, se et QQplot.
+
+** Mean of random variable
+Gennemsnittet af en random variable X er = $\mu_x$. Det er det forventedegennemsnits outcome. Typisk kaldet expectation of X: $$ E[X] =  \sum_i [x_i P(X = x_i) $$
+
+Altså er værdien af $x_i$ vægtet med hvor sandsynligt outcommet $x_i$ er. 
+
+For en continuous random variable tages integralet i stedet: $$ E[x] = \int x f(x)dx $$
+
+*Properties of mean of RV X:* 
+- Hvis vi lægger konstanen a til og gange med konstanten b: a + bX så får vi mean:
+
+$$ \mu_{a + bX} = a + b\mu_x $$
+
+- Hvis vi lægger to RVs (X, Y) sammen eller trækker dem fra hinanden:
+
+\begin{align*}
+\mu_{X-Y} &= \mu_X - \mu_X = E[X - Y] \\
+\mu_{X+Y} &= \mu_X + \mu_X = E[X + Y] \\
+\end{align*}
+
+** Variance of random variable
+Vi finder variance for random variable X (var(X)) ved:
+
+$$ var(X) = E[(X - \mu_X)^2] $$
+
+For en continuous random variable:
+
+$$ var(x) = \int (x - \mu)^2f(x)dx $$
+
+For en discrete random variable:
+
+$$ var(x) =  \sum_i (x_i - \mu)^2 P(X = x) $$
+
+*Properties of var of RV X:*
+
+- Hvis vi laver en linær transformation:
+
+$$ E[((a + bX) - (a + b\mu_x))^2] $$
+
+så forsvinder a:
+
+$$ E[(bX - b\mu_x)^2] $$
+
+mens b bliver taget i 2.:
+
+$$ E[b^2(x - \mu_x)^2] = b^2 E[(x-\mu_x)^2) $$
+
+Altså, var(a-X) eller var(a+X) er begge bar var(X). Dette er ikke mærkeligt fordi værdiere bare skubbes op eller ned, spread'en ændres ikke. Ved var(bX) så tages konstanten i anden, i.e. var(bX) = b²var(X). 
+
+- Hvis vi ligger to variabler sammen: 
+\begin(align*)
+var(X + Y) &= var(X) + var(Y) + 2cov(X, Y) \\
+var(X - Y) &= var(X) + var(Y) - 2cov(X, Y)
+\end(align*)
+
+- Hvis vi ganger begge variabler, og så lgger dem sammen:
+\begin(align*)
+var(aX + bY) &= a^2var(X) + b2^var(Y) + 2ab Cov(X, Y) \\
+var(aX - bY) &= a^2var(X) + b2^var(Y) - 2ab Cov(X, Y) \\
+\end(align*)
+
+Altså hvis ariablerne er uncorrelated, så er covariance = 0, og var(aX + bY) = var(aX - bY) og var(X + Y) = var(X) + var(Y).
+
+** The normal distribution
+Normal distribution = the gaussian distribution. 
+
+Formal fordelingen karakteriseres gennem to parameters, $\mu$ og $\sigma$.
+
+$\mu$ styer placeringen af kurven på x-aksen, mens $\sigma$ styrer hvor spredt fordelingen er, og derfor også hvor hør peak er. $\sigma$ styrer derfor også hvor stejl CDF'en er. 
+
+Hvis en random variable er normalt fordelt, så siger vi X ~ N($\mu, \sigma^2$).
+
+Formlen for PDF'en af en normalt fordelt RV er:
+
+$$ f(X) = \frac{1}{\sigma \sqrt(2 \pi)} e^{-0.5 (\frac{x - \mu }{\sigma})^2} $$ 
+
+Vi finder Z- score ved $\frac{X - \mu}{\sigma}$. Altså er værdierne standardiserede før de kommer ind i resten af ligningen. Konstantens værdi er højden af kurven. 
+
+Det er godt at huske at +- 1 sigma fra mean indeholder 68 % af fordelingen. +- 2 sigma indeholder ca 95% og +- 3 indeholder 99.7%. 
+
+** Standard Normal Distribution and Z
+En Z distribution for X er når alle de X-værdier er blevet lavet til z-scores. Det betyder at Z ~ N(0, 1). En Z-cdf ises oftes gennem tabel over z værdier sammen med   sandsynligheden for at få en værdi der er lavere eller lig med den givne værdie, i.e. p-værdier. Det vil sige P($X_i \leq  \mu + Z \sigma$).
+
+- En observations Z-værdi er det antal af standard deviations observationen er fra mean. Altså $$ Z = \frac{X - \mu}{\sigma} $$
+
+Eksempel 1: *Cumulative probability:* Hvad er P for at gæsene er færdige med at migrere inden for 6 dage? X = migrations tid i dage. X ~ N(4, 1.3^2). Hvad er P($X \leq 6$)= Ved ved at $\mu$ = 4, $\sigma$ = 1.3. Z =  (6 - 4) / 1.3 = 1.54. P value for z  1.54 = .9382.
+
+Eksempel 2: *Interval probability:* P($2 \leq x \leq 5$)? Først findes A = P($X \leq 5$). Så findes B = P($X\leq 2$). Så tages A - B. 
+
+Eksempel 3: *Find Z for given p-value:*  Hvilken værdi giver en probability på 0.1? A) Find z-score en z-table for p = 0.1. B) Omregn z-værdien til X ved $X = \mu + z \sigma$. X er nu den kristiske værdi for p = 0.1.
+
+Det er vgtigt at påpgege at en z transformation kan bruges på alle slags numeriske data. Der gøres ingen antagaleser om den underliggende fordeling. Det er dog kun *normalt fordelt data der kan bruges hvis man finder p-værdier gennem sin z-score.*.
+
+** Binomial distribution
+Giver probability distributions for binære random variables. Vi har n trials af en variabel. Fx antallet af folk der kommer for sent eller kast med en mønt. Disse kan kune være success eller failures. 
+
+For at en RV X følger en binomial distribution, så skal  kriterier være opfyldt.
+
+1) Probability for succses ændrer sig ikke mellem trials igennem eksperimentet.
+2) Hver trial er uafhængig. Altså, så påvirker resultate af en trial ikke outcome for en anden.
+
+En Bernoulli trial er trial med to outcomes og konstant P for success. X er antallet af successer, N er antallet af trials. 
+
+Sansynligheden for at et givent antal af successer, X, i N trials, hvor her trial har p sandsynighed for at være en success, er:
+
+$$ P(X) = \frac{N!}{X!(N-X)!} p^X (1 - p)^{N - X} $$
+hvor X kan være 0, 1, 2, ..., N
+
+Det er altså en probability mass function.
+
+Antallet af måder vi kan arrangere N elementer på, hvor rækkefølgen er ligegyldig er $\frac{N!}{X!(N-X)!}$. Dette er "binomial coefficient". Skrives også som $C^x_n$.
+
+Hvis X følger formen foroven, så skriver vi at X ~ B(N, P). X er da en Bernoulli RV med N-trials og P propop for success. 
+
+CDF'en for en binomial dsitribution er således:
+
+$$ P(X \leq x) = \sum^X_{k = 0} \frac{N!}{k!(N-k)!} p^k (1 - p)^{N - k} $$
+
+Det er parameter p der styrer om fordelingn er left skewed (høj p), right skewed (lav p). Standard deviation afhænger også f p. Sammen med mean: $\mu_X = Np$, $\sigma_ = \sqrt{np(1-p)}$. 
+
+Den højeste mulige stnadard deviation fårs ved p = 0.5. Her er $\sigma = 0.5 \sqrt{N}$. Ved P = 0 er standard dev = 0, ved p = 1 er standard dev = 0.
+* Week 5: Sampling distributions
+Når vi laver udregninger på en ample, så laver vi sample statistics, der forsøger at estimerer population parameters. Typisk noteres sample statistics med almindelige bogstaver, mens population parameters skrives med græske bogstaver.
+
+- En *Simple random sample:* er en sample hvor alle i populatonen har samme sandsynlighed for at bliver samplet.
+- En *sampling frame:* er en liste af alle i populatuonen. Man kan godt have flere sampling frames. F smapler man først counties, derefter beborer i disse counties.
+- Nå vi sampler, så er der forskellige typer bias.
+  - undercoverage
+  - sampling bias
+  - response bias
+  - non-response
+ 
+- *Random multistage cluster sample:* Eksempel: populaton = students. Først random samples en gruppe af studier. Studenter i disse grupper samples.
+- *Stratified random sample:* populaton indeles i strata (grupper) fx universiteter i landet. Der randomly samples så studenter fra hvert strata. Disse samples er final sample. Fordelen er at man er sikker på at have nok observationer fra hver strata.
+
+** The Sampling Distributon and the Central Limit Theorem 
+- Sampling istribution er den fordeling vi år når vi gentagne gange tager en sample af størrelsen, finder en mean, gemmer mean'en, sampler igen, gemmer den nye mean, etc. Sampling distributionen er bunken af means når vi har samplet igen og igen og igen og igen og... Altså er sampling distributionen fordelingen af sample-means. Som antallet af sample means -> infinity så blier mean value af vores sample means = population mean.
+
+- *Central Limit Theorem* siger at såfremt samplen har en passende størrelse, så vil sampling distribution af $\bar{x}$ have en approx normal fordeling.
+- Dette gælder selvom variablen ikke er normalt fordelt i populationen. Med andre ord, selvom om X har highly skewed eller bi modal, så vil gentagen resampling a $\bar{x}$ give en normal fordelt distribution.
+- En "passende størrelse" af en sample er typisk mindst 30 observationer.
+- At sampling distributionen of the mean er normal er et vigtigt resultat, fordi vi, selv om vi ikke kan resample uendeligt meget, kan beskrive dens form med kun to parameters: mean og sd. Vi ska altså blot estimerer disse parameters.
+- Vi noterer mean af vores sampling distributuon som $\mu_{\bar{x}}$. Vi ved at $\mu_{\bar{x}} = \mu$ ved infinite resamples. Standard deviation af sampling distribution = $\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$ hor n = sample size og sigma = population sd.
+- Standard deviation af vores sampling distribution er altså påvirket af bredden af poulaton distributionen og sample size. Det betyder at sampling distribution bliver mere præcis når sample-size stiger. Det modsatte gælder ift sigma. Jo større variability i populationen, jo større variability i ample means.
+- Der er altså tre fordelinger: population distribution, sample/data distribution og sampling distribution. Både population- og sampling distribution er hypotetisk i det saglige arbejde. 
+- *Sampling distributionen er altså en probability distribution for sampling means* og bruges til at fortælle os om sandsynligheden for at træke en sample med en mean over eller under given værdi. Fx. Hvad er sandsynligheden for at trække en sample med mean = 1000 eller højere? Igennem CLT ved vi at sampling distribution er normal. Derfor kan vi bruge z-scores til at finde en probability. Ført fnder vi z-værdien for $\bar{x}$ = 1000 i vores sampling distribution. Derfefter slår vi P(Z = z) op i en z-tabel. I praksis kender vi dog ikke pop-mean eller pop sd, så de skal estimeres.
+
+** Sampling distribution of population proportion
+- Sampling fordeling for binære variabler. Hvis vi har en population proportion $\pi = 0.1$ (fx students der siger de er hipstere). Det gælder stadig at $\mu_p = \pi$ (hvor $\mu_p$ er population proportion).
+- Central limit for proportions: vi kan kun være sikker på at sampling distribution er bell-shaped hvis vi har mindst 15 positive og mindst 15 negative værdier (hvor positive er over $\pi$, negative under). Det vil sige at vores sample skal opfylde $\n \pi \geq 15$ og $n(1-\pi) \geq 15$. Her er $n \pi$ altså værdien af positive observationer vi forventer per sample.
+- $\sigma_p$ = standarddeviation for sampling proportion. $$ \sigma_p = \sqrt{\frac{\pi (1 - \pi)}{n}} for n = sample size, $\pi$ = pop prop.
+
+* Week 6: Confidence intervals
+** Statistical inference
+- *Estimation:* 
+  - Point estimation: Hvad er en parameter value?
+  - Interval estimate: Hvilket interval liggner en param indenfor?
+
+** Constructing confidence intervals, sigma known
+Vi har en sample, hvor:
++ n = 60
++ $\bar{x}$ = .6
++ s = 0.9 (sample sd)
++ $\sigma$ = 1.1 (pop sd)
+
+Vi ved at $\mu_{\bar{x}} = \mu$ og $\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$, og at 95% af sample means falder inden for -1.96$\sigma_{\bar{x}} til +1.96$\sigma_{\bar{x}}$. Dette +- interval er "margin of error"
+
+Hvis vi trækker en sample så er det 95% sandsynlighed for at $\mu_{\bar{x}}$ bliver dække af vores +- margin of error. Vores margin of error er vores 95 Confidence Interval. Med andre org, hvis vi trækker uendeligt mange samples fra en populaton, så vil 95% af samples' confidence interval dækker den sande værdi af $\mu_{\bar{x}} = \mu$. 
+
+Når vi kender $\sigma$, så er formlen altså bare:
+
+$$ \bar{x} \pm 1.96 \sigma_{\bar{x}} = \bar{x} \pm 1.96\frac{\sigma}{\sqrt{n}} $$
+
+** Confidence intervals, sigma unknown
+Vi kender typisk ikke $\sigma$. Derfor kan vi udnytter vi t-distributionen. Normalt er formlen $\bar{x} \pm Z_{95} \sigma_{\bar{x}}$ hvor $\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$. Siden vi ikke kender $\sigma$ så bliver det umuligt. I stedet estimerer vi $\sigma$ med s. Dermed bliver $\sigma_{\bar{x}}$ = SE = $\frac{s}{\sqrt{n}}$. 
+
+SE er en estimering og derfor mindre præcis. V tager højde for denne usikkerhed ved at bruge t-distributionen i stedet z-distribution. Nu hedder formlen:
+
+$$ \bar{x} \pm t_{95} SE = \bar{x} \pm t_{95} \frac{s}{\sqrt{n}} $$
+
+- T distribution: ligner standard normal distribution meget. Den er bell-shaped, symmetrisk og mean = 0. Den tager dog hensyn til ekstra error hvilket er udtrykt gennem federe haler og fladere peak. Dette er mere tydeligt for smp samples. Som samples bliver større, så bliver t-distribution mere og mere lig z-distribution. T-distributions form afhænger af degrees of freedom (df). For t-fordelingen er df = n - 1. Der er en t fordelingen for alle df. Når df > 30, så er t fordelingen omtrent den samme som Z. Som med z-scores så findes p-værdier ved P($x \leq t$) ved at slå op i en tabel. Forskellen er at værdierne afhænger af df. 
+
+Eksempel: $\bar{x} = 2.6$, $s = 0.9$, $n = 60$. 
+
+\begin{align*}
+\text{95\% CI} CI &= \bar{x} \pm t_{95} SE \\
+       &= \bar{x} \pm t_{95} \frac{0.9}{\sqrt{60}} \\
+       &= \bar{x} \pm t_{95} 0.116
+\end{align*}
+
+Der er 59 df. T-tabellen rapporterer typisk kun 50 eller 60. Så vi vælger den tætteste, lavere mulighed. $t_{95}$ for df = 50 er 2.009. Altså:
+
+$$ \text{95\% CI} = \bar{x} \pm 2.009 \times 0.116 = [2.37, 2.83]$$
+
+*Disse udregninger kræver at visse antagelser er overholdt:*
+1) Data skal være en random sample.
+2) Population skal være normal fordelt. Det gælder dog at t-fordelingen er robust over for ikke-normal data.
+3) T-distribution er sensitiv over for outliers.
+
+** Confidence intervals for proportions
+   Eksempel: Vi har en sample size op 100 og en sample proportion på 0.17. Vi ved at sampling distribution for proportions har $\mu_p = \pi$ og $\sigma_p = \sqrt{\frac{\pi (1-\pi)}{n}}$. 
+
+På samme måde som ved et CI for sample mean, så tager vi p plus/minus 1.96 $\sigma_p$, hvor $\pi$ i formlen er population proportion. n er sample size. Vi kender ikke pi, så vi bruger istedet vores estimate, sample statistic p. Det leder til følgende formel:
+
+$$ p \pm 1.96 SE $$
+
+hvor SE = $\sqrt{\frac{p(1-p}{n}}$. 
+
+Vi bruger altså z-scores (1.96), ikke t som i vores mean CI. *Dette kræver at vi overholder antgelsen om mindst 15 successer og mindst 15 failures*. Altså skal $np \geq 15$ og $n(1-p) \geq 15$ overholdes for samples n og p.
+
+** Confidence levels
+Confidence level er = hvor mang gange vi forventer at CI dækker den sane population mean eller population proportion. Når vi øger sikkerheden, fx til 99%, så bliver intervallet større. Det er naturligt nok: der er et confidence-precision trade off.   
+
+*Choosing sample size:* sample size styrer præsicion. Større confidence levels kræver større sample sizes. Stor variation kræver også strre sample size. Størrelsen af samplen bliver også vigtig når vil have en given power. En tommefingerregel er n = $\frac{\sigma^2 z^2}{m^2}$, hvor $\sigma$ = population standard deviation. Vi kender den ikke det tages fra literaturen. Z er z-scoren for ores ønskede confidence interval, og m er den ønskede margin of error. *I forhold til proportions* bruger vi i stedet: $\frac{p(1-p)z^2}{m^2}$ med samme definitioner. I for hold til p, så er der også en "safe" approach. Den høejse mulige værdi for p(1-p) er 0.25 og fås ved p = 0.5. Safe approach er at vælge p = 0.5.
+
+* Week 7: Significance tests
+** Hypothesis tests and significance
+Null-hypothesis testing bruger to hypoteser, H0 og Ha. H0 er null hypotesen, Ha er den alternative hypotese. 
+
+- H0 siger at den parameter i er intereseret i tager en bestemt værdi. Dette typisk når der ikke sammenhæng mellem variablerne, eller at der ikke er forskel mellem grupperne.
+- Ha er at parameter falder en range of values. H0 og Ha er altid mutually exclusive.
+
+En significance går ud på at vi antager at en H0 er sand, undtagen hvis dataen viser stærker beier imod det. Men andre ord, vi afviser H0 hvis det er tilstrækkeligt usandsynligt at H0 er sand (fx at det er tilstrækkeligt usandsynligt at vores sample er trukket den distribution som H0 repræsenterer). Man kan sammenligne det med en retssag: vi antager innocence. 
+
+
+- Eksempel 1: H0 = $\pi = 0.03$, Ha = $\pi < 0.03$. 
+- Eksempel 2: H0 = $\Delta = 0$, Ha = $\Delta > 0$.
+
+** One sample significance tests about proportions
+Eksempel: Q: hvor mange har erfaring med dykning? H0: $\pi = 0.03$, Ha: $\pi < 0.03$. 
+
+- Når vi laver en significance test, så antager vi at populationen har en bestemt værdi, taget fra H0. I dette tilfælde antager vi at pi = 0.03. Dvs populatipn proportin der har dykker erfaring er 0.03. Vi tester derefter om det er sandsynligt at vores sample er taget fra denne population.
+
+- Vi gør det gennem at bygge en sampling distribution for den antagede population. Sampling distributionen fortæller os hvor sandsynligt det er at trække en sample med en given vrdi fra den atangede population. Vi kan derved samenligne hvor mange standard errors vores observerde sample statistic er $\mu_{\bar{x}}$. Det vil sige, hvis det er usandsynligt nok at tække vores observerede sample fra sampling distributionen, så siger vi at smaplen kommer fra en anden fordeling, og derfor afviser vi H0.
+
+- Antallet af standard errors vores sample fra sampling distributionens mean kaldes vores test-statistic.
+
+- For proportions kan vi finde hvor mange standard errors vi er fra den antage population proportion ved z-scores, fordi, såfremt 15 plus-minus observationer er overholdt, sampling distributionen er normal. Altså er z vores test-statistic. Vi finder z for proportions ved:
+
+$$ Z = \frac{p - \pi_0}{SE_0} $$
+hvor $SE_0 = \sqrt{\frac{\pi_0(1-\pi_0)}{n}}$. 
+
+Eksempel:  H0 = $\pi$0 = 0.03. V har altså vores sample på n = 1000, p = 0.03. Atså er vores z værdi:
+
+$$ z = \frac{0.02-0.03}{0.004} = -1.85 $$
+
+vores sample statitic falder derved 1.85 standard errors under $\mu_0$. Er dette statistisk significant langt nok vk for at vi kan antage at smaple kke er taget fra nul-fordelingen? Vi kan slå sandsynligheden op for at trække en værdi på den givne p op i en z-table. Denne værdi er sample statistic'ens p-vrdi. For z = -1.85 er det 0.0322. Det vil sige at chancen for at trække denne eller en mere ekstrem værdi fra null-population er 3.2%.
+
+*Significance level (alpha $\alpha$)*: Før vi laver testen beslutter vi os for had vores threhold er for hvilken p-værdi er "lille nok" til at vi afviser H0. Typisk bruges 0.05.
+
+*Alpha = rejection region*: rejection region er den del af sampling distributionen som vores H0 afvises under.
+
+*Two-tailed and one-tailed tests*: Hvis vi kun er interesseret i om sampling sstatistic'en er enten højere eller lavere end two-tailed, så kan vi bruge en one-tailed test. At e test er one-tailed betyder bare at hele rejection region lægges i den ene side af sampling distributionen. Ved en two tailed test, som er mest almindelig, deles rejection region ud i begge haler.
+
+** One sample significance tests about mean
+Grundlæggende er significance tests ved means den samme. 
+
+Eksempel: n = 1000, sample mean = 62, s = 5, H0: mu = 60, Ha: mu != 60.
+
+I stdet for z-scores bruger vi her T-fordelingen til at bygge sampling distributionen. Det vil sige: Test statistic: t = $\frac{\bar{x} - \mu}{SE}$ hvor $SE = \frac{s}{\sqrt{n}}$.  
+
+Det vil sige, $$ t = \frac{62 - 60}{\frac{5}{\sqrt{100}}} $$ ved en alpha på 0.05.
+
+Vi finder nu p værdien for vores T-value fra foroven, i en t-table. Hvis p-værdien er i vores rejection region, så afviser vi H0.
+
+** Step-by-step
+1. Proportion or mean?
+2. Formulate hypothesis
+3. Check assumptions:
+   - random sample
+   - (for proportions, $n\pi \geq 15$, $n(1-\pi)\geq 15$)
+4. Determine alpha
+5. Compute test statistic:
+   - for proportions: $z = \frac{p - \pi_0}{SE_0}$, SE = $\sqrt{\frac{\pi_0(1-\pi_0)}{n}}$.
+   - for means: $t = \frac{\bar{x - \mu_0}{SE}$, SE = $\frac{s}{\sqrt{n}}$
+6. Find rejection region for sampling distribution.
+7. Compare location of test statistic to rejection region.
+8. Reject H0?
+9. Interpret finding.
+   
+** Significance tests and CI
+Confidence intervals er tæt relateree til significance tess. Confidence intervals bruges til at give et estimat på den sande population parameter ud fra en sample. Hvis en samples estimrede interval for pupaltion parameter ikke indeholder H0-værdien, så vil H0 blive afvist for den givne sample (two-tailed). 
+
+** Type I and Type II errors
+- *Type I error:* False positives. Vi afviser H0 selvom vi ikke burde. Det vil sige, vores test statistic var i rejection region by chance, eller vd en fejl.
+- *Type II error:* False negative: vi afviser ikke H0, selvom vi burde. Det er typisk den mest kostbare type fejl. Fx: leder en ny policy til en stigning i dødsfald. Her vil en type 1 fejl typisk lede til at policy'en ikke bliver implementeret. En type II fejl vil føre til dødsfald.
+- Type I fejl bliver mindre sandsynlige som alpha skrumper. Men, dette betyder også at man øger sandsynligheden or type II fejl. Sandsynligheden for at begå type II fejl hedder beta $\beta$.
+- Det er komplieret at udregne beta. Det afhænger af population parameters sande værdi, sample size og alpha.
+- En tests *power* er sandsynligheden for at afvise H0 såfremt den er falsk. Men andre ord, så er power = 1 - $\beta$.
+- Power kan fortælle os om hvor mange observationer vi har brug for. Efter et studie kan vu bruge beta til at fortolke vores findings. Fx, hvad var sandsnyligheden for ikke at afvise H0, selvom der var en effekt.
+
+* Week 1: Comparing two groups
+** Comparing two groups
+Når vi sammenligner to grupper ud fra en variabel, fx cat health score ud fra om katten har spist rå mad eller mad fra dåse, så bruger vi forskellen mellem de to grupper som test-statistic. Det vil sige at H0 er at forskellen mellem gennemsnitsscoren i det o grupper 0: $H_0: \mu_1 - \mu_2 = \Delta  = 0$, $H_A: \mu_1 - \mu_2 = \Delta \neq 0$.
+
+Vi kan nu finde vores test-statistic ud fra observerde værdi. Denne værdi kan derefter veksles til en p-værdi, som vi kan bruge til at afvise H0 med.
+
+Eksempel: Katte sættes sættes tilfældigt til at spise en af to diæter: rå mad eller mad fra en dåse. En læge måler deres helbred, fra 0-10. H0 er at gennemsnittet fra gruppe 1 minus gennemsnittet fra gruppe to er 0. Ha ér at forskellen er større end 0. Altså, at kattene der spiser rå mad er sundere end dem der ikke spiser dåse mad. Vi finder derefter vores test statistic t:
+
+$$ t = \frac{\bar{x}_{raw} - \bar{x}_{can}}{SE} $$
+
+hvor $SE = \sqrt{\frac{s_{raw}}{n_{raw}} + \frac{s_{can}}{n_{can}}}$
+
+t kan derefter slås op i en t-table. 
+
+** Power
+Sandsynligheden for at lave en type 1 fejl (falske positiver) er = alpha. Sandsynligheden for at lave en type 2 fejl (falsk negativer) er = beta. Power ved en test er 1 - beta, det vil sige sandsnyligheden for at afvise H0, såfremt H0 skal afvises.
+
+Sandsynligheden for at lave type 2 fejl er større, desto mindre alpha er. Siden type 2 fejl sker når der er en forskel, men sample mean ikke falder inden for rejection region, så bliver der flere type 2 fejl når rejection region bliver mindre (pga mere plads til ikke at ramme rejection region).
+
+Der er to grundlæggende måder at øgre power, og gøre estimater mere præcise: større n og mindre variance. Vi kan mindske variance ved 1) bedre instrumenter, 2) ,ere homogen population (fx ved at kontrollere for flere variabler).
+
+En større test-statistic øger også power. Det vil sige en større effekt/forskel mellem de to grupper. 
+
+Typen af test påvirker også power: one sided tests fx har større power, fordi rejection region er tættere på mean. Derfor er samples i den forventede retning mere likely to be rejected. Parametriske tests har typisk mere power end non-parametriske tests.
+
+** Estimate power
+   To grundlæggende approaches:
+1. Post-hoc: Vi kan estimere vores power efter dataen er samlet: vi antager at vores observere sample satatistic er den sande population value. Vi kan derefter udregne hvad sandsynligheden var for at afvise H0, givet vores H0-værdi. Fx: $\bar{x_1} - \bar{x_2} = \Delta$, $T = \frac{\Delta - \Delta_0}{SE}$ Vi kan derefter bruge software til at finde sandsynligheden fir at rejec te H0 SÅFREMT vores sample statistic = sande population parameter
+2. A priori: Hvad er minimum power? Ved at bruge standard effect sizes (som er publiceret for en række foprskellige metrics inden for social sciences), så kan vi udregne en power ud fra alpha og n. Vi kan derved udregne hvor store vores sample size skal for at vi får den ønskede power i vores studie.
+
+** Comparing two independent proportions
+Vi bruger z-testen til at teste forskellen mellem to uafhængige sample proportions. Vi har en binær response og en binær uafhængig variable (hvor den uafhængige variable bare er den der adskkiller de to grupper). Fx: er mænd i højere grad rygere end kvinder?
+
+- Asummptions:
+  - Samples er uafhængige (i.e. random samples)
+  - Samples har sufficient observations. Det vil sige at one-sided tests har mindst 10 positive (per sample), 10 negative obs, og 2-side tests har mindst 5 af hver (per sample). Hvis denne assumption ikke mødes, så bruges "Fisher's Exact Test".
+- Hypotheses: udtrykke igennem forskellen mellem population proprotions, i.e. $p_1 - p_2$. Fx: 
+  - $H_0: p_1 - p_2 = 0$
+  - $H_a: p_1 - p_2 \neq 0$
+  
+- Test statistic: 
+  - z = $\frac{\hat{p_1} - \hat{p_2}}{SE_0}$, hvor $SE_0 =  \sqrt{\hat{p}(1-\hat{p})(\frac{1}{n_1} + \frac{1}{n_2})}$. $\hat{p}$ er pooled proportion = $\hat{p} = \frac{n\hat{p_1} - n2\hat{p_2}}{n_1 + n_2}$
+
+- Eksempel: 
+  - $H_0 : p_1 - p_2 = 0$
+  - $H_a : p_1 - p_2 < 0$
+  - $\alpha = 0.05$
+  - $z = \frac{\hat{p_1} - \hat{p2}}{\sqrt{\hat{p}(1 - \hat{p})(\frac{1}{n_1} + \frac{1}{n_2}}} = \frac{0.10 - 0.18}{\sqrt{0.14(1-0.14)(\frac{1}{150} + \frac{1}{148}}} = -2.04$
+  - z = -2.04, p-værdien for z værdien = 0.02. Altså afviser vi H0.
+
+- Vi kan få confidence intervallet for dette estimate gennem:
+\begin{align*}
+CI_{95} &= \hat{p_1} - \hat{p_2} \pm Z_{95} SE \\
+        &= 0.10 - 0.18 \pm 1.96 \sqrt{\frac{\hat{p_1}(1 - \hat{p_1}}{n_1} + \frac{\hat{p_2}(1 - \hat{p_2}}{n_2}} \\
+        &= -0.08 \pm 1.96 * 0.04 \\
+        &= (-0.16:-0.004)
+\end{align*}
+
+- *Relative risk:* er en anden måde at sammenligne to proportions på. Eksempel: proportion of heart attacks. Regular exercise = 0.0054. No exercise = 0.0068. Relative risk = 0.0068 / 0.0054 = 1.25. Den relative risk er for heart attack er altså 1.25 større for ingen motion end for regelmæssig motion.
+ 
+** Comparing two independent means
+Vi bruger en t-test npr vi sammenligner means mellem to grupper. Det vil sige at har en binær independent variable (gruppen) og en kvantitativ response variable. Fx: Er der forskel i hvor mange tv shows man ser hvis man er arbejdsløs vs ikke arbejdsløs?
+
+- Assumptions:
+  - observationer skal være uafhængige, dvs begge samples skal være random samples.
+  - begge grupper skal have en normalt fordelt response variable (det er dog ikke så vigtig npr samplen er stor - mindst omkring 30 - fordi t-testen er robust over for non-normality).
+- Hypoteser: $H_0: \mu_1 - \mu_2 = 0$. $H_a: \mu_1 - \mu_2 \neq 0$.
+- Test statistic: 
+
+$$ T = \frac{\bar{x_1} - \bar{x_2}}{\sqrt{\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}}} $$
+
+hvor $s^2_1$ er sample variance for sample 1. SE = $\sqrt{\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}}$.
+
+- Degrees of freedom er noget mere kompliceret end one-sample t-test:
+
+$$ df = \frac{(\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2})^2}{\frac{1}{n_1 - 1}(\frac{s^2_1}{n_1})^2 + \frac{1}{n_2 - 1}(\frac{s^2_2}{n_2})^2} $$
+
+Nu kan vi slå t-value op i en tabel og sammenligne med rejection region.
+
+- Hvis vi er villige til at lave en yderligere antagelse om at begge samples har samme variance, så kan man udregne degrees of freeom noget nemmere:
+
+$$ df = n_1 + n_2 - 2 $$
+
+$$ SE = S \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} $$
+
+hvor $S = \sqrt{\frac{(n_1 -1) s^2_1 + n(_2 - 1) s^2_2}{(n_1 - 1) + (n_2 -1)}}$ 
+
+denne assumption er smart, fordi den leder til større df og typisk derfor også lavere SE. 
+
+Confidence interval for difference in sample means: 
+
+$$ CI = \bar{x_1} - \bar{x_2} \pm t_{a/2} SE $$
+
+hvor $SE = \sqrt{(\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2})}$
+
+** Comparing two dependent proportions
+Vi har en binær response variable og en independent variable. Vi har to samples, hvor den samme person observeres på to forskellige tidspunkter. Vi tester forskellen i sample proportions ved McNemars test, i.e. en dependent proportion z-test. 
+
+To samples er dependent hvis fordi de enten består af den samme enhed målt på to forskellige tidspunkter, eller fordi de to samples er matchede i pr. For at NOT FINISHED, TODO
+
+** Comparing two dependent means
+Samme ide om pairings fra paired proportions gælder her. 
+
+- Vi antager at difference-scores er normal-fordelt. For one-sided test er testen robust over brud med denne antagelse for store samples. for two-sided tests er testen robust uanset sample størrelsen.
+
+- Hypoteser: $H_0: \mu_D = 0$, $H_a: \mu_d \neq 0$.
+
+- Test statistic: 
+$$ t = \frac{\bar{x_d} - \mu_d}{SE} $$ hvor $SE = \frac{s_d}{\sqrt{n}}$
+
+- Degrees of freedom er n - 1. N er sample size (som jo er den samme for begge samples siden de er paired). 
+
+- Det er vigtigt at holde fast i at $\bar{x}_d$ er $\frac{1}{n}(x_1 - y_1 + x_2 - y_2 + ... + x_n - y_n)$ hvor $x_1$ er første observation i sample 1, og $y_1$ er første observation i sample 2.
+
+- Confidence interval: 
+
+$$ CI: \bar{x}_d \pm t_{a/2} SE $$
+
+hvor $SE = \frac{s_d}{\sqrt{n}}$, df = n - 1.
+
+* Week 2: Categorical association
+** Controlling for other variables 
+Variabler der påvirker både independent variable og outcome variable er *confounding variables*. Fx: outcome = cat health, independent variable = diet. Ejere der går mere op i dyrevelfærd vil både passe bedre på helbredet og bedre diæt. 
+
+En måde at kontrollere for confounding variables er ved eksperimentel kntrol. Det kan fx være ved kun at inkluderer katte med ejere der går en bestemt mængde (fx "medium"). Dette går confounderen til en konstant.
+
+En anden eksperimentel konrtrol er random assignment. Her tildeles dyrene diæt tilfældigt. Derfor skulle eventuelle confounders være tilfældigt fordelt ud over de forskellige slags diæter, og den error der skulle være er random, og "udligner" sig selv (såfremt n er stor nok).
+
+En tredie metode at håndtere confounders er med statistisk kontrol. Her tager vi vores confounders og måler forholdet mellem indipendent variable og outcome for hvert niveau af counfounderen. Fx, så måles forholdet mellem diæt og cat health for hvert for dyrevelfærd = "lille", "mellem" og "høj" individuelt.
+
+Hvis der ikke er forskel på $\bar{x}_d$ over de forskellige niveauer, så er dyrevelfærd slet ikke en confounder. Hvis der er forskel, så er der tre muligheder: 
+1. Dyrevelfærd er en confounder
+2. dyrevelfærd er en moderator - det vil sige at det er en interaction effekt. Forholdet mellem diet og health ændrer sig, baseret på dyrevelfærd.
+3. Mediator: diet har en effekt på health, men ikke direkte, kun gennem dyrevelfærd. Det vil sige at diet påvirker dyrevelfærd, som igen påvirker health.
+
+*Simpson's Paradox*: Indførslen af en kontrol kan ændre forholdet mellem to variabler. Fx så kan vi forestille os at health og vægt er fobundet positivt i dyr. Hvis vi tilføjer køm sp, lpmtrpæ. s"lam forholdet mellem vægt og health for hunkønsdyr være negativt og forholdet mellem health og vægt være negativt for han køn, selvom den samlede gruppes forhold er positivt. 
+
+
+
+
+** Sammenhæng mellem kategoriske variabler
+** Chi Square test
+** Chi Square test for goodness of fit
+** Fisher's exact test
+* Week 3: Simple regression
+** SLR equation
+** SLR model
+** SLR predictive power (R squared)
+** SLR pitfalls 
+** SLR testing the model
+** SLR checking assumptions
+** SLR confidence interval and prediction interval
+** SLR exponential regression
+* Week 4: Multiple regression 
+** MLR model
+** MLR tests
+** MLR individual tests
+** MLR checking assumptions
+* Week 5: Analysis of variance
+* Week 6: Non-parametric tests

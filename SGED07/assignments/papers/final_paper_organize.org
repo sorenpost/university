@@ -1,0 +1,24 @@
+* Inbox
+** TODO Få komplet overblik over data kilder (Allcot og andre papirer om Indien)
+** TODO Liste over figurer:
+*** TODO ECI by GDP
+*** TODO Battery of mini figs on reliability, gdp and complexity
+*** TODO data distribution
+*** TODO Energy data figs
+*** TODO Overblik over rainfall data
+
+** TODO Skriv afsnit om economic complexity
+*** conceptual idea
+*** empirical results
+** TODO Formulér 2 research questions
+** TODO Byg overblik over opgave
+** TODO Klargør ASI data + documents om datasættet
+** TODO Forstå metode i Allot et al
+** TODO Find ud at hvordan I/o metode modelleres (hvad er links) - se fx Carvalho et al eller Acemoglu
+** TODO Få en helt klar konceptuel forståelse af IV
+** TODO Lav en skematisk model over IV strategien
+** TODO Få udarbejdet en klar forståelse for hvordan resultatt kan findes
+*** Problem: hvis der er for meget variation i samme stat
+** TODO Skriv en conceptual model -> Brummit model eller Carvalho model
+*** First: Brummit, second: add production function to each firm, add then the input output model.
+** TODO Lav mappe med relevant literatur

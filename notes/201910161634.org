@@ -1,0 +1,9 @@
+* Projection
+
+Vi har to vektorer S og R. Deres længde er ligegyldig, men de starter begge i origin. Hvis vi trkker en linje der er vinkel ret på R og til enden på S, så er det område af R der er "dækket" af S = "S's projection på R". Tænk på at S's projection er den skygge som S kaster over R, når solen er vinkelret på R. 
+
+Man snakker typisk om to forskellige slags projetion: scalar projection og vector projection.
+
+- *Scalar projection of S onto R*: $\frac{R\cdot S}{|R|} = |S| cos \theta$ -> scalar projection.
+- *Vector projetion*: $\frac{R \cdot S}{|R||R|} R = \frac{R \cdot S}{R \cdot R} R$
+

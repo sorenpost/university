@@ -1,0 +1,19 @@
+* Linear independence and basis
+
+To vektorer er linært uafhængige, hvis det ikke er muligt at få den anden vektor ved at tage en linær kombination af den anden vektor. For eksempel, så er B3 linært uafhængig af B1 og B2 hvis følgende regnestykke ikke kan lade sige gøre:
+
+$$ a_1 B_1 + a_2 B_2 = B_3 $$
+
+hvor a_1 og a_2 bare er tal. 
+
+Hvis regnestykket godt kan lade sig gøre, så siges det at B_3 er linært afhængig af B1 og B2 og derfor ligger på samme plan som de to andre. Det er kun linært uafhængige vektorer der kan være basis-vektors. Ellers er det bare en vektor der ligge på samme koordinatsystem.
+
+Den formelle definition af basis er:
+ + et sæt af n vektorer der:
+   + ikke er linært afhængige,
+   + de "span the space" 
+   + spacet er dermed n-dimensionelt
+
+** Se også:
+   - Changing basis: [[deft:201910161730.org][201910161730]]
+   - Projections: [[deft:201910161634.org][201910161634]] 

@@ -1,0 +1,209 @@
+* Linear Regression in R
+  :PROPERTIES:
+  :header-args:R: :session lin_reg :results output
+  :END:
+  
+** Simple linear regression: 
+*** model summary:
+    #+begin_src R
+      library(tidyverse)
+
+      COPD <- read_csv("/home/post/MEGAsync/coursera/linear_reg/COPD_student_dataset.csv")
+
+
+
+      fev_model <- lm(MWT1Best ~ FEV1, data = COPD)
+
+
+      summary(COPD)
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    Parsed with column specification:
+    cols(
+      .default = col_double(),
+      COPDSEVERITY = col_character()
+    )
+    See spec(...) for full column specifications.
+    Warning message:
+    Missing column names filled in: 'X1' [1]
+           X1            ID              AGE        PackHistory   
+     Min.   :  1   Min.   :  1.00   Min.   :44.0   Min.   :  1.0  
+     1st Qu.: 26   1st Qu.: 49.00   1st Qu.:65.0   1st Qu.: 20.0  
+     Median : 51   Median : 87.00   Median :71.0   Median : 36.0  
+     Mean   : 51   Mean   : 91.41   Mean   :70.1   Mean   : 39.7  
+     3rd Qu.: 76   3rd Qu.:143.00   3rd Qu.:75.0   3rd Qu.: 54.0  
+     Max.   :101   Max.   :169.00   Max.   :88.0   Max.   :109.0  
+
+     COPDSEVERITY            MWT1            MWT2          MWT1Best    
+     Length:101         Min.   :120.0   Min.   :120.0   Min.   :120.0  
+     Class :character   1st Qu.:300.0   1st Qu.:303.8   1st Qu.:303.8  
+     Mode  :character   Median :419.0   Median :399.0   Median :420.0  
+                        Mean   :385.9   Mean   :390.3   Mean   :399.1  
+                        3rd Qu.:460.5   3rd Qu.:459.0   3rd Qu.:465.2  
+                        Max.   :688.0   Max.   :699.0   Max.   :699.0  
+                        NA's   :2       NA's   :1       NA's   :1      
+          FEV1          FEV1PRED           FVC           FVCPRED      
+     Min.   :0.450   Min.   :  3.29   Min.   :1.140   Min.   : 27.00  
+     1st Qu.:1.100   1st Qu.: 42.00   1st Qu.:2.270   1st Qu.: 71.00  
+     Median :1.600   Median : 60.00   Median :2.770   Median : 84.00  
+     Mean   :1.604   Mean   : 58.53   Mean   :2.955   Mean   : 86.44  
+     3rd Qu.:1.960   3rd Qu.: 75.00   3rd Qu.:3.630   3rd Qu.:103.00  
+     Max.   :3.180   Max.   :102.00   Max.   :5.370   Max.   :132.00  
+
+          CAT              HAD             SGRQ        AGEquartiles  
+     Min.   :  3.00   Min.   : 0.00   Min.   : 2.00   Min.   :1.000  
+     1st Qu.: 12.00   1st Qu.: 6.00   1st Qu.:28.41   1st Qu.:1.000  
+     Median : 18.00   Median :10.00   Median :38.21   Median :3.000  
+     Mean   : 19.34   Mean   :11.18   Mean   :40.19   Mean   :2.475  
+     3rd Qu.: 24.00   3rd Qu.:15.00   3rd Qu.:55.23   3rd Qu.:3.000  
+     Max.   :188.00   Max.   :56.20   Max.   :77.44   Max.   :4.000  
+
+          copd           gender          smoking         Diabetes     
+     Min.   :1.000   Min.   :0.0000   Min.   :1.000   Min.   :0.0000  
+     1st Qu.:2.000   1st Qu.:0.0000   1st Qu.:2.000   1st Qu.:0.0000  
+     Median :2.000   Median :1.0000   Median :2.000   Median :0.0000  
+     Mean   :2.198   Mean   :0.6436   Mean   :1.842   Mean   :0.2079  
+     3rd Qu.:3.000   3rd Qu.:1.0000   3rd Qu.:2.000   3rd Qu.:0.0000  
+     Max.   :4.000   Max.   :1.0000   Max.   :2.000   Max.   :1.0000  
+
+        muscular       hypertension      AtrialFib          IHD         
+     Min.   :0.0000   Min.   :0.0000   Min.   :0.000   Min.   :0.00000  
+     1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.000   1st Qu.:0.00000  
+     Median :0.0000   Median :0.0000   Median :0.000   Median :0.00000  
+     Mean   :0.1881   Mean   :0.1188   Mean   :0.198   Mean   :0.08911  
+     3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:0.000   3rd Qu.:0.00000  
+     Max.   :1.0000   Max.   :1.0000   Max.   :1.000   Max.   :1.00000
+    #+end_example
+    
+*** confidence interval:
+#+begin_src R 
+  confint(fev_model)
+#+end_src
+
+#+RESULTS:
+:                 2.5 %   97.5 %
+: (Intercept) 231.19004 328.6456
+: FEV1         46.15031 102.0710
+
+*** QQ plot of residuals
+   #+begin_src R
+
+     fev_residuals <-residuals(fev_model)
+
+     qqnorm(fev_residuals)
+   #+end_src
+
+   #+RESULTS:
+
+*** homoskedasticity (constant variance of residuals)
+   
+   #+begin_src R
+
+     fitted_values <- fitted(fev_model)
+
+     plot(x = fitted_values, y = fev_residuals)
+   #+end_src
+
+
+** Multiple linear regression
+
+Opgave: lav mlr model med FVC og AGE påvirkning af MWT1Best. Skridt: Først, tester vi to modeller, en med hver variable. Derefter testes antagelserne om errors fordeling og variance. 
+
+#+begin_src R
+  ## age model
+  age_model <- lm(MWT1Best ~ AGE, data = COPD)
+
+  ## qqplot
+  age_res <- residuals(age_model)
+
+  qqnorm(age_res)
+  hist(age_res)
+
+  ## error var
+  age_fitted <- predict(age_model)
+  plot(age_fitted, age_res)
+
+  ####
+
+  ## FVC model
+  fvc_model <- lm(MWT1Best ~ FVC, data = COPD)
+
+  ## qqplot
+  fvc_res <- residuals(fvc_model)
+
+  qqnorm(fvc_res)
+  hist(fvc_res)
+
+  ## error var
+  fvc_fitted <- predict(fvc_model)
+  plot(fvc_fitted, fvc_res)
+#+end_src
+
+#+begin_src R
+summary(age_model)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+
+Call:
+lm(formula = MWT1Best ~ AGE, data = COPD)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-257.44  -84.40   20.30   67.87  250.16 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  616.453     93.440   6.597 2.14e-09 ***
+AGE           -3.104      1.326  -2.341   0.0213 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 104.2 on 98 degrees of freedom
+  (1 observation deleted due to missingness)
+Multiple R-squared:  0.05294,	Adjusted R-squared:  0.04328 
+F-statistic: 5.478 on 1 and 98 DF,  p-value: 0.02128
+#+end_example
+
+
+#+begin_src R
+summary(fvc_model)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+
+Call:
+lm(formula = MWT1Best ~ FVC, data = COPD)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-251.663  -66.598    6.364   63.539  246.125 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  254.951     30.779   8.283 6.28e-13 ***
+FVC           48.630      9.866   4.929 3.37e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 95.87 on 98 degrees of freedom
+  (1 observation deleted due to missingness)
+Multiple R-squared:  0.1987,	Adjusted R-squared:  0.1905 
+F-statistic: 24.29 on 1 and 98 DF,  p-value: 3.368e-06
+#+end_example
+
+Combined model:
+
+#+begin_src R
+  ## pairwise x colin
+  cor.test(x = COPD$AGE, y = COPD$FVC, method = "pearson")
+
+  ## model
+  age_fvc_model <- lm(MWT1Best ~ AGE + FVC, data = COPD)
+
+  summary(age_fvc_model)
+#+end_src

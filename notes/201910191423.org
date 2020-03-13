@@ -1,0 +1,64 @@
+#+TITLE:Optimization in one dimension 
+#+AUTHOR: S B Post
+#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes 
+-----
+
+Når vi laver en best-fit linie, så betyder "best-fit" af vi minimerer en cost-function. Denne cost function er ofte en minimering af residual sum of squares (RSS).
+
+RSS er forskellen mellen den observerede værdi og den estimerede værdi, opløftet i 2: 
+
+$$
+\begin{align*}
+RSS &= \sum_i (y_i - \hat{y_i})^2 \\ 
+    &= \sum_i (y_i - (w_0 + w1)^2) 
+\end{align×}
+$$
+
+Vores cost function er altså at finde den $w_0$ og $w_1$ der giver den mindste RSS.
+
+$$ min(w_0,w_1) \sum_i (y_i - (w_0 + w1)^2) $$
+
+** Concave and convex functions
+En concave funktion har form som en n ("cave") og en convex funktion har form som et u. Det særlige ved concave funktioner er, at hvis du vælger to punkter på linien, så vil en streg i mellem dem altid være under funktionens linie. For convex funktions er det anderledes. Ligeledes har de hhv et maksimum og en minimum punkt. 
+
+For concave og convex funktioner er det forholdsvist nemt at finde hhv max og min, forde det er det sted hvor derivative af funktionen er lig med 0.
+
+For funktioner der ikke er concave/convex er der enten flere løsninger eller uendeligt mange løsninger. 
+
+** Minimering af en funktion i en dimension
+Hvis vi har $g(w) = 5-(w-10)^2$ og vil finde den w der giver den mindste værdi af funktionen, så tager vi først derivative og sætter til 0. 
+
+$$
+\begin{align*} 
+\frac{dg(w)}{dw} =& 0 - 2(w-10)^1 * 1 \\
+                 =& -2w+20
+\end{align*}
+$$ 
+
+og så sætter vi til 0:
+
+$$
+\begin{align*} 
+0 =& -2w+20 \\
+w =& 10       
+\end{align*}
+$$ 
+
+Altså fås minimum af den convex funktion g(w) ved g(10). 
+
+** Finding max via hill climbing
+En anden måde at finde $max_w$ g(w) er gennem en hill climbing/hill descending algorithm. Algoritmen tester hele tiden om derivative er enten stigende eller faldende, og bevæger sig derefter den rigtige vej (i.e. stigende for max, faldene for min). 
+
+En generisk hill climbing har følgende udformning:
+
+#+begin_src 
+while not converged
+    w^t+1 <- w^t + n * dg(w)/dw
+#+end_src
+
+Altså, så længe derivative ikke er meget tæt på 0 (typisk bruges end dg(w)/dw < epsilon for en tilpas lille epsilon - epsilon er her *convergence criteria*), så flyttes w n gange derivative. Her er n altså *step-size*.  Step size bruges typisk i en fixed størrelse, eller sættes som funktion af algoritme iterationen, fx delta/t eller delta/sqrt(t).
+
+Ved en hill descending algorithm, så bruges - i stedet for plus. 
+
+** Se også:
+- Derivatives in more dimensions [[file:201910191501.org]] 

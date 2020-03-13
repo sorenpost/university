@@ -1,0 +1,5 @@
+* Real coordinate spaces
+$I\!{R}^2$ = to dimensionelt real coordinate space. $I\!{R}$ er alle ægte tal, dvs i er ikke inkluderet. $I\!{R}^{2}$ er demered alle mulige real value two-tuples. En tuple er en ordnet liste af tal, i.e. en two-tuple er en ordnet liste af to tal. For eksempel: $\begin{bmatrix} 3 \\ 2 \end{bmatrix} != \begin{bmatrix} 2 \\ 3 \end{bmatrix}$. 
+
+Alle dele af den ordnede liste (dvs tallene) er ægte tal. Altså $ I\!{R}^2 $ = alle tænkelige to dimensionelle vektorer. Det vil sige: $$\begin{bmatrix} 0 \\ 1 \\ 3 \end{bmatrix} \in I\!{R}^3  \text{og} \begin{bmatrix} 5 \\ 7 \end{bmatrix}  \in I\!{R}^2 \text{, etc.}$$
+

@@ -1,0 +1,11 @@
+* Generic basis model for gressions over different powers of one input
+
+\begin{align*}
+y_i &= w_o h_0(x_i) + w_1 h_1 (x_i) + ... + w_D h_D (x_i) + \epsilon_i \\
+    &= \sum^D_{j = 0} w_j h_j (x_i) + \epsilon_i
+\end{align*}
+
+Her er $w_j$ altså jth regression coefficient og $h_j$ er jth feature. Eksempelvis:
+- feature 1 = $h_0(x)$ (often constant)
+- feature 2 = $h_1(x)$, fx x
+- feature 3 = $h_2(x)$, fx $x^2$ eller $sin(2 \pi t_i / 12)$

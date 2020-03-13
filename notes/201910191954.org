@@ -1,0 +1,147 @@
+* Machine Learning Excercises week 1:
+
+** 1) Skriv funktion der finder SLR coefficients ved brug af closed form.
+
+\begin{align*}
+\hat{w}_o = \frac{\sum_i y_i}{N} - \hat{w}_i \frac{\sum_i x_i}{N}
+\end{align*}
+
+\begin{align*}
+\hat{w}_1 = \frac{\sum_i y_i x_i - \frac{\sum_i y_i \sum_i x_i}{N}}{\sum_i x_i^2 - \frac{\sum_i x_i \sum_i x_i}{N}}
+\end{align*}
+
+#+begin_src R :session w1ex
+
+  simple_linear_regression <- function(input, output) {
+  x_i <- input
+  y_i <- output
+  N <- length(input)
+
+  slope <- (sum(y_i * x_i) - ((sum(y_i) * sum(x_i)) / N)) / (sum(x_i * x_i) - ((sum(x_i) * sum(x_i)) / N))
+
+  intercept <- (sum(y_i) / N) - (slope * (sum(x_i) / N))
+
+  return(
+    data.frame(
+      "intercept" = intercept,
+      "slope" = slope
+    )
+  )
+  }
+#+end_src
+
+#+RESULTS:
+
+** 1b) Brug funktion til at finde coefficienterne
+
+   #+begin_src R :session w1ex :colnames yes 
+     library(tidyverse)
+
+     training_data <- read_csv("/home/post/MEGAsync/coursera/machine_learning_regression/week1/data/kc_house_train_data.csv")
+
+     model <- simple_linear_regression(input = training_data$sqft_living, output = training_data$price)
+     print(model)
+
+   #+end_src
+
+   #+RESULTS:
+   |         intercept |            slope |
+   |-------------------+------------------|
+   | -47116.0790728942 | 281.958839630343 |
+
+
+** 2a) Skriv funktion der udregner predicted values baseret på input vector
+
+   #+begin_src R :session w1ex
+     predict_it <- function(input, model) {
+
+       intercept <- model$intercept
+       slope <- model$slope
+
+       output <- intercept + (input * slope)
+
+       return(output)
+       }
+   #+end_src
+
+** 2b) Brug prediction funktion til at udregne prisen for en hus på 2650 sqft
+
+   #+begin_src R :session w1ex
+     predict_it(input = 2650, model = model)
+   #+end_src
+
+   #+RESULTS:
+   : 700074.845947514
+
+** 2c) Hvad er RSS for SLR ud fra training data?
+
+   #+begin_src R :session w1ex
+     get_RSS <- function(x, y, coefs) {
+       yhat <- predict_it(input = x, model = coefs)
+
+       RSS <- sum((y - yhat)^2)
+
+       return(RSS)
+     }
+
+     RSS <- get_RSS(x = training_data$sqft_living, y = training_data$price, coefs = model)
+
+     print(RSS)
+
+
+   #+end_src
+
+   #+RESULTS:
+   : 1201918354177283
+
+** 3a) Skriv funktion der "reverter" modellen, og giver et "estimated output" return
+
+   #+begin_src R :session w1ex
+     inverse_reg_pred <- function(yhat, coefs) {
+     intercept <- coefs$intercept 
+     slope <- coefs$slope
+
+     xhat <- (yhat - intercept) / slope
+
+     return(xhat)
+     }
+   #+end_src
+
+   #+RESULTS:
+
+
+** 3b) Hvad er estimated sqft_living for pris på 800 000?
+
+   #+begin_src R :session w1ex
+     sqft <- inverse_reg_pred(yhat = 800000, coefs = model)
+     print(sqft)
+   #+end_src
+
+   #+RESULTS:
+   : 3004.39624515228
+
+** 4a) Lav model for pris ud fra number of bedrooms
+
+   #+begin_src R :session w1ex :colnames yes
+     bedroom_model <- simple_linear_regression(input = training_data$bedrooms, output = training_data$price)
+   #+end_src
+
+   #+RESULTS:
+   |       intercept |            slope |
+   |-----------------+------------------|
+   | 109473.17762296 | 127588.952933988 |
+ 
+** 4b) Find RSS fra begge modeler ud fra på TEST data$price
+   #+begin_src R :session w1ex
+     test_df <- read_csv("/home/post/MEGAsync/coursera/machine_learning_regression/week1/data/kc_house_test_data.csv")
+
+     bedroom_rss <- get_RSS(x = test_df$bedrooms, y = test_df$price, coefs = bedroom_model)
+     sqft_rss <- get_RSS(x = test_df$sqft_living, y = test_df$price, coefs = model)
+
+     paste("Bedroom RSS:", bedroom_rss, "\n", "Sqft RSS:", sqft_rss, "\n Is bedroom RSS larger than sqft RSS?", sqft_rss < bedroom_rss)
+   #+end_src
+
+   #+RESULTS:
+   | Bedroom RSS: 493364585960301              |
+   | Sqft RSS: 275402933617812                 |
+   | Is bedroom RSS larger than sqft RSS? TRUE |

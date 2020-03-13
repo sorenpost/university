@@ -1,0 +1,129 @@
+* Gaussian elimination
+
+Hvis vi har et ligningssystem:
+
+
+\begin{align*}
+2a + 3b &= 8 \\
+10a + 1b &= 13 
+\end{align*}
+ 
+
+så kan vi omskrive det til matrix-vector form:
+
+\begin{align*}
+Ar &= s \\
+\begin{bmatrix}
+2 & 4 \\
+10 & 1
+\end{bmatrix} \begin{bmatrix}
+a  \\
+b
+\end{bmatrix} &= \begin{bmatrix}
+8  \\
+13
+\end{bmatrix}
+\end{align*}
+
+*Løs gennem elimination og back-substitution:*
+For at løse systemet skal vi nu igennem to stadier: elimination og back-substitution. Formålet i elimination er at opnå en A-matrix i row-echelon form. Det betyder at elementerne under diagonalen er 0. Dette opnås ved at trække skalerede versioner af de andre rækker fra den nederste række, til der kun er et tal tilabe der ikke er nul, derefter går man til den næst-nederste, etc. I eksemplet foroven ville det vil være at trække 5-gange række 1 fra række 2:
+
+
+\begin{align*}
+\begin{bmatrix}
+2 & 4 \\
+10 - 5*2 & 1 - 5*4
+\end{bmatrix} \begin{bmatrix}
+a  \\
+b
+\end{bmatrix} &= \begin{bmatrix}
+8  \\
+13 - 5*8
+\end{bmatrix} \\
+\begin{bmatrix}
+2 & 4 \\
+0 & -19
+\end{bmatrix} \begin{bmatrix}
+a  \\
+b
+\end{bmatrix} &= \begin{bmatrix}
+8  \\
+-27
+\end{bmatrix}
+\end{align*}
+
+Derefter kan -19b = -27 nemt løses ved at gange med -1 på begge sider til 19b = 27, og b = 27/19. Vi har nu row-echelon form. 
+
+Nu begynder back-substitution. Her tager vi resultatet af den nedereste række, dvs 27/19, og indsætter på b's plads i rækken over, der nu også nemt kan løses. Dette genereliseres nemt til mange rækker.
+
+
+*Løs gennem inverse matrix:*
+En inverse matrix for en matrix A er den matrix $A^{-1}$, for hvilken det gælder at $AA^{-1} = I$. 
+Det betyder derfor også at
+
+\begin{align*}
+A r &= s \\
+A^{-1}A r &= A^{-1}s \\
+I r &=  A^{-1}s \\
+r &=  A^{-1}s
+\end{align*}
+
+Vi kan altså finde vores ubekendte vektor r så længe vi har As inverse. 
+
+En måde at gøre dette på, er at tage AB = I, hvor B derved af inverse af A, og solve, således A bliver til I. Vi har derved B på den anden side af lighedstegnet (fordi IB = B).
+
+Altså:
+\begin{align*}
+A B =& I \\
+\begin{bmatrix}
+1 & 1 & 3 \\
+1 & 2 & 4 \\
+1 & 1 & 2
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} & b_{13}  \\
+b_{21} & b_{22} & b_{23}  \\
+b_{31} & b_{32} & b_{33} 
+\end{bmatrix} &=
+\begin{bmatrix}
+1 & 0 & 0  \\
+0 & 1 & 0  \\
+0 & 0 & 1  
+\end{bmatrix}
+\end{align*} 
+
+Derefter trækkes første række fra sidste række, således:
+\begin{align*}
+\begin{bmatrix}
+1 & 1 & 3 \\
+1 & 2 & 4 \\
+1-1 & 1-1 & 2-3
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} & b_{13}  \\
+b_{21} & b_{22} & b_{23}  \\
+b_{31} & b_{32} & b_{33} 
+\end{bmatrix} &=
+\begin{bmatrix}
+1 & 0 & 0  \\
+0 & 1 & 0  \\
+0-1 & 0-0 & 1-0  
+\end{bmatrix} \\
+\begin{bmatrix}
+1 & 1 & 3 \\
+1 & 2 & 4 \\
+0 & 0 & -1
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} & b_{13}  \\
+b_{21} & b_{22} & b_{23}  \\
+b_{31} & b_{32} & b_{33} 
+\end{bmatrix} &=
+\begin{bmatrix}
+1 & 0 & 0  \\
+0 & 1 & 0  \\
+-1 & 0 & 1  
+\end{bmatrix} \\
+\end{align*} 
+
+Således gentages produceduren til at A er blevet til I og I er blevet B. 
