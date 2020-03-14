@@ -1,0 +1,47 @@
+---
+title: Model 2
+author: SB Post
+bibliography: /home/post/university/collection.bib
+biblio-style: apalike
+---
+
+
+
+
+For each production process, there is some risk of a production failure due to an exogenous interruption (like a fire, theft, vandalism, corruption, etc). Let this risk be called $z$ and take the value between 0 and 1. 
+
+```{r}
+library(tidyverse)
+
+quality <- seq(0.75, 1, 0.01)
+tasks <- c(rep(5, length(quality)), rep(10, length(quality)), rep(50, length(quality)))
+scaled_output_tb <- tibble(qual = rep(quality, 3), tasks) %>%
+mutate(output = qual^(tasks)*tasks) %>%
+mutate(rescaled_output = output/tasks)
+
+ggplot(scaled_output_tb, aes(x = qual, y = rescaled_output, col = as.factor(tasks))) +
+geom_line()
+
+quality <- seq(0.50, 1, 0.01)
+tasks <- rep(10, length(quality))
+output_tb <- tibble(quality, tasks) %>%
+mutate(output = quality^(tasks)*tasks)
+
+ggplot(output_tb, aes(x = quality, y = output)) +
+geom_line()
+```
+
+
+
+
+# NOTER
+
+Kan tasks ses som en rækk af links? I den meget simple model hvor alle inputs kun har en t til at gå i stykker (fordi ellers kan deres inputs også gå i stykker, og så videre) og inputs sources tilføældigt, så er det vel den samme model som kramers, i.e. q^n n.
+
+https://www.youtube.com/watch?v=uWJlAloptaA
+https://jasoncollins.blog/2013/01/14/o-ring-and-foolproof-sectors/
+
+
+Add to limitiations:
+ - what if electricity shortages is not a key enough production input, or if firms tend to shift to using generators, the offset could be in smaller profit margins (profit divided by investment) and not necessarily observable in product complexity.
+ - import substitution around disruption bottleneck

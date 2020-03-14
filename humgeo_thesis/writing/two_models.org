@@ -19,8 +19,6 @@ At any given time $t$ the share of functional firms in the economy is $F(t)$. Th
 
 - [ ] simplifications
 
-
-
 The evolving input-output network (and the disruptions) can thus be expressed through the differential equation for the expected share of functional firms at a given time:
 
 \[ \frac{dF}{dt} = P[Binomial(m, F(t)) \geq \gamma - F(t) \]
@@ -43,6 +41,10 @@ Where P is the probability that a firm successfully produces its output, i.e. $P
 We can de-compose the equation above into separate terms. The first term, $1 - F(t)$ represents the rate at which dysfunctional firms attempts to produce. For each attempt, there is P probability of success. If the attempt is success, F(t) rises, if not, F(t) stays the same. The second term, $F(t)(1 - P + \epsilon)$ is the reverse. F(t) is the number of functional firms that attempt to produce. 1 - P + error is the 1 minus the probability of success, that is, the probability of dysfunction, plus til exogenous risk of dysfunction. The first term is then hos many dysfunctional firms become functional, the second hos many functional firms become dysfunctional.
 
 The starting conditions, the amount of dysfunction 1 - F(0) is exogenous. Rest of dysfunction is entirely endogenous. All of this dysfunction is driven by the effect that a firm can only deliver the input to other firms if it is successful it the most recent attempt to produce.
+
+#+CAPTION: Here is the caption.
+#+NAME: model_gr
+[[/home/post/university/SGED07/assignments/papers/figs/model_gr.png]]
 
 *Choosing complexity ($\gamma$) and buffers ($m - \gamma$):* To include the incentive to produce more complex products, a utility function is added, where firms derive utility from producing more goods that require more inputs. This utility is expressed by $\gamma^{\beta}$ where $\beta$ is between 0 and 1. It also assumed that each attempted input has a cost of $\alpha$, wehere $\alpha$ is more than 0. This is the marginal cost of finding a supplier, arranging input, etc. Again for simplicity, it is assumed that each firm knows thew likelihood that a supplier will successfully produce and deliver the required input, F(t). On the basis of this reliability, a form can revise its strategy on how complex the product should be: $\gamma \in \{0, 1, 2, ...\}$, as well as how many inputs should be attempted: $m \in \{0, 1, 2, ...\}$.
 

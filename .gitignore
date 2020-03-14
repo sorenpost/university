@@ -10,3 +10,4 @@ tmp/
 *.csv
 *.tab
 *.tsv
+.Rproj.user

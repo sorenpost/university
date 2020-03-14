@@ -34,11 +34,24 @@ Seminar: March 23, 2020 (13-16 Johannesburg).
 ** Economic complexity (and country fitness)
 ** A simple model of contagious disruptions
 
+
+
+Firms can be in one of two states: functional or dysfunctional. A firm is functional if receives all the necessary inputs to its production. It then successfully produces its output, which can be used as inputs for other firms. If a firm does not receive the necessary inputs to its production, it is dysfunctional and does not have an output.
+
+
+
+
+
+- More severe simplifications:
+  - inputs are perfectly substitutable (inputs are not substitutable. this means that some inputs are more ciritcal than)
+
+
+
 - Firms can either be functional or dysfunctional
 - Firms use the outputs of other firms as inputs to their production
 - [Firms use can use buffers (more input suppliers than critical threshold)]
 - Shocks can propogate through the network. This can change the behavoir of firms
-- If hub-spoke configs are present in the
+- If the I/O network looks like a hub-spoke configuration, shocks spread more easily
 
 
 \newpage
