@@ -30,18 +30,70 @@ lot: True
 
 In an O-ring production model each production process consists of $n$ tasks. Each task $n_i$ has a $q$ chance of being completed successfully. If one task fails the whole product loses value. In Kremer's model, $q$ represents the skill of workers to retain the maximum value in production. Thus a $q$ of 0.95 means that a worker has a 5 percent risk of ruining the product completely, or that she always performs the task so that the product retains 95 percent of its value. 
 
-A central condition of the model is that we cannot substitute quality for quantity. That is, a great quarterback, chef, or composer is not equal to two good ones; Bob Dylan cannot be substituted by any number of folk singers from the local Irish pub. 
+A central condition of the model is that we cannot substitute quality for quantity. That is, a great quarterback, chef, or composer is not equal to two good ones; any number of folk singers from the Irish pub will not substitute Bob Dylan. 
 
-The O-ring production model takes the form:
+The O-ring production model takes the form of a modified Cobb-Douglas^[assumptions]:
 
 $$ Y = k^{\alpha} (\prod^{n}_{i = 1} q_i) n B $$
 
 where $Y$ is the expected output of the firm, $k$ is capital and $B$ is the firm specific productivity multiplier (that is, how productive is each worker with one unit of capital). For the purpose of this paper, two results from Kremer's model are key: the importance of even very small differences in $q$ on output, and the resulting assortive matching of workers by quality.
 
-First, if we momentarily abstract away the amount of capital and the multiplier B, and assume that each worker in a firm has the same quality $q$, we can write output as $q^{n} n$. Small changes in quality then leads to large differences in output: if a firm produces a two-task ($n$ = 2) product, we find its output by taking $q \cdot q \cdot \cdot 2$. If the workers are perfect $q = 1$ and output is 2. Should workers have a quality of .9 instead, however, output is $0.9 \cdot 0.9 \cdot 2 = 1.62$. That is, a 10 percent drop in quality leads to a 21 percent drop in output. More importantly this effect increases as the complexity of the production process increases (see figure 1A, 1B)
+First, if we momentarily abstract away the amount of capital and the multiplier
+B, and assume that each worker in a firm has the same quality $q$, we can write
+output as $(q_1 \cdot q_2 \cdot ... \cdot q_n) n = q^{n} n$. Small changes in quality then leads to large differences in output: if a firm produces a two-task ($n$ = 2) product, we find its output by taking $q \cdot q \cdot 2$. If the workers are perfect $q = 1$ output is 2. Should workers have a quality of .9 instead, however, output is $0.9 \cdot 0.9 \cdot 2 = 1.62$. That is, a 10 percent drop in quality leads to a 21 percent drop in output. More importantly this effect increases as the complexity of the production process ($n$) increases (see figure 1A, 1B).
+
+Second, Kremer shows that an economy will maximise its output by matching workers by their quality.
+Take a simple example of a four worker, two firm economy: two high quality
+workers, $q_h = 1$, and two low quality workers, $q_l = 0.5$. Each worker
+performs one task. We can have a situation where firms match workers skill (so
+that one firm has high $q$ workers, the other low $q$ workers) or where each
+firm has a mix:^[A general proof: \begin{align*}(q_h - q_l)^2 >& 0 \\ q_h^2 + q_l^2 - 2q_hq_l >& 0 \\ q_h^2 + q_l^2 >& 2q_h q_l \end{align*}]
+
+\begin{align*}
+2(q_h \cdot q_h) + 2 (q_l \cdot q_l) &= 2(1 \cdot 1) + 2(0.5 \cdot 0.5) = 2 + 0.5 = 2.5  \\ 
+2(q_h \cdot q_l) + 2 (q_h \cdot q_l) &= 2(1 \cdot 0.5) + 2(1 \cdot 0.5) = 1 + 1 = 2 
+\end{align*}
+
+With the same workers, capital, and productivity, a matched economy will in this simple example have a 25% larger output than a mixed one. Why are these results relevant to the production of more or less complex products? 
+
+If we think of the model as representing a factory that produces a product using some combination of intermediate inputs.
 
 
-```{R fig.height = 3, echo = FALSE, messages = FALSE}
+
+The O-ring model then represents a production of a factory that uses a combination of intermediate inputs in to its production. Here, all inputs are completely complimentary but are chosen randomly among suppliers. Each factory has some risk itself of failing as well as 
+
+
+- Implication: There is international division of labor. There is also international division of products (naturally). Not only is products more or less... (husk unit trade value database).
+
+
+
+
+
+- 
+
+
+Implication parts:_o
+1. Workers performing the same task earn higher wages in a high-skill firm than in a low-skill firm;
+2. This model magnifies the effect of local bottlenecks which also reduce the expected returns to skill;
+
+This has implications for ...
+
+1. In terms of disruptions, Kremers model is essentially the same as sourcing from n sectors, where each sector has q chance of failing. Each sector is chosen at random here.
+3. Brummit et al show that in a random network where inputs are substitatuble and firms can "over invest" in input buffers ($\tau$ is basically the same as $n$ tasks that needs completion), they will - given a threshold of disruptions - self-select into less complex products.
+2. Sourcing networks are not random though - not at all [viz I/O networks] - and there are feedback mechanisms by disruptions.
+
+
+
+### Draft figures
+
+```{R trade_unit_value_fig, echo = FALSE, message = FALSE, warning = FALSE}
+
+
+
+```
+ 
+
+```{R output_by_tasks_and_q, fig.height = 2, fig.cap = "A figure, yk", echo = FALSE, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(ggpubr)
 
@@ -62,15 +114,17 @@ p2 <- ggline(output_tb,
        y = "output",
        plot_type = "l",
        xlab = "Quality",
-       ylab = "Output")
+       ylab = "Output") +
+  font("xlab", size = 9) +
+  font("ylab", size = 9)
 
 
 # percentage of output lost by worker quality for 4 different task levels
 quality <- seq(0.75, 1, 0.01)
 
-tasks <- c(rep(5, length(quality)), rep(10, length(quality)), rep(50, length(quality)), rep(100, length(quality)))
+tasks <- c(rep(5, length(quality)), rep(10, length(quality)), rep(50, length(quality)))
 
- scaled_output_tb <- tibble(qual = rep(quality, 4), tasks) %>%
+ scaled_output_tb <- tibble(qual = rep(quality, 3), tasks) %>%
  mutate(output = qual^(tasks)*tasks) %>%
    mutate(rescaled_output = output/tasks) %>%
    mutate(tasks = as.factor(tasks))
@@ -82,10 +136,11 @@ p3 <- ggline(scaled_output_tb,
              y = "rescaled_output",
              plot_type = "l",
              xlab = "Quality",
-             ylab = "Output",
+             ylab = "% of output",
              color = "tasks",
-             palette = "jco")
-
+             palette = "jco")+
+  font("xlab", size = 9) +
+  font("ylab", size = 9 )
 
 figure <- ggarrange(p2, p3,
                     labels = c("A", "B"),
@@ -93,12 +148,8 @@ figure <- ggarrange(p2, p3,
 
 figure
 ```
-
-For each production process, there is some risk of a production failure due to an exogenous interruption (like a fire, theft, vandalism, corruption, etc). Let this risk be called $z$ and take the value between 0 and 1. 
-
-### Draft figures
  
- 
+
  
 # Methods
 ## Data
