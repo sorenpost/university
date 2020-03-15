@@ -25,9 +25,20 @@ lot: True
 # Background
 # Conceptual framework
 ## Product complexity
-## Disruptions in an O-ring model
-### Draft
 
+Main points to get across:
+ - The idea behind economic complexity
+ - Why it matters
+ - How the lego-idea is
+ - We don't understand micro-foundations very well
+
+Figures to include:
+ - RCA matrix sorted by ECI and PCI
+ - :
+
+
+## Disruptions in an O-ring model
+## Draft
 In an O-ring production model each production process consists of $n$ tasks. Each task $n_i$ has a $q$ chance of being completed successfully. If one task fails the whole product loses value. In Kremer's model, $q$ represents the skill of workers to retain the maximum value in production. Thus a $q$ of 0.95 means that a worker has a 5 percent risk of ruining the product completely, or that she always performs the task so that the product retains 95 percent of its value. 
 
 A central condition of the model is that we cannot substitute quality for quantity. That is, a great quarterback, chef, or composer is not equal to two good ones; any number of folk singers from the Irish pub will not substitute Bob Dylan. 
@@ -40,40 +51,33 @@ where $Y$ is the expected output of the firm, $k$ is capital and $B$ is the firm
 
 First, if we momentarily abstract away the amount of capital and the multiplier
 B, and assume that each worker in a firm has the same quality $q$, we can write
-output as $(q_1 \cdot q_2 \cdot ... \cdot q_n) n = q^{n} n$. Small changes in quality then leads to large differences in output: if a firm produces a two-task ($n$ = 2) product, we find its output by taking $q \cdot q \cdot 2$. If the workers are perfect $q = 1$ output is 2. Should workers have a quality of .9 instead, however, output is $0.9 \cdot 0.9 \cdot 2 = 1.62$. That is, a 10 percent drop in quality leads to a 21 percent drop in output. More importantly this effect increases as the complexity of the production process ($n$) increases (see figure 1A, 1B).
+output as $(q_1 \cdot q_2 \cdot ... \cdot q_n) n = q^{n} n$. Small changes in quality then leads to large differences in output: if a firm produces a two-task ($n$ = 2) product, we find its output by taking $q^22$. If the workers are perfect $q = 1$ output is 2. Should workers have a quality of .9 instead, however, output is $0.9 \cdot 0.9 \cdot 2 = 1.62$. That is, a 10 percent drop in quality leads to a 21 percent drop in output. More importantly this effect increases as the complexity of the production process ($n$) increases (see figure 1A, 1B).
 
-Second, Kremer shows that an economy will maximise its output by matching workers by their quality.
-Take a simple example of a four worker, two firm economy: two high quality
-workers, $q_h = 1$, and two low quality workers, $q_l = 0.5$. Each worker
-performs one task. We can have a situation where firms match workers skill (so
-that one firm has high $q$ workers, the other low $q$ workers) or where each
-firm has a mix:^[A general proof: \begin{align*}(q_h - q_l)^2 >& 0 \\ q_h^2 + q_l^2 - 2q_hq_l >& 0 \\ q_h^2 + q_l^2 >& 2q_h q_l \end{align*}]
+Second, Kremer shows that an economy will maximise its output by matching workers by their quality. Take a simple example of a four worker, two firm economy: two high quality workers, $q_h = 1$, and two low quality workers, $q_l = 0.5$. Each worker performs one task. We can have a situation where firms match workers skill (so that one firm has high $q$ workers, the other low $q$ workers) or where each firm has a mix:^[A general proof: \begin{align*}(q_h - q_l)^2 >& 0 \\ q_h^2 + q_l^2 - 2q_hq_l >& 0 \\ q_h^2 + q_l^2 >& 2q_h q_l \end{align*}]
 
 \begin{align*}
 2(q_h \cdot q_h) + 2 (q_l \cdot q_l) &= 2(1 \cdot 1) + 2(0.5 \cdot 0.5) = 2 + 0.5 = 2.5  \\ 
 2(q_h \cdot q_l) + 2 (q_h \cdot q_l) &= 2(1 \cdot 0.5) + 2(1 \cdot 0.5) = 1 + 1 = 2 
 \end{align*}
 
-With the same workers, capital, and productivity, a matched economy will in this simple example have a 25% larger output than a mixed one. Why are these results relevant to the production of more or less complex products? 
+With the same workers, capital, and productivity, a matched economy will in this
+ simple example have a 25% larger output than a mixed one.
+ 
+ 
+Why are these results relevant to the production of more or less complex products? We can interpret the model in a different way. Instead of producing output by performing $n$ tasks, we let a product be the result of combining $n$ intermediate inputs. The quality factor $q_i$ then becomes the likelihood of getting successfully delivered the intermediate input from some other producer, i.e. their production is not disrupted by some exogenous factor (e.g. fire, theft, power outages, corruption). The model is then representative of a firm that... however, thi
+
+
 
 If we think of the model as representing a factory that produces a product using some combination of intermediate inputs.
 
-
-
-The O-ring model then represents a production of a factory that uses a combination of intermediate inputs in to its production. Here, all inputs are completely complimentary but are chosen randomly among suppliers. Each factory has some risk itself of failing as well as 
-
-
-- Implication: There is international division of labor. There is also international division of products (naturally). Not only is products more or less... (husk unit trade value database).
+If tasks are done sequentially and the full value is only realized at the final stage, the O-ring model implies that the later stages will be done by workers with the highest quality. Similarly, should failures at any stage in production chains lead to losing the value of the final product, failure at later stages are disproportionately more costly. This would suggest that within production chains, more critical stages are located in low-failure environments. Between production chains it would suggest that shorter chains are finalized in higher failure environments, while longer would be finalized in lower. These stylised patterns are in aggrement with cursory glance at data [complexity of countries by their disruptions - however, might be many causes for this, XXXX show that even in the low-complexity products specialized in by more advanced countries, they tend to be differentiated into the higher unit values (think difference between exporting a 5-dollar watch and a handcrafted Rolex)]. If more complex products require longer chains of production or more individual tasks at each stage of production, this suggests that high disruption environments would lead to lower complexity of production. Is this the case? This is what I am testing.
 
 
 
+Implication parts:
 
-
-- 
-
-
-Implication parts:_o
 1. Workers performing the same task earn higher wages in a high-skill firm than in a low-skill firm;
+
 2. This model magnifies the effect of local bottlenecks which also reduce the expected returns to skill;
 
 This has implications for ...
@@ -86,8 +90,123 @@ This has implications for ...
 
 ### Draft figures
 
-```{R trade_unit_value_fig, echo = FALSE, message = FALSE, warning = FALSE}
+```{R disr_figure, fig.height = 4, echo = FALSE, message = FALSE, warning = FALSE}
 
+library(tidyverse)
+library(ggpubr)
+library(readxl)
+library(janitor)
+library(countrycode)
+
+## read file from enterprise survey database.
+es_tb <- read_csv("/home/post/university/SGED07/assignments/papers/final_folder/data/es_infra.csv") %>%
+  clean_names(case = "snake") %>%
+  group_by(economy) %>%
+  filter(year < 2016) %>%
+  filter(year == max(year)) %>%
+  ungroup()
+
+## add iso-3 codes
+es_tb <- es_tb %>%
+  mutate(
+    iso3c = countrycode(es_tb$economy, origin = "country.name", destination = 'iso3c')
+  ) %>%
+  select(-c(subgroup, top_subgroup_level, subgroup_level))
+
+es_crime_tb <- read_csv("/home/post/university/SGED07/assignments/papers/final_folder/data/es_crime.csv") %>%
+  clean_names(case = "snake") %>%
+  group_by(economy) %>%
+  filter(year < 2016) %>%
+  filter(year == max(year)) %>%
+  ungroup()
+
+es_tb <- es_tb %>% left_join(es_crime_tb %>%
+                               select(economy, year, products_shipped_to_supply_domestic_markets_that_were_lost_due_to_theft_percent_of_product_value))
+
+## read eci and fitness data
+eci_tb <- read_csv("/home/post/university/Contagious_disruptions_complexity_trap_economic_development-2.0.4/empirical_data/ECI_country_rankings.csv") %>%
+  clean_names(case = "snake") %>%
+  rename(iso3c = abbrv)
+
+## read fitness values
+fit_tb <- read_csv("/home/post/university/humgeo_thesis/data/downloaded/Economic_Fitness_CSV/Data.csv")  %>%
+  filter(`Indicator Name` == "Economic Fitness Metric") %>%
+  select(-c(`Country Name`, `Indicator Name`, `Indicator Code`, X26)) %>%
+  rename(iso3c = `Country Code`) %>%
+  gather(-iso3c, key = year, value = fitness) %>%
+  mutate(year = as.numeric(year))
+
+## add gdp/cap 2010
+gdp_cap_tb <- read_csv("/home/post/university/SGED07/assignments/papers/final_folder/data/API_NY.GDP.PCAP.PP.KD_DS2_en_csv_v2_867594/gdp_cap_ppp_2011_int_doll.csv",
+                       skip = 4) %>%
+  select(-c(`Country Name`, `Indicator Name`, `Indicator Code`, X65)) %>%
+  rename(iso3c = `Country Code`) %>%
+  gather(-iso3c, key = year, value = gdp_cap) %>%
+  mutate(year = as.numeric(year))
+
+## add eci, gdp, fit to es_tb
+tidy_tb <- es_tb %>%
+  left_join(eci_tb) %>%
+  left_join(gdp_cap_tb) %>%
+  left_join(fit_tb)
+
+## make plots
+tidy_tb <- tidy_tb %>%
+  mutate(
+    if_there_were_outages_average_losses_due_to_electrical_outages_percent_of_annual_sales = as.numeric(if_there_were_outages_average_losses_due_to_electrical_outages_percent_of_annual_sales),
+    monthly_water_short = as.numeric(number_of_water_insufficiencies_in_a_typical_month),
+    gdp_cap_ln = log(gdp_cap)
+  ) 
+
+
+## % products break, spoil in shipment
+p1 <- ggscatter(
+  tidy_tb,
+  x = "gdp_cap_ln",
+  y = "proportion_of_products_lost_to_breakage_or_spoilage_during_shipping_to_domestic_markets_percent",
+  color = "eci_value",
+  add = "reg.line",
+  ylab = " ",
+  xlab = "ln(GDP/cap)"
+) %>% ggpar(legend = "right", font.legend = 10, legend.title = "ECI", font.tickslab = 10, font.x = 10, font.y = 8, font.title = 10, title = "% products spoied, broken in shipment")
+
+
+## % sales lostdue to electrical shortages
+p2 <- ggscatter(
+  tidy_tb,
+  x = "gdp_cap_ln",
+  y = "if_there_were_outages_average_losses_due_to_electrical_outages_percent_of_annual_sales",
+  color = "eci_value",
+  add = "reg.line",
+  ylab = " ",
+  xlab = "ln(GDP/cap)"
+) %>% ggpar(font.tickslab = 10, font.x = 10, font.y = 8, font.title = 10, title = "% yearly sales lost to electricity shortages")
+
+##  water shortages per month
+p3 <- ggscatter(
+  tidy_tb,
+  x = "gdp_cap_ln",
+  y = "monthly_water_short",
+  color = "eci_value",
+  add = "reg.line",
+  ylab = " ",
+  xlab = "ln(GDP/cap)"
+) %>% ggpar( font.tickslab = 10, font.x = 10, font.y = 8, font.title = 10, title = "% product value stolen during shipment")
+
+## products_shipped_to_supply_domestic_markets_that_were_lost_due_to_theft_percent_of_product_value
+p4 <- ggscatter(
+  tidy_tb,
+  x = "gdp_cap_ln",
+  y = "products_shipped_to_supply_domestic_markets_that_were_lost_due_to_theft_percent_of_product_value",
+  color = "eci_value",
+  add = "reg.line",
+  ylab = " ",
+  xlab = "ln(GDP/cap)",
+  na.rm = FALSE
+) %>% ggpar( font.tickslab = 10, font.x = 10, font.y = 8, font.title = 10, title = "# of monthly water shortages")
+
+## join plots
+ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2, common.legend = TRUE, legend = "right")
 
 
 ```
@@ -108,7 +227,7 @@ tb <- tibble(tasks = 1:100, output_95 = 0.95^(tasks)*tasks, output_90 = 0.9^(tas
  output_tb <- tibble(quality, tasks) %>%
  mutate(output = quality^(tasks)*tasks)
 
-p2 <- ggline(output_tb,
+p5 <- ggline(output_tb,
        numeric.x.axis = TRUE,
        x = "quality",
        y = "output",
@@ -129,7 +248,7 @@ tasks <- c(rep(5, length(quality)), rep(10, length(quality)), rep(50, length(qua
    mutate(rescaled_output = output/tasks) %>%
    mutate(tasks = as.factor(tasks))
 
-p3 <- ggline(scaled_output_tb,
+p6 <- ggline(scaled_output_tb,
              numeric.x.axis = TRUE,
              #group = "tasks",
              x = "qual",
@@ -142,7 +261,7 @@ p3 <- ggline(scaled_output_tb,
   font("xlab", size = 9) +
   font("ylab", size = 9 )
 
-figure <- ggarrange(p2, p3,
+figure <- ggarrange(p5, p6,
                     labels = c("A", "B"),
                     ncol = 2, nrow = 1)
 
@@ -155,4 +274,3 @@ figure
 ## Data
 ## Empirical strategy
 ### IV approach
-
