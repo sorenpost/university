@@ -9,7 +9,7 @@ output:
     includes:
       in_header: "preamble.tex"
 bibliography:  /home/post/university/collection.bib
-biblio-style: apalike
+csl: /home/post/university/SGED07/assignments/papers/final_folder/apa-6th-edition.csl
 link-citations: yes
 fontsize: 12pt
 linestretch: 1
@@ -21,9 +21,15 @@ secnumdepth: 2
 \newpage
 
 # Introduction
+
+
+
+
 # Background
 # Conceptual framework
 ## Product complexity
+
+We can think of 
 
 Main points to get across:
 
@@ -42,7 +48,7 @@ Figures to include:
 
 ### Figure draft
 
-```{R eci_gdp_figure, fig.height = 3, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="GDP/cap and ECI"} 
+```{R eci_gdp_figure, fig.height = 3.5, echo = FALSE, message = FALSE, warning =FALSE, fig.cap="GDP/cap (PPP, 2011 Intl \\$) and ECI"} 
 library(tidyverse)
 library(janitor)
 library(ggpubr)
@@ -86,11 +92,11 @@ p_eci <- ggscatter(col2010,
           xlab = "Economic Complexity (HH)",
           color = "rents_10",
           add = "reg.line",
-          palette = "jco") +
+          palette = "jco",
+          point = TRUE) +
   stat_cor(aes(color = rents_10), label.x = 0.7, label.y = c(8, 8.45)) 
 
-
-ggpar(p_eci, legend.title = "Resource rents as % of GDP:", font.legend = 10, font.tickslab = 10, font.x = 10, font.y = 10)
+ ggpar(p_eci, legend.title = "Resource rents as % of GDP:", font.legend = 10, font.tickslab = 10, font.x = 10, font.y = 10, palette = "jco")
 
 
 
@@ -98,9 +104,7 @@ ggpar(p_eci, legend.title = "Resource rents as % of GDP:", font.legend = 10, fon
 
 ## Disruptions in an O-ring model
 ## Draft
-In an O-ring production model each production process consists of $n$ tasks. Each task $n_i$ has a $q$ chance of being completed successfully. If one task fails the whole product loses value. In Kremer's model, $q$ represents the skill of workers to retain the maximum value in production. Thus a $q$ of 0.95 means that a worker has a 5 percent risk of ruining the product completely, or that she always performs the task so that the product retains 95 percent of its value. 
-
-A central condition of the model is that we cannot substitute quality for quantity. That is, a great quarterback, chef, or composer is not equal to two good ones; any number of folk singers from the Irish pub will not substitute Bob Dylan. 
+In an O-ring production model each production process consists of $n$ tasks. More complex products require more tasks than simpler ones. Each task $n_i$ has a $q_i$ chance of being completed successfully. If one task fails the whole product loses value. In Kremer's model, $q$ represents the ability (skill) of workers to retain the maximum value in production. A $q$ of 0.95 then both means that a worker has a 5 percent risk of ruining the product completely, or that she always performs the task so that the product retains 95 percent of its value. A central condition of the model is that we cannot substitute quality for quantity. That is, a great quarterback, chef, or composer is not equal to two good ones; any number of folk singers from the local pub won't substitute Bob Dylan. 
 
 The O-ring production model takes the form of a modified Cobb-Douglas^[assumptions]:
 
@@ -112,8 +116,7 @@ First, if we momentarily abstract away the amount of capital and the multiplier
 B, and assume that each worker in a firm has the same quality $q$, we can write
 output as $(q_1 \cdot q_2 \cdot ... \cdot q_n) n = q^{n} n$. Small changes in quality then leads to large differences in output: if a firm produces a two-task ($n$ = 2) product, we find its output by taking $q^22$. If the workers are perfect $q = 1$ output is 2. Should workers have a quality of .9 instead, however, output is $0.9 \cdot 0.9 \cdot 2 = 1.62$. That is, a 10 percent drop in quality leads to a 21 percent drop in output. More importantly this effect increases as the complexity of the production process ($n$) increases (see figure 1A, 1B).
 
-```{R outputTasks, fig.height = 2.5, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="O-ring output by worker quality and tasks: (A) for very small declines in worker quality we see massive drops in expected output; (B) as complexity of production increases, the drop from potential output driven by marginal decreases in quality skyrockets."} 
-
+```{R outputTasks, fig.height = 2.5, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="O-ring output by worker quality and tasks: (A) for very small declines in worker quality we see massive drops in expected output (in the example $n = 10$); (B) as complexity of production increases, the drop from potential output driven by marginal decreases in quality skyrockets. In temrs of production, this suggest that small changes in the risk (quality) of failure disproportionately punishes higher complexity producers."} 
 
 library(tidyverse)
 library(ggpubr)
@@ -168,24 +171,39 @@ ggarrange(p5, p6, ncol = 2, nrow = 1, labels = c("A", "B"), font.label = list(si
 
 Second, Kremer shows that an economy will maximise its output by matching workers by their quality. Take a simple example of a four worker, two firm economy: two high quality workers, $q_h = 1$, and two low quality workers, $q_l = 0.5$. Each worker performs one task. We can have a situation where firms match workers skill (so that one firm has high $q$ workers, the other low $q$ workers) or where each firm has a mix:^[A general proof: \begin{align*}(q_h - q_l)^2 >& 0 \\ q_h^2 + q_l^2 - 2q_hq_l >& 0 \\ q_h^2 + q_l^2 >& 2q_h q_l \end{align*}]
 
-
-
 \begin{align*}
-2(q_h \cdot q_h) + 2 (q_l \cdot q_l) &= 2(1 \cdot 1) + 2(0.5 \cdot 0.5) = 2 + 0.5 = 2.5  \\ 
-2(q_h \cdot q_l) + 2 (q_h \cdot q_l) &= 2(1 \cdot 0.5) + 2(1 \cdot 0.5) = 1 + 1 = 2 
+2(q_h \cdot q_h) + 2 (q_l \cdot q_l) &= 2.5 \\
+2(q_h \cdot q_l) + 2 (q_h \cdot q_l) &= 2
 \end{align*}
 
-With the same workers, capital, and productivity, a matched economy will in this
- simple example have a 25% larger output than a mixed one.
- 
- 
-Why are these results relevant to the production of more or less complex products? We can interpret the model in a different way. Instead of producing output by performing $n$ tasks, we let a product be the result of combining $n$ intermediate inputs. The quality factor $q_i$ then becomes the likelihood of getting successfully delivered the intermediate input from some other producer, i.e. their production is not disrupted by some exogenous factor (e.g. fire, theft, power outages, corruption). The model is then representative of a firm that... however, thi
+With the same workers, capital, and productivity, a matched economy will in this simple example have a 25% larger output than a mixed one.^[$2(q_h \cdot q_h) + 2 (q_l \cdot q_l) = 2(1 \cdot 1) + 2(0.5 \cdot 0.5) = 2 + 0.5 = 2.5$; $2(q_h \cdot q_l) + 2 (q_h \cdot q_l) = 2(1 \cdot 0.5) + 2(1 \cdot 0.5) = 1 + 1 = 2$]
 
+ 
+ 
+Why are these results relevant to the production of more or less complex products? 
+
+- greater gains as n increases = more complex productions will be done in higher $n$ environments.
+
+- matching = environment matching: production chains are matched in their environment. That is, 
+
+We can interpret the model in a different way. Instead of producing output by performing $n$ tasks, we let a product be the result of combining $n$ intermediate inputs. The quality factor $q_i$ then becomes the likelihood of getting successfully delivered the intermediate input from some other producer, i.e. their production is not disrupted by some exogenous factor (e.g. fire, theft, power outages, corruption). The model is then representative of a firm that... however, thi
+
+
+
+***
+
+ - Input Specificity and shocks [@barrot_input_2016]: shocks propagate through supply chains and impose large output costs on their costumers.
+
+ - [@carvalho_supply_2016] show Japan earthquake propagating through the supply chain.
+
+ - Using the 2011 Tōhoku earthquake as an exogenous shock, we structurally estimate production elasticities at the firm level and find greater complementarities in input usage than previously thought. For Japanese affiliates in the United States, output falls roughly one-for-one with declines in imports, consistent with a relationship between imported and domestic inputs that is close to Leontief. - Med andre ord: evidens tyder på at der ER stor komplimentaritet i (næsten one-for-one) i I/O forhold. Det betyder at disruptions burde have stor effect. [@boehm_input_2019]
 
 
 If we think of the model as representing a factory that produces a product using some combination of intermediate inputs.
 
 If tasks are done sequentially and the full value is only realized at the final stage, the O-ring model implies that the later stages will be done by workers with the highest quality. Similarly, should failures at any stage in production chains lead to losing the value of the final product, failure at later stages are disproportionately more costly. This would suggest that within production chains, more critical stages are located in low-failure environments. Between production chains it would suggest that shorter chains are finalized in higher failure environments, while longer would be finalized in lower. These stylised patterns are in aggrement with cursory glance at data [complexity of countries by their disruptions - however, might be many causes for this, XXXX show that even in the low-complexity products specialized in by more advanced countries, they tend to be differentiated into the higher unit values (think difference between exporting a 5-dollar watch and a handcrafted Rolex)]. If more complex products require longer chains of production or more individual tasks at each stage of production, this suggests that high disruption environments would lead to lower complexity of production. Is this the case? This is what I am testing.
+
+
 
 
 
@@ -201,11 +219,7 @@ This has implications for ...
 3. Brummit et al show that in a random network where inputs are substitatuble and firms can "over invest" in input buffers ($\tau$ is basically the same as $n$ tasks that needs completion), they will - given a threshold of disruptions - self-select into less complex products.
 2. Sourcing networks are not random though - not at all [viz I/O networks] - and there are feedback mechanisms by disruptions.
 
-
-
-### Draft figures
-
-```{R disr_figure, fig.height = 4, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="\\label{fig:figs}Production disruptions, complexity, and GDP"} 
+```{R disr_figure, fig.height = 4, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="Production disruptions tend to have a higher frequence in poorer, less complex economies. The color of points are economic complexity values (ECI) (gray point has missing ECI). Lines are SLR fits to ln(GDP/cap). Data is from @the_world_bank_enterprise_2019.^[Countries are not surveyed the same years, so ECI and GDP/cap values have been matched to the newest survey year for each countries *before* than 2016. Years range between 2008 and 2015. No country has more than one observation.]"} 
 
 library(tidyverse)
 library(ggpubr)
@@ -217,7 +231,7 @@ library(countrycode)
 es_tb <- read_csv("/home/post/university/SGED07/assignments/papers/final_folder/data/es_infra.csv") %>%
   clean_names(case = "snake") %>%
   group_by(economy) %>%
-  filter(year < 2016) %>%
+  filter(year > 2007 & year < 2016) %>%
   filter(year == max(year)) %>%
   ungroup()
 
@@ -343,4 +357,6 @@ By using an instrumental variable approach built on
 ### IV approach
 # Appendix
 ## Notes on figures
+
+\newpage
 # References

@@ -16,6 +16,7 @@ library(countrycode)
 library(haven)
 library(pwt9)
 library(WDI)
+library(vroom)
 ```
 
 
@@ -108,6 +109,12 @@ wdi_gdp_cap_tidy <- wdi_gdp_cap %>%
   filter(country_code %in% country_set & year == ref_year) %>%
   mutate(country_code = as.character(country_code))
 
+gdp_cap <- read_csv("/home/post/university/SGED07/assignments/papers/final_folder/data/API_NY.GDP.PCAP.PP.KD_DS2_en_csv_v2_867594/gdp_cap_ppp_2011_int_doll.csv",
+                       skip = 4) %>%
+  select(-c(`Country Name`, `Indicator Name`, `Indicator Code`, X65)) %>%
+  rename(iso3c = `Country Code`) %>%
+  gather(-iso3c, key = year, value = gdp_cap) %>%
+  mutate(year = as.numeric(year))
 ```
 
 ## Prepare population data
@@ -198,5 +205,8 @@ ggplot(joined_tidy, aes(y = log(gdp_cap), x = ECI_plus, label = country_code, co
 
 ```
 
+```{r}
+
+```
 
 

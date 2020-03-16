@@ -227,16 +227,6 @@ w er god fordi outputs der ikke bruges hedder x^0 = 1
 
 
 
-## Conceptual framework
-
-\newpage
-  
-## Research questions
-
-## Research aims
-
-## Questions
-
 ## Methodology
 This section presents the general research design and the construction of the key variables used in the regression analysis. First I outline the empirical strategy ... 
 
@@ -310,16 +300,6 @@ $$
 
 where states are indexed by $r$, $R$ is the total number of states, years are indexed by $y$, and $Y$ is the total number of years in the sample.
 
-## Estimation
-
-## Limitations
-
-
-
-\newpage
-
-
-
 ## Electricity and shortages
 [Skriv en del af dette om til formatet: My main data on ... comes from Allcott et al. The dataset contains ... from ...]
 
@@ -342,13 +322,6 @@ $$
 The data on total electricity sold to consumers, the total hydroelectrict electriction generation (both observed and maximum capacity), the total generation capacity, and the previous yeraas capacity increase (state/year) comes from the General Review [@cea_all_1994] and provided by 
 
 
-## Nightlight estimation of shortages
-
-## Annual Survey of Industries (ASI)
-I use 
-
-## Weather data
-
 ## International trade data
 To construct the index of product complexity, I use data on international trade.
 The raw trade data is collected by UN COMTRADE and provided through the Harvard Growth Lab [@the_growth_lab_at_harvard_university_international_2019]. I use the Harmonized System 1992 (HS92) classification, which covers bilateral trade flows for approximately 5000 products between 1995 and 2017. 
@@ -357,15 +330,12 @@ The bilateral flows are aggregated into product-level exports for each country, 
 
 ## Notes
 
-
 - Limitation: Product quality difference within same product category. 
 
 - Ideen om mere komplekse produkter er relateret til Kremer's O-ring papir sektion 1.4 om choice of technology.
 
 ## References
-
 ## Methodology file
-
 
 The main feature of the study is designed to exploit the state-level variation in electricity shortages to explain differences in the complexity of products produced by individual plants. At the most general level, this includes three steps. 
 First, I construct a product-complexity index and assign a value to each plants production. Next I estimate average electricity shortages for each state. This state-level value is also assigned to each plant. Finally, I regress the state-level electricity-variable on the plant-level complexity variable and a number of relevant controls.
@@ -396,7 +366,6 @@ where states are indexed by $r$, $R$ is the total number of states, years are in
 ### Limitations
 
 ## Draft
-
 
 ### Product Complexity
 I calculate product complexity-values based on the Method of Reflections developed in TODO. 
