@@ -15,9 +15,8 @@ fontsize: 12pt
 linestretch: 1
 toc-depth: 2
 secnumdepth: 2
-lof: True
-lot: True
 ---
+
 
 \newpage
 
@@ -27,15 +26,75 @@ lot: True
 ## Product complexity
 
 Main points to get across:
+
  - The idea behind economic complexity
+
  - Why it matters
+
  - How the lego-idea is
+
  - We don't understand micro-foundations very well
 
 Figures to include:
- - RCA matrix sorted by ECI and PCI
- - :
 
+ - RCA matrix sorted by ECI and PCI
+
+
+### Figure draft
+
+```{R eci_gdp_figure, fig.height = 3, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="GDP/cap and ECI"} 
+library(tidyverse)
+library(janitor)
+library(ggpubr)
+
+# read and prep nat resource rents (from WB Estimates based on sources and methods described in "The Changing Wealth of Nations: Measuring Sustainable Development in the New Millennium" ( World Bank, 2011 ).)
+nat_rents_tb <- read_csv("/home/post/university/SGED07/assignments/papers/final_folder/data/nat_res_rents.csv", skip = 4) %>%
+  select(-c(`Indicator Name`, `Indicator Code`, X65)) %>%
+  gather(-c(`Country Name`, `Country Code`), key = year, value = perc_rent_of_gdp) %>%
+  mutate(year = as.numeric(year)) %>%
+  clean_names(case = "snake")
+
+# read and prep gdp cap levels, gdp/cap ppp 2011 intl dollars
+gdp_cap_tb <- read_csv("/home/post/university/SGED07/assignments/papers/final_folder/data/API_NY.GDP.PCAP.PP.KD_DS2_en_csv_v2_867594/gdp_cap_ppp_2011_int_doll.csv", skip = 4) %>%
+    select(-c(`Indicator Name`, `Indicator Code`, X65)) %>%
+  gather(-c(`Country Name`, `Country Code`), key = year, value = gdp_cap) %>%
+  mutate(year = as.numeric(year)) %>%
+  clean_names(case = "snake")
+
+# read and prep econ comp levels, from https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910%2FDVN%2FXTAQMC&version=DRAFT
+eci_tb <- read_delim("/home/post/university/SGED07/assignments/papers/final_folder/data/eci_rankings.tab", delim = "\t") %>%
+  select(country_code = code, year, hs_eci, hs_eci_rank)
+
+# join tabels
+col_tb <- eci_tb %>%
+  left_join(nat_rents_tb) %>%
+  left_join(gdp_cap_tb) %>%
+  mutate(
+    rents_10 = as.factor(ifelse(perc_rent_of_gdp >= 10, "above 10%", "below 10%")),
+    rents_20 = as.factor(ifelse(perc_rent_of_gdp >= 20, 1, 0)),
+    rents_30 = as.factor(ifelse(perc_rent_of_gdp >= 30, 1, 0)),
+  ) %>%
+  mutate(gdp_cap_ln = log(gdp_cap))
+
+col2010 <- col_tb %>%
+  filter(year == 2010)
+
+p_eci <- ggscatter(col2010,
+          y = "gdp_cap_ln",
+          x = "hs_eci",
+          ylab = "ln(GDP/cap)",
+          xlab = "Economic Complexity (HH)",
+          color = "rents_10",
+          add = "reg.line",
+          palette = "jco") +
+  stat_cor(aes(color = rents_10), label.x = 0.7, label.y = c(8, 8.45)) 
+
+
+ggpar(p_eci, legend.title = "Resource rents as % of GDP:", font.legend = 10, font.tickslab = 10, font.x = 10, font.y = 10)
+
+
+
+```
 
 ## Disruptions in an O-ring model
 ## Draft
@@ -53,7 +112,63 @@ First, if we momentarily abstract away the amount of capital and the multiplier
 B, and assume that each worker in a firm has the same quality $q$, we can write
 output as $(q_1 \cdot q_2 \cdot ... \cdot q_n) n = q^{n} n$. Small changes in quality then leads to large differences in output: if a firm produces a two-task ($n$ = 2) product, we find its output by taking $q^22$. If the workers are perfect $q = 1$ output is 2. Should workers have a quality of .9 instead, however, output is $0.9 \cdot 0.9 \cdot 2 = 1.62$. That is, a 10 percent drop in quality leads to a 21 percent drop in output. More importantly this effect increases as the complexity of the production process ($n$) increases (see figure 1A, 1B).
 
+```{R outputTasks, fig.height = 2.5, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="O-ring output by worker quality and tasks: (A) for very small declines in worker quality we see massive drops in expected output; (B) as complexity of production increases, the drop from potential output driven by marginal decreases in quality skyrockets."} 
+
+
+library(tidyverse)
+library(ggpubr)
+
+# output decline bwetween .95 and 90 in quality, by number of tasks
+tb <- tibble(tasks = 1:100, output_95 = 0.95^(tasks)*tasks, output_90 = 0.9^(tasks)*tasks) %>%
+  mutate(diff_ratio = output_95 / output_90,
+         diff_abs = output_95 - output_90)
+
+# output by quality for 10 task process
+ quality <- seq(0.50, 1, 0.01)
+ tasks <- rep(10, length(quality))
+ output_tb <- tibble(quality, tasks) %>%
+ mutate(output = quality^(tasks)*tasks)
+
+p5 <- ggline(output_tb,
+       numeric.x.axis = TRUE,
+       x = "quality",
+       y = "output",
+       plot_type = "l",
+       xlab = "Quality",
+       ylab = "Output") %>%
+  ggpar(font.tickslab = 10, font.x = 10, font.y = 10)
+
+
+# percentage of output lost by worker quality for 4 different task levels
+quality <- seq(0.75, 1, 0.01)
+
+tasks <- c(rep(5, length(quality)), rep(10, length(quality)), rep(50, length(quality)))
+
+ scaled_output_tb <- tibble(qual = rep(quality, 3), tasks) %>%
+ mutate(output = qual^(tasks)*tasks) %>%
+   mutate(rescaled_output = output/tasks) %>%
+   mutate(tasks = as.factor(tasks))
+
+p6 <- ggline(scaled_output_tb,
+             numeric.x.axis = TRUE,
+             #group = "tasks",
+             x = "qual",
+             y = "rescaled_output",
+             plot_type = "l",
+             xlab = "Quality",
+             ylab = "% of output",
+             color = "tasks",
+             palette = "jco") %>%
+  ggpar(font.tickslab = 10, font.x = 10, font.y = 10, font.legend = 10, legend = "top", legend.title = "# of tasks") +
+  theme(legend.position = c(0.2, 0.8))
+
+ggarrange(p5, p6, ncol = 2, nrow = 1, labels = c("A", "B"), font.label = list(size = 10, face = "bold"))
+
+```
+
 Second, Kremer shows that an economy will maximise its output by matching workers by their quality. Take a simple example of a four worker, two firm economy: two high quality workers, $q_h = 1$, and two low quality workers, $q_l = 0.5$. Each worker performs one task. We can have a situation where firms match workers skill (so that one firm has high $q$ workers, the other low $q$ workers) or where each firm has a mix:^[A general proof: \begin{align*}(q_h - q_l)^2 >& 0 \\ q_h^2 + q_l^2 - 2q_hq_l >& 0 \\ q_h^2 + q_l^2 >& 2q_h q_l \end{align*}]
+
+
 
 \begin{align*}
 2(q_h \cdot q_h) + 2 (q_l \cdot q_l) &= 2(1 \cdot 1) + 2(0.5 \cdot 0.5) = 2 + 0.5 = 2.5  \\ 
@@ -90,7 +205,7 @@ This has implications for ...
 
 ### Draft figures
 
-```{R disr_figure, fig.height = 4, echo = FALSE, message = FALSE, warning = FALSE}
+```{R disr_figure, fig.height = 4, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="\\label{fig:figs}Production disruptions, complexity, and GDP"} 
 
 library(tidyverse)
 library(ggpubr)
@@ -168,8 +283,7 @@ p1 <- ggscatter(
   add = "reg.line",
   ylab = " ",
   xlab = "ln(GDP/cap)"
-) %>% ggpar(legend = "right", font.legend = 10, legend.title = "ECI", font.tickslab = 10, font.x = 10, font.y = 8, font.title = 10, title = "% products spoied, broken in shipment")
-
+) %>% ggpar(legend = "right", font.legend = 10, legend.title = "ECI", font.tickslab = 10, font.x = 10, font.y = 8, font.title = 10, title = "% products spoied, broken in shipment") 
 
 ## % sales lostdue to electrical shortages
 p2 <- ggscatter(
@@ -212,65 +326,21 @@ ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2, common.legend = TRUE, legend = "ri
 ```
  
 
-```{R output_by_tasks_and_q, fig.height = 2, fig.cap = "A figure, yk", echo = FALSE, message = FALSE, warning = FALSE}
-library(tidyverse)
-library(ggpubr)
-
-# output decline bwetween .95 and 90 in quality, by number of tasks
-tb <- tibble(tasks = 1:100, output_95 = 0.95^(tasks)*tasks, output_90 = 0.9^(tasks)*tasks) %>%
-  mutate(diff_ratio = output_95 / output_90,
-         diff_abs = output_95 - output_90)
-
-# output by quality for 10 task process
- quality <- seq(0.50, 1, 0.01)
- tasks <- rep(10, length(quality))
- output_tb <- tibble(quality, tasks) %>%
- mutate(output = quality^(tasks)*tasks)
-
-p5 <- ggline(output_tb,
-       numeric.x.axis = TRUE,
-       x = "quality",
-       y = "output",
-       plot_type = "l",
-       xlab = "Quality",
-       ylab = "Output") +
-  font("xlab", size = 9) +
-  font("ylab", size = 9)
-
-
-# percentage of output lost by worker quality for 4 different task levels
-quality <- seq(0.75, 1, 0.01)
-
-tasks <- c(rep(5, length(quality)), rep(10, length(quality)), rep(50, length(quality)))
-
- scaled_output_tb <- tibble(qual = rep(quality, 3), tasks) %>%
- mutate(output = qual^(tasks)*tasks) %>%
-   mutate(rescaled_output = output/tasks) %>%
-   mutate(tasks = as.factor(tasks))
-
-p6 <- ggline(scaled_output_tb,
-             numeric.x.axis = TRUE,
-             #group = "tasks",
-             x = "qual",
-             y = "rescaled_output",
-             plot_type = "l",
-             xlab = "Quality",
-             ylab = "% of output",
-             color = "tasks",
-             palette = "jco")+
-  font("xlab", size = 9) +
-  font("ylab", size = 9 )
-
-figure <- ggarrange(p5, p6,
-                    labels = c("A", "B"),
-                    ncol = 2, nrow = 1)
-
-figure
-```
  
 
- 
+# Research question
+
+The question this study will address is then:
+
+> Does disruptions in electricity supply cause plants to produce less complex
+> products?
+
+By using an instrumental variable approach built on 
+
 # Methods
 ## Data
 ## Empirical strategy
 ### IV approach
+# Appendix
+## Notes on figures
+# References
