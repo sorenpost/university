@@ -23,7 +23,7 @@ abstract: "This is my abstract. \\newpage"
 
 # Introduction
 
-- Introduction: This is the question that interests me. This is the general approach. This is the outline of the paper.
+- Introduction: This is the question that interests me. This is the general approach. This is the outline of the paper. This a brief review of the importance of electricity.
 
 # Conceptual framework
 
@@ -37,11 +37,10 @@ If the size of the market limits the specialization of firms and workers, the gl
 
 The literature on economic complexity provides one possible answer. If some spill-over effects from the individual activities that arise from  specialization - like property rights, tacit know-how, infrastructure, regulation - cannot be imported, they need to be present in the local economy. The productivity of a country then lies in these non-tradable "economic capabilities", and the differences between countries owe (partly) to their number, complimentarity, and interactions of these capabilities [@hidalgo_product_2007; @hausmann_atlas_2013]. 
 
-While competing methods exist [@tacchella_new_2012; @hidalgo_building_2009; @inoua_simple_2016],  approaches to quantifying these capabilities share a common conceptual grounding. Given the difficulties in defining and measuring discrete capabilities, researchers have taken an agnostic approach to specific nature of capabilities. Instead, 
+While competing methods exist [@tacchella_new_2012; @hidalgo_building_2009; @inoua_simple_2016],  approaches to quantifying these capabilities share a common conceptual grounding. Given the difficulties in defining and measuring discrete capabilities, researchers have taken an agnostic approach to specific nature of capabilities. The basic intuition is simple. Say that a set of capabilities are required to effectively produce a product. We can assume that a country that effectively makes the given product posses the necessary capability base. It follows then that products that are produced by many countries requires less rare- or non-tradeable capabilities, while rarer products require more complex capabilities. Some products, however, will happen to be present in only a few places for reasons unrelated to the abilities of the economy (diamonds, ostrich eggs). This is solved by implementing an iterative algorithm that repeatedly weighs the complexity of products by the complexity of the countries that export them. See the methods section for a definition of the algorithm used in this paper.
 
-![The tripartite graph (left) represents the theoretical model: countries (C) can make the products (P) their capabilities (A) allows them to. The bipartite graph (right) is what we observe in the trade data: countries export a set of products, and from this set of products, we infer their capabilities. \label{fig:network-fig} ](/home/post/university/SGED07/assignments/papers/final_folder/network-fig-ws.png)
+![The tripartite graph (left) represents the theoretical model: countries (C) can make the products (P) their capabilities (A) allows them to. The bipartite graph (right) is what we observe in the trade data: countries export a set of products, and from this set of products, we infer their capabilities. For example, every country can produce product three. This suggests that the capabilities required to produce it are ubiquitous. In addition, we can see that the only product country three can make is the one every country produces. This suggest that country three does not have a sophisticated capability-base. In contrast, country one can produce all products including product one, which it is the only one that can produce. Here, country one and product one would the most complex. \label{fig:network-fig} ](/home/post/university/SGED07/assignments/papers/final_folder/network-fig-ws.png)
 
-We can leverage this reflecting information to refine the information on the sophistication of products and countries. For example, in figure \ref{fig:network-fig} every country can produce product three. This suggests that the capabilities required to produce it are ubuiquitos. In addition, we can see that the only product country three can make is the one every country produces. This tells us that country three does not have a sophisticated capability-base. In contrast, country one can produce all products including product one, which it is the only one that can produce. This again suggests that a) country one possess a wide range of capabilities, and b) that product one is a complex product and require many or rare capabilities to produce.
 
 ```{R eci-gdp-fig, fig.height = 3.5, echo = FALSE, message = FALSE, warning =FALSE, fig.cap="\\label{fig:eci-gdp-fig}Simple best fits on GDP/cap (PPP, 2011 Intl \\$) by Economic Complexity Index (ECI). Data on resource rents is from @the_world_bank_world_2020, GDP/cap is from @the_world_bank_world_2020-1 and ECI is from @simoes_economic_2011. All observations are from 2010."} 
 library(tidyverse)
@@ -101,21 +100,18 @@ p_eci <- ggscatter(col2010,
 
 This framework has proven to be a strong predictor of economic performance. Figure \ref{fig:eci-gdp-fig} shows the very robust relationship between country-level economic complexity and GDP per capita (PPP). Since natural resources are a product of geographical luck rather than productive know-how, I separate economies with more a larger than 10% of resource rents as share of total GDP. @hausmann_atlas_2013 shows how the deviations the observed economic complexity of economies and their GDP/cap is a strong predictor of economic growth, suggesting that they converge to the sophistication of their capabilities (that is, countries below the trend line growth fast, while countries above slows down). Additionally, using only two variables - a measure of economic complexity and GDP/cap - @tacchella_dynamical_2018 constructs a model of 5-year predictions of economic growth, beating the best-in-class predictions by the IMF (whose analysis is country-calibrated and uses hundreds of variables). Not only does aggregate complexity matter: economies moving into more complex products are more egalitarian [@hartmann_linking_2017-1] and less carbon-intensive [@can_impact_2017].
 
-The economic complexity at the aggregate level is the outcome of a myriad of historical conditions, firm decisions, and micro-level interactions. These foundations of economic sophistication are not very well understood has been 
+The aggregate-level economic complexity is the outcome of a myriad of micro-level decisions, historical conditions, firm decisions. These foundations of economic sophistication are not very well understood, and have seen very little empirical study. 
 
-
-
-
-
-- We don't understand micro foundations very well
 
 
 ## Disruptions in an O-ring model
-In this section I develop the relationship between disruptions and the complexity of production. I first discuss some key results from Kremer's O-ring model [@kremer_o-ring_1993] and how small changes in risk have large output effects. Second,...
+In this section I develop the intuition behind the relationship between disruptions and the complexity of production. I first discuss some key results from Kremer's O-ring model [@kremer_o-ring_1993] and how small changes in risk have large output effects. Second, I extend these ideas to input-output relationships. I round up by discussing the model implications for the complexity in production.
+
+### O-ring production and quality
 
 In an O-ring production model each production process consists of $n$ tasks. More complex products require more tasks than simpler ones. Each task $n_i$ has a $q_i$ chance of being completed successfully. If one task fails the whole product loses value. In Kremer's model, $q$ represents the ability (skill) of workers to retain the maximum value in production. A $q$ of 0.95 then both means that a worker has a 5 percent risk of ruining the product completely, or that she always performs the task so that the product retains 95 percent of its value. A central condition of the model is that we cannot substitute quality for quantity. That is, a great quarterback, chef, or composer is not equal to two good ones; any number of folk singers from the local pub won't write Blood On The Tracks. 
 
-The O-ring production model takes the form of a modified Cobb-Douglas^[assumptions]:
+The O-ring production model takes the form of a modified Cobb-Douglas:
 
 $$ Y = k^{\alpha} (\prod^{n}_{i = 1} q_i) n B $$
 
@@ -196,7 +192,7 @@ If we fashion
 Let some economy consist of $n$ plants. Each plant produce one unique product. Each product can either be consumed (as regular household consumption) or be used as intermediate inputs in the production process of other plants. We can then write the production $x$ for plant $i$ as^[This is the basic model used in much of the recent literature on network effects in aggregate shocks through I/O networks [@acemoglu_network_2012; @acemoglu_networks_2016; @carvalho_micro_2014].]
 
 $$
-x_i =  (l_i)^{1-\alpha}(\prod^{n}_{j = 1} x_{ij}^{w_{ij}})^{\alpha} z_i
+x_i =  (z_i l_i)^{1-\alpha}(\prod^{n}_{j = 1} x_{ij}^{w_{ij}})^{\alpha}
 $$
 
 where $l_i$ is the amount of labor hired by plant $i$ and $\alpha$ is the share
@@ -214,9 +210,7 @@ are collected in $w$ as a directed graph, we get the economy's production
 network: the number of producers that receive $x_i$ as inputs to their production is the *out-degree* of plant $i$, and $x_{ij}^{w_{ij}}$ describe its *in-degree*. To see why this production network matters for the role of disruptions, consider the networks in figure \ref{fig:io-fig}. Say that for some firm (1), half
 of its output is ruined by some accident. In the first network, this only reduces the output of the firm itself. In the second model, however, output lost in firm 1 has is transmitted to 
 
-
-![Three stylized input-output configurations in a four sector economy. \label{fig:io-fig}](/home/post/university/SGED07/assignments/papers/final_folder/three_models_io2.png)
-
+![Three stylized input-output configurations in a four sector economy. \label{fig:io-fig}](/home/post/university/SGED07/assignments/papers/final_folder/io_model_ig.png)
 
 We can then think of production in two ways: on the plant level and in the supply-chain level. 
 
@@ -302,7 +296,8 @@ p1 <- ggscatter(
   color = "eci_value",
   add = "reg.line",
   ylab = " ",
-  xlab = "ln(GDP/cap)"
+  xlab = "ln(GDP/cap)",
+  add.params = list(color = "black") # Customize reg. line
 ) %>% ggpar(legend = "right", font.legend = 10, legend.title = "ECI", font.tickslab = 10, font.x = 10, font.y = 8, font.title = 10, title = "% products spoied, broken in shipment") 
 
 ## % sales lostdue to electrical shortages
@@ -313,7 +308,8 @@ p2 <- ggscatter(
   color = "eci_value",
   add = "reg.line",
   ylab = " ",
-  xlab = "ln(GDP/cap)"
+  xlab = "ln(GDP/cap)",
+  add.params = list(color = "black") # Customize reg. line
 ) %>% ggpar(font.tickslab = 10, font.x = 10, font.y = 8, font.title = 10, title = "% yearly sales lost to electricity shortages")
 
 ##  water shortages per month
@@ -324,7 +320,8 @@ p3 <- ggscatter(
   color = "eci_value",
   add = "reg.line",
   ylab = " ",
-  xlab = "ln(GDP/cap)"
+  xlab = "ln(GDP/cap)",
+  add.params = list(color = "black") # Customize reg. line
 ) %>% ggpar( font.tickslab = 10, font.x = 10, font.y = 8, font.title = 10, title = "% product value stolen during shipment")
 
 ## products_shipped_to_supply_domestic_markets_that_were_lost_due_to_theft_percent_of_product_value
@@ -336,6 +333,7 @@ p4 <- ggscatter(
   add = "reg.line",
   ylab = " ",
   xlab = "ln(GDP/cap)",
+  add.params = list(color = "black"), # Customize reg. line
   na.rm = FALSE
 ) %>% ggpar( font.tickslab = 10, font.x = 10, font.y = 8, font.title = 10, title = "# of monthly water shortages")
 
@@ -424,9 +422,9 @@ The data on total electricity sold to consumers, the total hydroelectrict electr
 
 ### International trade data
 To construct the index of product complexity, I use data on international trade.
-The raw trade data is collected by UN COMTRADE and provided through the Harvard Growth Lab [@the_growth_lab_at_harvard_university_international_2019]. I use the Harmonized System 1992 (HS92) classification, which covers bilateral trade flows for approximately 5000 products between 1995 and 2017. 
+The raw trade data is collected by UN COMTRADE and provided through the Harvard Growth Lab [@the_growth_lab_at_harvard_university_international_2019]. I use the Harmonized System 1992 (HS92) classification, which covers bilateral trade flows for approximately 5000 products between 1995 and 2017.
 
-The bilateral flows are aggregated into product-level exports for each country, for each year. 
+The bilateral flows are aggregated into product-level exports for each country, for each year, at the 4-digit level (approximately 1200 products).
 
 ### Input-output relationship
 
@@ -435,24 +433,45 @@ For data on the manufacturing industry in India, I use the Annual Survey of Indu
 
 Products are classicfed according to 5-digit ASI Commodity Classification (ASICC) codes.
 
-## Empirical strategy
+## Key variables
 
 ### Product complexity
+
+I use the Hausman-Hidalgo (HH) algorithm [@hidalgo_building_2009] to find the
+complexity of products. I first find the revealed comparative advantage (RCA)
+[@balassa_trade_1965] of each country in each of the approx. 1200 products in
+the HS92 series. RCA normalizes the export share in a country's total export
+with the share of a product's global export value in the value of all global exports together. A comparative advantage is considered *revealed* if RCA $\geq$ Hence, RCA of country $c$ in product $p$:
+
+$$
+RCA_{cp} = \frac{X_{cp}}{\sum_p X_{cp}} \bigg/ \frac{\sum_c X_{cp}}{\sum_c \sum_p X_{cp}}
+$$
+
+where $X_{cp}$ is the export value of country $c$ in product $p$. I then define an RCA matrix $M_{cp}$ with countries in rows as products in columns as:
+
+$$
+M_{cp} = \begin{cases}
+ 1 & \text{if } RCA_{cp} \geq 1 \\ 
+ 0 & \text{if } RCA_{cp} < 1
+\end{cases}
+$$
+
+
 
 ### Plant complexity
 
 For each plant, I quantify the complexity of their production output as the weighted average the complexity-values for each product it produces. I assign weights based on the value of the production. That is, the complexity for factory $f$ at time $t$, $C_{ft}$, is defined as:
 
 $$
-C_{ft} = \sum_p Q_{pt} \frac{O_{fpt}}{\sum_p O_{fpt}}
+C_{ft} = \sum_p PCI_{pt} \frac{O_{fpt}}{\sum_p O_{fpt}}
 $$
 
-where $Q_{pt}$ is the product complexity of product $p$ at time $t$ and $O_{fpt}$ is the output (in current prices) of factory $f$ in product $p$ at time $t$. 
+where $PCI_{pt}$ is the product complexity of product $p$ at time $t$ and $O_{fpt}$ is the output (in current prices) of factory $f$ in product $p$ at time $t$. 
 
 However, this definition potentially underestimates the complexity of large, multi-product factories that produce very complex products, but happen to sell markedly more of their low-complex ones. I therefor also include a stricter measure of plant complexity ($C^{\text{max}}_{ft}$) that uses only the most complex product in a factory's product-portfolio, regardless of the output volume. 
 
 $$
-C^{\text{max}}_{ft} = max \{ Q_{1t} I_{1ft}, \text{ ...}, Q_{pt} I_{pt} \}
+C^{\text{max}}_{ft} = max \{ PCI_{1t} I_{1ft}, \text{ ... }, PCI_{pt} I_{pt} \}
 $$
 
 where 
@@ -465,6 +484,20 @@ I_{pft} = \begin{cases}
 $$
 
 ### Network effects of disruptions
+
+I measure the disruption in the supply network of a plant in three steps. First I assign each plant to a sector in the I/O network based on their sector classification in the ASI data. 
+
+I then create a sector-level disruption variable by taking the weighted average of plant-level disruption values, where weights are the output share of a plant in the sectors total output. I now have an input-output network where each of the 130 sectors has a disruption value. The input-output network shows the average share of different sectors' output that is used as intermediate input in a given sectors production, as well its' suppliers' suppliers, and so on. 
+
+The disruption value 
+
+This essentially represent
+
+The measure this effect, 
+
+carries information on the amount of  
+
+
 
 ### Instrumental variable
 
