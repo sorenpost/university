@@ -15,6 +15,7 @@ fontsize: 12pt
 linestretch: 1
 toc-depth: 2
 secnumdepth: 2
+abstract: "This is my abstract. \\newpage"
 ---
 
 
@@ -22,33 +23,25 @@ secnumdepth: 2
 
 # Introduction
 
+- Introduction: This is the question that interests me. This is the general approach. This is the outline of the paper.
 
-
-
-# Background
 # Conceptual framework
-## Product complexity
 
-We can think of 
+- Here I outline the paper. First I briefly discuss economic complexity and its corollary product complexity (what, why we should care). I then turn to how product complexity and electricity disruptions can be related. I build on an O-ring model. From the extended O-ring model, I draw out a set of testable hypotheses. 
 
-Main points to get across:
+## Product Complexity
 
- - The idea behind economic complexity
+Since Adam Smith it has been a truism that wealth comes from the economic efficiency of division of labor. The greater the market available, the deeper its participants can specialize and the greater the benefit. This suggests that economic wealth is connected to the increasing number of activities and complexity of interactions in the economy [@romer_endogenous_1990]. 
 
- - Why it matters
+[Skriv sætning om] Since the size of the market limits the specialization of firms and workers, the globalization of labor- and input-markets should facilitate economic wealth creation. If all countries can exploit the global markets, why then have national differences in the gross domestic product (GDP) per capita have skyrocketed during the last two hundred years [@pritchett_divergence_1997]? Despite 50 years of unprecedented international connectivity, international trade, and globalisation (and some notable growth spurts), the data show that developing countries (as a group) are not catching u to more advanced economies [@johnson_what_2020].
 
- - How the lego-idea is
+The literature on economic complexity provides one possible answer. 
 
- - We don't understand micro-foundations very well
+- Cite  on prediction
 
-Figures to include:
+- We don't understand micro foundations very well
 
- - RCA matrix sorted by ECI and PCI
-
-
-### Figure draft
-
-```{R eci_gdp_figure, fig.height = 3.5, echo = FALSE, message = FALSE, warning =FALSE, fig.cap="GDP/cap (PPP, 2011 Intl \\$) and ECI"} 
+```{R eci-gdp-fig, fig.height = 3.5, echo = FALSE, message = FALSE, warning =FALSE, fig.cap="\\label{fig:eci-gdp-fig}OGDP/cap (PPP, 2011 Intl \\$) and ECI"} 
 library(tidyverse)
 library(janitor)
 library(ggpubr)
@@ -103,7 +96,8 @@ p_eci <- ggscatter(col2010,
 ```
 
 ## Disruptions in an O-ring model
-## Draft
+In this section I develop the relationship between disruptions and the complexity of production. I first discuss some key results from Kremer's O-ring model [@kremer_o-ring_1993] and how small changes in risk have large output effects. Second,...
+
 In an O-ring production model each production process consists of $n$ tasks. More complex products require more tasks than simpler ones. Each task $n_i$ has a $q_i$ chance of being completed successfully. If one task fails the whole product loses value. In Kremer's model, $q$ represents the ability (skill) of workers to retain the maximum value in production. A $q$ of 0.95 then both means that a worker has a 5 percent risk of ruining the product completely, or that she always performs the task so that the product retains 95 percent of its value. A central condition of the model is that we cannot substitute quality for quantity. That is, a great quarterback, chef, or composer is not equal to two good ones; any number of folk singers from the local pub won't substitute Bob Dylan. 
 
 The O-ring production model takes the form of a modified Cobb-Douglas^[assumptions]:
@@ -112,11 +106,9 @@ $$ Y = k^{\alpha} (\prod^{n}_{i = 1} q_i) n B $$
 
 where $Y$ is the expected output of the firm, $k$ is capital and $B$ is the firm specific productivity multiplier (that is, how productive is each worker with one unit of capital). For the purpose of this paper, two results from Kremer's model are key: the importance of even very small differences in $q$ on output, and the resulting assortive matching of workers by quality.
 
-First, if we momentarily abstract away the amount of capital and the multiplier
-B, and assume that each worker in a firm has the same quality $q$, we can write
-output as $(q_1 \cdot q_2 \cdot ... \cdot q_n) n = q^{n} n$. Small changes in quality then leads to large differences in output: if a firm produces a two-task ($n$ = 2) product, we find its output by taking $q^22$. If the workers are perfect $q = 1$ output is 2. Should workers have a quality of .9 instead, however, output is $0.9 \cdot 0.9 \cdot 2 = 1.62$. That is, a 10 percent drop in quality leads to a 21 percent drop in output. More importantly this effect increases as the complexity of the production process ($n$) increases (see figure 1A, 1B).
+For the moment, $B$ and the amount ($k$) and share ($\alpha$) of capital in production is unimportant for the argument, so let it be fixed across all firms. For simplicity, assume each worker in a firm has the same quality $q$. We can then write output as $(q_1 \cdot q_2 \cdot ... \cdot q_n) n = q^{n} n$. Small changes in quality then leads to large differences in output: if a firm produces a two-task ($n$ = 2) product, we find its output by taking $q^22$. If the workers are perfect $q = 1$ output is 2. Should workers have a quality of .9 instead, however, output is $0.9 \cdot 0.9 \cdot 2 = 1.62$. That is, a 10 percent drop in quality leads to a 21 percent drop in output. More importantly this effect increases as the complexity of the production process ($n$) increases (see figure \ref{fig:oring-fig}).
 
-```{R outputTasks, fig.height = 2.5, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="O-ring output by worker quality and tasks: (A) for very small declines in worker quality we see massive drops in expected output (in the example $n = 10$); (B) as complexity of production increases, the drop from potential output driven by marginal decreases in quality skyrockets. In temrs of production, this suggest that small changes in the risk (quality) of failure disproportionately punishes higher complexity producers."} 
+```{R oring-fig, fig.height = 2.5, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="\\label{fig:oring-fig}O-ring output by worker quality and tasks: (A) for very small declines in worker quality we see massive drops in expected output (in the example $n = 10$); (B) as complexity of production increases, the drop from potential output driven by marginal decreases in quality skyrockets. In temrs of production, this suggest that small changes in the risk (quality) of failure disproportionately punishes higher complexity producers."} 
 
 library(tidyverse)
 library(ggpubr)
@@ -178,48 +170,47 @@ Second, Kremer shows that an economy will maximise its output by matching worker
 
 With the same workers, capital, and productivity, a matched economy will in this simple example have a 25% larger output than a mixed one.^[$2(q_h \cdot q_h) + 2 (q_l \cdot q_l) = 2(1 \cdot 1) + 2(0.5 \cdot 0.5) = 2 + 0.5 = 2.5$; $2(q_h \cdot q_l) + 2 (q_h \cdot q_l) = 2(1 \cdot 0.5) + 2(1 \cdot 0.5) = 1 + 1 = 2$]
 
- 
- 
-Why are these results relevant to the production of more or less complex products? 
+[ TODO: Why are these results relevant to the production of more or less complex products?]
 
-- greater gains as n increases = more complex productions will be done in higher $n$ environments.
-
-- matching = environment matching: production chains are matched in their environment. That is, 
-
-We can interpret the model in a different way. Instead of producing output by performing $n$ tasks, we let a product be the result of combining $n$ intermediate inputs. The quality factor $q_i$ then becomes the likelihood of getting successfully delivered the intermediate input from some other producer, i.e. their production is not disrupted by some exogenous factor (e.g. fire, theft, power outages, corruption). The model is then representative of a firm that... however, thi
-
-
+We can interpret the model in a different way. Instead of producing output by performing $n$ tasks, we let a product be the result of combining $n$ intermediate inputs. The quality factor $q_i$ then becomes the likelihood of getting successfully delivered the intermediate input from some other producer, i.e. their production is not disrupted by some exogenous factor (e.g. fire, theft, power outages, corruption). This model is then representtative of (randomly select input suppliers, etc). 
 
 ***
 
- - Input Specificity and shocks [@barrot_input_2016]: shocks propagate through supply chains and impose large output costs on their costumers.
+If we fashion 
 
- - [@carvalho_supply_2016] show Japan earthquake propagating through the supply chain.
+Let some economy consist of $n$ plants. Each plant produce one unique product. Each product can either be consumed (as regular household consumption) or be used as intermediate inputs in the production process of other plants. We can then write the production $x$ for plant $i$ as^[This is the basic model used in much of the recent literature on network effects in aggregate shocks through I/O networks [@acemoglu_network_2012; @acemoglu_networks_2016; @carvalho_micro_2014].]
 
- - Using the 2011 Tōhoku earthquake as an exogenous shock, we structurally estimate production elasticities at the firm level and find greater complementarities in input usage than previously thought. For Japanese affiliates in the United States, output falls roughly one-for-one with declines in imports, consistent with a relationship between imported and domestic inputs that is close to Leontief. - Med andre ord: evidens tyder på at der ER stor komplimentaritet i (næsten one-for-one) i I/O forhold. Det betyder at disruptions burde have stor effect. [@boehm_input_2019]
+$$
+x_i =  (l_i)^{1-\alpha}(\prod^{n}_{j = 1} x_{ij}^{w_{ij}})^{\alpha} z_i
+$$
+
+where $l_i$ is the amount of labor hired by plant $i$ and $\alpha$ is the share
+of capital in production. $z_i$ models some risk of production failure due to
+some exogenous factor (e.g. fire, theft, power outages, corruption) and assumes
+a similar role to $q$ earlier. $x_{ij}$ is amount of output from plant $j$
+("good $j$") used as intermediate input in the production of $x_i$. $w_{ij}$ is
+the share of good $j$ used in production, and thus represents a sort of
+production recipe for plant $i$ (and $\sum_j w_{ij} = 1$). The collection of
+these $w$'s then constitutes the economy's input-output table
+[@carvalho_micro_2014].
+
+If we represent all the input and output links between production processes that
+are collected in $w$ as a directed graph, we get the economy's production
+network: the number of producers that receive $x_i$ as inputs to their production is the *out-degree* of plant $i$, and $x_{ij}^{w_{ij}}$ describe its *in-degree*. To see why this production network matters for the role of disruptions, consider the networks in figure \ref{fig:io-fig}. Say that for some firm (1), half
+of its output is ruined by some accident. In the first network, this only reduces the output of the firm itself. In the second model, however, output lost in firm 1 has is transmitted to 
 
 
-If we think of the model as representing a factory that produces a product using some combination of intermediate inputs.
-
-If tasks are done sequentially and the full value is only realized at the final stage, the O-ring model implies that the later stages will be done by workers with the highest quality. Similarly, should failures at any stage in production chains lead to losing the value of the final product, failure at later stages are disproportionately more costly. This would suggest that within production chains, more critical stages are located in low-failure environments. Between production chains it would suggest that shorter chains are finalized in higher failure environments, while longer would be finalized in lower. These stylised patterns are in aggrement with cursory glance at data [complexity of countries by their disruptions - however, might be many causes for this, XXXX show that even in the low-complexity products specialized in by more advanced countries, they tend to be differentiated into the higher unit values (think difference between exporting a 5-dollar watch and a handcrafted Rolex)]. If more complex products require longer chains of production or more individual tasks at each stage of production, this suggests that high disruption environments would lead to lower complexity of production. Is this the case? This is what I am testing.
+![Three stylized input-output configurations in a four sector economy. \label{fig:io-fig}](/home/post/university/SGED07/assignments/papers/final_folder/three_models_io2.png)
 
 
+We can then think of production in two ways: on the plant level and in the supply-chain level. 
 
 
 
-Implication parts:
+This implies two important complimentary effects. First, on the economy-wide level, we can think of the production of products as a hierarchical sequence of steps: rare earth minerals are mined, the minerals are processed into magnets, these magnets are used as inputs in speakers, and speakers are in turn used in the production of smartphones. If the full value is only realized in the final stage of such a production process, failure at later stages are more disproportionately more costly.^[The final consumer bears the price of previous inputs plus profits at each level.] Should producers be responsive to any sort or market pressure, this suggests that more critical (complex) stages would be located in higher $q$ environments. A second implication is that shorter production chains would tend to be finalized in higher failure environments than longer production chains. Given this, we would expect to observe two patterns: lower $q$ economies would tend to specialize in lower complexity products, primary and intermediate stages of production, and lower value varieties within product categories, whereas higher $q$ economies would specialize in higher complexity products, later production stages, and higher unit values.^[For example, the difference between two-dollar plastic watches versus handmade Rolex heirloom pieces.] 
 
-1. Workers performing the same task earn higher wages in a high-skill firm than in a low-skill firm;
 
-2. This model magnifies the effect of local bottlenecks which also reduce the expected returns to skill;
-
-This has implications for ...
-
-1. In terms of disruptions, Kremers model is essentially the same as sourcing from n sectors, where each sector has q chance of failing. Each sector is chosen at random here.
-3. Brummit et al show that in a random network where inputs are substitatuble and firms can "over invest" in input buffers ($\tau$ is basically the same as $n$ tasks that needs completion), they will - given a threshold of disruptions - self-select into less complex products.
-2. Sourcing networks are not random though - not at all [viz I/O networks] - and there are feedback mechanisms by disruptions.
-
-```{R disr_figure, fig.height = 4, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="Production disruptions tend to have a higher frequence in poorer, less complex economies. The color of points are economic complexity values (ECI) (gray point has missing ECI). Lines are SLR fits to ln(GDP/cap). Data is from @the_world_bank_enterprise_2019.^[Countries are not surveyed the same years, so ECI and GDP/cap values have been matched to the newest survey year for each countries *before* than 2016. Years range between 2008 and 2015. No country has more than one observation.]"} 
+```{R disr-fig, fig.height = 4, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="\\label{fig:disr-fig}Production disruptions tend to have a higher frequence in poorer, less complex economies. The color of points are economic complexity values (ECI) (gray point has missing ECI). Lines are SLR fits to ln(GDP/cap). Data is from @the_world_bank_enterprise_2019.^[Countries are not surveyed the same years, so ECI and GDP/cap values have been matched to the newest survey year for each country *before* than 2016. Years range between 2008 and 2015. No country has more than one observation.]"} 
 
 library(tidyverse)
 library(ggpubr)
@@ -336,13 +327,45 @@ p4 <- ggscatter(
 ## join plots
 ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2, common.legend = TRUE, legend = "right")
 
-
 ```
- 
+
+Figure \ref{fig:disr-fig} shows a 
+
+
+ - Input Specificity and shocks [@barrot_input_2016]: shocks propagate through supply chains and impose large output costs on their costumers.
+
+ - [@carvalho_supply_2016] show Japan earthquake propagating through the supply chain.
+
+ - Using the 2011 Tōhoku earthquake as an exogenous shock, we structurally estimate production elasticities at the firm level and find greater complementarities in input usage than previously thought. For Japanese affiliates in the United States, output falls roughly one-for-one with declines in imports, consistent with a relationship between imported and domestic inputs that is close to Leontief. - Med andre ord: evidens tyder på at der ER stor komplimentaritet i (næsten one-for-one) i I/O forhold. Det betyder at disruptions burde have stor effect. [@boehm_input_2019]
+
+
+If we think of the model as representing a factory that produces a product using some combination of intermediate inputs.
+
+If tasks are done sequentially and the full value is only realized at the final stage, the O-ring model implies that the later stages will be done by workers with the highest quality. Similarly, should failures at any stage in production chains lead to losing the value of the final product, failure at later stages are disproportionately more costly. This would suggest that within production chains, more critical stages are located in low-failure environments. Between production chains it would suggest that shorter chains are finalized in higher failure environments, while longer would be finalized in lower. These stylised patterns are in aggrement with cursory glance at data [complexity of countries by their disruptions - however, might be many causes for this, XXXX show that even in the low-complexity products specialized in by more advanced countries, they tend to be differentiated into the higher unit values (think difference between exporting a 5-dollar watch and a handcrafted Rolex)]. If more complex products require longer chains of production or more individual tasks at each stage of production, this suggests that high disruption environments would lead to lower complexity of production. Is this the case? This is what I am testing.
+
+Implication parts:
+
+2. This model magnifies the effect of local bottlenecks which also reduce the expected returns to skill;
+
+This has implications for ...
+
+1. In terms of disruptions, Kremers model is essentially the same as sourcing from n sectors, where each sector has q chance of failing. Each sector is chosen at random here.
+3. Brummit et al show that in a random network where inputs are substitatuble and firms can "over invest" in input buffers ($\tau$ is basically the same as $n$ tasks that needs completion), they will - given a threshold of disruptions - self-select into less complex products.
+2. Sourcing networks are not random though - not at all [viz I/O networks] - and there are feedback mechanisms by disruptions.
 
  
+\@ref(fig:disr-plot).
+ 
 
-# Research question
+# Research hypotheses
+
+Three hypotheses will be tested: first order influence of uncertainty on production choices (state-variable), supply-chain networked effects (not limited to location, but weighted through network), and uncertainty's impact on plant entry.
+
+> $H_1:$ More central industries are placed in less disruptive environments
+
+> $H_2:$ Higher complexity products will be negatively associated with disruptions in supply chain (as measured by the disruption-weighted eigenvector centrality) 
+
+> $H_3:$ Higher complexity ... lower disruption enviroments
 
 The question this study will address is then:
 
@@ -352,11 +375,102 @@ The question this study will address is then:
 By using an instrumental variable approach built on 
 
 # Methods
+
+The central part of the research design is a regression at the plant level on product complexity by electricity shortages. 
+
 ## Data
+
+I employ four main sources of data, ranging from 1992 - 2010: the comprehensive data set constructed by @allcott_how_2016 (weather, hydro-generated electricity, estimated electricity demand); high-frequency satellite image data on electricity reliability (@min_whose_2017); UN COMTRADE data on international trade (distributed by @the_growth_lab_at_harvard_university_international_2019); Indian manufacturing data from the Annual Survey of Industries (ASI) (for microdata) and input-output relationships, both provided through the Indian Ministry of Statistics and Programme Implementation. 
+
+### Weather data
+Rainfall data is from the University of Delaware and is distributed by @allcott_how_2016. It covers monthly rainfall for grids of 1/2 degree. Rainfall is then aggregated to average annual total per-grid point rainfall in each state. Temperature 
+
+### Electricity and shortages
+**Estimated demand shortage:** My main source of data on electricity shortages comes from @allcott_how_2016. The dataset is constructed in collaboration with India's Central Electricity Authority (CEA). The main feature of the dataset is a measure of shortages based on the difference between the observed consumption of electricity and the estimated counterfactual demand. Electricity shortages are measured as the percent energy deficit listed in the Load Generation Balance Reports [@cea_load_1993] released by CEA. In conjunction with the CEA, @allcott_how_2016 collected, cleaned and digitized the electricity data stretching back to 1992^[The data is provided by the authors at www.indiaenergydata.info.].
+
+At the end of each year, the CEA and the Regional Power Committees estimate the monthly counterfactual quantity that would have been demanded in each state if there were no shortages. This annual figure, listed in current prices, is the *assessed demand* ($A$). The sum of electricity available from power plants and net imports is the *energy available* ($E$). The measure of shortages ($S$) is then defined by the CEA as the percent of demand in state $s$ in year $t$ that is not met:
+
+$$
+S_{st} = \frac{A_{st} - E_{st} }{A_{st}}
+$$
+
+In addition, the CEA reports a measure of the power shortages during peak hours ($S^p$). This "peak shortage" is defined analogously to $S$ but using only *peak assessed demand* ($A^{p}$) and *peak energy available* ($E^p$):
+
+$$
+S^{p}_{st} = \frac{A^{p}_{st} - E^{p}_{st}}{A^{p}_{st}}
+$$
+
+The data on total electricity sold to consumers, the total hydroelectrict electriction generation (both observed and maximum capacity), the total generation capacity, and the previous years' capacity increase (state/year) comes from the General Review [@cea_all_1994]. 
+
+**Satellite nightlights:** 
+
+
+### International trade data
+To construct the index of product complexity, I use data on international trade.
+The raw trade data is collected by UN COMTRADE and provided through the Harvard Growth Lab [@the_growth_lab_at_harvard_university_international_2019]. I use the Harmonized System 1992 (HS92) classification, which covers bilateral trade flows for approximately 5000 products between 1995 and 2017. 
+
+The bilateral flows are aggregated into product-level exports for each country, for each year. 
+
+### Input-output relationship
+
+### Annual Survey of Industries (ASI)
+For data on the manufacturing industry in India, I use the Annual Survey of Industries (ASI)(TODO: CITE). The ASI is compiled annually by the Indian Ministry of Statistics. All registered factories with more than 100 employees (the "census scheme") is sampled every year. Smaller factories are randomly sampled every year, stratified by industry and state. 
+
+Products are classicfed according to 5-digit ASI Commodity Classification (ASICC) codes.
+
 ## Empirical strategy
-### IV approach
-# Appendix
-## Notes on figures
+
+### Product complexity
+
+### Plant complexity
+
+For each plant, I quantify the complexity of their production output as the weighted average the complexity-values for each product it produces. I assign weights based on the value of the production. That is, the complexity for factory $f$ at time $t$, $C_{ft}$, is defined as:
+
+$$
+C_{ft} = \sum_p Q_{pt} \frac{O_{fpt}}{\sum_p O_{fpt}}
+$$
+
+where $Q_{pt}$ is the product complexity of product $p$ at time $t$ and $O_{fpt}$ is the output (in current prices) of factory $f$ in product $p$ at time $t$. 
+
+However, this definition potentially underestimates the complexity of large, multi-product factories that produce very complex products, but happen to sell markedly more of their low-complex ones. I therefor also include a stricter measure of plant complexity ($C^{\text{max}}_{ft}$) that uses only the most complex product in a factory's product-portfolio, regardless of the output volume. 
+
+$$
+C^{\text{max}}_{ft} = max \{ Q_{1t} I_{1ft}, \text{ ...}, Q_{pt} I_{pt} \}
+$$
+
+where 
+
+$$
+I_{pft} = \begin{cases}
+ 1 & \text{if } O_{fpt} \geq 0 \\ 
+ 0 & \text{if } O_{fpt} = 0
+\end{cases}
+$$
+
+### Network effects of disruptions
+
+### Instrumental variable
+
+There are a couple of reasons the effect of electricity disruptions on economic activities are diffult to study empirically. First, the relationship is likely to have a significant endogenous component. More complex production could be related to a more intensely developed economy, which could also be related to more stabile electricity supply. On the other hand, a more developed economy could have a more complex production, but would also have a higher electricity demand which could lead to shortages. 
+
+I therefor follow @allcott_how_2016 in constructing an instrumental variable based on hydeo-electricity generation. A valid instrument must affect the supply of electricity, but impact only the manufactoring plants through shortages. Hydro plants have a very low marginal cost of generating electricity, and the yearly generation of electricity is therefor primarily dependent on water availbility. This water availability is determined by rain- and snowfall at higher elevations.
+
+The instrumental variable $Z_{st}$ is defined as the share of the predicted hydro plant generation $H_{st}$ in the total predicted electricity demand $\hat{Q}_{st}$:
+
+$$
+Z_{st} = \frac{H_{st}}{\hat{Q}_{st}}
+$$
+
+Shortages of electricity directly impacts the consumption of electricity. Therefor, the predicted electricity for a state $s$ is the average electricity of the other states (without state $s$) times the average ratio of state $s$ electricity use as a share of the given year's total electricity use in the other states (again not including $s$). This means that the predicted electricity use for state $s$ in year $t$, $\hat{Q}_{st}$ is defined as:
+
+$$
+\hat{Q}_{st} = \frac{1}{R-1} \sum_{r \neq s}^{R-1}Q_{rt} \cdot \frac{1}{Y} \sum_{y}^{Y} \frac{Q_{sy}}{\sum_{r \neq s}^{R-1} Q_{ry}}
+$$
+
+where states are indexed by $r$, $R$ is the total number of states, years are indexed by $y$, and $Y$ is the total number of years in the sample.
+
+## Limitations
+
 
 \newpage
 # References

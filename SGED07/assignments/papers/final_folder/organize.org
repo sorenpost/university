@@ -1,13 +1,22 @@
-* Conceptual framework
-** TODO Read Jones paper
-** TODO Write some introduction draft
-* Figures
-** DONE Skrevet en mail til forfatteren af IO
-** TODO I/O network: get a hold of MR Saluja
-* Inbox
-** Background
-** Empirical strategy
-** Data sources
+* TODO [#C] Introduction
+
+* TODO [#C] Conceptual framework introduction
+
+* TODO [#B] Product complexity
+
+* TODO [#A] Disruptions in an O-ring model
+- Mangler at binde den sammen over til supply chains, input substition og I/O netværks
+
+* TODO [#A] METHODs
+- Empirical strategy (outline)
+- Metrics: PCI
+-
+* TODO [#B] Data
+- [ ] Electricity
+- [ ] Weather
+- [ ] ASI + IO
+- [ ]
+
 
 
 * BRUG
