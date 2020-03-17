@@ -33,29 +33,17 @@ abstract: "This is my abstract. \\newpage"
 
 Since Adam Smith it has been a truism that wealth comes from the economic efficiency of division of labor. The greater the market available, the deeper its participants can specialize and the greater the benefit. This suggests that economic wealth is connected to the increasing number of activities and complexity of interactions in the economy [@romer_endogenous_1990]. 
 
-If the size of the market limits the specialization of firms and workers, the globalization of labor- and input-markets should facilitate economic wealth creation. When all countries can exploit the global markets, why then have national differences in the gross domestic product (GDP) per capita have skyrocketed during the last two hundred years [@pritchett_divergence_1997]? Despite 50 years of unprecedented international connectivity, international trade, and globalisation (and some notable growth spurts), the data show that developing countries (as a group) are not catching u to more advanced economies [@johnson_what_2020].
+If the size of the market limits the specialization of firms and workers, the globalization of labor- and input-markets should facilitate broad economic wealth creation. When all countries can exploit the global markets, why then have national differences in the gross domestic product (GDP) per capita skyrocketed during the last two hundred years [@pritchett_divergence_1997]? Despite 50 years of unprecedented international connectivity, international trade, and globalisation (and some notable growth spurts), the data show that developing countries (as a group) are not catching up to more advanced economies [@johnson_what_2020].
 
-The literature on economic complexity provides one possible answer. If some spill-over effects from the individual activities that arise from the relative specialization - like property rights, tacit know-how, infrastructure, regulation, institutions - cannot be imported, they needs to be present in the local economy. The productivity of a country then lies in these non-traded "economic capabilities", and some of the differences between countries owe to the number, complimentarity, and interactions of these capabilities [@hidalgo_product_2007; @hidalgo_building_2009]. 
+The literature on economic complexity provides one possible answer. If some spill-over effects from the individual activities that arise from  specialization - like property rights, tacit know-how, infrastructure, regulation - cannot be imported, they need to be present in the local economy. The productivity of a country then lies in these non-tradable "economic capabilities", and the differences between countries owe (partly) to their number, complimentarity, and interactions of these capabilities [@hidalgo_product_2007; @hausmann_atlas_2013]. 
 
-The economic complexity-literature is concerned with quantifying these capabilities. While competing approaches exist [@tacchella_new_2012; @hidalgo_building_2009; @inoua_simple_2016] they share a common conceptual grounding. Given the difficulties in defining and measuring specific capabilities, researchers have taken at outcome based approach. If we think of
-
-In the model in figure ... a country can only produce a product if it possess all the necessary capability-requirements (A's).
-
-We can leverage this reflecting information to refine the information on the sophistication of products and countries. For example, in figure \ref{fig:network-fig} every country can produce product three. This suggests that the capabilities required to produce it are ubuiquitos. In addition, we can see that the only product country three can make is the one every country produces. This tells us that country three does not have a sophisticated capability-base. In contrast, country one can produce all products including product one, which it is the only one that can produce. This again suggests that a) country one possess a wide range of capabilities, and b) that product one is a complex product and require many or rare capabilities to produce.
-
-In this paper, I use the approach developed by.. (HH). Here, 
-
-most widely applied 
-
-[@hausmann_network_2011]
-
+While competing methods exist [@tacchella_new_2012; @hidalgo_building_2009; @inoua_simple_2016],  approaches to quantifying these capabilities share a common conceptual grounding. Given the difficulties in defining and measuring discrete capabilities, researchers have taken an agnostic approach to specific nature of capabilities. Instead, 
 
 ![The tripartite graph (left) represents the theoretical model: countries (C) can make the products (P) their capabilities (A) allows them to. The bipartite graph (right) is what we observe in the trade data: countries export a set of products, and from this set of products, we infer their capabilities. \label{fig:network-fig} ](/home/post/university/SGED07/assignments/papers/final_folder/network-fig-ws.png)
 
+We can leverage this reflecting information to refine the information on the sophistication of products and countries. For example, in figure \ref{fig:network-fig} every country can produce product three. This suggests that the capabilities required to produce it are ubuiquitos. In addition, we can see that the only product country three can make is the one every country produces. This tells us that country three does not have a sophisticated capability-base. In contrast, country one can produce all products including product one, which it is the only one that can produce. This again suggests that a) country one possess a wide range of capabilities, and b) that product one is a complex product and require many or rare capabilities to produce.
 
-- We don't understand micro foundations very well
-
-```{R eci-gdp-fig, fig.height = 3.5, echo = FALSE, message = FALSE, warning =FALSE, fig.cap="\\label{fig:eci-gdp-fig}Simple best fits on GDP/cap (PPP, 2011 Intl \\$) by Economic Complexity Index (ECI). Data on resource rents is from @the_world_bank_world_2020, GDP/cap is from @the_world_bank_world_2020-1 and ECI is from @simoes_economic_2011."} 
+```{R eci-gdp-fig, fig.height = 3.5, echo = FALSE, message = FALSE, warning =FALSE, fig.cap="\\label{fig:eci-gdp-fig}Simple best fits on GDP/cap (PPP, 2011 Intl \\$) by Economic Complexity Index (ECI). Data on resource rents is from @the_world_bank_world_2020, GDP/cap is from @the_world_bank_world_2020-1 and ECI is from @simoes_economic_2011. All observations are from 2010."} 
 library(tidyverse)
 library(janitor)
 library(ggpubr)
@@ -99,27 +87,39 @@ p_eci <- ggscatter(col2010,
           xlab = "Economic Complexity (HH)",
           color = "rents_10",
           add = "reg.line",
-          palette = "jco",
-          alpha = 0.6,
+          palette = c("#0073C299", "#86868699"),
+          alpha = 0.8,
           point = TRUE) +
   stat_cor(aes(color = rents_10), label.x = 0.7, label.y = c(8, 8.45)) 
 
- ggpar(p_eci, legend.title = "Resource rents as % of GDP:", font.legend = 10, font.tickslab = 10, font.x = 10, font.y = 10, palette = "jco")
+ ggpar(p_eci, legend.title = "Resource rents as % of GDP:", font.legend = 10, font.tickslab = 10, font.x = 10, font.y = 10)
 
 
 
 ```
 
+
+This framework has proven to be a strong predictor of economic performance. Figure \ref{fig:eci-gdp-fig} shows the very robust relationship between country-level economic complexity and GDP per capita (PPP). Since natural resources are a product of geographical luck rather than productive know-how, I separate economies with more a larger than 10% of resource rents as share of total GDP. @hausmann_atlas_2013 shows how the deviations the observed economic complexity of economies and their GDP/cap is a strong predictor of economic growth, suggesting that they converge to the sophistication of their capabilities (that is, countries below the trend line growth fast, while countries above slows down). Additionally, using only two variables - a measure of economic complexity and GDP/cap - @tacchella_dynamical_2018 constructs a model of 5-year predictions of economic growth, beating the best-in-class predictions by the IMF (whose analysis is country-calibrated and uses hundreds of variables). Not only does aggregate complexity matter: economies moving into more complex products are more egalitarian [@hartmann_linking_2017-1] and less carbon-intensive [@can_impact_2017].
+
+The economic complexity at the aggregate level is the outcome of a myriad of historical conditions, firm decisions, and micro-level interactions. These foundations of economic sophistication are not very well understood has been 
+
+
+
+
+
+- We don't understand micro foundations very well
+
+
 ## Disruptions in an O-ring model
 In this section I develop the relationship between disruptions and the complexity of production. I first discuss some key results from Kremer's O-ring model [@kremer_o-ring_1993] and how small changes in risk have large output effects. Second,...
 
-In an O-ring production model each production process consists of $n$ tasks. More complex products require more tasks than simpler ones. Each task $n_i$ has a $q_i$ chance of being completed successfully. If one task fails the whole product loses value. In Kremer's model, $q$ represents the ability (skill) of workers to retain the maximum value in production. A $q$ of 0.95 then both means that a worker has a 5 percent risk of ruining the product completely, or that she always performs the task so that the product retains 95 percent of its value. A central condition of the model is that we cannot substitute quality for quantity. That is, a great quarterback, chef, or composer is not equal to two good ones; any number of folk singers from the local pub won't substitute Bob Dylan. 
+In an O-ring production model each production process consists of $n$ tasks. More complex products require more tasks than simpler ones. Each task $n_i$ has a $q_i$ chance of being completed successfully. If one task fails the whole product loses value. In Kremer's model, $q$ represents the ability (skill) of workers to retain the maximum value in production. A $q$ of 0.95 then both means that a worker has a 5 percent risk of ruining the product completely, or that she always performs the task so that the product retains 95 percent of its value. A central condition of the model is that we cannot substitute quality for quantity. That is, a great quarterback, chef, or composer is not equal to two good ones; any number of folk singers from the local pub won't write Blood On The Tracks. 
 
 The O-ring production model takes the form of a modified Cobb-Douglas^[assumptions]:
 
 $$ Y = k^{\alpha} (\prod^{n}_{i = 1} q_i) n B $$
 
-where $Y$ is the expected output of the firm, $k$ is capital and $B$ is the firm specific productivity multiplier (that is, how productive is each worker with one unit of capital). For the purpose of this paper, two results from Kremer's model are key: the importance of even very small differences in $q$ on output, and the resulting assortive matching of workers by quality.
+where $Y$ is the expected output of the firm, $k$ is capital and $B$ is the firm specific productivity multiplier (that is, how productive is each worker with one unit of capital). For the purpose of this paper, two results from Kremer's model are key: the importance of even very small differences in $q$ on output, and the resulting assortative matching of workers by quality.
 
 For the moment, $B$ and the amount ($k$) and share ($\alpha$) of capital in production is unimportant for the argument, so let it be fixed across all firms. For simplicity, assume each worker in a firm has the same quality $q$. We can then write output as $(q_1 \cdot q_2 \cdot ... \cdot q_n) n = q^{n} n$. Small changes in quality then leads to large differences in output: if a firm produces a two-task ($n$ = 2) product, we find its output by taking $q^22$. If the workers are perfect $q = 1$ output is 2. Should workers have a quality of .9 instead, however, output is $0.9 \cdot 0.9 \cdot 2 = 1.62$. That is, a 10 percent drop in quality leads to a 21 percent drop in output. More importantly this effect increases as the complexity of the production process ($n$) increases (see figure \ref{fig:oring-fig}).
 
@@ -189,7 +189,7 @@ With the same workers, capital, and productivity, a matched economy will in this
 
 We can interpret the model in a different way. Instead of producing output by performing $n$ tasks, we let a product be the result of combining $n$ intermediate inputs. The quality factor $q_i$ then becomes the likelihood of getting successfully delivered the intermediate input from some other producer, i.e. their production is not disrupted by some exogenous factor (e.g. fire, theft, power outages, corruption). This model is then representtative of (randomly select input suppliers, etc). 
 
-***
+### Production networks
 
 If we fashion 
 
