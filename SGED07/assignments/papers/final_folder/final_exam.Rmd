@@ -33,15 +33,29 @@ abstract: "This is my abstract. \\newpage"
 
 Since Adam Smith it has been a truism that wealth comes from the economic efficiency of division of labor. The greater the market available, the deeper its participants can specialize and the greater the benefit. This suggests that economic wealth is connected to the increasing number of activities and complexity of interactions in the economy [@romer_endogenous_1990]. 
 
-[Skriv sætning om] Since the size of the market limits the specialization of firms and workers, the globalization of labor- and input-markets should facilitate economic wealth creation. If all countries can exploit the global markets, why then have national differences in the gross domestic product (GDP) per capita have skyrocketed during the last two hundred years [@pritchett_divergence_1997]? Despite 50 years of unprecedented international connectivity, international trade, and globalisation (and some notable growth spurts), the data show that developing countries (as a group) are not catching u to more advanced economies [@johnson_what_2020].
+If the size of the market limits the specialization of firms and workers, the globalization of labor- and input-markets should facilitate economic wealth creation. When all countries can exploit the global markets, why then have national differences in the gross domestic product (GDP) per capita have skyrocketed during the last two hundred years [@pritchett_divergence_1997]? Despite 50 years of unprecedented international connectivity, international trade, and globalisation (and some notable growth spurts), the data show that developing countries (as a group) are not catching u to more advanced economies [@johnson_what_2020].
 
-The literature on economic complexity provides one possible answer. 
+The literature on economic complexity provides one possible answer. If some spill-over effects from the individual activities that arise from the relative specialization - like property rights, tacit know-how, infrastructure, regulation, institutions - cannot be imported, they needs to be present in the local economy. The productivity of a country then lies in these non-traded "economic capabilities", and some of the differences between countries owe to the number, complimentarity, and interactions of these capabilities [@hidalgo_product_2007; @hidalgo_building_2009]. 
 
-- Cite  on prediction
+The economic complexity-literature is concerned with quantifying these capabilities. While competing approaches exist [@tacchella_new_2012; @hidalgo_building_2009; @inoua_simple_2016] they share a common conceptual grounding. Given the difficulties in defining and measuring specific capabilities, researchers have taken at outcome based approach. If we think of
+
+In the model in figure ... a country can only produce a product if it possess all the necessary capability-requirements (A's).
+
+We can leverage this reflecting information to refine the information on the sophistication of products and countries. For example, in figure \ref{fig:network-fig} every country can produce product three. This suggests that the capabilities required to produce it are ubuiquitos. In addition, we can see that the only product country three can make is the one every country produces. This tells us that country three does not have a sophisticated capability-base. In contrast, country one can produce all products including product one, which it is the only one that can produce. This again suggests that a) country one possess a wide range of capabilities, and b) that product one is a complex product and require many or rare capabilities to produce.
+
+In this paper, I use the approach developed by.. (HH). Here, 
+
+most widely applied 
+
+[@hausmann_network_2011]
+
+
+![The tripartite graph (left) represents the theoretical model: countries (C) can make the products (P) their capabilities (A) allows them to. The bipartite graph (right) is what we observe in the trade data: countries export a set of products, and from this set of products, we infer their capabilities. \label{fig:network-fig} ](/home/post/university/SGED07/assignments/papers/final_folder/network-fig-ws.png)
+
 
 - We don't understand micro foundations very well
 
-```{R eci-gdp-fig, fig.height = 3.5, echo = FALSE, message = FALSE, warning =FALSE, fig.cap="\\label{fig:eci-gdp-fig}OGDP/cap (PPP, 2011 Intl \\$) and ECI"} 
+```{R eci-gdp-fig, fig.height = 3.5, echo = FALSE, message = FALSE, warning =FALSE, fig.cap="\\label{fig:eci-gdp-fig}Simple best fits on GDP/cap (PPP, 2011 Intl \\$) by Economic Complexity Index (ECI). Data on resource rents is from @the_world_bank_world_2020, GDP/cap is from @the_world_bank_world_2020-1 and ECI is from @simoes_economic_2011."} 
 library(tidyverse)
 library(janitor)
 library(ggpubr)
@@ -86,6 +100,7 @@ p_eci <- ggscatter(col2010,
           color = "rents_10",
           add = "reg.line",
           palette = "jco",
+          alpha = 0.6,
           point = TRUE) +
   stat_cor(aes(color = rents_10), label.x = 0.7, label.y = c(8, 8.45)) 
 
@@ -332,6 +347,7 @@ ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2, common.legend = TRUE, legend = "ri
 Figure \ref{fig:disr-fig} shows a 
 
 
+
  - Input Specificity and shocks [@barrot_input_2016]: shocks propagate through supply chains and impose large output costs on their costumers.
 
  - [@carvalho_supply_2016] show Japan earthquake propagating through the supply chain.
@@ -376,9 +392,10 @@ By using an instrumental variable approach built on
 
 # Methods
 
-The central part of the research design is a regression at the plant level on product complexity by electricity shortages. 
+In this section I outline the regression design used to test the research hypotheses written above. I first discuss the main dependent and independent variables necessary to run such a test. I then briefly turn to how each of the key variables is operationalized. 
 
-## Data
+
+# Data
 
 I employ four main sources of data, ranging from 1992 - 2010: the comprehensive data set constructed by @allcott_how_2016 (weather, hydro-generated electricity, estimated electricity demand); high-frequency satellite image data on electricity reliability (@min_whose_2017); UN COMTRADE data on international trade (distributed by @the_growth_lab_at_harvard_university_international_2019); Indian manufacturing data from the Annual Survey of Industries (ASI) (for microdata) and input-output relationships, both provided through the Indian Ministry of Statistics and Programme Implementation. 
 
