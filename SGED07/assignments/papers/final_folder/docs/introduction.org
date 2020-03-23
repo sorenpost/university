@@ -1,0 +1,26 @@
+* Introduction
+
+- Introduction: This is the question that interests me. This is the general approach. This is the outline of the paper. This a brief review of the importance of electricity.
+
+- Brug den vinkel der er i Jones' artikel om weak links, s. 2. "The approach taken in this paper is related to..."
+
+
+The approach taken in this paper is closely related to he literature on
+
+
+
+It is uncontroversial that electricity is a key input in the manufacturing process. Without electricity, typically, little gets done. For the individual plant, when little gets done, output is lowered. The relationship between shortages in electricity and output has been studied in the aggregate (xxx) and on plant-level (xxx), with results ranging form very large (xxx) to smaller costs (xxx)[fn:electricitycosts]. The output of a plant's production, however, is typically not limited to household consumption. Say that en period one, a plant makes a batch of steel. Most of the steel is not sold to households, but to use other in other production processes, like a bicycle factory. For the bicycle factory to produce a batch of racing bikes in period two, it not only needs electricity, but also a series of goods to build the bike, like steel.
+
+This is the essential link.
+
+To model this relationship, I follow the production model used in much of the recent work on ... cite:acemoglu_network_2012. For now, I take one plant to be representative of the production in a given sector, where each plant makes a unique product that can either be sold to consumers or used as intermediate input in the production of a different product. We can then model a multi-sector production by
+
+$$
+x_i =  (z_i l_i)^{1-\alpha}(\prod^{n}_{j = 1} x_{ij}^{w_{ij}})^{\alpha}
+$$
+
+where $l_i$ is the amount of labor hired by plant $i$ and $\alpha \in (0, 1)$ is the share of labor in production. $z_i$ models some risk of production failure (or delay) due to exogenous factors (e.g. fire, theft, power outages, corruption) and has a similar role to $q$ earlier (more accurately, $z_i$ is 1 - the risk of failure). $x_{ij}$ is amount of the output by plant $j$ that used as intermediate input in the production of $x_i$. $w_{ij} \geq 0$ is the share of good $j$ in the total intermediate input use in the production of good $i$, and thus represents a sort of production recipe for plant $i$. I also take $\sum_j w_{ij} = 1$, i.e. there are constant returns to scale. If we stack the collection of  these $w$'s, we have the economy's input-output table.
+
+* Footnotes
+
+[fn:electricitycosts] Mainly because of generator purchases, which in turn acts as a kind of input-tax on electricity since generator electricity is more expensive.

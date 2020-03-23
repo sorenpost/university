@@ -1,0 +1,152 @@
+
+* Research hypotheses
+
+Three hypotheses will be tested: first order influence of uncertainty on production choices (state-variable), supply-chain networked effects (not limited to location, but weighted through network), and uncertainty's impact on plant entry.
+
+> $H_1:$ More central industries are placed in less disruptive environments
+
+> $H_2:$ Higher complexity products will be negatively associated with disruptions in supply chain (as measured by the disruption-weighted eigenvector centrality)
+
+> $H_3:$ Higher complexity ... lower disruption enviroments
+
+The question this study will address is then:
+
+> Does disruptions in electricity supply cause plants to produce less complex
+> products?
+
+By using an instrumental variable approach built on
+
+* Methods
+
+In this section I outline the regression design used to test the research hypotheses written above. I first discuss the main dependent and independent variables necessary to run such a test. I then briefly turn to how each of the key variables is operationalized.
+
+* Data
+
+I employ four main sources of data, ranging from 1992 - 2010: the comprehensive data set constructed by @allcott_how_2016 (weather, hydro-generated electricity, estimated electricity demand); high-frequency satellite image data on electricity reliability (@min_whose_2017); UN COMTRADE data on international trade (distributed by @the_growth_lab_at_harvard_university_international_2019); Indian manufacturing data from the Annual Survey of Industries (ASI) (for microdata) and input-output relationships, both provided through the Indian Ministry of Statistics and Programme Implementation.
+
+*** Weather data
+Rainfall data is from the University of Delaware and is distributed by @allcott_how_2016. It covers monthly rainfall for grids of 1/2 degree. Rainfall is then aggregated to average annual total per-grid point rainfall in each state. Temperature
+
+*** Electricity and shortages
+**Estimated demand shortage:** My main source of data on electricity shortages comes from @allcott_how_2016. The dataset is constructed in collaboration with India's Central Electricity Authority (CEA). The main feature of the dataset is a measure of shortages based on the difference between the observed consumption of electricity and the estimated counterfactual demand. Electricity shortages are measured as the percent energy deficit listed in the Load Generation Balance Reports [@cea_load_1993] released by CEA. In conjunction with the CEA, @allcott_how_2016 collected, cleaned and digitized the electricity data stretching back to 1992^[The data is provided by the authors at www.indiaenergydata.info.].
+
+At the end of each year, the CEA and the Regional Power Committees estimate the monthly counterfactual quantity that would have been demanded in each state if there were no shortages. This annual figure, listed in current prices, is the *assessed demand* ($A$). The sum of electricity available from power plants and net imports is the *energy available* ($E$). The measure of shortages ($S$) is then defined by the CEA as the percent of demand in state $s$ in year $t$ that is not met:
+
+$$
+S_{st} = \frac{A_{st} - E_{st} }{A_{st}}
+$$
+
+In addition, the CEA reports a measure of the power shortages during peak hours ($S^p$). This "peak shortage" is defined analogously to $S$ but using only *peak assessed demand* ($A^{p}$) and *peak energy available* ($E^p$):
+
+$$
+S^{p}_{st} = \frac{A^{p}_{st} - E^{p}_{st}}{A^{p}_{st}}
+$$
+
+The data on total electricity sold to consumers, the total hydroelectrict electriction generation (both observed and maximum capacity), the total generation capacity, and the previous years' capacity increase (state/year) comes from the General Review [@cea_all_1994].
+
+**Satellite nightlights:**
+
+
+*** International trade data
+To construct the index of product complexity, I use data on international trade.
+The raw trade data is collected by UN COMTRADE and provided through the Harvard Growth Lab [@the_growth_lab_at_harvard_university_international_2019]. I use the Harmonized System 1992 (HS92) classification, which covers bilateral trade flows for approximately 5000 products between 1995 and 2017.
+
+The bilateral flows are aggregated into product-level exports for each country, for each year, at the 4-digit level (approximately 1200 products).
+
+*** Input-output relationship
+
+*** Annual Survey of Industries (ASI)
+For data on the manufacturing industry in India, I use the Annual Survey of Industries (ASI)(TODO: CITE). The ASI is compiled annually by the Indian Ministry of Statistics. All registered factories with more than 100 employees (the "census scheme") is sampled every year. Smaller factories are randomly sampled every year, stratified by industry and state.
+
+Products are classicfed according to 5-digit ASI Commodity Classification (ASICC) codes.
+
+** Key variables
+
+*** Product complexity
+
+I use the Hausman-Hidalgo (HH) algorithm [@hidalgo_building_2009] to find the
+complexity of products. I first find the revealed comparative advantage (RCA)
+[@balassa_trade_1965] of each country in each of the approx. 1200 products in
+the HS92 series. RCA normalizes the export share in a country's total export
+with the share of a product's global export value in the value of all global exports together. A comparative advantage is considered *revealed* if RCA $\geq$ Hence, RCA of country $c$ in product $p$:
+
+$$
+RCA_{cp} = \frac{X_{cp}}{\sum_p X_{cp}} \bigg/ \frac{\sum_c X_{cp}}{\sum_c \sum_p X_{cp}}
+$$
+
+where $X_{cp}$ is the export value of country $c$ in product $p$. I then define an RCA matrix $M_{cp}$ with countries in rows as products in columns as:
+
+$$
+M_{cp} = \begin{cases}
+ 1 & \text{if } RCA_{cp} \geq 1 \\
+ 0 & \text{if } RCA_{cp} < 1
+\end{cases}
+$$
+
+
+
+*** Plant complexity
+
+For each plant, I quantify the complexity of their production output as the weighted average the complexity-values for each product it produces. I assign weights based on the value of the production. That is, the complexity for factory $f$ at time $t$, $C_{ft}$, is defined as:
+
+$$
+C_{ft} = \sum_p PCI_{pt} \frac{O_{fpt}}{\sum_p O_{fpt}}
+$$
+
+where $PCI_{pt}$ is the product complexity of product $p$ at time $t$ and $O_{fpt}$ is the output (in current prices) of factory $f$ in product $p$ at time $t$.
+
+However, this definition potentially underestimates the complexity of large, multi-product factories that produce very complex products, but happen to sell markedly more of their low-complex ones. I therefor also include a stricter measure of plant complexity ($C^{\text{max}}_{ft}$) that uses only the most complex product in a factory's product-portfolio, regardless of the output volume.
+
+$$
+C^{\text{max}}_{ft} = max \{ PCI_{1t} I_{1ft}, \text{ ... }, PCI_{pt} I_{pt} \}
+$$
+
+where
+
+$$
+I_{pft} = \begin{cases}
+ 1 & \text{if } O_{fpt} \geq 0 \\
+ 0 & \text{if } O_{fpt} = 0
+\end{cases}
+$$
+
+*** Network effects of disruptions
+
+I measure the disruption in the supply network of a plant in three steps. First I assign each plant to a sector in the I/O network based on their sector classification in the ASI data.
+
+I then create a sector-level disruption variable by taking the weighted average of plant-level disruption values, where weights are the output share of a plant in the sectors total output. I now have an input-output network where each of the 130 sectors has a disruption value. The input-output network shows the average share of different sectors' output that is used as intermediate input in a given sectors production, as well its' suppliers' suppliers, and so on.
+
+The disruption value
+
+This essentially represent
+
+The measure this effect,
+
+carries information on the amount of
+
+
+
+*** Instrumental variable
+
+There are a couple of reasons the effect of electricity disruptions on economic activities are diffult to study empirically. First, the relationship is likely to have a significant endogenous component. More complex production could be related to a more intensely developed economy, which could also be related to more stabile electricity supply. On the other hand, a more developed economy could have a more complex production, but would also have a higher electricity demand which could lead to shortages.
+
+I therefor follow @allcott_how_2016 in constructing an instrumental variable based on hydeo-electricity generation. A valid instrument must affect the supply of electricity, but impact only the manufactoring plants through shortages. Hydro plants have a very low marginal cost of generating electricity, and the yearly generation of electricity is therefor primarily dependent on water availbility. This water availability is determined by rain- and snowfall at higher elevations.
+
+The instrumental variable $Z_{st}$ is defined as the share of the predicted hydro plant generation $H_{st}$ in the total predicted electricity demand $\hat{Q}_{st}$:
+
+$$
+Z_{st} = \frac{H_{st}}{\hat{Q}_{st}}
+$$
+
+Shortages of electricity directly impacts the consumption of electricity. Therefor, the predicted electricity for a state $s$ is the average electricity of the other states (without state $s$) times the average ratio of state $s$ electricity use as a share of the given year's total electricity use in the other states (again not including $s$). This means that the predicted electricity use for state $s$ in year $t$, $\hat{Q}_{st}$ is defined as:
+
+$$
+\hat{Q}_{st} = \frac{1}{R-1} \sum_{r \neq s}^{R-1}Q_{rt} \cdot \frac{1}{Y} \sum_{y}^{Y} \frac{Q_{sy}}{\sum_{r \neq s}^{R-1} Q_{ry}}
+$$
+
+where states are indexed by $r$, $R$ is the total number of states, years are indexed by $y$, and $Y$ is the total number of years in the sample.
+
+*** Limitations
+
+
+\newpage

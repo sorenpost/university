@@ -1,0 +1,16 @@
+
+#+LATEX_HEADER: \setlength{\parskip}{1em} % set spaces between paragraphs to 1 character
+#+LATEX_HEADER: \setlength{\parindent}{0em} % set indents for new paragraphs to 0
+#+LATEX_HEADER: \usepackage{natbib}
+#+LATEX_HEADER: \usepackage[a4paper, total={6in, 8in}]{geometry}
+#+LATEX_HEADER: \newcommand{\vect}[1]{\boldsymbol{#1}}
+#+LATEX_HEADER: \usepackage[font={small,it}]{caption}
+#+LATEX_HEADER: \subsubsectionfont{\centering\mdseries\itshape}
+
+# \usepackage{fancyhdr}
+# \pagestyle{fancy}
+# \fancyhead[CO,CE]{}
+# center of footer
+# \fancyfoot[CO,CE]{S. Post: SGED07 Final exam}
+# page number on the left of even pages and right of odd pages
+# \fancyfoot[LE,RO]{\thepage}

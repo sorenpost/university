@@ -1,0 +1,26 @@
+#+TITLE: DRAFT: product complexity
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+SETUPFILE: preamble.org
+
+* Product Complexity
+
+Since Adam Smith it has been a truism that wealth comes from the economic efficiency of division of labor. The greater the market available, the deeper its participants can specialize and the greater the benefit. This suggests that economic wealth is connected to the increasing number of activities and complexity of interactions in the economy citep:romer_endogenous_1990.
+
+If the size of the market limits the specialization of firms and workers, the globalization of labor- and input-markets should facilitate broad economic wealth creation. When all countries can exploit the global markets, why then have national differences in the gross domestic product (GDP) per capita skyrocketed during the last two hundred years citep:pritchett_divergence_1997 ? Despite 50 years of unprecedented international connectivity, international trade, and globalisation (and some notable growth spurts), the data show that developing countries (as a group) are not catching up to more advanced economies citep:johnson_what_2020
+
+The literature on economic complexity provides one possible answer. If some spill-over effects from the individual activities that arise from  specialization - like property rights, tacit know-how, infrastructure, regulation - cannot be imported, they need to be present in the local economy. The productivity of a country then lies in these non-tradable "economic capabilities", and the differences between countries owe (partly) to their number, complimentarity, and interactions of these capabilities citep:hidalgo_product_2007,hausmann_atlas_2013.
+
+While competing methods exist citep:tacchella_new_2012,hidalgo_building_2009,inoua_simple_2016,  approaches to quantifying these capabilities share a common conceptual grounding. Given the difficulties in defining and measuring discrete capabilities, researchers have taken an agnostic approach to specific nature of capabilities. The basic intuition is simple. Say that a set of capabilities are required to effectively produce a product. We can assume that a country that effectively makes the given product posses the necessary capability base. It follows then that products that are produced by many countries requires less rare- or non-tradeable capabilities, while rarer products require more complex capabilities. Some products, however, will happen to be present in only a few places for reasons unrelated to the abilities of the economy (diamonds, ostrich eggs). This is solved by implementing an iterative algorithm that repeatedly weighs the complexity of products by the complexity of the countries that export them. See the methods section for a definition of the algorithm used in this paper.
+
+#+CAPTION: The tripartite graph (left) represents the theoretical model: countries (C) can make the products (P) their capabilities (A) allows them to. The bipartite graph (right) is what we observe in the trade data: countries export a set of products, and from this set of products, we infer their capabilities. For example, every country can produce product three. This suggests that the capabilities required to produce it are ubiquitous. In addition, we can see that the only product country three can make is the one every country produces. This suggest that country three does not have a sophisticated capability-base. In contrast, country one can produce all products including product one, which it is the only one that can produce. Here, country one and product one would the most complex.
+#+NAME: tripartite-model
+[[../figures/network-fig-ws.png]]
+
+This framework has proven to be a strong predictor of economic performance. Figure ref:tripartite-model shows the very robust relationship between country-level economic complexity and GDP per capita (PPP). Since natural resources are a product of geographical luck rather than productive know-how, I separate economies with more a larger than 10% of resource rents as share of total GDP. cite:hausmann_atlas_2013 shows how the deviations the observed economic complexity of economies and their GDP/cap is a strong predictor of economic growth, suggesting that they converge to the sophistication of their capabilities (that is, countries below the trend line growth fast, while countries above slows down). Additionally, using only two variables - a measure of economic complexity and GDP/cap - cite:tacchella_dynamical_2018 constructs a model of 5-year predictions of economic growth, beating the best-in-class predictions by the IMF (whose analysis is country-calibrated and uses hundreds of variables). Not only does aggregate complexity matter: economies moving into more complex products are more egalitarian citep:hartmann_linking_2017-1 and less carbon-intensive citep:can_impact_2017.
+
+The aggregate-level economic complexity is the outcome of a myriad of micro-level decisions, historical conditions, firm decisions. These foundations of economic sophistication are not very well understood, and have seen very little empirical study.
+
+
+bibliography:/home/post/university/collection.bib
+bibliographystyle:apalike

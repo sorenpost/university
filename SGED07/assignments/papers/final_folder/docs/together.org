@@ -1,0 +1,237 @@
+#+TITLE: FINAL EXAM: Why do countries produce the things they do? The role of electricity disruptions.
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+SETUPFILE: preamble.org
+
+* Introduction
+The products produced by rich countries are very different from the products produced in poor countries. Why? The difference between countries economic sophistication expressed through production baskets explains large variation in GDP per capita (see figure ref:eci_gdp) and growth rates citep:tacchella_dynamical_2018. Despite this, little empirical evidence examines the micro-foundations behind these differences.
+
+The study outlined in this paper examines the role of (electricity) interruptions in the production environment to explain the complexity of products made at the plant level. The mechanism is simple. If more complex products require more intermediate inputs or more production stages, interruptions or failures in production processes punish them harder than simpler ones. If these disruption-costs are punitive enough, investors will put their money elsewhere and producers will choose less complex products.
+
+[Connect electricity]
+
+The approach taken in this paper is primarily related to three strands of literature. First, the literature of economic complexity and the sophistication of an economy's capability base  citep:frenken_related_2007,hausmann_atlas_2013,tacchella_new_2012. I discuss the TODO in section TODO. Second, to develop the relation between production disruptions and product complexity, I draw on the O-ring effects modeled in citep:jones_intermediate_2011,kremer_o-ring_1993 and the recent literature on volatility in production networks citep:acemoglu_network_2012. While the latter is mainly concerned with aggregate effect of sectoral shocks, the importance of input-output linkages are equally relevant at the plant level.
+
+The rest of the paper goes as follows. I first develop the conceptual framework that underpins the work here: why should we care about economic complexity (x.x TODO) and how are electricity shortages related to whether factories produce more or less complex products (x.x TODO)? From the conceptual framework I draw out TODO (#?) testable hypothesis on proposed relationship. Based on these, I turn to the research design, my empirical strategy, and the use of data. Finally I address some important limitations.
+
+* Conceptual framework
+** Product complexity
+Since Adam Smith it has been a truism that wealth comes from the economic efficiency of division of labor. The greater the market available, the deeper its participants can specialize and the greater the benefit. This suggests that economic wealth is connected to the increasing number of activities and complexity of interactions in the economy citep:romer_endogenous_1990.
+
+If the size of the market limits the specialization of firms and workers, the globalization of labor- and input-markets should facilitate broad economic wealth creation. When all countries can exploit the global markets, why then have national differences in the gross domestic product (GDP) per capita skyrocketed during the last two hundred years citep:pritchett_divergence_1997 ? Despite 50 years of unprecedented international connectivity, international trade, and globalisation (and some notable growth spurts), the data show that developing countries (as a group) are not catching up to more advanced economies citep:johnson_what_2020.
+
+
+The literature on economic complexity provides one possible answer. If some spill-over effects from the individual activities that arise from  specialization - like property rights, tacit know-how, infrastructure, regulation - cannot be imported, they need to be present in the local economy. The productivity of a country then lies in these non-tradable "economic capabilities", and the differences between countries owe (partly) to their number, complimentarity, and interactions of these capabilities citep:hidalgo_product_2007,hausmann_atlas_2013.
+
+- TODO: Følgende to paragraffer er for lange.
+
+While competing methods exist citep:tacchella_new_2012,hidalgo_building_2009,inoua_simple_2016,  approaches to quantifying these capabilities share a common conceptual grounding. Given the difficulties in defining and measuring discrete capabilities, researchers have taken an agnostic approach to specific nature of capabilities. The basic intuition is simple. Say that a set of capabilities are required to effectively produce a product. We can assume that a country that effectively makes the given product posses the necessary capability base. It follows then that products that are produced by many countries requires less rare- or non-tradeable capabilities, while rarer products require more complex capabilities. Some products, however, will happen to be present in only a few places for reasons unrelated to the abilities of the economy (diamonds, ostrich eggs). This is solved by implementing an iterative algorithm that repeatedly weighs the complexity of products by the complexity of the countries that export them. See the methods section for a definition of the algorithm used in this paper.
+
+#+NAME: tripartite-model
+#+CAPTION: The tripartite graph (left) represents the theoretical model: countries (C) can make the products (P) their capabilities (A) allows them to. The bipartite graph (right) is what we observe in the trade data: countries export a set of products, and from this set of products, we infer their capabilities. For example, every country can produce product three. This suggests that the capabilities required to produce it are ubiquitous. In addition, we can see that the only product country three can make is the one every country produces. This suggest that country three does not have a sophisticated capability-base. In contrast, country one can produce all products including product one, which it is the only one that can produce. Here, country one and product one would the most complex.
+[[../figures/bartite_bw.png]]
+
+
+This framework has proven to be a strong predictor of economic performance. Figure ref:eci_gdp shows the robust relationship between country-level economic complexity and GDP per capita (PPP). Since natural resources are a product of geographical luck rather than productive know-how, I separate economies with more a larger than 10% of resource rents as share of total GDP. cite:hausmann_atlas_2013 shows how the deviations the observed economic complexity of economies and their GDP/cap is a strong predictor of economic growth, suggesting that they converge to the sophistication of their capabilities (that is, countries below the trend line growth fast, while countries above slows down).
+
+#+NAME: eci_gdp
+#+CAPTION: Figure 2: Simple best fits on GDP/cap (PPP, 2011 Intl $) by Economic Complexity Index (ECI). Pearson correlation for all observations together is 0.73. Data on resource rents is from cite:the_world_bank_world_2020, GDP/cap is from cite:the_world_bank_world_2020-1, and ECI is from cite:simoes_economic_2011. All observations are from 2010.
+[[../figures/eci_gdp.png]]
+
+
+Additionally, using only two variables - a measure of economic complexity and GDP/cap - cite:tacchella_dynamical_2018 constructs a model of 5-year predictions of economic growth, beating the best-in-class predictions by the IMF (whose analysis is country-calibrated and uses hundreds of variables). Not only does aggregate complexity matter: economies moving into more complex products are more egalitarian citep:hartmann_linking_2017-1, are less carbon-intensive citep:can_impact_2017, and have less volatile job-markets citep:adam_economic_2019
+
+The aggregate-level economic complexity is the outcome of a myriad of micro-level decisions, historical conditions, firm decisions. These foundations of economic sophistication are not very well understood, and have seen very little empirical study.
+
+** Production networks and economic complexity
+I now turn the relationship between my main dependent variable, the complexity of products at the plant level, and my main independent variable, unreliable electricity.
+
+The ability to substitute varies naturally between inputs, and the specific elasticities is an ongoing research area citep:brummitt_contagious_2017,carvalho_micro_2014.  finds... Electricity is presumably a difficult-to-substitute input (closures of ... and ... )
+
+
+* Research design
+
+** Research hypotheses
+
+Three hypotheses will be tested: first order influence of uncertainty on production choices (state-variable), supply-chain networked effects (not limited to location, but weighted through network), and uncertainty's impact on plant entry.
+
+> $H_1:$ More central industries are placed in less disruptive environments
+
+> $H_2:$ Higher complexity products will be negatively associated with disruptions in supply chain (as measured by the disruption-weighted eigenvector centrality)
+
+> $H_3:$ Higher complexity ... lower disruption enviroments
+
+The question this study will address is then:
+
+> Does disruptions in electricity supply cause plants to produce less complex
+> products?
+
+By using an instrumental variable approach built on
+
+** Methods
+
+In this section I outline the regression design used to test the research hypotheses written above. I first discuss the main dependent and independent variables necessary to run such a test. I then briefly turn to how each of the key variables is operationalized.
+
+** Data
+
+I employ four main sources of data, ranging from 1992 - 2010: the comprehensive data set constructed by @allcott_how_2016 (weather, hydro-generated electricity, estimated electricity demand); high-frequency satellite image data on electricity reliability (@min_whose_2017); UN COMTRADE data on international trade (distributed by @the_growth_lab_at_harvard_university_international_2019); Indian manufacturing data from the Annual Survey of Industries (ASI) (for microdata) and input-output relationships, both provided through the Indian Ministry of Statistics and Programme Implementation.
+
+**** Weather data
+Rainfall data is from the University of Delaware and is distributed by @allcott_how_2016. It covers monthly rainfall for grids of 1/2 degree. Rainfall is then aggregated to average annual total per-grid point rainfall in each state. Temperature
+
+**** Electricity and shortages
+**Estimated demand shortage:** My main source of data on electricity shortages comes from @allcott_how_2016. The dataset is constructed in collaboration with India's Central Electricity Authority (CEA). The main feature of the dataset is a measure of shortages based on the difference between the observed consumption of electricity and the estimated counterfactual demand. Electricity shortages are measured as the percent energy deficit listed in the Load Generation Balance Reports [@cea_load_1993] released by CEA. In conjunction with the CEA, @allcott_how_2016 collected, cleaned and digitized the electricity data stretching back to 1992^[The data is provided by the authors at www.indiaenergydata.info.].
+
+At the end of each year, the CEA and the Regional Power Committees estimate the monthly counterfactual quantity that would have been demanded in each state if there were no shortages. This annual figure, listed in current prices, is the *assessed demand* ($A$). The sum of electricity available from power plants and net imports is the *energy available* ($E$). The measure of shortages ($S$) is then defined by the CEA as the percent of demand in state $s$ in year $t$ that is not met:
+
+$$
+S_{st} = \frac{A_{st} - E_{st} }{A_{st}}
+$$
+
+In addition, the CEA reports a measure of the power shortages during peak hours ($S^p$). This "peak shortage" is defined analogously to $S$ but using only *peak assessed demand* ($A^{p}$) and *peak energy available* ($E^p$):
+
+$$
+S^{p}_{st} = \frac{A^{p}_{st} - E^{p}_{st}}{A^{p}_{st}}
+$$
+
+The data on total electricity sold to consumers, the total hydroelectrict electriction generation (both observed and maximum capacity), the total generation capacity, and the previous years' capacity increase (state/year) comes from the General Review [@cea_all_1994].
+
+**Satellite nightlights:**
+
+**** International trade data
+To construct the index of product complexity, I use data on international trade.
+The raw trade data is collected by UN COMTRADE and provided through the Harvard Growth Lab [@the_growth_lab_at_harvard_university_international_2019]. I use the Harmonized System 1992 (HS92) classification, which covers bilateral trade flows for approximately 5000 products between 1995 and 2017.
+
+The bilateral flows are aggregated into product-level exports for each country, for each year, at the 4-digit level (approximately 1200 products).
+
+**** Input-output relationship
+
+**** Annual Survey of Industries (ASI)
+For data on the manufacturing industry in India, I use the Annual Survey of Industries (ASI)(TODO: CITE). The ASI is compiled annually by the Indian Ministry of Statistics. All registered factories with more than 100 employees (the "census scheme") is sampled every year. Smaller factories are randomly sampled every year, stratified by industry and state.
+
+Products are classicfed according to 5-digit ASI Commodity Classification (ASICC) codes.
+
+** Key variables
+
+**** Product complexity
+
+I use the Hausman-Hidalgo (HH) algorithm [@hidalgo_building_2009] to find the
+complexity of products. I first find the revealed comparative advantage (RCA)
+[@balassa_trade_1965] of each country in each of the approx. 1200 products in
+the HS92 series. RCA normalizes the export share in a country's total export
+with the share of a product's global export value in the value of all global exports together. A comparative advantage is considered *revealed* if RCA $\geq$ Hence, RCA of country $c$ in product $p$:
+
+$$
+RCA_{cp} = \frac{X_{cp}}{\sum_p X_{cp}} \bigg/ \frac{\sum_c X_{cp}}{\sum_c \sum_p X_{cp}}
+$$
+
+where $X_{cp}$ is the export value of country $c$ in product $p$. I then define an RCA matrix $M_{cp}$ with countries in rows as products in columns as:
+
+$$
+M_{cp} = \begin{cases}
+ 1 & \text{if } RCA_{cp} \geq 1 \\
+ 0 & \text{if } RCA_{cp} < 1
+\end{cases}
+$$
+
+
+
+**** Plant complexity
+
+For each plant, I quantify the complexity of their production output as the weighted average the complexity-values for each product it produces. I assign weights based on the value of the production. That is, the complexity for factory $f$ at time $t$, $C_{ft}$, is defined as:
+
+$$
+C_{ft} = \sum_p PCI_{pt} \frac{O_{fpt}}{\sum_p O_{fpt}}
+$$
+
+where $PCI_{pt}$ is the product complexity of product $p$ at time $t$ and $O_{fpt}$ is the output (in current prices) of factory $f$ in product $p$ at time $t$.
+
+However, this definition potentially underestimates the complexity of large, multi-product factories that produce very complex products, but happen to sell markedly more of their low-complex ones. I therefor also include a stricter measure of plant complexity ($C^{\text{max}}_{ft}$) that uses only the most complex product in a factory's product-portfolio, regardless of the output volume.
+
+$$
+C^{\text{max}}_{ft} = max \{ PCI_{1t} I_{1ft}, \text{ ... }, PCI_{pt} I_{pt} \}
+$$
+
+where
+
+$$
+I_{pft} = \begin{cases}
+ 1 & \text{if } O_{fpt} \geq 0 \\
+ 0 & \text{if } O_{fpt} = 0
+\end{cases}
+$$
+
+**** Network effects of disruptions
+
+I measure the disruption in the supply network of a plant in three steps. First I assign each plant to a sector in the I/O network based on their sector classification in the ASI data.
+
+I then create a sector-level disruption variable by taking the weighted average of plant-level disruption values, where weights are the output share of a plant in the sectors total output. I now have an input-output network where each of the 130 sectors has a disruption value. The input-output network shows the average share of different sectors' output that is used as intermediate input in a given sectors production, as well its' suppliers' suppliers, and so on.
+
+The disruption value
+
+This essentially represent
+
+The measure this effect,
+
+carries information on the amount of
+
+
+
+**** Instrumental variable
+
+There are a couple of reasons the effect of electricity disruptions on economic activities are diffult to study empirically. First, the relationship is likely to have a significant endogenous component. More complex production could be related to a more intensely developed economy, which could also be related to more stabile electricity supply. On the other hand, a more developed economy could have a more complex production, but would also have a higher electricity demand which could lead to shortages.
+
+I therefor follow @allcott_how_2016 in constructing an instrumental variable based on hydeo-electricity generation. A valid instrument must affect the supply of electricity, but impact only the manufactoring plants through shortages. Hydro plants have a very low marginal cost of generating electricity, and the yearly generation of electricity is therefor primarily dependent on water availbility. This water availability is determined by rain- and snowfall at higher elevations.
+
+The instrumental variable $Z_{st}$ is defined as the share of the predicted hydro plant generation $H_{st}$ in the total predicted electricity demand $\hat{Q}_{st}$:
+
+$$
+Z_{st} = \frac{H_{st}}{\hat{Q}_{st}}
+$$
+
+Shortages of electricity directly impacts the consumption of electricity. Therefor, the predicted electricity for a state $s$ is the average electricity of the other states (without state $s$) times the average ratio of state $s$ electricity use as a share of the given year's total electricity use in the other states (again not including $s$). This means that the predicted electricity use for state $s$ in year $t$, $\hat{Q}_{st}$ is defined as:
+
+$$
+\hat{Q}_{st} = \frac{1}{R-1} \sum_{r \neq s}^{R-1}Q_{rt} \cdot \frac{1}{Y} \sum_{y}^{Y} \frac{Q_{sy}}{\sum_{r \neq s}^{R-1} Q_{ry}}
+$$
+
+where states are indexed by $r$, $R$ is the total number of states, years are indexed by $y$, and $Y$ is the total number of years in the sample.
+
+**** Limitations
+
+
+\newpage
+
+** Limitations
+* Figures
+
+
+
+#+NAME: least-most
+#+CAPTION: For each product, observations are the average ln(GDP/cap) of the five richest (red) and five poorest (blue) significant exporters (countries).  To be a significant exporter, a country must export the product with a revealed comparative advantage $\geq$ 1. GDP/cap is from cite:the_world_bank_world_2020-1, PCI is from cite:simoes_economic_2011.
+[[../figures/least_most.png]]
+
+#+NAME:
+#+CAPTION:
+[[../figures/disruption_figs.png]]
+
+#+CAPTION: Three stylized input-output configurations in a four sector economy.
+#+NAME: io
+[[../figures/io_model_ig_ss.png]]
+
+#+NAME: oring
+#+CAPTION: O-ring output by worker quality and tasks: (A) for very small declines in worker quality we see massive drops in expected output (in the example $n = 10$); (B) as complexity of production increases, the drop from potential output driven by marginal decreases in quality skyrockets. In temrs of production, this suggest that small changes in the risk (quality) of failure disproportionately punishes higher complexity producers.
+[[../figures/oring_quality.pdf]]
+
+
+*
+
+* Notes:
+Figure X.1 was adapted from Brummit el at.
+Figure X.2 was adapted from xxxx
+
+\newpage
+
+* References
+bibliography:/home/post/university/collection.bib
+bibliographystyle:apalike

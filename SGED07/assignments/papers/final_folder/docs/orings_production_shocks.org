@@ -1,0 +1,171 @@
+#+TITLE: DRAFT: Product complexity, O-rings and electricity shortages
+#+AUTHOR: Søren Post
+#+Options: toc:nil
+#+SETUPFILE: preamble.org
+
+
+
+The following section constructs the link between my main dependent variable, product complexity, and my main independent variable, unreliable electricity. Essentially, the argument goes as follows: if a) electricity is a vital input in manufacturing product and interruptions in electricity means that production is also interrupted, b) intermediate inputs are not easily substituted, and c) more complex products require more intermediate inputs (different kinds /and/ share) or longer production chains, then electricity disruptions will cost the producers of complex products a larger share of their expected output. All else being equal, this should lead producers in higher disruption environments to self-select into simpler products.
+
+ 1. electricity shortages on output
+ 2. input substitution << 1
+ 3. input intensity (share of intermediate inputs) and product complexity
+ 4. input HHI (number of intermediate inputs) and product complexity
+ 5. input HHI (number of intermediate inputs) and product complexity
+
+ 6. Sources on input-substitution
+    1) cite:barrot_input_2016 viser at input-specificity er en meget vigtig kilde for transmission of shocks. They measure input specificity by  They measure input specificity by
+    2)
+
+
+Leontief model: production is limited by scarcest factor, there is not substitution between factors.
+
+
+
+[[../figures/least_most.png]]
+
+
+
+[overvej helt at fjerne O-rings modellen.]
+
+
+Show: inputs
+
+* To be cut
+
+Electricity is a key input in the manufacturing process. Without electricity, a plant ... the individual plant, when little gets done, output is lowered. The relationship between shortages in electricity and output has been studied in the aggregate (xxx) and on plant-level (xxx), with results ranging form very large (xxx) to smaller costs (xxx)[fn:electricitycosts]. The output of a plant's production, however, is typically not limited to household consumption. Say that en period one, a plant makes a batch of steel. Most of the steel is not sold to households, but to use in other production processes, like a bicycle factory. For the bicycle factory to produce a batch of racing bikes in period two, it not only needs electricity, workers, and machines, but also a series of goods to build the bike, like steel.
+
+This is the essential link.
+
+* New version
+
+
+
+
+To model this relationship, I follow the production model used in much of the recent work on ... cite:acemoglu_network_2012. For now, I take one plant to be representative of the production in a given sector, where each plant makes a unique product that can either be sold to consumers or used as intermediate input in the production of a different product. We can then model a multi-sector production by
+
+$$
+x_i =  (z_i l_i)^{1-\alpha}(\prod^{n}_{j = 1} x_{ij}^{w_{ij}})^{\alpha}
+$$
+
+where $l_i$ is the amount of labor hired by plant $i$ and $\alpha \in (0, 1)$ is the share of labor in production. $z_i$ models some risk of production failure (or delay) due to exogenous factors (e.g. fire, theft, power outages, corruption) and has a similar role to $q$ earlier (more accurately, $z_i$ is 1 - the risk of failure). $x_{ij}$ is amount of the output by plant $j$ that used as intermediate input in the production of $x_i$. $w_{ij} \geq 0$ is the share of good $j$ in the total intermediate input use in the production of good $i$, and thus represents a sort of production recipe for plant $i$. I also take $\sum_j w_{ij} = 1$, i.e. there are constant returns to scale. If we stack the collection of  these $w$'s, we have the economy's input-output matrix.
+
+
+---
+
+In the case that there is there is no substitution between inputs at all, and that failure in a production at plant $i$ means that no input $i$ is delivered to customers, the relationship between the number of intermediate inputs and the expected output by a plant falls by $z^{n}$. If each plant has the same individual risk of production disruption, figure TODO and TODO shows the increase of
+
+
+
+
+* Footnotes
+
+[fn:electricitycosts] Mainly because of generator purchases, which in turn acts as a kind of input-tax on electricity since generator electricity is more expensive.
+
+The approach in this paper is closely related to O-ring framework  in cite:kremer_o-ring_1993 and the weak-link model developed in cite:jones_intermediate_2011.
+
+*Electricity shortages reduces manufacturing output.*
+
+*The use of intermediate inputs approximates a Leontief technology.*
+
+
+
+* Disruptions in an O-ring model
+In this section I develop the intuition behind the relationship between disruptions and the complexity of production. I first discuss some key results from Kremer's O-ring model [@kremer_o-ring_1993] and how small changes in risk have large output effects. Second, I extend these ideas to input-output relationships. I round up by discussing the model implications for the complexity in production.
+
+In an O-ring production model each production process consists of $n$ tasks. More complex products require more tasks than simpler ones. Each task $n_i$ has a $q_i$ chance of being completed successfully. If one task fails the whole product loses value. In Kremer's model, $q$ represents the ability (skill) of workers to retain the maximum value in production. A $q$ of 0.95 then both means that a worker has a 5 percent risk of ruining the product completely, or that she always performs the task so that the product retains 95 percent of its value. A central condition of the model is that we cannot substitute quality for quantity. That is, a great quarterback, chef, or composer is not equal to two good ones; any number of folk singers from the local pub won't write Blood On The Tracks.
+
+The O-ring production model takes the form of a modified Cobb-Douglas:
+
+$$ Y = k^{\alpha} (\prod^{n}_{i = 1} q_i) n B $$
+
+where $Y$ is the expected output of the firm, $k$ is capital and $B$ is the firm specific productivity multiplier (that is, how productive is each worker with one unit of capital). For the purpose of this paper, two results from Kremer's model are key: the importance of even very small differences in $q$ on output, and the resulting assortative matching of workers by quality.
+
+For the moment, $B$ and the amount ($k$) and share ($\alpha$) of capital in production is unimportant for the argument, so let it be fixed across all firms. For simplicity, assume each worker in a firm has the same quality $q$. We can then write output as $(q_1 \cdot q_2 \cdot ... \cdot q_n) n = q^{n} n$. Small changes in quality then leads to large differences in output: if a firm produces a two-task ($n$ = 2) product, we find its output by taking $q^22$. If the workers are perfect $q = 1$ output is 2. Should workers have a quality of .9 instead, however, output is $0.9 \cdot 0.9 \cdot 2 = 1.62$. That is, a 10 percent drop in quality leads to a 21 percent drop in output. More importantly this effect increases as the complexity of the production process ($n$) increases (see figure ref:oring).
+
+#+CAPTION: O-ring output by worker quality and tasks: (A) for very small declines in worker quality we see massive drops in expected output (in the example $n = 10$); (B) as complexity of production increases, the drop from potential output driven by marginal decreases in quality skyrockets. In temrs of production, this suggest that small changes in the risk (quality) of failure disproportionately punishes higher complexity producers.
+#+NAME: oring
+[[../figures/oring_quality.pdf]]
+
+Second, Kremer shows that an economy will maximise its output by matching workers by their quality. Take a simple example of a four worker, two firm economy: two high quality workers, $q_h = 1$, and two low quality workers, $q_l = 0.5$. Each worker performs one task. We can have a situation where firms match workers skill (so that one firm has high $q$ workers, the other low $q$ workers) or where each firm has a mix:^[A general proof: \begin{align*}(q_h - q_l)^2 >& 0 \\ q_h^2 + q_l^2 - 2q_hq_l >& 0 \\ q_h^2 + q_l^2 >& 2q_h q_l \end{align*}]
+
+\begin{align*}
+2(q_h \cdot q_h) + 2 (q_l \cdot q_l) &= 2.5 \\
+2(q_h \cdot q_l) + 2 (q_h \cdot q_l) &= 2
+\end{align*}
+
+With the same workers, capital, and productivity, a matched economy will in this simple example have a 25% larger output than a mixed one.^[$2(q_h \cdot q_h) + 2 (q_l \cdot q_l) = 2(1 \cdot 1) + 2(0.5 \cdot 0.5) = 2 + 0.5 = 2.5$; $2(q_h \cdot q_l) + 2 (q_h \cdot q_l) = 2(1 \cdot 0.5) + 2(1 \cdot 0.5) = 1 + 1 = 2$]
+
+[ TODO: Why are these results relevant to the production of more or less complex products?]
+
+We can interpret the model in a different way. Instead of producing output by performing $n$ tasks, we let a product be the result of combining $n$ intermediate inputs. The quality factor $q_i$ then becomes the likelihood of getting successfully delivered the intermediate input from some other producer, i.e. their production is not disrupted by some exogenous factor (e.g. fire, theft, power outages, corruption). This model is then representtative of (randomly select input suppliers, etc).
+
+* Production networks
+
+The idea that shocks can travel through production linkages dates back to at least Leontief (1936). More recently, a number of studies have shown how shocks to some sectors can generate aggregate fluctuations depending on the input-output relationships in the economy. We can think of two important types of O-ring effects in the production-network. The first relates to the use of intermediate inputs in the production process and the second relates to the supply chain.
+
+To illustrate ... , I follow the production model used in much of the recent work on ... cite:acemoglu_network_2012. For now, I take one plant to be representative of the production in a given sector, where each plant makes a unique product that can either be sold to consumers or used as intermediate input in the production of a different product. We can then model a multi-sector production by
+
+$$
+x_i =  (z_i l_i)^{1-\alpha}(\prod^{n}_{j = 1} x_{ij}^{w_{ij}})^{\alpha}
+$$
+
+where $l_i$ is the amount of labor hired by plant $i$ and $\alpha \in (0, 1)$ is the share of labor in production. $z_i$ models some risk of production failure (or delay) due to exogenous factors (e.g. fire, theft, power outages, corruption) and has a similar role to $q$ earlier (more accurately, $z_i$ is 1 - the risk of failure). $x_{ij}$ is amount of the output by plant $j$ that used as intermediate input in the production of $x_i$. $w_{ij} \geq 0$ is the share of good $j$ in the total intermediate input use in the production of good $i$, and thus represents a sort of production recipe for plant $i$. I also take $\sum_j w_{ij} = 1$, i.e. there are constant returns to scale. If we stack the collection of  these $w$'s, we have the economy's input-output table.
+
+For there to exist O-ring effects in this kind of production process, inputs needs to be largely inelastic. That is, if some input is delayed or spoiled, a factory cannot just use more of some other input. At least in the short run, this makes intuitive sense: in automobile production, any number of wheels will not make up for the lack of a gear-box.[fn:eq]
+
+Empirical evidence support this intuition. For instance, by using the 2011 earthquake in Japan as natural experiment, cite:boehm_input_2019-1 finds evidence of a near 1-to-1 ratio between input and output losses, suggesting that the elasticity of intermediate inputs in manufacturing is near 0.[fn:eq2]
+
+If intermediate inputs are non-elastic, the likelihood of something going wrong increases with number of intermediate inputs. If the producers of each input has the same $z$, the probability of having at least one input delayed increase with the number of inputs $n$ in $1 - z^n$. This is essentially the O-ring problem from figure ref:oring. If [complex products require more inputs than lower complexity products...]
+
+Second, product the require a larger share of primary inputs, modeled as labor inputs here, are less harmed by this effect. The shocks contained in $z$ hit every producer the same. It is, however, only transmitted to other factories through their use of intermediate inputs. This means that producers with a higher share of intermediate inputs ($\alpha$) in their production will suffer more from disruptions to their suppliers.
+
+Third, disruptions are more expensive in longer supply-chains.
+
+1) Downstream effect: if the value of a product is not fully realized until the last stage, all else equal, failures in later stages are more critical. Should a failure at one stage ruin the process fully, it essentially represents a sequential O-ring problem.
+
+Downstream effect, upstream effect. As for the downstream effect, if the full value of a prduction is not realized until the last stage in a production chain, failures at the final stage is expensive. We would then expect more complex goods to be finalized in less disruptive environments. Upstream we have
+
+- [ ] Brug supply chain modelen til at vise sammenhængen.
+
+- [X] If intermediate inputs are non-elastic, the likelihood of disruptions rise with the number of intermediate inputs: the probability of having at least one of n input delayed rises by q^n. This is the O-ring problem.
+
+- [ ] In longer supply chains, disruptions are more expensive then shorter ones. d If complex products have more production "stages" than less complex ones, less complex products will be produced in more disruptive environments. If the supply-chain is completely vertical, the risk of having at least one failure (and therefor the expectation of output) rises by a factor of... (se Kremer papir). Usually, supply-chains are not completely vertical, so this effect is mediated. The effect decreases as links jump from node to node.
+
+- [ ] Products with a larger share of primary inputs is less harmed by supply-chain disruptions. Intermediate inputs are the only type of inputs with network effects. Primary inputs (like labor in the model) only disturb the factory itself, and only mitigate through other factories use of it's products as input. More disruptive environments will then tend to have more primary inputs. If more complex products have less primary inputs, they are less likely to be present in disruptive environments.
+
+#+CAPTION: Three stylized input-output configurations in a four sector economy.
+#+NAME: io
+[[/home/post/university/SGED07/assignments/papers/final_folder/io_model_ig.png]]
+
+Why is We can think of the production process
+
+
+Empirical evidence suggest the intuition holds. By using the 2011 earthquake in Japan as natural experiment, cite:boehm_input_2019-1 finds evidence of a near 1-to-1 ratio between input and output losses, suggesting that the elasticity of intermediate inputs in manufacturing is near 0.
+
+To see why,
+
+
+
+
+For there to exist O-ring effects
+
+- Show model:
+
+- Two ways that a shock can impact
+
+* Notes
+On one hand, firm-level idiosyncratic shocks should be quickly absorbed in production networks. Firms plausibly organize their operations to avoid being affected by temporary disruption to their supplies. Even when they face such disruptions, they should be flexible enough to recompose their production mix or switch to other suppliers. The gradual decrease in trade tariffs and transportation costs and the development of online business should make it even easier for firms to adjust their sourcing. On the other hand, frictions might prevent firms from quickly making adjustments in the event of supply disruptions. If firms face switching costs whenever they need to replace a disrupted supplier, idiosyncratic shocks might propagate from firm to firm and gradually be amplified. <-  Input Specificity and the Propagation of Idiosyncratic Shocks in Production Networks
+
+Consider the three networks in/figure ref:io. The three configurations each represent different organisation of $w$'s in the model.
+
+The first configuration is a vertical economy, where each sector gets all its input from ... In the right most model, node 3 gets half its input from 1 and half its input from 2. Node 4 gets all of its input from 3. For simplicity, lets say that half
+
+bibliography:/home/post/university/collection.bib
+bibliographystyle:apalike
+
+* Footnotes
+
+[fn:eq] Which is why xxx found that when the 2011 earth quake in Japan closed the world largest airflow sensor factory (a central component in cars), many car manufacturers had to temporarily or permanently curb production.
+
+[fn:eq2] The ability to substitute inputs does not need to be non-existing for the implications to hold, but the degree of disturbance or delay falls with flexibility.
