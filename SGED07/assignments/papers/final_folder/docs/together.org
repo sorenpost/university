@@ -1,18 +1,21 @@
 #+TITLE: FINAL EXAM: Why do countries produce the things they do? The role of electricity disruptions.
 #+AUTHOR: Søren Post
-#+Options: toc:nil
+#+OPTIONS: toc:2
 #+SETUPFILE: preamble.org
 
-* Introduction
-The products produced by rich countries are very different from the products produced in poor countries. Why? The difference between countries economic sophistication expressed through production baskets explains large variation in GDP per capita (see figure ref:eci_gdp) and growth rates citep:tacchella_dynamical_2018. Despite this, little empirical evidence examines the micro-foundations behind these differences.
+\newpage
 
-The study outlined in this paper examines the role of (electricity) interruptions in the production environment to explain the complexity of products made at the plant level. The mechanism is simple. If more complex products require more intermediate inputs or more production stages, interruptions or failures in production processes punish them harder than simpler ones. If these disruption-costs are punitive enough, investors will put their money elsewhere and producers will choose less complex products.
+
+* Introduction
+The products produced by rich countries are very different from the products produced in poor countries. Why? The difference between countries' economic sophistication expressed through production baskets explains large variation in GDP per capita (see figure ref:eci_gdp) and growth rates citep:tacchella_dynamical_2018. Despite this, little empirical evidence examines the micro-foundations behind these differences.
+
+The study outlined in this paper examines the ability of (electricity) interruptions in the production environment to explain the complexity of products made at the plant level. The mechanism is simple. If more complex products require more intermediate inputs or more steps in production, interruptions or failures in production processes punish them harder than simpler ones. If these disruption-costs are punitive enough, investors will put their money elsewhere and producers will choose less complex products.
 
 [Connect electricity]
 
-The approach taken in this paper is primarily related to three strands of literature. First, the literature of economic complexity and the sophistication of an economy's capability base  citep:frenken_related_2007,hausmann_atlas_2013,tacchella_new_2012. I discuss the TODO in section TODO. Second, to develop the relation between production disruptions and product complexity, I draw on the O-ring effects modeled in citep:jones_intermediate_2011,kremer_o-ring_1993 and the recent literature on volatility in production networks citep:acemoglu_network_2012. While the latter is mainly concerned with aggregate effect of sectoral shocks, the importance of input-output linkages are equally relevant at the plant level.
+The approach taken in this paper is primarily related to three strands of literature. First, the literature of economic complexity and the sophistication of an economy's capability base  citep:frenken_related_2007,hausmann_atlas_2013,tacchella_new_2012. I discuss the TODO in section TODO. Second, to develop the relation between production disruptions and product complexity, I draw on O-ring-type effects as modeled in cite:jones_intermediate_2011 and cite:kremer_o-ring_1993 and the recent literature on volatility in production networks citep:acemoglu_network_2012. While the latter is mainly concerned with aggregate effect of sectoral shocks, the importance of input-output linkages are equally relevant at the plant level.
 
-The rest of the paper goes as follows. I first develop the conceptual framework that underpins the work here: why should we care about economic complexity (x.x TODO) and how are electricity shortages related to whether factories produce more or less complex products (x.x TODO)? From the conceptual framework I draw out TODO (#?) testable hypothesis on proposed relationship. Based on these, I turn to the research design, my empirical strategy, and the use of data. Finally I address some important limitations.
+The rest of the paper goes as follows. I first develop the conceptual framework that underpins the work here: why should we care about economic complexity (2.1) and how are electricity shortages related to whether factories produce more or less complex products (2.2)? From the conceptual framework I draw out TODO (#?) testable hypotheses on the proposed relationship. Building from these hypotheses, I turn to the research design, my empirical strategy, and the use of data. Finally I address some important limitations.
 
 * Conceptual framework
 ** Product complexity
@@ -35,7 +38,7 @@ While competing methods exist citep:tacchella_new_2012,hidalgo_building_2009,ino
 This framework has proven to be a strong predictor of economic performance. Figure ref:eci_gdp shows the robust relationship between country-level economic complexity and GDP per capita (PPP). Since natural resources are a product of geographical luck rather than productive know-how, I separate economies with more a larger than 10% of resource rents as share of total GDP. cite:hausmann_atlas_2013 shows how the deviations the observed economic complexity of economies and their GDP/cap is a strong predictor of economic growth, suggesting that they converge to the sophistication of their capabilities (that is, countries below the trend line growth fast, while countries above slows down).
 
 #+NAME: eci_gdp
-#+CAPTION: Figure 2: Simple best fits on GDP/cap (PPP, 2011 Intl $) by Economic Complexity Index (ECI). Pearson correlation for all observations together is 0.73. Data on resource rents is from cite:the_world_bank_world_2020, GDP/cap is from cite:the_world_bank_world_2020-1, and ECI is from cite:simoes_economic_2011. All observations are from 2010.
+#+CAPTION: Simple best fits on GDP/cap (PPP, 2011 Intl $) by Economic Complexity Index (ECI). Pearson correlation for all observations together is 0.73. Data on resource rents is from cite:the_world_bank_world_2020, GDP/cap is from cite:the_world_bank_world_2020-1, and ECI is from cite:simoes_economic_2011. All observations are from 2010.
 [[../figures/eci_gdp.png]]
 
 
@@ -46,8 +49,46 @@ The aggregate-level economic complexity is the outcome of a myriad of micro-leve
 ** Production networks and economic complexity
 I now turn the relationship between my main dependent variable, the complexity of products at the plant level, and my main independent variable, unreliable electricity.
 
-The ability to substitute varies naturally between inputs, and the specific elasticities is an ongoing research area citep:brummitt_contagious_2017,carvalho_micro_2014.  finds... Electricity is presumably a difficult-to-substitute input (closures of ... and ... )
 
+To understand the role of disruptions on products, a simple model of production is instructive. Disruptions to a plant can happen in two ways: at the level of plant itself, or somewhere in the production chain. I start from the production setup in cite:acemoglu_network_2012 used in much of the recent literature on shocks in aggregate production networks. For now, I take one plant to be representative of the production in a given sector, where each plant makes a unique product that can either be sold to consumers or used as intermediate input in the production of a different product. We can then model a multi-sector production by
+
+$$
+x_i =  (z_i l_i)^{\alpha}(\prod^{n}_{j = 1} x_{ij}^{w_{ij}})^{1 - \alpha}
+$$
+
+where $l_i$ is the amount of labor hired by plant $i$ and $\alpha \in (0, 1)$ is the share of labor in production. $z_i$ models some risk of production failure (or delay) due to exogenous factors (e.g. fire, theft, power outages, corruption). More accurately, $z_i$ is 1 - the risk of failure. $x_{ij}$ is amount of the output by plant $j$ that used as intermediate input in the production of $x_i$. $w_{ij} \geq 0$ is the share of good $j$ in the total intermediate input use in the production of good $i$, and thus represents a sort of production recipe for plant $i$. I also take $\sum_j w_{ij} = 1$, i.e. there are constant returns to scale. If we stack the collection of  these $w$'s, we have the economy's input-output matrix.
+
+
+#+CAPTION: Three stylized input-output configurations in a four sector economy. Each note represents a plant or an economic sector. Arrows show supply relationship. The left-most model thus have one plant (4) needing inputs from four other plants (1, 2, 3).
+#+NAME: io
+[[../figures/io_model_ss.png]]
+
+At the individual plant $i$, $z_i$ is the only source of production failure in this model. However, each individual intermediate input ($x_{ij} \text{ for } j = 1, 2, ..., n$) needed for production is also made at a plant, with its own risk of failure. The left-most graph in figure ref:io shows this relationship: should plant one fail to deliver, this impacts the productivity of sector 4. The importance of a failure on one of a plants' suppliers depends on how substitutable intermediate inputs are. If the elasticity of the intermediate inputs are close to 0, the expected output of a factory declines rapidly when $n$ increases. In the simple case that the output of a factory is just the value of the intermediate inputs and the distribution of $z$ is equal across factories, the relationship between expected output and the number of inputs $n$ can be written as $n*(z^{n})$ and is identical to the O-ring problem in cite:kremer_o-ring_1993 (see figure ref:oring).
+
+#+NAME: oring
+#+CAPTION: Expected plant output by risk and number of inputs: (A) for very small increases in risk we see massive drops in expected output (in the example $n = 10$): when going from $z = .95$ (dashed) to $z = .90$ (dotted) - a decrease of 5.26% - expected output falls more than 40 %; (B) as complexity of production increases, the drop from potential output driven by marginal decreases in quality skyrockets. In terms of production, this suggest that small changes in the risk of failure disproportionately punishes higher complexity producers.
+[[../figures/z.pdf]]
+
+
+
+If the substitution between intermediate goods are inelastic, the production approximates the Leontief function.
+
+All else equal, if inputs are not completely substitutable... -> if more complex productions require more intermediate inputs or inputs are less substitutable -Z different kinds of microchips non-substitutable, but a baker could more easily substitute cane sugar for beet sugar.
+
+- Primary goods benefits
+
+- The second Production network multipliers. Longer supply chains, disruptions = more expensive.
+
+ - Kremers key result in assortative matching.
+
+
+At least in the short run, this makes intuitive sense: in automobile production, any number of wheels will not make up for the lack of a gear-box.
+
+Empirical evidence support this intuition. For instance, by using the 2011 earthquake in Japan as natural experiment, cite:boehm_input_2019-1 finds evidence of a near 1-to-1 ratio between input and output losses, suggesting that the elasticity of intermediate inputs in manufacturing is near 0.
+
+If intermediate inputs are non-elastic, the likelihood of something going wrong increases with number of intermediate inputs. If the producers of each input has the same $z$, the probability of having at least one input delayed increase with the number of inputs $n$ in $1 - z^n$. This is essentially the O-ring problem from figure ref:oring. If [complex products require more inputs than lower complexity products...]
+
+The ability to substitute varies naturally between inputs, and the specific elasticities is an ongoing research area citep:brummitt_contagious_2017,carvalho_micro_2014.  finds... Electricity is presumably a difficult-to-substitute input (closures of ... and ... )
 
 * Research design
 
@@ -135,7 +176,6 @@ M_{cp} = \begin{cases}
 $$
 
 
-
 **** Plant complexity
 
 For each plant, I quantify the complexity of their production output as the weighted average the complexity-values for each product it produces. I assign weights based on the value of the production. That is, the complexity for factory $f$ at time $t$, $C_{ft}$, is defined as:
@@ -176,7 +216,6 @@ The measure this effect,
 carries information on the amount of
 
 
-
 **** Instrumental variable
 
 There are a couple of reasons the effect of electricity disruptions on economic activities are diffult to study empirically. First, the relationship is likely to have a significant endogenous component. More complex production could be related to a more intensely developed economy, which could also be related to more stabile electricity supply. On the other hand, a more developed economy could have a more complex production, but would also have a higher electricity demand which could lead to shortages.
@@ -203,28 +242,19 @@ where states are indexed by $r$, $R$ is the total number of states, years are in
 \newpage
 
 ** Limitations
+
+- Measurement error and attenuation bias in independent
+- Generators
+
 * Figures
 
-
-
 #+NAME: least-most
-#+CAPTION: For each product, observations are the average ln(GDP/cap) of the five richest (red) and five poorest (blue) significant exporters (countries).  To be a significant exporter, a country must export the product with a revealed comparative advantage $\geq$ 1. GDP/cap is from cite:the_world_bank_world_2020-1, PCI is from cite:simoes_economic_2011.
+#+CAPTION: For each product, observations are the average ln(GDP/cap) of the five richest (red) and five poorest (blue) significant exporters (countries).  To be a significant exporter, a country must export the product with a revealed comparative advantage $\geq$ 1. GDP/cap is from cite:the_world_bank_world_2020-1, PCI is from cite:simoes_economic_2011. Observations are from 2010.
 [[../figures/least_most.png]]
 
 #+NAME:
 #+CAPTION:
 [[../figures/disruption_figs.png]]
-
-#+CAPTION: Three stylized input-output configurations in a four sector economy.
-#+NAME: io
-[[../figures/io_model_ig_ss.png]]
-
-#+NAME: oring
-#+CAPTION: O-ring output by worker quality and tasks: (A) for very small declines in worker quality we see massive drops in expected output (in the example $n = 10$); (B) as complexity of production increases, the drop from potential output driven by marginal decreases in quality skyrockets. In temrs of production, this suggest that small changes in the risk (quality) of failure disproportionately punishes higher complexity producers.
-[[../figures/oring_quality.pdf]]
-
-
-*
 
 * Notes:
 Figure X.1 was adapted from Brummit el at.
@@ -235,3 +265,10 @@ Figure X.2 was adapted from xxxx
 * References
 bibliography:/home/post/university/collection.bib
 bibliographystyle:apalike
+
+
+- individual plant level -> input subts -> leontief -> o-ring effects
+
+- supply chain -> kremer key result = assortative matching -> general proof -> match production by reliability
+
+- change i/o models to 1) show the one consumer sector, many suppliers (first example of input risks), 2) vertical economy to show the network effects, 3) mix, DONE

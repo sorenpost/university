@@ -14,3 +14,9 @@
 # \fancyfoot[CO,CE]{S. Post: SGED07 Final exam}
 # page number on the left of even pages and right of odd pages
 # \fancyfoot[LE,RO]{\thepage}
+
+\begin{abstract}
+It has long been recognized that the industrial structure plays an important role an economy’s resilience to recessionary shocks. Most literature, however, has focused on a ’discrete’ measurement of industrial diversity or how the input-output network propagates shocks. During the past decade, the economic complexity literature has demonstrated the importance of an economy’s place in the global manufacturing and export-network. It has been shown that a country’s product basket conditions how an economy develops and diversifies, its potential for growth, and its socio-economic profile. Based on a cross-country analysis of time-series data on international trade and economic output, covering 43 countries during the Great Recession, this study presents a first attempt at integrating the resilience literature and the literature on economic complexity and productive capabilities.
+
+\end{abstract}
+\thispagestyle{empty}

@@ -50,8 +50,7 @@ p1 <- ggscatter(col2010,
           font.y = 12) +
   scale_shape_manual(values = c(20, 4)) +
   scale_color_manual(values = c("#253494", "#bd0026")) +
-  stat_cor(aes(color = rents_10), label.x = 0.7, label.y = c(8, 8.3)) +
-  stat_cor(label.x)
+  stat_cor(aes(color = rents_10), label.x = 0.7, label.y = c(8, 8.3)) 
 
 p1
 

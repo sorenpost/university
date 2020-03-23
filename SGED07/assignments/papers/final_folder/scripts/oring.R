@@ -17,15 +17,19 @@ p5 <- ggline(output_tb,
        x = "quality",
        y = "output",
        plot_type = "l",
-       xlab = "Quality",
+       xlab = "z",
        ylab = "Output") %>%
-  ggpar(font.tickslab = 10, font.x = 10, font.y = 10)
+  ggpar(font.tickslab = 10, font.x = 10, font.y = 10) +
+  geom_segment(aes(x = .95, y = 0, xend = 0.95, yend = 5.99), linetype = "longdash", size = 0.4) +
+  geom_segment(aes(x = 0.5, y = 5.99, xend = 0.95, yend = 5.99), linetype = "longdash", size = 0.4) +
+  geom_segment(aes(x = 0.90, y = 0, xend = 0.90, yend = 3.49), linetype = "dotted", size = 0.4) +
+  geom_segment(aes(x = 0.5, y = 3.49, xend = 0.90, yend = 3.49), linetype = "dotted", size = 0.4)
 
 
 # percentage of output lost by worker quality for 4 different task levels
 quality <- seq(0.75, 1, 0.01)
 
-tasks <- c(rep(5, length(quality)), rep(10, length(quality)), rep(50, length(quality)))
+tasks <- c(rep(5, length(quality)), rep(10, length(quality)), rep(25, length(quality)))
 
  scaled_output_tb <- tibble(qual = rep(quality, 3), tasks) %>%
  mutate(output = qual^(tasks)*tasks) %>%
@@ -39,16 +43,16 @@ p6 <- ggline(scaled_output_tb,
              y = "rescaled_output",
              linetype = "tasks",
              plot_type = "l",
-             xlab = "Quality",
+             xlab = "z",
              ylab = "% of output",
              palette = "jco") %>%
-  ggpar(font.tickslab = 10, font.x = 10, font.y = 10, font.legend = 10, legend = "top", legend.title = "# of tasks") +
+  ggpar(font.tickslab = 10, font.x = 10, font.y = 10, font.legend = 10, legend = "top", legend.title = "# of inputs") +
   theme(legend.position = c(0.2, 0.8))
 
 ggarrange(p5, p6, ncol = 2, nrow = 1, labels = c("A", "B"), font.label = list(size = 10, face = "bold"))
 
 ggsave(
-  filename = "../figures/oring_quality.pdf",
+  filename = "/home/post/university/SGED07/assignments/papers/final_folder/figures/z.pdf",
   plot = last_plot(),
   device = NULL,
   path = NULL,
@@ -59,3 +63,4 @@ ggsave(
   dpi = "print",
   limitsize = TRUE
 )
+
